@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>activity</title>
+  <link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+    <div class="container-fluid"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myInverseNavbar2"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" href="index.html">Join Us</a> </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="myInverseNavbar2">
+          <ul class="nav navbar-nav navbar-right">
+            <li></li>
+            <li><a href="#">地区 </a></li>
+            <li><a href="#">查找活动</a></li>
+            <li><a href="create.html">创建活动</a></li>
+            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="personal_applied.html">我报名的</a></li>
+                <li><a href="personal_joined.html">我参加的</a></li>
+                <li><a href="personal_favorites.html">收藏</a></li>
+                <li><a href="personal_comments.html">评论</a></li>
+                <li class="divider"></li>
+                <li><a href="#">关于我们</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse --> 
+      </div>
+      <!-- /.container-fluid --> 
+    </nav>
+    <div class="content_head">
+      <div class="content_head_l">
+        <img src="#" alt="这里是海报">
+      </div>
+
+      <div class="content_head_r">
+        <div class="detail_title">
+          <h2>
+            华东师范大学第二届创新创业大赛
+          </h2>
+        </div>
+
+        <div class="detail_time">
+          <div class="detail_time_start">
+            <div class="title_txt">活动开始时间： </div>
+            <p>11-23 13:00</p>
+          </div>
+          <div class="detail_time_close">
+            <span>10-7 24:00 报名截止</span>
+          </div>
+        </div>
+
+        <div class="detail_place">
+          <div class="title_txt">地点：</div>
+          <p>
+            上海市普陀区中山北路3663号华东师范大学
+          </p>
+        </div>
+
+        <div id="detail_joinnum" class="detail_joinnum" ms-controller="detail_join_party_list_controller">
+          <div class="detail_joinnum_t">
+            <div class="title_txt">报名人数： </div>
+            <p class="num">已有<span>#</span>人报名</p>
+          </div>
+          <div class="detail_joinnum_b">
+          <p>限<span>80</span>人报名</p>
+          </div>
+        </div>
+
+        <div class="detail_description">
+          <div class="title_txt">活动详情： </div>
+          <p>比赛比赛比赛23333333333</p>
+        </div>
+
+        <div>
+          <form action="" method="post">
+            <input type="submit" id="apply" value="我要报名">
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+
+    <script src="../js/jquery-1.11.2.min.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+  </html>
