@@ -1,5 +1,7 @@
 .DS_Store
 
+application/controllers/Test.php
+
 application/cache/*
 !application/cache/index.html
 !application/cache/.htaccess

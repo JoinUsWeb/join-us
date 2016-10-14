@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: huge
+ * Date: 2016/10/13
+ * Time: 22:07
+ */
+class Member_and_activity extends CI_Model
+{
+    public function __construct()
+    {
+        $this->load->model('user_model');
+        $this->load->model('activity_model');
+    }
+
+    /**
+     * 获得活动成员数组
+     *
+     * 通过活动ID查找其成员。函数接受一个参数活动ID，如果合法（id>0），返回其成员的一个数组
+     *
+     * @param int $activity_id
+     * @return null OR array $data
+     */
+    public function get_member_by_activity_id($activity_id=-1)
+    {
+        if ($activity_id <= 0)
+            return null;
+        else
+        {
+            $data=array();
+            $member=$this->db->get_where('relation_activity_members',array('activity_id'=>$activity_id))->result_array();
+            foreach($member as $member_item)
+            {
+                $data[]=$this->user_model->get_user_by_id($member_item['member_id']);
+            }
+            return $data;
+        }
+    }
+
+    /**
+     * 获得用户参与的活动
+     *
+     * 通过用户ID查找其参与的活动。函数接受一个参数活用户ID，如果合法（id>0），返回其参与活动的一个数组
+     *
+     * @param int $member_id
+     * @return null OR array $data
+     */
+    public function get_activity_by_member_id($member_id=-1)
+    {
+        if ($member_id <= 0)
+            return null;
+        else
+        {
+            $data=array();
+            $activity=$this->db->get_where('relation_activity_members',array('member_id'=>$member_id))->result_array();
+            foreach($activity as $activity_item)
+            {
+                $data[]=$this->activity_model->get_activity_by_id($activity_item['activity_id']);
+            }
+            return $data;
+        }
+    }
+}
