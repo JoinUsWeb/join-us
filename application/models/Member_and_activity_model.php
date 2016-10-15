@@ -6,7 +6,7 @@
  * Date: 2016/10/13
  * Time: 22:07
  */
-class Member_and_activity extends CI_Model
+class Member_and_activity_model extends CI_Model
 {
     public function __construct()
     {
@@ -59,6 +59,45 @@ class Member_and_activity extends CI_Model
                 $data[]=$this->activity_model->get_activity_by_id($activity_item['activity_id']);
             }
             return $data;
+        }
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function remove_member_from_activity_by_id($activity_id=-1,$member_id=-1)
+    {
+        if($activity_id<=0||$member_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_activity_members',array('activity_id'=>$activity_id,'member_id'=>$member_id))==false)
+                return false;
+            return ture;
+        }
+    }
+
+
+    public function remove_by_activity_id($activity_id=-1)
+    {
+        if($activity_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_activity_members',array('activity_id'=>$activity_id))==false)
+                return false;
+            return true;
+        }
+    }
+
+    public function remove_by_user_id($user_id)
+    {
+        if($user_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_activity_members',array('member_id'=>$user_id))==false)
+                return false;
+            return true;
         }
     }
 }

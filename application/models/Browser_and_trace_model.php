@@ -6,12 +6,12 @@
  * Date: 2016/10/13
  * Time: 14:23
  */
-class Browser_and_trace extends CI_Model
+class Browser_and_trace_model extends CI_Model
 {
     public function __construct()
     {
         $this->load->model('user_model');
-        $this->load->model('trace_model');
+        $this->load->model('activity_model');
     }
 
     /**
@@ -24,15 +24,15 @@ class Browser_and_trace extends CI_Model
      */
     public function get_browser_by_activity_id($activity_id=-1)
     {
-        $browser=$this->get_browser_by_activity_id($activity_id);
-        if ($browser==null)
+        $trace=$this->get_trace_by_activity_id($activity_id);
+        if ($trace==null)
             return null;
         else
         {
             $data=array();
-            foreach($browser as $browser_item)
+            foreach($trace as $trace_item)
             {
-                $data[]=$this->user_model->get_user_by_id($browser_item['user_id']);
+                $data[]=$this->user_model->get_user_by_id($trace_item['user_id']);
             }
             return $data;
         }
@@ -56,7 +56,7 @@ class Browser_and_trace extends CI_Model
             $data=array();
             foreach($trace as $trace_item)
             {
-                $data[]=$this->trace_model->get_trace_by_id($trace_item['browsed_activity_id']);
+                $data[]=$this->activity_model->get_activity_by_id($trace_item['browsed_activity_id']);
             }
             return $data;
         }
@@ -78,7 +78,7 @@ class Browser_and_trace extends CI_Model
         }
         else
         {
-            return $this->db->order_by('browsed_time','DESC')
+            return $this->db->order_by('browsed_times','DESC')
                 ->get_where('relation_trace',array('user_id'=>$browser_id))
                 ->result_array();
         }
@@ -100,9 +100,54 @@ class Browser_and_trace extends CI_Model
         }
         else
         {
-            return $this->db->order_by('browsed_time','DESC')
-                ->get_where('relation_trace',array('browser_activity_id'=>$activity_id))
+            return $this->db->order_by('browsed_times','DESC')
+                ->get_where('relation_trace',array('browsed_activity_id'=>$activity_id))
                 ->result_array();
         }
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function remove_trace_by_id($user_id=-1,$activity_id=-1)
+    {
+        if($user_id<=0||$activity_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_activity_members',array('user_id'=>$user_id,'activity_id'=>$activity_id))==false)
+                return false;
+            return true;
+        }
+    }
+
+
+    public function remove_by_browser_id($browser_id=-1)
+    {
+        if($browser_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_trace',array('user_id'=>$browser_id))==false)
+                return false;
+            return true;
+        }
+    }
+
+    public function remove_by_activity_id($activity_id=-1)
+    {
+        if($activity_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_trace',array('browsed_activity_id'=>$activity_id))==false)
+                return false;
+            return true;
+        }
+    }
+
+    public function remove_by_time($browsed_time=-1)
+    {
+        if($browsed_time<0)
+            return null;
     }
 }

@@ -6,7 +6,7 @@
  * Date: 2016/10/13
  * Time: 22:06
  */
-class User_and_second_label extends CI_Model
+class User_and_second_label_model extends CI_Model
 {
 
     public function __construct()
@@ -30,7 +30,7 @@ class User_and_second_label extends CI_Model
         else
         {
             $data=array();
-            $user=$this->db->get_where('relation_second_label_users',array('second_label_id'=>$second_label_id))->result_array();
+            $user=$this->db->get_where('relation_user_secondlabel',array('second_label_id'=>$second_label_id))->result_array();
             foreach($user as $user_item)
             {
                 $data[]=$this->user_model->get_user_by_id($user_item['user_id']);
@@ -54,7 +54,7 @@ class User_and_second_label extends CI_Model
         else
         {
             $data=array();
-            $second_label=$this->db->get_where('relation_second_label_users',array('user_id'=>$user_id))->result_array();
+            $second_label=$this->db->get_where('relation_user_secondlabel',array('user_id'=>$user_id))->result_array();
             foreach($second_label as $second_label_item)
             {
                 $data[]=$this->second_label_model->get_second_label_by_id($second_label_item['second_label_id']);
@@ -62,4 +62,43 @@ class User_and_second_label extends CI_Model
             return $data;
         }
     }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function remove_second_label_from_user_by_id($user_id=-1,$second_label_id=-1)
+    {
+        if($user_id<=0||$second_label_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_uer_secondlabel',array('user_id'=>$user_id,'second_label_id'=>$second_label_id))==false)
+                return false;
+            return true;
+        }
+    }
+
+    public function remove_by_second_label_id($second_label_id=-1)
+    {
+        if($second_label_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_uer_secondlabel',array('second_label_id'=>$second_label_id))==false)
+                return false;
+            return true;
+        }
+    }
+
+    public function remove_by_user_id($user_id=-1)
+    {
+        if($user_id<=0)
+            return null;
+        else
+        {
+            if($this->db->delete('relation_uer_secondlabel',array('user_id'=>$user_id))==false)
+                return false;
+            return true;
+        }
+    }
+
 }

@@ -6,7 +6,7 @@
  * Date: 2016/10/13
  * Time: 13:14
  */
-class User extends CI_Model
+class User_model extends CI_Model
 {
     /**
      * 获得所有用户
@@ -33,5 +33,53 @@ class User extends CI_Model
             return null;
         else
             return $this->db->get_where('user',array('id'=>$id))->row_array();
+    }
+
+    /**
+     * 获得活动的创建者
+     *
+     * 通过活动ID查找它的创建者。函数接受一个参数活动ID，如果合法（id>0），返回它的创建者；
+     *
+     * @param int $activity_id
+     * @return null OR $data
+     */
+    public function get_creator_by_activity_id($activity_id=-1)
+    {
+        $this->load->model('activity_model');
+        $activity=$this->activity_model->get_activity_by_id($activity_id);
+        if($activity==null)
+            return null;
+        else
+        {
+            return $this->get_user_by_id($activity['creator_id']);
+        }
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function remove_by_id($user_id=-1)
+    {
+        if($user_id<=0)
+            return null;
+        else
+        {
+            $this->load->model('member_and_activity_model');
+            $this->load->model('browser_and_trace');
+            $this->load->model('user_and_first_label');
+            $this->load->model('user_and_second_label');
+
+            if($this->member_and_activity_model->remove_by_user_id($user_id)==false)
+                return false;
+            if($this->browser_and_trace->remove_by_browser_id($user_id)==false)
+                return false;
+            if($this->user_and_first_label->remove_by_user_id($user_id)==false)
+                return false;
+            if($this->user_and_second_label->remove_by_user_id($user_id)==false)
+                return false;
+
+            if($this->db->delete('user',array('id'=>$user_id))==false)
+                return false;
+            return true;
+        }
     }
 }

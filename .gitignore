@@ -1,6 +1,7 @@
 .DS_Store
 
 application/controllers/Test.php
+application/views/test
 
 application/cache/*
 !application/cache/index.html

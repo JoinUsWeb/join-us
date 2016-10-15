@@ -6,7 +6,7 @@
  * Date: 2016/10/13
  * Time: 13:37
  */
-class Activity extends CI_Model
+class Activity_model extends CI_Model
 {
     /**
      * 获得所有活动
@@ -34,5 +34,107 @@ class Activity extends CI_Model
             return null;
         else
             return $this->db->get_where('activity',array('id'=>$id))->row_array();
+    }
+
+    /**
+     * 获得用户创建的活动
+     *
+     * 通过用户ID查找他创建的活动。函数接受一个参数用户ID，如果合法（id>0），返回他创建的活动的一个数组；
+     *
+     * @param int $creator_id
+     * @return null OR array $data
+     */
+    public function get_activity_by_creator_id($creator_id=-1)
+    {
+        if ($creator_id < 0)
+            return null;
+        else
+            return $this->db->get_where('activity', array('creator_id' => $creator_id))->result_array();
+    }
+
+    /**
+     * 获得一级标签下的活动
+     *
+     * 通过一级标签ID查找属于它的活动。函数接受一个参数标签ID，如果合法（id>0），返回属于它的活动的一个数组；
+     *
+     * @param int $first_label_id
+     * @return null OR array $data
+     */
+    public function get_activity_by_first_label_id($first_label_id=-1)
+    {
+        if ($first_label_id < 0)
+            return null;
+        else
+            return $this->db->get_where('activity', array('first_label_id' => $first_label_id))->result_array();
+    }
+
+    /**
+     * 获得二级标签下的活动
+     *
+     * 通过二级标签ID查找属于它的活动。函数接受一个参数标签ID，如果合法（id>0），返回属于它的活动的一个数组；
+     *
+     * @param int $second_label_id
+     * @return null OR array $data
+     */
+    public function get_activity_by_second_label_id($second_label_id=-1)
+    {
+        if ($second_label_id < 0)
+            return null;
+        else
+            return $this->db->get_where('activity', array('second_label_id' => $second_label_id))->result_array();
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function remove_by_id($activity_id)
+    {
+        if($activity_id<=0)
+            return null;
+        else
+        {
+            $this->load->model('member_and_activity_model');
+            $this->load->model('browser_and_trace');
+
+            if($this->member_and_activity_model->remove_by_activity_id($activity_id)==false)
+                return false;
+            if($this->browser_and_trace->remove_by_activity_id($activity_id)==false)
+                return false;
+            if($this->db->delete('activity',array('id'=>$activity_id))==false)
+                return false;
+            return false;
+        }
+    }
+
+    public function remove_activity_by_creator_id($creator_id=-1)
+    {
+        $activity_to_be_delete=$this->get_activity_by_creator_id($creator_id);
+        foreach ($activity_to_be_delete as $activity_item_to_be_delete)
+        {
+            $result=$this->remove_by_id($activity_item_to_be_delete['id']);
+            if($result==null||$result==false)
+                return $result;
+        }
+    }
+
+    public function remove_activity_by_first_label_id($first_label_id=-1)
+    {
+        $activity_to_be_delete=$this->get_activity_by_first_label_id($first_label_id);
+        foreach ($activity_to_be_delete as $activity_item_to_be_delete)
+        {
+            $result=$this->remove_by_id($activity_item_to_be_delete['id']);
+            if($result==null||$result==false)
+                return $result;
+        }
+    }
+
+    public function remove_activity_by_second_label_id($second_label_id=-1)
+    {
+        $activity_to_be_delete=$this->get_activity_by_second_label_id($second_label_id);
+        foreach ($activity_to_be_delete as $activity_item_to_be_delete)
+        {
+            $result=$this->remove_by_id($activity_item_to_be_delete['id']);
+            if($result==null||$result==false)
+                return $result;
+        }
     }
 }
