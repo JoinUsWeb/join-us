@@ -86,14 +86,14 @@ class Activity_model extends CI_Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function remove_by_id($activity_id)
+    public function remove_by_id($activity_id=-1)
     {
         if($activity_id<=0)
             return null;
         else
         {
             $this->load->model('member_and_activity_model');
-            $this->load->model('browser_and_trace');
+            $this->load->model('browser_and_trace_model');
 
             if($this->member_and_activity_model->remove_by_activity_id($activity_id)==false)
                 return false;

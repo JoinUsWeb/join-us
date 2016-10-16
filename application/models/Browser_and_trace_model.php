@@ -78,7 +78,7 @@ class Browser_and_trace_model extends CI_Model
         }
         else
         {
-            return $this->db->order_by('browsed_times','DESC')
+            return $this->db->order_by('browsed_time','DESC')
                 ->get_where('relation_trace',array('user_id'=>$browser_id))
                 ->result_array();
         }
@@ -100,7 +100,7 @@ class Browser_and_trace_model extends CI_Model
         }
         else
         {
-            return $this->db->order_by('browsed_times','DESC')
+            return $this->db->order_by('browsed_time','DESC')
                 ->get_where('relation_trace',array('browsed_activity_id'=>$activity_id))
                 ->result_array();
         }
@@ -108,13 +108,13 @@ class Browser_and_trace_model extends CI_Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function remove_trace_by_id($user_id=-1,$activity_id=-1)
+    public function remove_trace_by_id($browser_id=-1,$activity_id=-1)
     {
-        if($user_id<=0||$activity_id<=0)
+        if($browser_id<=0||$activity_id<=0)
             return null;
         else
         {
-            if($this->db->delete('relation_activity_members',array('user_id'=>$user_id,'activity_id'=>$activity_id))==false)
+            if($this->db->delete('relation_activity_members',array('browser_id'=>$browser_id,'activity_id'=>$activity_id))==false)
                 return false;
             return true;
         }
@@ -127,7 +127,7 @@ class Browser_and_trace_model extends CI_Model
             return null;
         else
         {
-            if($this->db->delete('relation_trace',array('user_id'=>$browser_id))==false)
+            if($this->db->delete('relation_trace',array('browser_id'=>$browser_id))==false)
                 return false;
             return true;
         }
@@ -147,7 +147,10 @@ class Browser_and_trace_model extends CI_Model
 
     public function remove_by_time($browsed_time=-1)
     {
-        if($browsed_time<0)
+        if($browsed_time===-1)
             return null;
+        if($this->db->where('browsed_time<',$browsed_time)->delete('relation_trace')==false)
+            return false;
+        return true;
     }
 }
