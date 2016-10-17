@@ -74,7 +74,7 @@ class User_and_first_label_model extends CI_Model
                 if ($this->user_and_second_label_model->remove_second_label_from_user_by_id($user_id, $second_label_item['id']) == false)
                     return false;
 
-            if ($this->db->delete('relation_uer_firstlabel', array('user_id' => $user_id, 'first_label_id' => $first_label_id)) == false)
+            if ($this->db->delete('relation_user_firstlabel', array('user_id' => $user_id, 'first_label_id' => $first_label_id)) == false)
                 return false;
             return true;
 

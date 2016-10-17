@@ -66,7 +66,7 @@ class User_and_second_label_model extends CI_Model
         if ($user_id <= 0 || $second_label_id <= 0)
             return null;
         else {
-            if ($this->db->delete('relation_uer_secondlabel', array('user_id' => $user_id, 'second_label_id' => $second_label_id)) == false)
+            if ($this->db->delete('relation_user_secondlabel', array('user_id' => $user_id, 'second_label_id' => $second_label_id)) == false)
                 return false;
             return true;
         }
@@ -77,7 +77,7 @@ class User_and_second_label_model extends CI_Model
         if ($second_label_id <= 0)
             return null;
         else {
-            if ($this->db->delete('relation_uer_secondlabel', array('second_label_id' => $second_label_id)) == false)
+            if ($this->db->delete('relation_user_secondlabel', array('second_label_id' => $second_label_id)) == false)
                 return false;
             return true;
         }
@@ -88,7 +88,7 @@ class User_and_second_label_model extends CI_Model
         if ($user_id <= 0)
             return null;
         else {
-            if ($this->db->delete('relation_uer_secondlabel', array('user_id' => $user_id)) == false)
+            if ($this->db->delete('relation_user_secondlabel', array('user_id' => $user_id)) == false)
                 return false;
             return true;
         }

@@ -115,7 +115,7 @@ class Member_and_activity_model extends CI_Model
                 'member_id' => $user_id,
                 'activity_id' => $activity_id
             );
-            if ($this->db->insert('relation_activity_meambers', $data) == false)
+            if ($this->db->insert('relation_activity_members', $data) == false)
                 return false;
             return true;
         }

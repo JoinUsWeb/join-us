@@ -116,7 +116,7 @@ class User_model extends CI_Model
         if ($user_id <= 0 || $array_for_user_info == null)
             return null;
         $this->db->where('id',$user_id);
-        if ($this->db->updat('user',$array_for_user_info) == false)
+        if ($this->db->update('user',$array_for_user_info) == false)
             return false;
         return true;
     }
