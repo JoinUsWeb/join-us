@@ -479,7 +479,7 @@ abstract class CI_DB_driver {
 	 * sent for a length of time exceeding the server's idle timeout.
 	 *
 	 * This is just a dummy method to allow drivers without such
-	 * functionality to not declare it, while others will override it.
+	 * functionality to not declare it, while activity_related will override it.
 	 *
 	 * @return	void
 	 */

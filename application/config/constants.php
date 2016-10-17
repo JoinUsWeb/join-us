@@ -58,7 +58,7 @@ defined('FOPEN_READ_WRITE_CREATE_STRICT')       OR define('FOPEN_READ_WRITE_CREA
 | broad conventions.  Three such conventions are mentioned below, for
 | those who wish to make use of them.  The CodeIgniter defaults were
 | chosen for the least overlap with these conventions, while still
-| leaving room for others to be defined in future versions and user
+| leaving room for activity_related to be defined in future versions and user
 | applications.
 |
 | The three main conventions used for determining exit status codes
