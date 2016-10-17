@@ -22,17 +22,15 @@ class Browser_and_trace_model extends CI_Model
      * @param int $activity_id
      * @return null OR array $data
      */
-    public function get_browser_by_activity_id($activity_id=-1)
+    public function get_browser_by_activity_id($activity_id = -1)
     {
-        $trace=$this->get_trace_by_activity_id($activity_id);
-        if ($trace==null)
+        $trace = $this->get_trace_by_activity_id($activity_id);
+        if ($trace == null)
             return null;
-        else
-        {
-            $data=array();
-            foreach($trace as $trace_item)
-            {
-                $data[]=$this->user_model->get_user_by_id($trace_item['user_id']);
+        else {
+            $data = array();
+            foreach ($trace as $trace_item) {
+                $data[] = $this->user_model->get_user_by_id($trace_item['user_id']);
             }
             return $data;
         }
@@ -46,17 +44,15 @@ class Browser_and_trace_model extends CI_Model
      * @param int $browser_id
      * @return null OR array $data
      */
-    public function get_activity_by_browser_id($browser_id=-1)
+    public function get_activity_by_browser_id($browser_id = -1)
     {
-        $trace=$this->get_trace_by_browser_id($browser_id);
-        if ($trace==null)
+        $trace = $this->get_trace_by_browser_id($browser_id);
+        if ($trace == null)
             return null;
-        else
-        {
-            $data=array();
-            foreach($trace as $trace_item)
-            {
-                $data[]=$this->activity_model->get_activity_by_id($trace_item['browsed_activity_id']);
+        else {
+            $data = array();
+            foreach ($trace as $trace_item) {
+                $data[] = $this->activity_model->get_activity_by_id($trace_item['browsed_activity_id']);
             }
             return $data;
         }
@@ -70,16 +66,13 @@ class Browser_and_trace_model extends CI_Model
      * @param int $browser_id
      * @return null OR array $data
      */
-    public function get_trace_by_browser_id($browser_id=-1)
+    public function get_trace_by_browser_id($browser_id = -1)
     {
-        if($browser_id<=0)
-        {
+        if ($browser_id <= 0) {
             return null;
-        }
-        else
-        {
-            return $this->db->order_by('browsed_times','DESC')
-                ->get_where('relation_trace',array('user_id'=>$browser_id))
+        } else {
+            return $this->db->order_by('browsed_time', 'DESC')
+                ->get_where('relation_trace', array('user_id' => $browser_id))
                 ->result_array();
         }
     }
@@ -92,62 +85,84 @@ class Browser_and_trace_model extends CI_Model
      * @param int $activity_id
      * @return null OR array $data
      */
-    public function get_trace_by_activity_id($activity_id=-1)
+    public function get_trace_by_activity_id($activity_id = -1)
     {
-        if($activity_id<=0)
-        {
+        if ($activity_id <= 0) {
             return null;
-        }
-        else
-        {
-            return $this->db->order_by('browsed_times','DESC')
-                ->get_where('relation_trace',array('browsed_activity_id'=>$activity_id))
+        } else {
+            return $this->db->order_by('browsed_time', 'DESC')
+                ->get_where('relation_trace', array('browsed_activity_id' => $activity_id))
                 ->result_array();
         }
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function remove_trace_by_id($user_id=-1,$activity_id=-1)
+    public function remove_trace_by_id($user_id = -1, $activity_id = -1)
     {
-        if($user_id<=0||$activity_id<=0)
+        if ($user_id <= 0 || $activity_id <= 0)
             return null;
-        else
-        {
-            if($this->db->delete('relation_activity_members',array('user_id'=>$user_id,'activity_id'=>$activity_id))==false)
+        else {
+            if ($this->db->delete('relation_activity_members', array('user_id' => $user_id, 'activity_id' => $activity_id)) == false)
                 return false;
             return true;
         }
     }
 
 
-    public function remove_by_browser_id($browser_id=-1)
+    public function remove_by_browser_id($browser_id = -1)
     {
-        if($browser_id<=0)
+        if ($browser_id <= 0)
             return null;
-        else
-        {
-            if($this->db->delete('relation_trace',array('user_id'=>$browser_id))==false)
+        else {
+            if ($this->db->delete('relation_trace', array('user_id' => $browser_id)) == false)
                 return false;
             return true;
         }
     }
 
-    public function remove_by_activity_id($activity_id=-1)
+    public function remove_by_activity_id($activity_id = -1)
     {
-        if($activity_id<=0)
+        if ($activity_id <= 0)
             return null;
-        else
-        {
-            if($this->db->delete('relation_trace',array('browsed_activity_id'=>$activity_id))==false)
+        else {
+            if ($this->db->delete('relation_trace', array('browsed_activity_id' => $activity_id)) == false)
                 return false;
             return true;
         }
     }
 
-    public function remove_by_time($browsed_time=-1)
+    public function remove_by_time($browsed_time = -1)
     {
-        if($browsed_time<0)
+        if ($browsed_time < 0)
             return null;
+    }
+
+
+    /**
+     * 获取用户ID、活动ID和浏览时间
+     *
+     * 三个参数如果不合法，返回null
+     *
+     * 如果合法，插入 （user_id, browsed_time，browsed_activity_id） ，如果失败返回false
+     *
+     * @param int $browser_id
+     * @param int $browser_time
+     * @param int $activity_id
+     * @return bool|null
+     */
+    public function insert_new_relation($browser_id = -1, $browser_time = -1, $activity_id = -1)
+    {
+        if ($browser_id <= 0 || $browser_time < 0 || $activity_id <= 0)
+            return null;
+        else {
+            $data = array(
+                'browsed_activity_id' => $activity_id,
+                'browsed_time' => $browser_time,
+                'user_id' => $browser_id);
+            if ($this->db->insert('relation_trace', $data) == false)
+                return false;
+            return true;
+        }
     }
 }

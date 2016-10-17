@@ -28,7 +28,7 @@ class Second_label_model extends CI_Model
      * @param int $id
      * @return null OR $data
      */
-    public function get_second_label_by_id($id=-1)
+    public function get_second_label_by_id($id = -1)
     {
         if ($id < 0)
             return null;
@@ -44,14 +44,13 @@ class Second_label_model extends CI_Model
      * @param int $activity_id
      * @return null OR $data
      */
-    public function get_second_label_by_activity_id($activity_id=-1)
+    public function get_second_label_by_activity_id($activity_id = -1)
     {
         $this->load->model('activity_model');
-        $activity=$this->activity_model->get_activity_by_id($activity_id);
-        if($activity==null)
+        $activity = $this->activity_model->get_activity_by_id($activity_id);
+        if ($activity == null)
             return null;
-        else
-        {
+        else {
             return $this->get_second_label_by_id($activity['second_label_id']);
         }
     }
@@ -64,7 +63,7 @@ class Second_label_model extends CI_Model
      * @param int $first_label_id
      * @return null OR array $data
      */
-    public function get_second_label_by_first_id($first_label_id=-1)
+    public function get_second_label_by_first_id($first_label_id = -1)
     {
         if ($first_label_id < 0)
             return null;
@@ -74,30 +73,59 @@ class Second_label_model extends CI_Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function remove_by_id($second_label_id=-1)
+    public function remove_by_id($second_label_id = -1)
     {
-        if($second_label_id<=0)
+        if ($second_label_id <= 0)
             return null;
-        else
-        {
+        else {
             $this->load->model('user_and_second_label');
-            if($this->user_and_second_label->remove_by_second_label_id($second_label_id)==false)
+            if ($this->user_and_second_label->remove_by_second_label_id($second_label_id) == false)
                 return false;
 
-            if($this->db->delete('second_label',array('id'=>$second_label_id))==false)
+            if ($this->db->delete('second_label', array('id' => $second_label_id)) == false)
                 return false;
             return true;
         }
     }
 
-    public function remove_second_label_by_first_id($first_label_id=-1)
+    public function remove_second_label_by_first_id($first_label_id = -1)
     {
-        $second_label_to_be_delete=$this->get_second_label_by_first_id($first_label_id);
-        foreach ($second_label_to_be_delete as $second_label_item_to_be_delete)
-        {
-            $result=$this->remove_by_id($second_label_item_to_be_delete['id'])==false;
-            if($result==null||$result==false)
+        $second_label_to_be_delete = $this->get_second_label_by_first_id($first_label_id);
+        foreach ($second_label_to_be_delete as $second_label_item_to_be_delete) {
+            $result = $this->remove_by_id($second_label_item_to_be_delete['id']) == false;
+            if ($result == null || $result == false)
                 return $result;
         }
+    }
+
+    public function insert_new_second_label($second_label_name = null, $first_label_id = -1)
+    {
+        if ($second_label_name == null || $first_label_id <= 0)
+            return null;
+        $data = array(
+            'name' => $second_label_name,
+            'first_label_id' => $first_label_id
+        );
+        if ($this->db->insert('first_label', $data) == false)
+            return false;
+        return true;
+    }
+
+    /**
+     *
+     * array_for_second_label = array(
+     *      name  first_label_id )
+     *
+     * @param int $second_label_id
+     * @param null $array_for_second_label
+     * @return bool|null
+     */
+    public function update_second_label_by_id($second_label_id = -1, $array_for_second_label = null){
+        if ($second_label_id <= 0 || $array_for_second_label == null)
+            return null;
+        $this->db->where('id',$second_label_id);
+        if ($this->db->update('second_label',$array_for_second_label) == false)
+            return false;
+        return true;
     }
 }

@@ -28,12 +28,12 @@ class Activity_model extends CI_Model
      * @param int $id
      * @return null OR $data
      */
-    public function get_activity_by_id($id=-1)
+    public function get_activity_by_id($id = -1)
     {
-        if($id<0)
+        if ($id < 0)
             return null;
         else
-            return $this->db->get_where('activity',array('id'=>$id))->row_array();
+            return $this->db->get_where('activity', array('id' => $id))->row_array();
     }
 
     /**
@@ -44,7 +44,7 @@ class Activity_model extends CI_Model
      * @param int $creator_id
      * @return null OR array $data
      */
-    public function get_activity_by_creator_id($creator_id=-1)
+    public function get_activity_by_creator_id($creator_id = -1)
     {
         if ($creator_id < 0)
             return null;
@@ -60,7 +60,7 @@ class Activity_model extends CI_Model
      * @param int $first_label_id
      * @return null OR array $data
      */
-    public function get_activity_by_first_label_id($first_label_id=-1)
+    public function get_activity_by_first_label_id($first_label_id = -1)
     {
         if ($first_label_id < 0)
             return null;
@@ -76,7 +76,7 @@ class Activity_model extends CI_Model
      * @param int $second_label_id
      * @return null OR array $data
      */
-    public function get_activity_by_second_label_id($second_label_id=-1)
+    public function get_activity_by_second_label_id($second_label_id = -1)
     {
         if ($second_label_id < 0)
             return null;
@@ -88,53 +88,87 @@ class Activity_model extends CI_Model
 
     public function remove_by_id($activity_id)
     {
-        if($activity_id<=0)
+        if ($activity_id <= 0)
             return null;
-        else
-        {
+        else {
             $this->load->model('member_and_activity_model');
             $this->load->model('browser_and_trace');
 
-            if($this->member_and_activity_model->remove_by_activity_id($activity_id)==false)
+            if ($this->member_and_activity_model->remove_by_activity_id($activity_id) == false)
                 return false;
-            if($this->browser_and_trace->remove_by_activity_id($activity_id)==false)
+            if ($this->browser_and_trace->remove_by_activity_id($activity_id) == false)
                 return false;
-            if($this->db->delete('activity',array('id'=>$activity_id))==false)
+            if ($this->db->delete('activity', array('id' => $activity_id)) == false)
                 return false;
             return false;
         }
     }
 
-    public function remove_activity_by_creator_id($creator_id=-1)
+    public function remove_activity_by_creator_id($creator_id = -1)
     {
-        $activity_to_be_delete=$this->get_activity_by_creator_id($creator_id);
-        foreach ($activity_to_be_delete as $activity_item_to_be_delete)
-        {
-            $result=$this->remove_by_id($activity_item_to_be_delete['id']);
-            if($result==null||$result==false)
+        $activity_to_be_delete = $this->get_activity_by_creator_id($creator_id);
+        foreach ($activity_to_be_delete as $activity_item_to_be_delete) {
+            $result = $this->remove_by_id($activity_item_to_be_delete['id']);
+            if ($result == null || $result == false)
                 return $result;
         }
     }
 
-    public function remove_activity_by_first_label_id($first_label_id=-1)
+    public function remove_activity_by_first_label_id($first_label_id = -1)
     {
-        $activity_to_be_delete=$this->get_activity_by_first_label_id($first_label_id);
-        foreach ($activity_to_be_delete as $activity_item_to_be_delete)
-        {
-            $result=$this->remove_by_id($activity_item_to_be_delete['id']);
-            if($result==null||$result==false)
+        $activity_to_be_delete = $this->get_activity_by_first_label_id($first_label_id);
+        foreach ($activity_to_be_delete as $activity_item_to_be_delete) {
+            $result = $this->remove_by_id($activity_item_to_be_delete['id']);
+            if ($result == null || $result == false)
                 return $result;
         }
     }
 
-    public function remove_activity_by_second_label_id($second_label_id=-1)
+    public function remove_activity_by_second_label_id($second_label_id = -1)
     {
-        $activity_to_be_delete=$this->get_activity_by_second_label_id($second_label_id);
-        foreach ($activity_to_be_delete as $activity_item_to_be_delete)
-        {
-            $result=$this->remove_by_id($activity_item_to_be_delete['id']);
-            if($result==null||$result==false)
+        $activity_to_be_delete = $this->get_activity_by_second_label_id($second_label_id);
+        foreach ($activity_to_be_delete as $activity_item_to_be_delete) {
+            $result = $this->remove_by_id($activity_item_to_be_delete['id']);
+            if ($result == null || $result == false)
                 return $result;
         }
+    }
+
+    /**
+     *
+     * data = array(
+     *      name  time_expire  time_start  place  brief  amount_max  creator_id  first_label_id
+     *      second_label_id  score)
+     *
+     * @param $activity_info
+     * @return bool|null
+     */
+    public function insert_new_activity($activity_info = null)
+    {
+        if ($activity_info == null)
+            return null;
+        if ($this->db->insert('activity', $activity_info) == false)
+            return false;
+        return true;
+    }
+
+    /**
+     *
+     * array_for_update = array(
+     *      name  time_expire  time_start  place  brief  amount_max  creator_id  first_label_id
+     *      second_label_id  score)
+     *
+     * @param int $activity_id
+     * @param $array_for_update
+     * @return bool|null
+     */
+    public function update_activity_by_id($activity_id = -1, $array_for_update = null)
+    {
+        if ($array_for_update == null|| $activity_id <= 0)
+            return null;
+        $this->db->where('id', $activity_id);
+        if ($this->db->update('activity', $array_for_update) == false)
+            return false;
+        return true;
     }
 }

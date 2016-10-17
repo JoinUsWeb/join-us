@@ -82,4 +82,38 @@ class User_model extends CI_Model
             return true;
         }
     }
+
+    /**
+     *
+     * array_for_user_info = array(
+     *      email  nick_name  password  phone_number )
+     *
+     * @param null $array_for_user_info
+     * @return bool|null
+     */
+    public function insert_new_user_info($array_for_user_info = null){
+        if ($array_for_user_info == null)
+            return null;
+        if ($this->db->insert('first_label',array('name' => $array_for_user_info)) == false)
+            return false;
+        return true;
+    }
+
+    /**
+     *
+     * array_for_user_info = array(
+     *      email  nick_name  password  phone_number )
+     *
+     * @param int $user_id
+     * @param null $array_for_user_info
+     * @return bool|null
+     */
+    public function update_user_info_by_id($user_id = -1, $array_for_user_info = null){
+        if ($user_id <= 0 || $array_for_user_info == null)
+            return null;
+        $this->db->where('id',$user_id);
+        if ($this->db->updat('user',$array_for_user_info) == false)
+            return false;
+        return true;
+    }
 }

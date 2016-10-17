@@ -76,4 +76,11 @@ class First_label_model extends CI_Model
         }
     }
 
+    public function insert_new_first_label($first_label_name = null){
+        if ($first_label_name == null)
+            return null;
+        if ($this->db->insert('first_label',array('name' => $first_label_name)) == false)
+            return false;
+        return true;
+    }
 }
