@@ -83,7 +83,8 @@ class User_and_first_label_model extends CI_Model
 
     public function remove_by_user_id($user_id = -1)
     {
-        $relation_to_be_delete = $this->get_first_label_by_user_id($user_id);
+        if ($relation_to_be_delete = $this->get_first_label_by_user_id($user_id))
+            return null;
         foreach ($relation_to_be_delete as $item) {
             $result = $this->remove_first_label_from_user_by_id($user_id, $item['first_label_id']);
             if ($result == null || $result == false)

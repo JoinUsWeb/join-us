@@ -55,6 +55,10 @@ class User_model extends CI_Model
         }
     }
 
+    public function get_user_by_email($email=-1){
+        return $this->db->get_where('user',array('email'=>$email))->row_array();
+    }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function remove_by_id($user_id=-1)
