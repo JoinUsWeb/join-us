@@ -45,8 +45,8 @@ class User_model extends CI_Model
      */
     public function get_creator_by_activity_id($activity_id=-1)
     {
-        $this->load->model('activity_model');
-        $activity=$this->activity_model->get_activity_by_id($activity_id);
+        $this->load->model('Activity_model');
+        $activity=$this->Activity_model->get_activity_by_id($activity_id);
         if($activity==null)
             return null;
         else
@@ -67,18 +67,18 @@ class User_model extends CI_Model
             return null;
         else
         {
-            $this->load->model('member_and_activity_model');
-            $this->load->model('browser_and_trace');
-            $this->load->model('user_and_first_label');
-            $this->load->model('user_and_second_label');
+            $this->load->model('Member_and_activity_model');
+            $this->load->model('Browser_and_trace');
+            $this->load->model('User_and_first_label');
+            $this->load->model('User_and_second_label');
 
-            if($this->member_and_activity_model->remove_by_user_id($user_id)==false)
+            if($this->Member_and_activity_model->remove_by_user_id($user_id)==false)
                 return false;
-            if($this->browser_and_trace->remove_by_browser_id($user_id)==false)
+            if($this->Browser_and_trace_model->remove_by_browser_id($user_id)==false)
                 return false;
-            if($this->user_and_first_label->remove_by_user_id($user_id)==false)
+            if($this->User_and_first_label_model->remove_by_user_id($user_id)==false)
                 return false;
-            if($this->user_and_second_label->remove_by_user_id($user_id)==false)
+            if($this->User_and_second_label_model->remove_by_user_id($user_id)==false)
                 return false;
 
             if($this->db->delete('user',array('id'=>$user_id))==false)

@@ -10,8 +10,8 @@ class Browser_and_trace_model extends CI_Model
 {
     public function __construct()
     {
-        $this->load->model('user_model');
-        $this->load->model('activity_model');
+        $this->load->model('User_model');
+        $this->load->model('Activity_model');
     }
 
     /**
@@ -30,7 +30,7 @@ class Browser_and_trace_model extends CI_Model
         else {
             $data = array();
             foreach ($trace as $trace_item) {
-                $data[] = $this->user_model->get_user_by_id($trace_item['user_id']);
+                $data[] = $this->User_model->get_user_by_id($trace_item['user_id']);
             }
             return $data;
         }
@@ -52,7 +52,7 @@ class Browser_and_trace_model extends CI_Model
         else {
             $data = array();
             foreach ($trace as $trace_item) {
-                $data[] = $this->activity_model->get_activity_by_id($trace_item['browsed_activity_id']);
+                $data[] = $this->Activity_model->get_activity_by_id($trace_item['browsed_activity_id']);
             }
             return $data;
         }

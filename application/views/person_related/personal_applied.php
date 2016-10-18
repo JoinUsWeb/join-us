@@ -3,20 +3,28 @@
         <td>
             <li><a href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
         </td>
-        <td rowspan=5 align="center"><br>
-            <image align="left" width=100 height=100 src="image/%E8%BD%AC%E7%AC%94.jpg"></image>
-            <li><a href="#">转笔活动</a></li>
-            时间:2016/12/11<br>
-            地点:中三馆333<br>
-            评价等级：******<br>
-            <li class="divider"></li>
-            <br>
-            <image align="left" width=100 height=100 src="image/%E7%AF%AE%E7%90%83.jpg"></image>
-            <li><a href="#">篮球活动</a></li>
-            <br>
-            时间:2016/11/12<br>
-            地点:中北篮球场<br><br>
-            评价等级：******<br>
+        <td rowspan="5">
+            <?php foreach ($activities_info as $single_activity): ?>
+                <table cellspacing="10px">
+                    <tr>
+                        <th>活动名称</th>
+                        <td><a href="<?php echo site_url('activity/detail/'.$single_activity['id'])?>">
+                                <?php echo $single_activity['name']; ?></a></td>
+                    </tr>
+                    <tr>
+                        <th>活动时间</th>
+                        <td><?php echo $single_activity['time_expire']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>活动地点</th>
+                        <td><?php echo $single_activity['place']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>活动评分</th>
+                        <td><?php echo $single_activity['score']; ?></td>
+                    </tr>
+                </table>
+            <?php endforeach; ?>
         </td>
     </tr>
     <tr>

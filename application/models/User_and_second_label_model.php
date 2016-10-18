@@ -11,8 +11,8 @@ class User_and_second_label_model extends CI_Model
 
     public function __construct()
     {
-        $this->load->model('user_model');
-        $this->load->model('second_label_model');
+        $this->load->model('User_model');
+        $this->load->model('Second_label_model');
     }
 
     /**
@@ -31,7 +31,7 @@ class User_and_second_label_model extends CI_Model
             $data = array();
             $user = $this->db->get_where('relation_user_secondlabel', array('second_label_id' => $second_label_id))->result_array();
             foreach ($user as $user_item) {
-                $data[] = $this->user_model->get_user_by_id($user_item['user_id']);
+                $data[] = $this->User_model->get_user_by_id($user_item['user_id']);
             }
             return $data;
         }
@@ -53,7 +53,7 @@ class User_and_second_label_model extends CI_Model
             $data = array();
             $second_label = $this->db->get_where('relation_user_secondlabel', array('user_id' => $user_id))->result_array();
             foreach ($second_label as $second_label_item) {
-                $data[] = $this->second_label_model->get_second_label_by_id($second_label_item['second_label_id']);
+                $data[] = $this->Second_label_model->get_second_label_by_id($second_label_item['second_label_id']);
             }
             return $data;
         }

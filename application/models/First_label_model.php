@@ -66,8 +66,8 @@ class First_label_model extends CI_Model
      */
     public function get_first_label_by_second_id($second_label_id=-1)
     {
-        $this->load->model('second_label_model');
-        $second_label=$this->second_label_model->get_second_label_by_id($second_label_id);
+        $this->load->model('Second_label_model');
+        $second_label=$this->Second_label_model->get_second_label_by_id($second_label_id);
         if($second_label==null)
             return null;
         else

@@ -10,8 +10,8 @@ class Member_and_activity_model extends CI_Model
 {
     public function __construct()
     {
-        $this->load->model('user_model');
-        $this->load->model('activity_model');
+        $this->load->model('User_model');
+        $this->load->model('Activity_model');
     }
 
     /**
@@ -30,7 +30,7 @@ class Member_and_activity_model extends CI_Model
             $data = array();
             $member = $this->db->get_where('relation_activity_members', array('activity_id' => $activity_id))->result_array();
             foreach ($member as $member_item) {
-                $data[] = $this->user_model->get_user_by_id($member_item['member_id']);
+                $data[] = $this->User_model->get_user_by_id($member_item['member_id']);
             }
             return $data;
         }
@@ -52,7 +52,7 @@ class Member_and_activity_model extends CI_Model
             $data = array();
             $activity = $this->db->get_where('relation_activity_members', array('member_id' => $member_id))->result_array();
             foreach ($activity as $activity_item) {
-                $data[] = $this->activity_model->get_activity_by_id($activity_item['activity_id']);
+                $data[] = $this->Activity_model->get_activity_by_id($activity_item['activity_id']);
             }
             return $data;
         }
@@ -67,7 +67,7 @@ class Member_and_activity_model extends CI_Model
         else {
             if ($this->db->delete('relation_activity_members', array('activity_id' => $activity_id, 'member_id' => $member_id)) == false)
                 return false;
-            return ture;
+            return true;
         }
     }
 

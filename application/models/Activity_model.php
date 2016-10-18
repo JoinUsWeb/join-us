@@ -91,12 +91,12 @@ class Activity_model extends CI_Model
         if ($activity_id <= 0)
             return null;
         else {
-            $this->load->model('member_and_activity_model');
-            $this->load->model('browser_and_trace_model');
+            $this->load->model('Member_and_activity_model');
+            $this->load->model('Browser_and_trace_model');
 
-            if ($this->member_and_activity_model->remove_by_activity_id($activity_id) == false)
+            if ($this->Member_and_activity_model->remove_by_activity_id($activity_id) == false)
                 return false;
-            if ($this->browser_and_trace->remove_by_activity_id($activity_id) == false)
+            if ($this->Browser_and_trace_model->remove_by_activity_id($activity_id) == false)
                 return false;
             if ($this->db->delete('activity', array('id' => $activity_id)) == false)
                 return false;

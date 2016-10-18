@@ -21,6 +21,7 @@ class User extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->user_id = $this->get_user_id();
+        $this->user_id = 1;
     }
 
     public function applied()

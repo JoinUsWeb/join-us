@@ -46,8 +46,8 @@ class Second_label_model extends CI_Model
      */
     public function get_second_label_by_activity_id($activity_id = -1)
     {
-        $this->load->model('activity_model');
-        $activity = $this->activity_model->get_activity_by_id($activity_id);
+        $this->load->model('Activity_model');
+        $activity = $this->Activity_model->get_activity_by_id($activity_id);
         if ($activity == null)
             return null;
         else {
@@ -78,8 +78,8 @@ class Second_label_model extends CI_Model
         if ($second_label_id <= 0)
             return null;
         else {
-            $this->load->model('user_and_second_label');
-            if ($this->user_and_second_label->remove_by_second_label_id($second_label_id) == false)
+            $this->load->model('User_and_second_label_model');
+            if ($this->User_and_second_label_model->remove_by_second_label_id($second_label_id) == false)
                 return false;
 
             if ($this->db->delete('second_label', array('id' => $second_label_id)) == false)
