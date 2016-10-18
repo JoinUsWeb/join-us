@@ -3,28 +3,42 @@
         <td>
             <li><a href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
         </td>
-        <td rowspan=5 align="center"><br>
-            <image align="left" width=100 height=100 src="image/%E7%AF%AE%E7%90%83.jpg"></image>
-            <li><a href="#">篮球活动</a></li>
-            <br>
-            评价等级：******<br>
-            <li class="divider"></li>
-            <br>
-            <image align="left" width=100 height=100 src="image/%E8%BD%AC%E7%AC%94.jpg"></image>
-            <li><a href="#">转笔活动</a></li>
-            时间:2016/10/11<br>
-            地点:中北三馆333<br>
-            评价等级：******<br>
+        <td rowspan="5">
+            <?php foreach ($activities_info as $single_activity): ?>
+                <!-- 应该考虑加入对进行筛选活动，例如根据活动时间，否则数据太多，显示有困难 -->
+                <table cellspacing="10px">
+                    <tr>
+                        <th>活动名称</th>
+                        <td><a href="<?php echo site_url('activity/detail/'.$single_activity['id'])?>">
+                                <?php echo $single_activity['name']; ?></a></td>
+                    </tr>
+                    <tr>
+                        <th>活动时间</th>
+                        <td><?php echo $single_activity['time_expire']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>活动地点</th>
+                        <td><?php echo $single_activity['place']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>活动评分</th>
+                        <td><?php echo $single_activity['score']; ?> 您已进行评价！</td>
+                        <!-- 后期加入评价之后应该完成对有无评价的分类处理
+                         如果有评价 显示评价 （提示已经评价）
+                         如果无评价 主动提示需要评价-->
+                    </tr>
+                </table>
+            <?php endforeach; ?>
         </td>
     </tr>
     <tr>
         <td>
-            <li><a href="<?php echo site_url('user/joined'); ?>">我参加的活动</a></li>
+            <li><a href="<?php echo site_url('user/applied'); ?>">我参加的活动</a></li>
         </td>
     </tr>
     <tr>
         <td>
-            <li><a href="<?php echo site_url('user/applied'); ?>">我报名的活动</a></li>
+            <li><a href="<?php echo site_url('user/joined'); ?>">我报名的活动</a></li>
         </td>
     </tr>
     <tr>

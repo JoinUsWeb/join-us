@@ -3,22 +3,36 @@
         <td>
             <li><a href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
         </td>
-        <td rowspan=5 align="center"><br>
-            <image align="left" width=100 height=100 src="image/%E9%98%B4%E9%98%B3%E5%B8%88.json"></image>
-            <li><a href="#">阴阳师线下交流活动</a></li><br>
-            时间:2016/10/12<br>
-            地点:食堂一楼2333<br><br>
-            评价等级：？？？？？<br>
+        <td rowspan="5">
+            <?php foreach ($activities_info as $single_activity): ?>
+                <!-- 应该考虑加入对进行筛选活动，例如根据活动时间，否则数据太多，显示有困难
+                 同时需要对活动是否被收藏进行判断  或者让数据保证是推荐的活动-->
+                <table cellspacing="10px">
+                    <tr>
+                        <th>活动名称</th>
+                        <td><a href="<?php echo site_url('activity/detail/'.$single_activity['id'])?>">
+                                <?php echo $single_activity['name']; ?></a></td>
+                    </tr>
+                    <tr>
+                        <th>活动时间</th>
+                        <td><?php echo $single_activity['time_expire']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>活动地点</th>
+                        <td><?php echo $single_activity['place']; ?></td>
+                    </tr>
+                </table>
+            <?php endforeach; ?>
         </td>
     </tr>
     <tr>
         <td>
-            <li><a href="<?php echo site_url('user/joined'); ?>">我参加的活动</a></li>
+            <li><a href="<?php echo site_url('user/applied'); ?>">我参加的活动</a></li>
         </td>
     </tr>
     <tr>
         <td>
-            <li><a href="<?php echo site_url('user/applied'); ?>">我报名的活动</a></li>
+            <li><a href="<?php echo site_url('user/joind'); ?>">我报名的活动</a></li>
         </td>
     </tr>
     <tr>
