@@ -1,10 +1,33 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: 10040
- * Date: 2016/10/13
- * Time: 14:00
+ * Class Second_label_model
+ *
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败   二级标签信息： id  name  first_label_id
+ *
+ * 获取所有二级标签   返回所有二级标签信息组成的的多维数组
+ * public function get_second_label()
+ *
+ * 根据提供的 id 查找指定二级标签  返回二级标签信息的单行数组
+ * public function get_second_label_by_id($id = -1)
+ *
+ * 根据提供的活动 id 查找对应的二级标签  返回而级标签信息的单行数组
+ * public function get_second_label_by_activity_id($activity_id = -1)
+ *
+ * 根据提供的一级标签 id 查找对应的二级标签  返回二级标签信息的单行数组
+ * public function get_second_label_by_first_id($first_label_id = -1)
+ *
+ * 根据提供的二级标签 id 删除对应的二级标签、用户与二级标签关联表中二级标签id为提供id的条目
+ * public function remove_by_id($second_label_id = -1)
+ *
+ * 根据提供的一级标签 id 删除对应的所有二级标签
+ * public function remove_second_label_by_first_id($first_label_id = -1)
+ *
+ * 根据提供的二级标签名字和一级标签 id 创建新的二级标签并且插入数据库中
+ * public function insert_new_second_label($second_label_name = null, $first_label_id = -1)
+ *
+ * 根据提供的二级标签 id 和 新的该二级标签信息的数组  修改对应二级标签信息
+ * public function update_second_label_by_id($second_label_id = -1, $array_for_second_label = null)
  */
 class Second_label_model extends CI_Model
 {
@@ -120,11 +143,12 @@ class Second_label_model extends CI_Model
      * @param null $array_for_second_label
      * @return bool|null
      */
-    public function update_second_label_by_id($second_label_id = -1, $array_for_second_label = null){
+    public function update_second_label_by_id($second_label_id = -1, $array_for_second_label = null)
+    {
         if ($second_label_id <= 0 || $array_for_second_label == null)
             return null;
-        $this->db->where('id',$second_label_id);
-        if ($this->db->update('second_label',$array_for_second_label) == false)
+        $this->db->where('id', $second_label_id);
+        if ($this->db->update('second_label', $array_for_second_label) == false)
             return false;
         return true;
     }

@@ -1,10 +1,28 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: huge
- * Date: 2016/10/13
- * Time: 22:07
+ * Class Member_and_activity_model
+ *
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败   关系结构  member_id  activity_id
+ *
+ * 根据提供的活动 id  返回该活动的所有参与者信息的多维数组
+ * public function get_member_by_activity_id($activity_id = -1)
+ *
+ * 根据提供的参与者 id  返回其所参与的所有活动信息的多维数组
+ * public function get_activity_by_member_id($member_id = -1)
+ *
+ * 根据提供的活动 id 和 参与者 id 删除对应活动
+ * public function remove_member_from_activity_by_id($activity_id = -1, $member_id = -1)
+ *
+ * 根据提供的活动 id   删除所有包含该活动的条目
+ * public function remove_by_activity_id($activity_id = -1)
+ *
+ * 更具提供的用户 id   删除所有包含该用户的条目
+ * public function remove_by_user_id($user_id)
+ *
+ * 根据提供的用户 id 和 活动 id   创建新的条目并插入数据库
+ * public function insert_new_relation($user_id = -1, $activity_id = -1)
+ *
  */
 class Member_and_activity_model extends CI_Model
 {

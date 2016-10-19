@@ -1,10 +1,27 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: 10040
- * Date: 2016/10/13
- * Time: 22:06
+ * Class User_and_second_label_model
+ *
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败  关系结构  user_id   second_label_id
+ *
+ * 根据提供的二级标签 id   返回有这个标签的所有用户的信息的多维数组
+ * public function get_user_by_second_label_id($second_label_id = -1)
+ *
+ * 根据提供的用户 id   返回这个用户下所有二级标签的多维数组
+ * public function get_second_label_by_user_id($user_id = -1)
+ *
+ * 根据提供的用户 id 和 二级标签 id   删除该用户下的选定二级标签
+ * public function remove_second_label_from_user_by_id($user_id = -1, $second_label_id = -1)
+ *
+ * 根据提供的二级标签 id   删除含有该二级标签的所有用户
+ * public function remove_by_second_label_id($second_label_id = -1)
+ *
+ * 根据提供的用户 id   删除该用户下的所有二级标签
+ * public function remove_by_user_id($user_id = -1)
+ *
+ * 根据提供的用户 id 和 二级标签 id   创建新的条目并插入数据库
+ * public function insert_new_relation($user_id = -1, $second_label_id = -1)
  */
 class User_and_second_label_model extends CI_Model
 {

@@ -1,10 +1,23 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: 10040
- * Date: 2016/10/13
- * Time: 22:05
+ * Class User_and_first_label_model
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败  关系结构  user_id   first_label_id
+ *
+ * 根据提供的一级标签 id  获得所有有这个标签的用户信息的多维数组
+ * public function get_user_by_first_label_id($first_label_id = -1)
+ *
+ * 根据提供的用户 id   获取该用户的所有一级标签的多维数组
+ * public function get_first_label_by_user_id($user_id = -1)
+ *
+ * 根据提供的用户 id 和一级标签 id  删除对应用用户下的选定一级标签
+ * public function remove_first_label_from_user_by_id($user_id = -1, $first_label_id = -1)
+ *
+ * 根据提供的用户 id   删除该用户的所有的一级标签
+ * public function remove_by_user_id($user_id = -1)
+ *
+ * 根据提供的用户 id 和 一级标签 id   创建新的并插入数据库
+ * public function insert_new_relation($user_id = -1, $first_label = -1)
  */
 class User_and_first_label_model extends CI_Model
 {

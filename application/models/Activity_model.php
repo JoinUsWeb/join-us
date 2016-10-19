@@ -1,17 +1,51 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: 10040
- * Date: 2016/10/13
- * Time: 13:37
+ * Class Activity_model
+ *
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败
+ * 活动信息： name  time_expire  time_start  place  brief  amount_max  creator_id  first_label_id
+ *            second_label_id  score
+ *
+ * 获取所有活动  返回活动信息组成的多维数组
+ * public function get_activity()
+ *
+ * 根据提供的活动 id   返回对应活动信息的单行数组
+ * public function get_activity_by_id($id = -1)
+ *
+ * 根据提供的创建者的 id   返回Ta所创建 所有的活动信息的多维数组
+ * public function get_activity_by_creator_id($creator_id = -1)
+ *
+ * 根据提供的一级标签 id   返回该标签下所有活动信息的多维数组
+ * public function get_activity_by_first_label_id($first_label_id = -1)
+ *
+ * 根据提供的二级标签 id   返回该标签下所有活动信息的多维数组
+ * public function get_activity_by_second_label_id($second_label_id = -1)
+ *
+ * 根据活动id 删除对应活动
+ * public function remove_by_id($activity_id=-1)
+ *
+ * 根据创建者id  删除该创建者创建的所有活动
+ * public function remove_activity_by_creator_id($creator_id = -1)
+ *
+ * 根据一级标签id   删除该一级标签下所有活动
+ * public function remove_activity_by_first_label_id($first_label_id = -1)
+ *
+ * 根据二级标签id   删除该而级标签下所有活动
+ * public function remove_activity_by_second_label_id($second_label_id = -1)
+ *
+ * 根据提供活动信息   创建新活动条目并插入数据库
+ * public function insert_new_activity($activity_info = null)
+ *
+ * 根据提供活动 id 和 新的该活动信息的数组  修改对应活动条目
+ * public function update_activity_by_id($activity_id = -1, $array_for_update = null)
  */
 class Activity_model extends CI_Model
 {
     /**
      * 获得所有活动
      *
-     * 查找所有活动。函数接受一个参数标签ID，如果合法（id>0），返回所有活动的一个数组；
+     * 查找所有活动。返回所有活动的一个数组；
      *
      * @return null OR array $data
      */
@@ -86,7 +120,7 @@ class Activity_model extends CI_Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function remove_by_id($activity_id=-1)
+    public function remove_by_id($activity_id = -1)
     {
         if ($activity_id <= 0)
             return null;
@@ -154,7 +188,7 @@ class Activity_model extends CI_Model
 
     /**
      *
-     * array_for_update = array(
+     * activity_info_array_for_update = array(
      *      name  time_expire  time_start  place  brief  amount_max  creator_id  first_label_id
      *      second_label_id  score)
      *
@@ -164,7 +198,7 @@ class Activity_model extends CI_Model
      */
     public function update_activity_by_id($activity_id = -1, $array_for_update = null)
     {
-        if ($array_for_update == null|| $activity_id <= 0)
+        if ($array_for_update == null || $activity_id <= 0)
             return null;
         $this->db->where('id', $activity_id);
         if ($this->db->update('activity', $array_for_update) == false)
