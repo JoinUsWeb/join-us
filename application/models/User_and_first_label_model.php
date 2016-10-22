@@ -1,17 +1,30 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: 10040
- * Date: 2016/10/13
- * Time: 22:05
+ * Class User_and_first_label_model
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败  关系结构  user_id   first_label_id
+ *
+ * 根据提供的一级标签 id  获得所有有这个标签的用户信息的多维数组
+ * public function get_user_by_first_label_id($first_label_id = -1)
+ *
+ * 根据提供的用户 id   获取该用户的所有一级标签的多维数组
+ * public function get_first_label_by_user_id($user_id = -1)
+ *
+ * 根据提供的用户 id 和一级标签 id  删除对应用用户下的选定一级标签
+ * public function remove_first_label_from_user_by_id($user_id = -1, $first_label_id = -1)
+ *
+ * 根据提供的用户 id   删除该用户的所有的一级标签
+ * public function remove_by_user_id($user_id = -1)
+ *
+ * 根据提供的用户 id 和 一级标签 id   创建新的并插入数据库
+ * public function insert_new_relation($user_id = -1, $first_label = -1)
  */
 class User_and_first_label_model extends CI_Model
 {
     public function __construct()
     {
-        $this->load->model('user_model');
-        $this->load->model('first_label_model');
+        $this->load->model('User_model');
+        $this->load->model('First_label_model');
     }
 
     /**
@@ -30,7 +43,7 @@ class User_and_first_label_model extends CI_Model
             $data = array();
             $user = $this->db->get_where('relation_user_firstlabel', array('first_label_id' => $first_label_id))->result_array();
             foreach ($user as $user_item) {
-                $data[] = $this->user_model->get_user_by_id($user_item['user_id']);
+                $data[] = $this->User_model->get_user_by_id($user_item['user_id']);
             }
             return $data;
         }
@@ -52,7 +65,7 @@ class User_and_first_label_model extends CI_Model
             $data = array();
             $first_label = $this->db->get_where('relation_user_firstlabel', array('user_id' => $user_id))->result_array();
             foreach ($first_label as $first_label_item) {
-                $data[] = $this->first_label_model->get_first_label_by_id($first_label_item['first_label_id']);
+                $data[] = $this->First_label_model->get_first_label_by_id($first_label_item['first_label_id']);
             }
             return $data;
         }
@@ -67,11 +80,11 @@ class User_and_first_label_model extends CI_Model
         if ($user_id <= 0 || $first_label_id <= 0)
             return null;
         else {
-            $second_label = $this->second_label_model->get_second_label_by_first_id($first_label_id);
+            $second_label = $this->Second_label_model->get_second_label_by_first_id($first_label_id);
             if ($second_label == null)
                 return null;
             foreach ($second_label as $second_label_item)
-                if ($this->user_and_second_label_model->remove_second_label_from_user_by_id($user_id, $second_label_item['id']) == false)
+                if ($this->User_and_second_label_model->remove_second_label_from_user_by_id($user_id, $second_label_item['id']) == false)
                     return false;
 
             if ($this->db->delete('relation_user_firstlabel', array('user_id' => $user_id, 'first_label_id' => $first_label_id)) == false)

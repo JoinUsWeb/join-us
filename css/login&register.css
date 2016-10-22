@@ -1,0 +1,57 @@
+ul{
+	padding: 0;
+	margin:0;
+	list-style-type: none;
+}
+fieldset{
+	width: 400px;
+	margin: 50px auto;
+	padding: 50px 20px;
+	background: #c9d0de;
+	border: 1px solid #elelel;
+	border-radius: 15px;
+}
+h3{
+	font-size: 28px;
+	color:#445668;
+	text-align: center;
+	margin: 0 0 40px 0;
+	text-shadow: 0px 2px 0px #f2f2f2;
+}
+label{
+	float: left;
+	clear: left;
+	margin: 5px 10px 0 20px;
+	width: 95px;
+	text-align: right;
+	font-size: 18px;
+	
+	color: #445668;
+	text-shadow: 0px 2px 0px #f2f2f2;
+}
+input{
+	width: 180px;
+	height: 36px;
+	padding: 1px 15px 0px 15px;
+	margin: 0 0 20px 0;
+	background: #5E768D;
+	border-radius: 5px;
+	
+	font-size: 16px;
+	color:#ffffff;
+	text-shadow: 0px -1px 0px #38506b;
+
+}
+
+input[type=submit]{
+	width: 120px;
+	height: 40px;
+	border: 1px solid #556f8c;
+	cursor: pointer;
+	color: #ffffff;
+	
+}
+.words{
+	float: right;
+	margin: 0  60px 0 0;
+}

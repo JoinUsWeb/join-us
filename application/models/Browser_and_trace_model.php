@@ -1,17 +1,44 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: 10040
- * Date: 2016/10/13
- * Time: 14:23
+ * Class Browser_and_trace_model
+ *
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败
+ * 关系结构   browser_id  browsed_activity_id  browsed_time
+ *
+ * 根据提供的活动 id  返回所有浏览过该活动的用户信息组成的多维数组
+ * public function get_browser_by_activity_id($activity_id = -1)
+ *
+ * 根据提供的浏览者 id   返回该浏览者浏览过的所有活动信息组成的多维数组
+ * public function get_activity_by_browser_id($browser_id = -1)
+ *
+ * 根据提供的浏览者 id   返回 按照浏览时间 排序的 所有活动浏览记录的多维数组
+ * public function get_trace_by_browser_id($browser_id = -1)
+ *
+ * 根据提供的活动 id  返回 按照浏览时间 排序的 所有活动浏览记录的多维数组
+ * public function get_trace_by_activity_id($activity_id = -1)
+ *
+ * 根据提供的活动 id 和浏览者 id 删除对应的浏览记录
+ * public function remove_trace_by_id($browser_id = -1, $activity_id = -1)
+ *
+ * 根据提供的浏览者 id  删除对应浏览者的所有浏览记录
+ * public function remove_by_browser_id($browser_id = -1)
+ *
+ * 根据提供的活动 id   删除对该活动的所有浏览记录
+ * public function remove_by_activity_id($activity_id = -1)
+ *
+ * 根据提供的浏览时间  删除在这世间产生的所有浏览记录
+ * public function remove_by_time($browsed_time = -1)
+ *
+ * 根据提供的浏览者 id  浏览时间 活动 id  创建新的浏览记录条目并插入数据库
+ * public function insert_new_relation($browser_id = -1, $browser_time = -1, $activity_id = -1)
  */
 class Browser_and_trace_model extends CI_Model
 {
     public function __construct()
     {
-        $this->load->model('user_model');
-        $this->load->model('activity_model');
+        $this->load->model('User_model');
+        $this->load->model('Activity_model');
     }
 
     /**
@@ -30,7 +57,7 @@ class Browser_and_trace_model extends CI_Model
         else {
             $data = array();
             foreach ($trace as $trace_item) {
-                $data[] = $this->user_model->get_user_by_id($trace_item['user_id']);
+                $data[] = $this->User_model->get_user_by_id($trace_item['user_id']);
             }
             return $data;
         }
@@ -52,7 +79,7 @@ class Browser_and_trace_model extends CI_Model
         else {
             $data = array();
             foreach ($trace as $trace_item) {
-                $data[] = $this->activity_model->get_activity_by_id($trace_item['browsed_activity_id']);
+                $data[] = $this->Activity_model->get_activity_by_id($trace_item['browsed_activity_id']);
             }
             return $data;
         }
@@ -152,9 +179,9 @@ class Browser_and_trace_model extends CI_Model
      * @param int $activity_id
      * @return bool|null
      */
-    public function insert_new_relation($browser_id = -1, $browser_time = -1, $activity_id = -1)
+    public function insert_new_relation($browser_id = -1, $browser_time = null, $activity_id = -1)
     {
-        if ($browser_id <= 0 || $browser_time < 0 || $activity_id <= 0)
+        if ($browser_id <= 0 || $browser_time == null || $activity_id <= 0)
             return null;
         else {
             $data = array(

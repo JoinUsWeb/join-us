@@ -4,9 +4,10 @@
 	<meta charset="UTF-8">
 	<title>activity</title>
   <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/detail.css">
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse">
     <div class="container-fluid"> 
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -16,82 +17,204 @@
         <div class="collapse navbar-collapse" id="myInverseNavbar2">
           <ul class="nav navbar-nav navbar-right">
             <li></li>
-            <li><a href="#">地区 </a></li>
-            <li><a href="searching.html">查找活动</a></li>
-            <li><a href="create.html">创建活动</a></li>
-            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
+            <li><a href="../html/searching.html">查找活动</a></li>
+            <li><a href="../html/create.html">创建活动</a></li>
+            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">地区 <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="personal_applied.html">我报名的</a></li>
-                <li><a href="personal_joined.html">我参加的</a></li>
-                <li><a href="personal_favorites.html">收藏</a></li>
-                <li><a href="personal_comments.html">评论</a></li>
-                <li class="divider"></li>
-                <li><a href="#">关于我们</a></li>
+                <li><a href="../html/details_page.html">上海</a></li>
               </ul>
+            </li> 
+            <li>
+              <a id="login_p" href="../html/login.html">登录</a>
+            </li>
+            <li><p>|</p></li>
+            <li>    
+              <a id="register_p" href="../html/register.html">注册</a>
+            </li>
+          </ul>
+
+          <!--
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="html/personal_applied.html">我报名的</a></li>
+            <li><a href="html/personal_joined.html">我参加的</a></li>
+            <li><a href="html/personal_favorites.html">收藏</a></li>
+            <li><a href="html/personal_comments.html">评论</a></li>
+            <li class="divider"></li>
+            <li><a href="#">关于我们</a></li>
+          </ul>
+        </li>
+      -->
+
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div style="height: 72px;"></div>
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs">
+      <div class="xxxx">
+        <div class="content_head_l">
+          <img src="#" alt="海报海报photo">
+        </div>
+
+        <div class="content_head_r">
+          <div class="detail_title">
+            <h2>
+              华东师范大学第二届创新创业大赛
+            </h2>
+          </div>
+          <hr>
+
+          <div id="detail_block">
+           <div class="detail">
+            <div class="title_txt">开始时间：<span>2016-11-23 13:00</span></div>
+
+          </div>
+          <div class="detail">
+            <div class="title_txt">截止报名时间：<span>2016-10-07 24:00</span></div>
+
+          </div>
+          
+
+          <div class="detail">
+            <div class="title_txt">地点：<span>
+              上海市普陀区中山北路3663号华东师范大学
+            </span></div>
+            
+          </div>
+
+          <div id="detail_joinnum" class="detail" ms-controller="detail_join_party_list_controller">
+
+            <div class="title_txt">报名人数：<span class="num">已有30人报名</span>
+              <span id="limit_num">限80人报名</span></div>
+
+            </div>
+            
+        <form action="" method="post">
+          <p class="center">
+            <input type="submit" id="apply" value="我要报名">
+          </p>
+          
+        </form>
+      
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-9 col-md-12">
+      <div class="detail_description">
+        <div class="information">活动详情： </div>
+        <hr>
+        <p id="context">我们在用户注册时提供一级兴趣选择（一级兴趣包括：娱乐、体育、科技、美食、军事、历史、社会、旅游、影视、其他等，一级兴趣下再细化二级兴趣），多级区域选择，及其所处年龄层等信息。根据以上用户数据收集，推荐其喜好的活动。在推荐活动时，优先考虑二级兴趣标签及所在区域，其次推荐一级兴趣活动。同时，我们也会向用户提供实时热门活动，以及好友活动动态，避免单一推荐过少或无推荐活动的情况发生。活动来源一部分根据时下热门，由网站管理员创建，一部分由用户（活动组织者）创建。用户创建的活动会有12个小时的审核时间，过审后才可在网站上发布（我们会根据活动举办时间优先审核最近的活动）。创建活动时，用户可以选择一级兴趣标签，二级兴趣标签由管理员审核后进行分类，并在审核过后告知用户分类到哪一级标签下。而前期用户在注册时，必须填写推荐人的唯一ID。</p>
+      </div>
+
+      
+      
+    </div>
+
+    <!--<div class="sidebar">-->
+    <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+      <div class="well">
+        <h3 class="text-center">热门活动</h3>
+        <hr>
+        <div>
+          <ul>
+            <li>
+              <img src="" alt="photo">
+              <p>院运会</p>
+            </li>
+            <li>
+              <a href="html/details_page.html">
+                <img src="" alt="photo">
+                <p>创新创业大赛</p>
+              </a>
+
+            </li>
+            <li>
+              <img src="" alt="photo">
+              <p>可怕的辅修</p>
             </li>
           </ul>
         </div>
-        <!-- /.navbar-collapse --> 
-      </div>
-      <!-- /.container-fluid --> 
-    </nav>
-    <div class="content_head">
-      <div class="content_head_l">
-        <img src="#" alt="这里是海报">
-      </div>
-
-      <div class="content_head_r">
-        <div class="detail_title">
-          <h2>
-            华东师范大学第二届创新创业大赛
-          </h2>
-        </div>
-
-        <div class="detail_time">
-          <div class="detail_time_start">
-            <div class="title_txt">活动开始时间： </div>
-            <p>11-23 13:00</p>
-          </div>
-          <div class="detail_time_close">
-            <div class="title_txt">截止报名时间： </div>
-            <p>10-07 24:00</p>
-          </div>
-        </div>
-
-        <div class="detail_place">
-          <div class="title_txt">地点：</div>
-          <p>
-            上海市普陀区中山北路3663号华东师范大学
-          </p>
-        </div>
-
-        <div id="detail_joinnum" class="detail_joinnum" ms-controller="detail_join_party_list_controller">
-          <div class="detail_joinnum_t">
-            <div class="title_txt">报名人数： </div>
-            <p class="num">已有<span>#</span>人报名</p>
-          </div>
-          <div class="detail_joinnum_b">
-          <p>限<span>80</span>人报名</p>
-          </div>
-        </div>
-
-        <div class="detail_description">
-          <div class="title_txt">活动详情： </div>
-          <p>喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿</p>
-        </div>
-
-        <div>
-          <form action="" method="post">
-            <input type="submit" id="apply" value="我要报名">
-          </form>
-        </div>
-
       </div>
     </div>
+  </div>
+</div>
+
+<hr>
+<div class="container well">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-lg-4 col-md-4"> <span class="text-right">
+    </span>
+    <h3>About Us</h3>
+    <hr>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, consequatur neque exercitationem distinctio esse! Cupiditate doloribus a consequatur iusto illum eos facere vel iste iure maxime. Velit, rem, sunt obcaecati eveniet id nemo molestiae. In.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, consequatur neque exercitationem distinctio esse! Cupiditate doloribus a consequatur iusto illum eos facere vel iste iure maxime. Velit, rem, sunt obcaecati eveniet id nemo molestiae. In.</p>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-lg-4 col-md-4 hidden-sm hidden-xs"> <span class="text-right"> </span>
+    <h3>Latest News</h3>
+    <hr>
+    <div class="media-object-default">
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">Heading 1</h4>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, quod temporibus veniam deserunt deleniti accusamus voluptatibus at illo sunt quisquam. </div>
+          <div class="media-right"> <a href="#"> <img class="media-object" src="../img/75X.gif" alt="placeholder image"></a></div>
+        </div>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">Heading 2</h4>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, iure nemo earum quae aliquid animi eligendi rerum rem porro facilis.</div>
+            <div class="media-right"> <a href="#"> <img class="media-object" src="../img/75X.gif" alt="placeholder image"></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-lg-4 col-md-4"> <span class="text-right"> </span>
+        <h3>Contact Us</h3>
+        <hr>
+
+        <address>
+          <strong>MyStoreFront, Inc.</strong><br>
+          Indian Treasure Link<br>
+          Quitman, WA, 99110-0219<br>
+          <abbr title="Phone">P:</abbr> (123) 456-7890
+        </address>
+
+        <address>
+          <strong>Full Name</strong><br>
+          <a href="mailto:#">first.last@example.com</a>
+        </address>
+      </div>
+    </div>
+  </div>
+  <footer class="text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Copyright © MyWebsite. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  <script src="js/jquery-1.11.2.min.js"></script> 
+  <!-- Include all compiled plugins (below), or include individual files as needed --> 
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
 
 
-    <script src="../js/jquery-1.11.2.min.js"></script> 
-    <!-- Include all compiled plugins (below), or include individual files as needed --> 
-    <script src="../js/bootstrap.min.js"></script>
-  </body>
-  </html>

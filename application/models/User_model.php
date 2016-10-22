@@ -1,10 +1,30 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: 10040
- * Date: 2016/10/13
- * Time: 13:14
+ * Class User_model
+ *
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败  用户信息： email  nick_name  password  phone_number
+ *
+ * 获取所有的用户信息   返回所有用户信息的多维数组
+ * public function get_user()
+ *
+ * 根据提供的用户 id  返回该用户信息的单行数组
+ * public function get_user_by_id($id=-1)
+ *
+ * 根据提供的活动 id  返回该活动的创建者信息的单行数组
+ * public function get_creator_by_activity_id($activity_id=-1)
+ *
+ * 根据提供的 email   返回该用户信息的单行数组
+ * public function get_user_by_email($email=-1)
+ *
+ * 根据提供的用户 id  删除对应用户
+ * public function remove_by_id($user_id=-1)
+ *
+ * 根据提供的用户信息数组   创建新的用户条目并插入数据库
+ * public function insert_new_user_info($array_for_user_info = null)
+ *
+ * 根据提供的用户 id 和 新的该用户信息的数组   修改对应用户的信息
+ * public function update_user_info_by_id($user_id = -1, $array_for_user_info = null)
  */
 class User_model extends CI_Model
 {
@@ -28,11 +48,12 @@ class User_model extends CI_Model
      * @param int $id
      * @return null OR $data
      */
-    public function get_user_by_id($id=-1){
-        if($id<0)
+    public function get_user_by_id($id = -1)
+    {
+        if ($id < 0)
             return null;
         else
-            return $this->db->get_where('user',array('id'=>$id))->row_array();
+            return $this->db->get_where('user', array('id' => $id))->row_array();
     }
 
     /**
@@ -43,45 +64,44 @@ class User_model extends CI_Model
      * @param int $activity_id
      * @return null OR $data
      */
-    public function get_creator_by_activity_id($activity_id=-1)
+    public function get_creator_by_activity_id($activity_id = -1)
     {
-        $this->load->model('activity_model');
-        $activity=$this->activity_model->get_activity_by_id($activity_id);
-        if($activity==null)
+        $this->load->model('Activity_model');
+        $activity = $this->Activity_model->get_activity_by_id($activity_id);
+        if ($activity == null)
             return null;
-        else
-        {
+        else {
             return $this->get_user_by_id($activity['creator_id']);
         }
     }
 
-    public function get_user_by_email($email=-1){
-        return $this->db->get_where('user',array('email'=>$email))->row_array();
+    public function get_user_by_email($email = -1)
+    {
+        return $this->db->get_where('user', array('email' => $email))->row_array();
     }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function remove_by_id($user_id=-1)
+    public function remove_by_id($user_id = -1)
     {
-        if($user_id<=0)
+        if ($user_id <= 0)
             return null;
-        else
-        {
-            $this->load->model('member_and_activity_model');
-            $this->load->model('browser_and_trace');
-            $this->load->model('user_and_first_label');
-            $this->load->model('user_and_second_label');
+        else {
+            $this->load->model('Member_and_activity_model');
+            $this->load->model('Browser_and_trace');
+            $this->load->model('User_and_first_label');
+            $this->load->model('User_and_second_label');
 
-            if($this->member_and_activity_model->remove_by_user_id($user_id)==false)
+            if ($this->Member_and_activity_model->remove_by_user_id($user_id) == false)
                 return false;
-            if($this->browser_and_trace->remove_by_browser_id($user_id)==false)
+            if ($this->Browser_and_trace_model->remove_by_browser_id($user_id) == false)
                 return false;
-            if($this->user_and_first_label->remove_by_user_id($user_id)==false)
+            if ($this->User_and_first_label_model->remove_by_user_id($user_id) == false)
                 return false;
-            if($this->user_and_second_label->remove_by_user_id($user_id)==false)
+            if ($this->User_and_second_label_model->remove_by_user_id($user_id) == false)
                 return false;
 
-            if($this->db->delete('user',array('id'=>$user_id))==false)
+            if ($this->db->delete('user', array('id' => $user_id)) == false)
                 return false;
             return true;
         }
@@ -95,10 +115,11 @@ class User_model extends CI_Model
      * @param null $array_for_user_info
      * @return bool|null
      */
-    public function insert_new_user_info($array_for_user_info = null){
+    public function insert_new_user_info($array_for_user_info = null)
+    {
         if ($array_for_user_info == null)
             return null;
-        if ($this->db->insert('first_label',array('name' => $array_for_user_info)) == false)
+        if ($this->db->insert('first_label', array('name' => $array_for_user_info)) == false)
             return false;
         return true;
     }
@@ -112,11 +133,12 @@ class User_model extends CI_Model
      * @param null $array_for_user_info
      * @return bool|null
      */
-    public function update_user_info_by_id($user_id = -1, $array_for_user_info = null){
+    public function update_user_info_by_id($user_id = -1, $array_for_user_info = null)
+    {
         if ($user_id <= 0 || $array_for_user_info == null)
             return null;
-        $this->db->where('id',$user_id);
-        if ($this->db->update('user',$array_for_user_info) == false)
+        $this->db->where('id', $user_id);
+        if ($this->db->update('user', $array_for_user_info) == false)
             return false;
         return true;
     }
