@@ -54,6 +54,14 @@ class Activity_model extends CI_Model
         return $this->db->get('activity')->result_array();
     }
 
+    public function get_activity_order_by_score($limit=-1)
+    {
+        if($limit<=0)
+            return $this->db->get('activity')->order_by('score','DESC')->result_array();
+        else
+            return $this->db->limit($limit)->get('activity')->order_by('score','DESC')->result_array();
+    }
+
     /**
      * 获得指定活动
      *
@@ -172,7 +180,7 @@ class Activity_model extends CI_Model
      *
      * data = array(
      *      name  time_expire  time_start  place  brief  amount_max  creator_id  first_label_id
-     *      second_label_id  score)
+     *      second_label_id  score poster)
      *
      * @param $activity_info
      * @return bool|null
@@ -181,6 +189,7 @@ class Activity_model extends CI_Model
     {
         if ($activity_info == null)
             return null;
+        $activity_info['member_number']=0;
         if ($this->db->insert('activity', $activity_info) == false)
             return false;
         return true;

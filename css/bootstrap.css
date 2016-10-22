@@ -1228,7 +1228,7 @@ h2,
 h3,
 .h3 {
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 h1 small,
 .h1 small,
@@ -4929,8 +4929,12 @@ a.thumbnail:focus,
 a.thumbnail.active {
   border-color: #337ab7;
 }
-.thumbnail .caption {
+.thumbnail  {
   padding: 9px;
+  color: #333;
+}
+.caption{
+  padding: 9px 12px;
   color: #333;
 }
 .alert {
@@ -6593,5 +6597,52 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.hd_title{
+  line-height: 30px;
+  height: 68px;
+  overflow: hidden;
+}
+
+a.hd_title_block {
+ text-decoration: none;
+ color: rgb(51,51,51);
+ }
+
+a.hd_title_block:visited {
+ text-decoration: none;
+ }
+a.hd_title_block:hover {
+ text-decoration: none;
+ color:rgb(100,149,237);
+ }
+a.hd_title_block:active {
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: bold;
+ }
+a.bounceIn{
+  display: inline-block;
+  width: 138px;
+  height:34px;
+  line-height: 32px;
+  border-radius: 3px;
+  font-size: 14px;
+  background-color: #0099e9;
+  color: #fff;
+  margin-left: 30px;
+  margin-top: 18px;
+  text-align: center;
+  text-decoration: none;
+}
+ul{
+  list-style-type: none;
+}
+.button{
+
+  margin: 40px 0 0 0;
+  text-align: center;
+}
 }
 /*# sourceMappingURL=bootstrap.css.map */

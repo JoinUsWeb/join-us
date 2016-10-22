@@ -114,7 +114,7 @@ class Member_and_activity_model extends CI_Model
 
     /**
      *
-     * 获取用户ID以及活动ID
+     * 为一个活动添加一个新成员
      *
      * 如果两个ID不合法， 返回null，
      *
