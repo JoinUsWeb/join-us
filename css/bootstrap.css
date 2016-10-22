@@ -6622,7 +6622,7 @@ a.hd_title_block:active {
  font-size: 14px;
  font-weight: bold;
  }
-a.poster_add_btn{
+a.bounceIn{
   display: inline-block;
   width: 138px;
   height:34px;
@@ -6635,5 +6635,14 @@ a.poster_add_btn{
   margin-top: 18px;
   text-align: center;
   text-decoration: none;
+}
+ul{
+  list-style-type: none;
+}
+.button{
+
+  margin: 40px 0 0 0;
+  text-align: center;
+}
 }
 /*# sourceMappingURL=bootstrap.css.map */
