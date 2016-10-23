@@ -9,7 +9,7 @@
                 <table cellspacing="10px">
                     <tr>
                         <th>活动名称</th>
-                        <td><a href="<?php echo site_url('activity/detail/'.$single_activity['id'])?>">
+                        <td><a href="<?php echo site_url('activity_detail/index/'.$single_activity['id'])?>">
                                 <?php echo $single_activity['name']; ?></a></td>
                     </tr>
                     <tr>

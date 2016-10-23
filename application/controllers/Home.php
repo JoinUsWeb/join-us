@@ -17,6 +17,5 @@ class Home  extends CI_Controller
     public function index()
     {
         $hot_activity=$this->activity_model->get_activity_order_by_score(3);
-
     }
 }

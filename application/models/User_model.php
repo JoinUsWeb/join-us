@@ -28,6 +28,18 @@
  */
 class User_model extends CI_Model
 {
+
+    public function validate_user($user_email= null, $user_password = null)
+    {
+        if ($user_email == null && $user_password == null)
+            return null;
+        $user_info = $this->get_user_by_email("$user_email");
+        if ($user_info['password'] == $user_password)
+            return true;
+        else
+            return false;
+    }
+
     /**
      * 获得所有用户
      *

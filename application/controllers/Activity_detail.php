@@ -11,14 +11,14 @@ class Activity_detail extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('post','url');
+        //$this->load->helper('post','url');
         $this->load->model('activity_model');
     }
 
     public function index($activity_id)
     {
         $data['title']='活动详情';
-        $data['activity']=$activity=$this->activity->get_activity_by_id($activity_id);
+        $data['activity']=$activity=$this->activity_model->get_activity_by_id($activity_id);
         if($activity==null)
             show_404();
         if(empty($activity))
