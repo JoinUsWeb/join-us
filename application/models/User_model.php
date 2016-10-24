@@ -5,7 +5,7 @@
  *
  * 预定义返回null代表参数不合法 返回false代表数据库操作失败  用户信息： email  nick_name  password  phone_number
  *
- * 获取所有的用户信息   返回所有用户信息的多维数组
+ * 获取所有的用户信息  返回所有用户信息的多维数组
  * public function get_user()
  *
  * 根据提供的用户 id  返回该用户信息的单行数组

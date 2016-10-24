@@ -10,21 +10,18 @@ class Register extends CI_Controller
 {
     public function index()
     {
-        $this->load->helper(array('form', 'url', 'cookie'));
+        $this->load->helper(array('form', 'url', 'cookie', 'session'));
         $this->load->library("form_validation");
         $this->load->model('User_model');
         $data['title'] = '注册';
         $data['error'] = "";
 
         /* 此处应区别是第一次加载还是误按注册键  并未实现*/
-        if (isset($_POST['_email'])) {
-            $data['error'] = $this->form_process();
-            if ($data['error'] == null) {
-                setcookie('email', set_value('_email'));
-                setcookie('password', set_value('_password'));
-                redirect('home');
-                return;
-            }
+        if ($this->form_process() == null) {
+            setcookie('email', set_value('_email'));
+            setcookie('password', set_value('_password'));
+            redirect('home');
+            return;
         }
 
         $this->load->view('template/header', $data);

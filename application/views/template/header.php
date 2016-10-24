@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>创建活动</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="<?php echo base_url("css/bootstrap.css"); ?>">
 
 </head>
 <body>

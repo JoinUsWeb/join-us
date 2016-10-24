@@ -18,18 +18,12 @@ class Login extends CI_Controller
         $data['title'] = "登录";
         $data['error'] = "";
 
-        /* 此处应区别是第一次加载还是误按登录键  并未实现*/
-        if (isset($_POST['_email'])) {
-            $data['error'] = $this->form_process();
-            if ($data['error'] == null) {
-                setcookie('email', set_value('_email'));
-                setcookie('password', set_value('_password'));
-                $this->load->view('template/header', $data);
-                $this->load->view('template/nav');
-                $this->load->view('index_page/index', $data);
-                $this->load->view('template/footer');
-                return;
-            }
+        if ($this->form_process() == null) {
+            setcookie('email', set_value('_email'));
+            setcookie('password', set_value('_password'));
+
+            redirect('home');
+            return;
         }
 
         $this->load->view('template/header', $data);
