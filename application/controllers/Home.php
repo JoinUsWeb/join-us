@@ -12,11 +12,41 @@ class Home  extends CI_Controller
     {
         parent::__construct();
         $this->load->model('activity_model');
+        $this->load->model('first_label_model');
     }
 
     public function index()
     {
         $hot_activity=$this->activity_model->get_activity_order_by_score(3);
+        if(!empty($this->session['user_id']))
+        {
+            $user_id=$this->session['user_id'];
+            $recommended_activity=$this->get_recommended_activity($user_id);
+        }
+        else
+        {
+            $recommended_activity=null;
+        }
 
+        $data['title']='Home';
+        $data['hot_activity']=$hot_activity;
+        $data['recommended_activity']=$recommended_activity;
+
+        $this->load->view('template/header',$data);
+        $this->load->view('template/nav');
+        $this->load->view('home/home',$data);
+        $this->load->view('template/footer');
+    }
+
+    public function get_recommended_activity($user_id)
+    {
+        $activity=array();
+        $first_label=$this->user_and_first_label_model->get_first_label_by_user_id($user_id);
+        foreach ($first_label as $first_label_item)
+        {
+            $activity_part=$this->activity_model->get_activity_by_first_label_id($first_label_item['id']);
+            $activity=array_merge($activity,$activity_part);
+        }
+        return $activity;
     }
 }

@@ -11,16 +11,15 @@ class Create_activity extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('post');
         $this->load->helper('url');
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->model('activity_model');
         $this->load->model('first_label_model');
 
-        $config['upload_path']      = './image/';
+        $config['upload_path']      = FCPATH.'/img/';
         $config['allowed_types']    = 'gif|jpg|png';
-        $config['max_size']         = 300;
+        $config['max_size']         = 100;
         $config['max_width']        = 1024;
         $config['max_height']       = 768;
         $this->load->library('upload', $config);
@@ -35,7 +34,7 @@ class Create_activity extends CI_Controller
         $this->form_validation->set_rules('time_expire','time_expire','required');
         $this->form_validation->set_rules('place','place','required');
         $this->form_validation->set_rules('city','city','required');
-        $this->form_validation->set_rules('first_label','first_label','required');
+        $this->form_validation->set_rules('first_label_id','first_label_id','required');
         $this->form_validation->set_rules('brief','brief','required');
 
 
@@ -44,6 +43,7 @@ class Create_activity extends CI_Controller
             $data=array('error'=>'','title'=>'create activity');
             $data['first_label']=$this->first_label_model->get_first_label();
             $this->load->view('template/header',$data);
+            $this->load->view('template/nav');
             $this->load->view('activity_related/create_activity',$data);
             $this->load->view('template/header');
         }
@@ -61,15 +61,35 @@ class Create_activity extends CI_Controller
             else
             {
                 $data=$this->input->post();
-                $data['creator_id']=$this->session['user_id'];
-                $this->create_activity_no_poster($data);
+                if($data['second_label_id']==0)
+                {
+
+                }
+                else
+                {
+                    //为了测试
+                    unset($data['new_label']);
+                    //$data['creator_id']=$this->session['user_id'];
+                    $data['creator_id'] = 1;
+                    $this->create_activity_no_poster($data);
+                }
             }
         }
         else
         {
             $data=$this->input->post();
-            $data['creator_id']=$this->session['user_id'];
-            $this->create_activity($data,$this->upload->data()['full_path']);
+            if($data['second_label_id']==0)
+            {
+
+            }
+            else
+            {
+                //为了测试
+                unset($data['new_label']);
+                //$data['creator_id']=$this->session['user_id'];
+                $data['creator_id'] = 1;
+                $this->create_activity($data, $this->upload->data()['full_path']);
+            }
         }
     }
 
@@ -78,12 +98,12 @@ class Create_activity extends CI_Controller
     {
         $data['poster']=$poster_path;
         $this->activity_model->insert_new_activity($data);
-        redirect('/home/index');
+        redirect(site_url('activity_detail/index/'.$this->db->insert_id()));
     }
 
     public function create_activity_no_poster($data)
     {
-        $poster_path=$_SERVER['DOCUMENT_ROOT'].'/image/first_label_'.$data['first_label_id'].'.jpg';
+        $poster_path='img/first_label_'.$data['first_label_id'].'.jpg';
         $this->create_activity($data,$poster_path);
     }
 }

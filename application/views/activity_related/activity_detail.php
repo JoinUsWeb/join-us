@@ -2,7 +2,7 @@
     <div class="content_head_l">
         <img src="
             <?php
-                echo $activity['poster'];
+                echo base_url($activity['poster']);
             ?>
         " alt="海报无法显示">
     </div>

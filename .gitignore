@@ -2,6 +2,7 @@
 
 application/controllers/Test.php
 application/views/test
+application/session
 
 application/cache/*
 !application/cache/index.html

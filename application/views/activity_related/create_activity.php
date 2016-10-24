@@ -1,4 +1,5 @@
 <div class="container">
+    <?php echo $error ?>
     <?php echo validation_errors(); ?>
     <?php echo form_open_multipart('create_activity'); ?>
         <ul>
@@ -45,15 +46,16 @@
             </li>
             <li>
                 <label for="hd_style_1st">活动类型</label>
-                <select name="first_label" value="<?php echo set_value('first_label'); ?>" id="hd_style_1st">
+                <select name="first_label_id" value="<?php echo set_value('first_label'); ?>" id="hd_style_1st">
                     <?php
                         foreach($first_label as $first_label_item)
                             echo '<option value="'.$first_label_item['id'].'">'.$first_label_item['name'].'</option>';
                     ?>
                 </select>
-                <select name="second_label" value="<?php echo set_value('second_label'); ?>" id="hd_style_2nd">
-                    <option value="足球">足球</option>
-                    <option value="篮球">篮球</option>
+                <select name="second_label_id" value="<?php echo set_value('second_label'); ?>" id="hd_style_2nd">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                 </select>
                 <label for="newstyle">创建新类型</label>
                 <input type="text" id="newstyle" name="new_label" value="<?php echo set_value('new_label'); ?>"  placeholder="">
@@ -64,7 +66,7 @@
             </li>
             <li>
                 <label for="hd_detail">活动详情</label>
-                <textarea name="brief" value="<?php echo set_value('brief'); ?>" id="hd_detail" cols="30" rows="10"></textarea>
+                <textarea name="brief" id="hd_detail" cols="30" rows="10"><?php echo set_value('brief'); ?></textarea>
             </li>
             <li>
                 <input type="submit" id="publish" value="发布活动">

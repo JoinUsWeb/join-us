@@ -57,9 +57,9 @@ class Activity_model extends CI_Model
     public function get_activity_order_by_score($limit=-1)
     {
         if($limit<=0)
-            return $this->db->get('activity')->order_by('score','DESC')->result_array();
+            return $this->db->order_by('score','DESC')->get('activity')->result_array();
         else
-            return $this->db->limit($limit)->get('activity')->order_by('score','DESC')->result_array();
+            return $this->db->limit($limit)->order_by('score','DESC')->get('activity')->result_array();
     }
 
     /**

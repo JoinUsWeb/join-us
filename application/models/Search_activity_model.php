@@ -27,7 +27,7 @@ class Search_activity_model extends CI_Model
                 $earlier_than = date('y-m-d', strtotime('+2 month'));
             if ($time == 3)
                 $earlier_than = date('y-m-d', strtotime('+3 month'));
-            $quiry['data_start <'] = $earlier_than;
+            $quiry['date_start <'] = $earlier_than;
         }
         if(empty($quiry))
             $activity=$this->db->get('activity')->result_array();
