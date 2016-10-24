@@ -1,3 +1,9 @@
+body{
+    font-family: "微软雅黑";
+    font-size: 16px;
+    font-weight: normal;
+}
+
 .personal_nav{
     width: 25%;
     height: 70%;
@@ -60,6 +66,43 @@
     font-family: "华为仿宋";
     font-style:normal;
     color: cadetblue;
+}
+
+.p_present{
+    color: black;
+}
+
+.hd_present{
+    float: none;
+    padding: 2%;
+    margin: 0;
+    border:1px;
+    border-style: dotted;
+    border-bottom-style: dotted;
+}
+
+.hd_details{
+    float: none;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.hd_present_ul{
+    padding: 0;
+    margin: 0;
+}
+
+.hd_img{
+    width: 160px;
+    height: 80px;
+}
+
+.hd_title{
+    padding: 0;
+    margin: 0;
+}
+.Clear{
+    clear:both;
 }
 
 a:link.thisover{
