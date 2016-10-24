@@ -1,0 +1,83 @@
+.personal_nav{
+    width: 25%;
+    height: 70%;
+    padding: 3%;
+    margin-left: 2.01%;
+    float: left;
+    background-color: #222;
+    border-color: #080808;
+    border-bottom-style:none;
+    border: 1px solid rgb(221,221,221);
+	border-radius: 5px;
+}
+
+.personal_main{
+    width: 70%;
+    height: 70%;
+    padding: 2%;
+    margin: 1px;
+    float: left;
+    background-color: antiquewhite;
+    border: 1px solid rgb(221,221,221);
+	border-radius: 5px;
+}
+
+.personal_title{
+    padding:auto;
+    margin:2px;
+    margin-bottom:20px;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    text-decoration: none;
+    display: block;
+    list-style-type: none;
+    font-size: 18px;
+    border-bottom-style: groove;
+}
+
+.personal-data{
+    align-self: center;
+}
+
+.head_portrait{
+    padding-bottom: 10px;
+    padding-top: 16px;
+}
+
+.p_data{
+    float: left;
+    margin: none;
+    padding:none;
+    width: 50%;
+    text-align: left;
+}
+
+.p_data li{
+    padding: 10px;
+    margin: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: "华为仿宋";
+    font-style:normal;
+    color: cadetblue;
+}
+
+a:link.thisover{
+    color:gainsboro;
+    text-decoration: none;
+}
+
+a:visited:thisover{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover.thisover{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+a:active.thisover{
+    color: brown;
+    text-decoration: none;
+}
