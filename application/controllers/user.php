@@ -63,6 +63,8 @@ class User extends CI_Controller
     public function info()
     {
         $data['title'] = "个人中心";
+        $this->load->model('User_model');
+        $data['user_info'] = $this->User_model->get_user_by_id($this->user_id);
 
         $this->load->view('person_related/personal_info', $data);
     }

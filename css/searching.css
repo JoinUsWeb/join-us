@@ -1,0 +1,126 @@
+
+body{
+    font-family: "微软雅黑";
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.frame{
+    padding: 1%;
+    border-color: seashell;
+    border-width: medium;
+    border-style: solid;
+    margin: 1%;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    margin-bottom: auto;
+    background-color: grey;
+        color:white
+}
+
+.title{
+    display:inline-block;
+    width: 100px;
+    height: auto;
+    line-height: 30px;
+    float: left;
+    text-align: center;
+}
+
+.style{
+    width: 1130px;
+    overflow-x:hidden;
+    overflow-y:hidden;
+}
+
+.searching li{
+    width: 88px;
+    height:5%;
+    float: left;
+    margin-right: 2px;
+    display: block;
+    text-align: center;
+}
+
+a:link.thisover{
+    color:white;
+    text-decoration: underline;
+}
+
+a:visited:thisover{
+    color: azure;
+    text-decoration: overline;
+}
+
+a:hover.thisover{
+    color: mistyrose;
+    text-decoration: none;
+}
+
+a:active.thisover{
+    color: brown;
+    text-decoration: none;
+}
+
+.search_out{
+    background-color:azure;
+    padding: 1%;
+    margin:  1%;
+    border-color: seashell;
+    border-width: medium;
+    border-style: solid;
+    
+}
+
+.search_main{
+    height: auto;
+    background-color: #FFF;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #dcdcdf;
+}
+
+.search_main_img{
+    float: left;
+    display:block;
+    padding: 3%;
+    
+}
+
+.search_main_div{
+    float:left;
+    text-align: left;
+}
+
+.hd_name{
+    text-align: left;
+    font-size: 19px;
+    padding: 3%;
+    margin-top: 10px;
+}
+
+.hd_creat{
+    text-align: left;
+    padding-top: 2%;
+    font-size: 14px;
+}
+
+.hd_label{
+    text-align: left;
+    padding-top: 2%;
+    font-size: 8px;
+}
+
+.hd_time, .hd_end{
+    padding: 1px;
+    margin: 2px;
+}
+
+.people_num{
+    float: right;
+    text-align: right;
+    font-size: 16px;
+}
+
+

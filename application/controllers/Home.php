@@ -17,6 +17,7 @@ class Home  extends CI_Controller
 
     public function index()
     {
+        $data['title'] = "个人主页";
         $hot_activity=$this->activity_model->get_activity_order_by_score(3);
         if(!empty($this->session['user_id']))
         {
