@@ -16,6 +16,12 @@ class Home  extends CI_Controller
 
     public function index()
     {
+        $data['title'] = "个人主页";
         $hot_activity=$this->activity_model->get_activity_order_by_score(3);
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/nav');
+        $this->load->view('index_page/index', $data);
+        $this->load->view('template/footer');
     }
 }

@@ -131,7 +131,7 @@ class User_model extends CI_Model
     {
         if ($array_for_user_info == null)
             return null;
-        if ($this->db->insert('first_label', array('name' => $array_for_user_info)) == false)
+        if ($this->db->insert('user', $array_for_user_info) == false)
             return false;
         return true;
     }

@@ -6,11 +6,24 @@
         <td rowspan=5 align="center">
             <!-- 使用php代码完成这部分数据的填写 -->
             <img align="center" width=100 height=100 src="image/01.png" alt="头像">
-            用户账号：123456@hotmail.com<br>
-            昵称：学习<br>
-            兴趣：学习，游戏<br>
-            联系电话：119120110<br>
-            QQ：12345678<br>
+                <table cellspacing="10px">
+                    <tr>
+                        <th>电子邮箱</th>
+                        <td><?php echo $single_item['email']; ?></a></td>
+                    </tr>
+                    <tr>
+                        <th>昵称</th>
+                        <td><?php echo $single_item['nick_name']; ?></a></td>
+                    </tr>
+                    <tr>
+                        <th>兴趣</th>
+                        <td><?php echo $single_item['interest']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>手机号</th>
+                        <td><?php echo $single_item['phone_number']; ?></td>
+                    </tr>
+                </table>
             <input type="button" value="Submit">
         </td>
     </tr>

@@ -28,6 +28,7 @@ class Login extends CI_Controller
                 $this->load->view('template/nav');
                 $this->load->view('index_page/index', $data);
                 $this->load->view('template/footer');
+                return;
             }
         }
 
@@ -40,13 +41,15 @@ class Login extends CI_Controller
 
     function form_process()
     {
-        $this->form_validation->set_rules('_email', 'Email', 'trim|htmlspecialchars|required|valid_email',
+        $this->form_validation->set_rules('_email', 'Email',
+            'trim|htmlspecialchars|required|valid_email',
             array(
                 'required' => 'Please provide your email address!',
                 'valid_email' => 'Email address is invalid!'
             ));
 
-        $this->form_validation->set_rules('_password', 'Password', 'trim|htmlspecialchars|required',
+        $this->form_validation->set_rules('_password', 'Password',
+            'trim|htmlspecialchars|required',
             array(
                 'required' => 'Please provide your password!'
             ));
