@@ -47,15 +47,52 @@
   background-color: #1a2b3c;
   border-radius: 100px 0 0 100px;
   height: 30px;
- 
+  transition:All 0.4s ease-in-out;
+  -webkit-transition:All 0.4s ease-in-out;
+  -moz-transition:All 0.4s ease-in-out;
+  -o-transition:All 0.4s ease-in-out;
 }
+
+.my_message_hd:hover { 
+  transform:translate(-100px,0);
+  -webkit-transform:translate(-100px,0);
+  -moz-transform:translate(-100px,0);
+  -o-transform:translate(-100px,0);
+  -ms-transform:translate(-100px,0);
+}
+.my_message_pl:hover { 
+  transform:translate(-50px,0);
+  -webkit-transform:translate(-50px,0);
+  -moz-transform:translate(-50px,0);
+  -o-transform:translate(-50px,0);
+  -ms-transform:translate(-50px,0);
+}
+
+.my_message_yq:hover { 
+  transform:translate(-150px,0);
+  -webkit-transform:translate(-150px,0);
+  -moz-transform:translate(-150px,0);
+  -o-transform:translate(-150px,0);
+  -ms-transform:translate(-150px,0);
+}
+.my_message_sh:hover { 
+  transform:translate(-120px,0);
+  -webkit-transform:translate(-120px,0);
+  -moz-transform:translate(-120px,0);
+  -o-transform:translate(-120px,0);
+  -ms-transform:translate(-120px,0);
+}
+
+
 .my_message_hd p,
 .my_message_yq p,.my_message_pl p,.my_message_sh p{
     font-size: 16px;
   color:#fff;
   margin-left: 7px;
   line-height: 30px;
+ 
 }
+
 .my_message_hd{
   margin-left: 100px;
   background-color: rgb(16,98,122);
