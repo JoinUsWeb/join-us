@@ -94,6 +94,7 @@ figure {
   margin: 1em 40px;
 }
 hr {
+  border:1px;
   height: 0;
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;
@@ -5686,9 +5687,9 @@ a.list-group-item-danger.active:focus {
 .embed-responsive-4by3 {
   padding-bottom: 75%;
 }
-.well {
+/*.well {
   min-height: 20px;
-  padding: 19px;
+  padding: 3px;
   margin-bottom: 20px;
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
@@ -5707,7 +5708,7 @@ a.list-group-item-danger.active:focus {
 .well-sm {
   padding: 9px;
   border-radius: 3px;
-}
+}*/
 .close {
   float: right;
   font-size: 21px;
