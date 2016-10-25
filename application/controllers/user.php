@@ -15,7 +15,11 @@ class User extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
-        $this->user_id = $_SESSION['user_id'];
+        if (isset($_SESSION['user_id'])) {
+            $this->user_id = $_SESSION['user_id'];
+        } else {
+            redirect('login');
+        }
     }
 
     /**
@@ -29,8 +33,10 @@ class User extends CI_Controller
         $row_activities_info = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
         $current_date = date("Y-m-d");
+        $data['activities_info'] = array();
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date = date_create($single_activity_info['time_expire'])->format("Y-m-d");
+            // 查看活动是否已经结束 结束代表已经参加过
             if (strtotime($current_date) > strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
             }
@@ -46,6 +52,7 @@ class User extends CI_Controller
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
 
+        $data['activities_info'] = null;
         $data['activities_info'] = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
 
@@ -95,8 +102,8 @@ class User extends CI_Controller
 
         $row_activities_info = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
-        $data['activities_info'] = array();
         $current_date = date("Y-m-d");
+        $data['activities_info'] = array();
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date = date_create($single_activity_info['time_expire'])->format("Y-m-d");
             if (strtotime($current_date) <= strtotime($activity_date)) {

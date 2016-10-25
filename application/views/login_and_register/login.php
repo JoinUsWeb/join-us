@@ -15,7 +15,7 @@
                 <label for="password" class="title">密码：</label>
                 <input type="password" id="password" name="_password" placeholder="请输入密码"
                        value="<?php echo set_value("_password"); ?>">
-                <?php echo form_error('_password','<span>','</span>')?>
+                <?php echo form_error('_password', '<span>', '</span>') ?>
             </li>
         </ul>
 

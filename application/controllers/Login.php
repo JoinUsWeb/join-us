@@ -12,7 +12,7 @@ class Login extends CI_Controller
     public function index()
     {
         $this->load->helper(array('form', 'url', 'cookie'));
-        $this->load->library(array("form_validation","session"));
+        $this->load->library(array("form_validation", "session"));
         $this->load->model('User_model');
         $data['title'] = "登录";
         $data['error'] = "";

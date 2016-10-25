@@ -106,13 +106,13 @@ $class_array = array(
                 <?php endif; ?>
                 <div class="<?php echo $class_array[$recommended_activity_count]; ?>">
                     <div class="thumbnail">
-                        <a href="<?php echo site_url("activity_detail/" . $single_activity["id"]) ?>">
+                        <a href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]) ?>">
                             <!-- 图片的路径未修改 应当修改-->
                             <img src="img/400X200.gif" alt="Thumbnail Image 1"
                                  class="img-responsive"></a>
                         <div class="caption">
                             <a class="hd_title_block"
-                               href="<?php echo site_url("activity_detail/" . $single_activity["id"]) ?>">
+                               href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]) ?>">
                                 <h3 class="hd_title"><?php echo $single_activity["name"]; ?></h3>
                             </a>
                             <hr>

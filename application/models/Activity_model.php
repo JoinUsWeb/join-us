@@ -54,12 +54,12 @@ class Activity_model extends CI_Model
         return $this->db->get('activity')->result_array();
     }
 
-    public function get_activity_order_by_score($limit=-1)
+    public function get_activity_order_by_score($limit = -1)
     {
-        if($limit<=0)
-            return $this->db->order_by('score','DESC')->get('activity')->result_array();
+        if ($limit <= 0)
+            return $this->db->order_by('score', 'DESC')->get('activity')->result_array();
         else
-            return $this->db->limit($limit)->order_by('score','DESC')->get('activity')->result_array();
+            return $this->db->limit($limit)->order_by('score', 'DESC')->get('activity')->result_array();
     }
 
     /**
@@ -189,7 +189,7 @@ class Activity_model extends CI_Model
     {
         if ($activity_info == null)
             return null;
-        $activity_info['member_number']=0;
+        $activity_info['member_number'] = 0;
         if ($this->db->insert('activity', $activity_info) == false)
             return false;
         return true;
