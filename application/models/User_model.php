@@ -17,6 +17,9 @@
  * 根据提供的 email   返回该用户信息的单行数组
  * public function get_user_by_email($email=-1)
  *
+ * 根据提供的 email   返回该用户的 id
+ * public function get_user_id_by_email($email = null)
+ *
  * 根据提供的用户 id  删除对应用户
  * public function remove_by_id($user_id=-1)
  *
@@ -29,7 +32,7 @@
 class User_model extends CI_Model
 {
 
-    public function validate_user($user_email= null, $user_password = null)
+    public function validate_user($user_email = null, $user_password = null)
     {
         if ($user_email == null && $user_password == null)
             return null;
@@ -92,6 +95,16 @@ class User_model extends CI_Model
         return $this->db->get_where('user', array('email' => $email))->row_array();
     }
 
+    public function get_user_id_by_email($email = null)
+    {
+        if ($email == null)
+            return null;
+        $user_info = $this->db->get_where('user', array('email' => $email))->row_array();
+        if ($user_info == false)
+            return false;
+        return $user_info['id'];
+    }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function remove_by_id($user_id = -1)
@@ -127,12 +140,13 @@ class User_model extends CI_Model
      * @param null $array_for_user_info
      * @return bool|null
      */
-    public function insert_new_user_info($array_for_user_info = null)
+    public function insert_new_user_info($array_for_user_info = null, &$user_id = null)
     {
         if ($array_for_user_info == null)
             return null;
         if ($this->db->insert('user', $array_for_user_info) == false)
             return false;
+        $user_id = $this->get_user_id_by_email($array_for_user_info['email']);
         return true;
     }
 

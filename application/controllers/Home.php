@@ -14,6 +14,7 @@ class Home  extends CI_Controller
         parent::__construct();
         $this->load->model('Activity_model');
         $this->load->model('First_label_model');
+        $this->load->model("User_and_first_label_model");
         $this->load->helper('url');
     }
 
