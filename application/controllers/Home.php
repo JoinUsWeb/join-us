@@ -19,9 +19,9 @@ class Home  extends CI_Controller
     {
         $data['title'] = "个人主页";
         $hot_activity=$this->activity_model->get_activity_order_by_score(3);
-        if(!empty($this->session['user_id']))
+        if(!empty($this->session->user_id))
         {
-            $user_id=$this->session['user_id'];
+            $user_id=$this->session->user_id;
             $recommended_activity=$this->get_recommended_activity($user_id);
         }
         else
