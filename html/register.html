@@ -71,11 +71,12 @@
 			<ul>
 				<li>
 					<label for="email" class="title">邮箱：</label>
-					<input type="email" id="email" name="email" placeholder="请输入邮箱" autocomplete="off" value=""><br>
+					<input type="email" id="email" name="email" placeholder="请输入邮箱" autocomplete="off" value="">
 				</li>
 				<li>
 					<label for="nickname" class="title">昵称：</label>
-					<input type="text" id="nickname" name="nickname" placeholder="请输入昵称"><br>
+					<input type="text" id="nickname" name="nickname" placeholder="请输入昵称" onchange="valide_nickname()">
+					<span id="nickname_error"></span>
 				</li>
 				<li>
 					<label for="password" class="title">密码：</label>
@@ -83,7 +84,8 @@
 				</li>
 				<li>
 					<label for="password2" class="title">确认密码：</label>
-					<input type="password" id="password2" name="password2" placeholder="请再次输入密码" value=""><br>
+					<input type="password" id="password2" name="password2" placeholder="请再次输入密码" value="" onchange="confirm_password()">
+					<span id="confirm_error"></span>
 				</li>
 				<li>
 					<label for="phone_number" class="title">手机号：</label>
@@ -92,7 +94,7 @@
 			</ul>
 
 			<p class="button">
-				<input type="submit" id="sign_up" value="注册">
+				<input type="submit" id="sign_up" value="注册" onclick="_submit()">
 			</p>
 
 			
@@ -103,6 +105,39 @@
 
 
 	</form>
-	
+<script>
+	function valide_nickname(){
+		var nickName = document.forms["form"]["nickname"].value;
+		if (nickName.indexOf(" ") != -1){
+			/*错误处理*/
+			document.getElementById("nickname_error").innerHTML = "昵称不合法！";
+			return false;
+		}
+		else{
+			document.getElementById("nickname_error").innerHTML = "";
+			return true;
+		}
+	}
+
+	function confirm_password(){
+		var password_to_confirm = document.forms["form"]["password2"].value;
+		var password = document.forms["form"]["password"].value;
+		if (password != password_to_confirm){
+			/*错误处理示例  如果验证不通过*/
+			document.getElementById("confirm_error").innerHTML ="两次密码输入不一致！";
+			return false;
+		}
+		else{
+			//如果验证通过  必须进行处理，否则原来的  错误提示  仍然会存在
+			document.getElementById("confirm_error").innerHTML ="";
+			return true;
+		}
+	}
+
+	function _submit(){
+		if (valide_nickname() && confirm_password())
+			document.getElementById("sign_up").submit();
+	}
+</script>>
 </body>
 </html>

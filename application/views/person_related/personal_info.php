@@ -9,19 +9,21 @@
                 <table cellspacing="10px">
                     <tr>
                         <th>电子邮箱</th>
-                        <td><?php echo $single_item['email']; ?></a></td>
+                        <td><?php echo $user_info['email']; ?></a></td>
                     </tr>
                     <tr>
                         <th>昵称</th>
-                        <td><?php echo $single_item['nick_name']; ?></a></td>
+                        <td><?php echo $user_info['nick_name']; ?></a></td>
                     </tr>
                     <tr>
                         <th>兴趣</th>
-                        <td><?php echo $single_item['interest']; ?></td>
+                        <td><?php foreach ($user_info['interest'] as $single_interest):
+                            echo $single_interest['name']."  ";
+                            endforeach;?></td>
                     </tr>
                     <tr>
                         <th>手机号</th>
-                        <td><?php echo $single_item['phone_number']; ?></td>
+                        <td><?php echo $user_info['phone_number']; ?></td>
                     </tr>
                 </table>
             <input type="button" value="Submit">

@@ -10,16 +10,18 @@ class Register extends CI_Controller
 {
     public function index()
     {
-        $this->load->helper(array('form', 'url', 'cookie', 'session'));
-        $this->load->library("form_validation");
+        $this->load->helper(array('form', 'url', 'cookie'));
+        $this->load->library(array("form_validation","session"));
         $this->load->model('User_model');
         $data['title'] = '注册';
         $data['error'] = "";
+        $user_id = -1;
 
         /* 此处应区别是第一次加载还是误按注册键  并未实现*/
-        if ($this->form_process() == null) {
+        if ($this->form_process($user_id) == null) {
             setcookie('email', set_value('_email'));
             setcookie('password', set_value('_password'));
+            $this->session->set_userdata('user_id',$user_id);
             redirect('home');
             return;
         }
@@ -31,7 +33,7 @@ class Register extends CI_Controller
 
     }
 
-    function form_process()
+    function form_process(&$user_id)
     {
         $this->form_validation->set_rules('_email', 'Email',
             'trim|htmlspecialchars|required|valid_email',
@@ -75,7 +77,7 @@ class Register extends CI_Controller
                 'phone_number' => set_value('_phoneNumber'),
                 'nick_name' => set_value('_nickName')
             );
-            if ($this->User_model->insert_new_user_info($user_data) == true)
+            if ($this->User_model->insert_new_user_info($user_data,$user_id) == true)
                 return null;
         }
     }

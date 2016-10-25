@@ -8,12 +8,11 @@
  */
 class Login extends CI_Controller
 {
-    var $count = 0;
 
     public function index()
     {
         $this->load->helper(array('form', 'url', 'cookie'));
-        $this->load->library("form_validation");
+        $this->load->library(array("form_validation","session"));
         $this->load->model('User_model');
         $data['title'] = "登录";
         $data['error'] = "";
@@ -21,7 +20,11 @@ class Login extends CI_Controller
         if ($this->form_process() == null) {
             setcookie('email', set_value('_email'));
             setcookie('password', set_value('_password'));
+            $user_id = $this->User_model->get_user_id_by_email(set_value('_email'));
 
+            $this->session->set_userdata(array(
+                'user_id' => $user_id,
+            ));
             redirect('home');
             return;
         }

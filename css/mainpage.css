@@ -1,0 +1,206 @@
+.messagebox {
+  min-height: 20px;
+  overflow: hidden;
+  margin: 18px 0 20px 0;
+  background-color: #fff;
+  
+  border-radius: 4px;
+  /*border: 1px solid #e3e3e3;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);*/
+}
+.messagebox blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, .15);
+}
+.messagebox-lg {
+  padding: 24px;
+  border-radius: 6px;
+}
+.messagebox-sm {
+  padding: 9px;
+  border-radius: 3px;
+}
+.my_message{
+  width:500px;
+  background-color: #1a2b3c;
+  border-radius: 100px 0 0 100px;
+  height: 40px;
+  
+}
+
+.my_message p{
+  font-size: 22px;
+  color:#fff;
+  margin-left: 92px;
+  line-height: 40px;
+}
+.messagebox i{
+
+  color: #fff;
+}
+.my_message_hd,
+.my_message_yq,.my_message_pl,.my_message_sh{
+  margin-top: 10px;
+  font-size: 18px;
+  width:500px;
+  background-color: #1a2b3c;
+  border-radius: 100px 0 0 100px;
+  height: 30px;
+  transition:All 0.4s ease-in-out;
+  -webkit-transition:All 0.4s ease-in-out;
+  -moz-transition:All 0.4s ease-in-out;
+  -o-transition:All 0.4s ease-in-out;
+}
+
+.my_message_hd:hover { 
+  transform:translate(-100px,0);
+  -webkit-transform:translate(-100px,0);
+  -moz-transform:translate(-100px,0);
+  -o-transform:translate(-100px,0);
+  -ms-transform:translate(-100px,0);
+}
+.my_message_pl:hover { 
+  transform:translate(-50px,0);
+  -webkit-transform:translate(-50px,0);
+  -moz-transform:translate(-50px,0);
+  -o-transform:translate(-50px,0);
+  -ms-transform:translate(-50px,0);
+}
+
+.my_message_yq:hover { 
+  transform:translate(-150px,0);
+  -webkit-transform:translate(-150px,0);
+  -moz-transform:translate(-150px,0);
+  -o-transform:translate(-150px,0);
+  -ms-transform:translate(-150px,0);
+}
+.my_message_sh:hover { 
+  transform:translate(-120px,0);
+  -webkit-transform:translate(-120px,0);
+  -moz-transform:translate(-120px,0);
+  -o-transform:translate(-120px,0);
+  -ms-transform:translate(-120px,0);
+}
+
+
+.my_message_hd p,
+.my_message_yq p,.my_message_pl p,.my_message_sh p{
+    font-size: 16px;
+  color:#fff;
+  margin-left: 7px;
+  line-height: 30px;
+ 
+}
+
+.my_message_hd{
+  margin-left: 100px;
+  background-color: rgb(16,98,122);
+}
+.my_message_pl{
+  margin-left: 50px;
+  background-color: rgb(63,136,20);
+}
+.my_message_yq{
+  margin-left: 150px;
+  background-color: rgb(211,233,88);
+}
+.my_message_sh{
+  margin-left: 120px;
+  background-color: rgb(77,177,3);
+}
+
+.well {
+  min-height: 20px;
+  padding: 0;
+ overflow: hidden;
+  background-color: #f5f5f5;
+  /*border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);*/
+}
+/*.well blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, .15);
+}*/
+.well-lg {
+  padding: 24px;
+  border-radius: 6px;
+}
+.well-sm {
+  padding: 9px;
+  border-radius: 3px;
+}
+
+.hot_hd{
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  border-bottom: 0;
+  height: 45px;
+  overflow: hidden;
+}
+.hot_hd p{
+  font-size: 22px;
+  color:black;
+  margin-left: 92px;
+  line-height: 45px;
+}
+.hot_hd_content{
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  padding: 2px;
+}
+.hot_hd_content ul{
+  margin-left: -40px;
+}
+.hot_hd_content li{
+  margin:10px 10px;
+  border: 1px solid #1a2b3c;
+
+}
+.li_right,.li_left{
+  float: left;
+  overflow: hidden;
+}
+.li_right{
+  padding-top:2px;
+  width: 186px;
+}
+.content_li{
+  height: 70px;
+  width: 256px;
+ 
+  margin:10px 0;
+}
+.content_li h5,.content_li p{
+  width: 180px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 20px;
+ 
+}
+.content_li p{
+color: black;
+}
+
+
+a.li_right_title{
+ text-decoration: none;
+ color: rgb(51,51,51);
+ }
+
+a.li_right_title:visited {
+ text-decoration: none;
+ }
+a.li_right_title:hover {
+ text-decoration: none;
+ color:rgb(100,149,237);
+ }
+a.li_right_title:active {
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: bold;
+ }
