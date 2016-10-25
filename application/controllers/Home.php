@@ -8,20 +8,22 @@
  */
 class Home  extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('activity_model');
-        $this->load->model('first_label_model');
+        $this->load->model('Activity_model');
+        $this->load->model('First_label_model');
+        $this->load->helper('url');
     }
 
     public function index()
     {
         $data['title'] = "个人主页";
-        $hot_activity=$this->activity_model->get_activity_order_by_score(3);
-        if(!empty($this->session['user_id']))
+        $hot_activity=$this->Activity_model->get_activity_order_by_score(3);
+        $user_id = $_SESSION['user_id'];
+        if($user_id != null)
         {
-            $user_id=$this->session['user_id'];
             $recommended_activity=$this->get_recommended_activity($user_id);
         }
         else
@@ -42,10 +44,10 @@ class Home  extends CI_Controller
     public function get_recommended_activity($user_id)
     {
         $activity=array();
-        $first_label=$this->user_and_first_label_model->get_first_label_by_user_id($user_id);
+        $first_label=$this->User_and_first_label_model->get_first_label_by_user_id($user_id);
         foreach ($first_label as $first_label_item)
         {
-            $activity_part=$this->activity_model->get_activity_by_first_label_id($first_label_item['id']);
+            $activity_part=$this->Activity_model->get_activity_by_first_label_id($first_label_item['id']);
             $activity=array_merge($activity,$activity_part);
         }
         return $activity;

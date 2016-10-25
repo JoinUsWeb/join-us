@@ -8,7 +8,6 @@
  */
 class Login extends CI_Controller
 {
-    var $count = 0;
 
     public function index()
     {
@@ -21,7 +20,11 @@ class Login extends CI_Controller
         if ($this->form_process() == null) {
             setcookie('email', set_value('_email'));
             setcookie('password', set_value('_password'));
+            $user_info = $this->User_model->get_user_by_email(set_value('_email'));
 
+            $this->session->set_userdata(array(
+                'user_id' => $user_info['id']
+            ));
             redirect('home');
             return;
         }
