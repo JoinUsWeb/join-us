@@ -78,7 +78,7 @@ class User extends CI_Controller
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
 
-        //需修改
+        //需修改  没有判断是否是收藏了
         $data['activities_info'] = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
 
@@ -95,6 +95,7 @@ class User extends CI_Controller
 
         $row_activities_info = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
+        $data['activities_info'] = array();
         $current_date = date("Y-m-d");
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date = date_create($single_activity_info['time_expire'])->format("Y-m-d");

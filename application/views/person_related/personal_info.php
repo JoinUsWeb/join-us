@@ -17,7 +17,9 @@
                     </tr>
                     <tr>
                         <th>兴趣</th>
-                        <td><?php echo $user_info['interest']; ?></td>
+                        <td><?php foreach ($user_info['interest'] as $single_interest):
+                            echo $single_interest['name']."  ";
+                            endforeach;?></td>
                     </tr>
                     <tr>
                         <th>手机号</th>

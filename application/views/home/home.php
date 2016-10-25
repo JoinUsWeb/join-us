@@ -21,29 +21,29 @@ $class_array = array(
                     <li data-target="#carousel-299058" data-slide-to="1" class="active"></li>
                     <li data-target="#carousel-299058" data-slide-to="2" class=""></li>
                 </ol>
-                <div class="carousel-inner">
+                <!--<div class="carousel-inner">
                     <div class="item">
                         <img class="img-responsive"
                              src="<?php echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
                              alt="thumb">
                         <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div>
+                $hot_activity_count++; ?></div>
                     </div>
                     <div class="item active">
                         <img class="img-responsive"
                              src="<?php echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
                              alt="thumb">
                         <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div>
+                $hot_activity_count++; ?></div>
                     </div>
                     <div class="item">
                         <img class="img-responsive"
                              src="<?php echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
                              alt="thumb">
                         <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div>
+                $hot_activity_count++; ?></div>
                     </div>
-                </div>
+                </div>-->
                 <?php $hot_activity_count = 0; ?>
                 <a class="left carousel-control" href="#carousel-299058" data-slide="prev"><span
                         class="icon-prev"></span></a> <a class="right carousel-control" href="#carousel-299058"
@@ -100,196 +100,197 @@ $class_array = array(
                 </div>
             -->
             </div>
-            <?php foreach ($recommended_activity as $single_activity) : ?>
-                <?php foreach ($class_array as $single_class) :
-                    if ($recommended_activity_count % 3 == 0): ?>
-                        <div class="row">
-                    <?php endif; ?>
-                    <div class="<?php echo $single_class; ?>">
-                        <div class="thumbnail">
-                            <a href="<?php echo site_url("activity_detail/" . $single_class["id"]) ?>">
-                                <!-- 图片的路径未修改 应当修改-->
-                                <img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                     class="img-responsive"></a>
-                            <div class="caption">
-                                <a class="hd_title_block"
-                                   href="<?php echo site_url("activity_detail/" . $single_class["id"]) ?>">
-                                    <h3 class="hd_title"><?php echo $recommended_activity["name"]; ?></h3>
-                                </a>
-                                <hr>
-                                <!-- 此处应放什么时间？ -->
-                                <p>
-                                    <i class="icon-time icon-large"></i><?php echo $recommended_activity["time_expire"]; ?>
-                                </p>
-                                <p>
-                                    <i class="icon-map-marker icon-large"></i><?php echo $recommended_activity["place"]; ?>
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <?php $recommended_activity_count++;
-                    if ($recommended_activity_count % 3 == 0): ?>
-                        </div>
-                    <?php endif;
-                endforeach;
-            endforeach; ?>
-            <hr>
-            <div>
-                <div>
-                    <h3>热门活动</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                        <div class="thumbnail">
-                            <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                                  class="img-responsive"></a>
-                            <div class="caption">
-                                <a class="hd_title_block" href="html/details_page.html">
-                                    <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                                </a>
-                                <hr>
-                                <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                                <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                        <div class="thumbnail">
-                            <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                                  class="img-responsive"></a>
-                            <div class="caption">
-                                <a class="hd_title_block" href="html/details_page.html">
-                                    <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                                </a>
-                                <hr>
-                                <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                                <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs">
-                        <div class="thumbnail">
-                            <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                                  class="img-responsive"></a>
-                            <div class="caption">
-                                <a class="hd_title_block" href="html/details_page.html">
-                                    <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                                </a>
-                                <hr>
-                                <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                                <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                        <div class="thumbnail">
-                            <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                                  class="img-responsive"></a>
-                            <div class="caption">
-                                <a class="hd_title_block" href="html/details_page.html">
-                                    <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                                </a>
-                                <hr>
-                                <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                                <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                        <div class="thumbnail">
-                            <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                                  class="img-responsive"></a>
-                            <div class="caption">
-                                <a class="hd_title_block" href="html/details_page.html">
-                                    <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                                </a>
-                                <hr>
-                                <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                                <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
-                        <div class="thumbnail">
-                            <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                                  class="img-responsive"></a>
-                            <div class="caption">
-                                <a class="hd_title_block" href="html/details_page.html">
-                                    <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                                </a>
-                                <hr>
-                                <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                                <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
-            <div class="well">
-                <h3 class="text-center">我的消息</h3>
-                <hr>
-                <div>
-                    <ul>
-                        <li>
-                            <img src="" alt="photo">
-                            <p>交作品</p><br>
-                            <p>时间：2016-11-7</p><br>
-                        </li>
-                        <li>
-                            <img src="" alt="photo">
-                            <p>交作品</p><br>
-                            <p>时间：2016-11-7</p><br>
-                        </li>
-                        <li>
-                            <img src="" alt="photo">
-                            <p>交作品</p><br>
-                            <p>时间：2016-11-7</p><br>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <div class="well">
-                <h3 class="text-center">热门活动</h3>
-                <hr>
-                <div>
-                    <ul>
-                        <li>
-                            <img src="" alt="photo">
-                            <p>院运会</p>
-                        </li>
-                        <li>
-                            <a href="html/details_page.html">
-                                <img src="" alt="photo">
-                                <p>创新创业大赛</p>
+            <?php foreach ($recommended_activity as $single_activity) :
+                if ($recommended_activity_count % 3 == 0): ?>
+                    <div class="row">
+                <?php endif; ?>
+                <div class="<?php echo $class_array[$recommended_activity_count]; ?>">
+                    <div class="thumbnail">
+                        <a href="<?php echo site_url("activity_detail/" . $single_activity["id"]) ?>">
+                            <!-- 图片的路径未修改 应当修改-->
+                            <img src="img/400X200.gif" alt="Thumbnail Image 1"
+                                 class="img-responsive"></a>
+                        <div class="caption">
+                            <a class="hd_title_block"
+                               href="<?php echo site_url("activity_detail/" . $single_activity["id"]) ?>">
+                                <h3 class="hd_title"><?php echo $single_activity["name"]; ?></h3>
                             </a>
+                            <hr>
+                            <!-- 此处应放什么时间？ -->
+                            <p>
+                                <i class="icon-time icon-large"></i><?php echo $single_activity["time_expire"]; ?>
+                            </p>
+                            <p>
+                                <i class="icon-map-marker icon-large"></i><?php echo $single_activity["place"]; ?>
+                            </p>
 
-                        </li>
-                        <li>
-                            <img src="" alt="photo">
-                            <p>可怕的辅修</p>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                </div>
+                <?php $recommended_activity_count++;
+                if ($recommended_activity_count % 3 == 0): ?>
+                    </div>
+                <?php endif;
+            endforeach;
+            if ($recommended_activity_count % 3 != 0) : ?>
+        </div>
+        <?php endif; ?>
+        <hr>
+        <div>
+            <div>
+                <h3>热门活动</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
+                                                              class="img-responsive"></a>
+                        <div class="caption">
+                            <a class="hd_title_block" href="html/details_page.html">
+                                <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
+                            </a>
+                            <hr>
+                            <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
+                            <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
+                                                              class="img-responsive"></a>
+                        <div class="caption">
+                            <a class="hd_title_block" href="html/details_page.html">
+                                <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
+                            </a>
+                            <hr>
+                            <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
+                            <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs">
+                    <div class="thumbnail">
+                        <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
+                                                              class="img-responsive"></a>
+                        <div class="caption">
+                            <a class="hd_title_block" href="html/details_page.html">
+                                <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
+                            </a>
+                            <hr>
+                            <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
+                            <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
+
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
+                                                              class="img-responsive"></a>
+                        <div class="caption">
+                            <a class="hd_title_block" href="html/details_page.html">
+                                <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
+                            </a>
+                            <hr>
+                            <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
+                            <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                    <div class="thumbnail">
+                        <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
+                                                              class="img-responsive"></a>
+                        <div class="caption">
+                            <a class="hd_title_block" href="html/details_page.html">
+                                <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
+                            </a>
+                            <hr>
+                            <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
+                            <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+                    <div class="thumbnail">
+                        <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
+                                                              class="img-responsive"></a>
+                        <div class="caption">
+                            <a class="hd_title_block" href="html/details_page.html">
+                                <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
+                            </a>
+                            <hr>
+                            <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
+                            <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
 
     </div>
+
+    <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+        <div class="well">
+            <h3 class="text-center">我的消息</h3>
+            <hr>
+            <div>
+                <ul>
+                    <li>
+                        <img src="" alt="photo">
+                        <p>交作品</p><br>
+                        <p>时间：2016-11-7</p><br>
+                    </li>
+                    <li>
+                        <img src="" alt="photo">
+                        <p>交作品</p><br>
+                        <p>时间：2016-11-7</p><br>
+                    </li>
+                    <li>
+                        <img src="" alt="photo">
+                        <p>交作品</p><br>
+                        <p>时间：2016-11-7</p><br>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="well">
+            <h3 class="text-center">热门活动</h3>
+            <hr>
+            <div>
+                <ul>
+                    <li>
+                        <img src="" alt="photo">
+                        <p>院运会</p>
+                    </li>
+                    <li>
+                        <a href="html/details_page.html">
+                            <img src="" alt="photo">
+                            <p>创新创业大赛</p>
+                        </a>
+
+                    </li>
+                    <li>
+                        <img src="" alt="photo">
+                        <p>可怕的辅修</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
 </div>
 
 
