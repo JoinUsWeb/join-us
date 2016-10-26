@@ -18,7 +18,7 @@ body{
 }
 
 .personal_main{
-    width: 70%;
+    width: 500px;
     height: 70%;
     padding: 2%;
     margin: 1px;
@@ -54,7 +54,7 @@ body{
     float: left;
     margin: none;
     padding:none;
-    width: 50%;
+    width: 400px;
     text-align: left;
 }
 
@@ -73,9 +73,10 @@ body{
 }
 
 .hd_present{
-    float: none;
-    padding: 2%;
-    margin: 0;
+    float: left;
+    padding: 10px;
+    margin: 15px;
+    width: 220px;
     border:1px;
     border-style: dotted;
     border-bottom-style: dotted;
@@ -83,6 +84,8 @@ body{
 
 .hd_details{
     float: none;
+    padding: 2px;
+    margin: 4px;
     text-align: left;
     padding-left: 10px;
 }
@@ -93,13 +96,14 @@ body{
 }
 
 .hd_img{
-    width: 160px;
-    height: 80px;
+    width: 200px;
+    height: 100px;
 }
 
 .hd_title{
     padding: 0;
     margin: 0;
+    font-size: 20px;
 }
 .Clear{
     clear:both;
