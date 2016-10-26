@@ -44,7 +44,7 @@ class Create_activity extends CI_Controller
             $this->load->view('template/header', $data);
             $this->load->view('template/nav');
             $this->load->view('activity_related/create_activity', $data);
-            $this->load->view('template/header');
+            $this->load->view('template/footer');
         } else if (!$this->upload->do_upload('poster')) {
             if ($this->upload->error_msg[0] != 'You did not select a file to upload.') {
                 $data = array('error' => $this->upload->display_errors(), 'title' => 'create activity');
