@@ -81,6 +81,7 @@ select{
 textarea{
 	width: 650px;
 	height: 300px;
+	resize: none;
 	line-height: 20px;
 	margin: 0 30px;	
 	padding-left: 17px;

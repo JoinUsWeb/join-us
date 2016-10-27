@@ -76,6 +76,7 @@
 				<li>
 					<label for="nickname" class="title">昵称：</label>
 					<input type="text" id="nickname" name="nickname" placeholder="请输入昵称" onchange="valide_nickname()">
+					<br>
 					<span id="nickname_error"></span>
 				</li>
 				<li>
@@ -85,6 +86,7 @@
 				<li>
 					<label for="password2" class="title">确认密码：</label>
 					<input type="password" id="password2" name="password2" placeholder="请再次输入密码" value="" onchange="confirm_password()">
+					<br>
 					<span id="confirm_error"></span>
 				</li>
 				<li>
@@ -138,6 +140,9 @@
 		if (valide_nickname() && confirm_password())
 			document.getElementById("sign_up").submit();
 	}
-</script>>
+</script>
+	<script src="js/jquery-1.11.2.min.js"></script> 
+	<!-- Include all compiled plugins (below), or include individual files as needed --> 
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
