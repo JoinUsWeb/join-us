@@ -7,15 +7,17 @@
 */
 .frame{
     padding: 1%;
-    border-color: seashell;
+    border-color:cornflowerblue;
     border-width: medium;
     border-style: solid;
     margin: 1%;
     overflow-x:hidden;
     overflow-y: hidden;
     margin-bottom: auto;
-    background-color: grey;
+    background-color:cornflowerblue;
         color:white
+                border: 1px solid rgb(221,221,221);
+	border-radius: 5px;
 }
 
 .title{
@@ -34,8 +36,9 @@
 }
 
 .searching li{
+    padding: 5px;
     width: 88px;
-    height:5%;
+    height:29px;
     float: left;
     margin-right: 2px;
     display: block;
@@ -44,12 +47,12 @@
 
 a:link.thisover{
     color:white;
-    text-decoration: underline;
+    text-decoration:none;
 }
 
 a:visited:thisover{
     color: azure;
-    text-decoration: overline;
+    text-decoration: none;
 }
 
 a:hover.thisover{
@@ -67,24 +70,28 @@ a:active.thisover{
     padding: 1%;
     margin:  1%;
     border-color: seashell;
-    border-width: medium;
-    border-style: solid;
+        border: 1px solid rgb(221,221,221);
+	border-radius: 5px;
     
 }
 
 .search_main{
-    height: auto;
+    width: 500px
+    height:180px;
     background-color: #FFF;
     position: relative;
     overflow: hidden;
     margin-bottom: 20px;
-    border: 1px solid #dcdcdf;
+    margin-top: 0;
+    border: 1px solid rgb(221,221,221);
+	border-radius: 5px;;
 }
 
 .search_main_img{
+    margin-top: 20px;
     float: left;
     display:block;
-    padding: 3%;
+    padding: 15px;
     
 }
 
@@ -101,12 +108,14 @@ a:active.thisover{
 }
 
 .hd_creat{
+    padding: 8px;
     text-align: left;
     padding-top: 2%;
     font-size: 14px;
 }
 
 .hd_label{
+    padding-left: 8px;
     text-align: left;
     padding-top: 2%;
     font-size: 8px;
@@ -118,9 +127,10 @@ a:active.thisover{
 }
 
 .people_num{
-    float: right;
+    padding: 1px;
+    margin: 2px;
+    float: left;
     text-align: right;
-    font-size: 16px;
 }
 
 

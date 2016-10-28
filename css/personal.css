@@ -10,7 +10,6 @@ body{
     padding: 3%;
     margin-left: 2.01%;
     float: left;
-    background-color: #222;
     border-color: #080808;
     border-bottom-style:none;
     border: 1px solid rgb(221,221,221);
@@ -18,12 +17,10 @@ body{
 }
 
 .personal_main{
-    width: 500px;
-    height: 70%;
-    padding: 2%;
-    margin: 1px;
+    width: 800px;
+    padding: 2px;
+    margin: 2px;
     float: left;
-    background-color: antiquewhite;
     border: 1px solid rgb(221,221,221);
 	border-radius: 5px;
 }
@@ -50,15 +47,21 @@ body{
     padding-top: 16px;
 }
 
+.head_portrait img{
+    border:1px solid #000;
+}
+
 .p_data{
     float: left;
-    margin: none;
-    padding:none;
-    width: 400px;
+    margin: 10px;
+    padding:0;
+    width: 700px;
     text-align: left;
 }
 
 .p_data li{
+    width: 300px;
+    float: left;
     padding: 10px;
     margin: none;
     overflow-x: hidden;
@@ -75,11 +78,10 @@ body{
 .hd_present{
     float: left;
     padding: 10px;
-    margin: 15px;
+    margin: 2px;
     width: 220px;
-    border:1px;
-    border-style: dotted;
-    border-bottom-style: dotted;
+        border: 1px solid rgb(221,221,221);
+	border-radius: 5px;
 }
 
 .hd_details{
@@ -128,3 +130,98 @@ a:active.thisover{
     color: brown;
     text-decoration: none;
 }
+
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+.group_gg{
+    margin:2px;
+	padding: 2px;
+	height: 200px;
+    float: left;
+    width: 800px;
+    border: 1px solid rgb(221,221,221);
+	border-radius: 5px;
+}
+
+.group_member{
+        margin:2px;
+	padding: 2px;
+	height: auto;
+    float: left;
+    width: 800px;
+    border: 1px solid rgb(221,221,221);
+	border-radius: 5px;
+}
+
+.gg_present{
+    padding-left: 5px;
+    margin: 10px;
+}
+
+.gg_review_main{
+    width: 200px; 
+height: 100px; 
+max-width: 200px; 
+max-height: 100px; 
+}
+
+.member_review_list{
+	margin:0;
+	padding: 0;
+	height: 150px;
+}
+.member_review_main{
+	float: left;
+}
+.member_review_person{
+	margin:5px;
+}
+ .person_id_name h5{
+text-align: center;
+font-size: 15px;
+ }
+.person_id_name a{
+ text-decoration: none;
+ color: rgb(51,51,51);
+ }
+
+.person_id_name a:visited {
+ text-decoration: none;
+ }
+.person_id_name a:hover {
+ text-decoration: none;
+ color:rgb(100,149,237);
+ }
+.person_id_name a:active {
+ text-decoration: none;
+ font-size: 14px;
+ font-weight: bold;
+ }

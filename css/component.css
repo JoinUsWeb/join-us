@@ -1,24 +1,26 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot');
-	src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/icomoon.woff') format('woff'),
-		url('../fonts/icomoon.ttf') format('truetype'),
-		url('../fonts/icomoon.svg#icomoon') format('svg');
+	src:url('../font/icomoon.eot');
+	src:url('../font/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../font/icomoon.woff') format('woff'),
+		url('../font/icomoon.ttf') format('truetype'),
+		url('../font/icomoon.svg#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 .dr-menu {
 	width: 100%;
-	max-width: 400px;
-	min-width: 300px;
+	max-width: 300px;
+	min-width: 250px;
 	position: relative;
 	font-size: 1.3em;
 	line-height: 2.5;
 	font-weight: 400;
-	color: #fff;
+	color: #000;
 	padding-top: 2em;
+        border: 1px solid rgb(221,221,221);
+	border-radius: 5px;
 }
 
 .dr-menu > div  {
@@ -41,7 +43,7 @@
 }
 
 .dr-menu.dr-menu-open > div .dr-icon {
-	color: #60a773;
+	color: #000;
 	left: 100%;
 	-webkit-transform: translateX(-100%);
 	-moz-transform: translateX(-100%);
@@ -66,7 +68,7 @@
 	padding-left: 3em;
 	position: relative;
 	display: block;
-	color: #60a773;
+	color: #000;
 	font-size: 0.9em;
 	font-weight: 700;
 	letter-spacing: 1px;
@@ -158,11 +160,11 @@
 .dr-menu ul li a {
 	display: inline-block;
 	padding: 0 20px;
-	color: #fff;
+	color:#000;
 }
 
 .dr-menu ul li a:hover {
-	color: #60a773;
+	color: #000;
 }
 
 .dr-icon:before, 

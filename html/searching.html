@@ -5,6 +5,7 @@
   <title>searching</title>
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/searching.css">
+  <link rel="stylesheet" href="../css/mainpage.css">
 </head>
 
 <body>
@@ -90,6 +91,8 @@
 
 <!-- /搜索主页开始 -->
 <div class="container">
+  <div class="row">
+    <div class="col-lg-9 col-md-12">
   <div class="search_out" id="search_out">
     <div class="search_main">
       <div class="search_main_img"><a href="details_page.html"><img width="200" height="100" src="../img/400X200.gif"  alt="活动名称" ></a></div>
@@ -102,7 +105,35 @@
         </div>
         <div class="hd_time"><img width=20 height=20 src="../img/time.png">活动时间：2016/11/11
         </div>
-        <div class="hd_end"><img width=20 height=20 src="../img/time.png">报名截止时间：2016/11/1
+        <div class="people_num"><img width=20 height=20 src="../img/local.png">参与人数/计划人数：1/200
+        </div>
+      </div>
+    </div>
+        <div class="search_main">
+      <div class="search_main_img"><a href="details_page.html"><img width="200" height="100" src="../img/400X200.gif"  alt="活动名称" ></a></div>
+      <div class="search_main_div">
+        <div class="hd_name"><a href="details_page.html">活动名称：2333</a>
+        </div>
+        <div class="hd_creat"><a href="personal.html">活动发布者：华东师范大学</a>
+        </div>
+        <div class="hd_label">兴趣标签：学习
+        </div>
+        <div class="hd_time"><img width=20 height=20 src="../img/time.png">活动时间：2016/11/11
+        </div>
+        <div class="people_num"><img width=20 height=20 src="../img/local.png">参与人数/计划人数：1/200
+        </div>
+      </div>
+    </div>
+        <div class="search_main">
+      <div class="search_main_img"><a href="details_page.html"><img width="200" height="100" src="../img/400X200.gif"  alt="活动名称" ></a></div>
+      <div class="search_main_div">
+        <div class="hd_name"><a href="details_page.html">活动名称：2333</a>
+        </div>
+        <div class="hd_creat"><a href="personal.html">活动发布者：华东师范大学</a>
+        </div>
+        <div class="hd_label">兴趣标签：学习
+        </div>
+        <div class="hd_time"><img width=20 height=20 src="../img/time.png">活动时间：2016/11/11
         </div>
         <div class="people_num"><img width=20 height=20 src="../img/local.png">参与人数/计划人数：1/200
         </div>
@@ -119,8 +150,6 @@
         </div>
         <div class="hd_time"><img width=20 height=20 src="../img/time.png">活动时间：2016/11/11
         </div>
-        <div class="hd_end"><img width=20 height=20 src="../img/time.png">报名截止时间：2016/11/1
-        </div>
         <div class="people_num"><img width=20 height=20 src="../img/local.png">参与人数/计划人数：1/200
         </div>
       </div>
@@ -128,7 +157,89 @@
   </div>
 </div>
 
-<!-- /搜索主页结束 -->
+    
 
-</body>
-</html>
+<!-- /搜索主页结束 -->
+    
+    
+
+    <!--<div class="sidebar">-->
+    <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+      <div class="changeheight"></div>
+      <div class="sidebar_hot">
+       <div class="well">
+        <div class="hot_hd">
+          <p>热门活动</p>
+        </div>
+        
+        <div class="hot_hd_content">
+
+          <div class="content_li">
+            <div class="li_left">
+              <a href="html/details_page.html" ><img src="../img/01.png" alt="" width="70px" height="70px"></a>
+            </div>
+            <div class="li_right">
+              <a class="li_right_title" href="html/details_page.html"><h5>校运会</h5></a>
+              <p>2016-11-2 9:00</p>
+            </div>
+          </div>
+          
+
+
+          <div class="content_li">
+            <div class="li_left">
+              <a href="html/details_page.html" ><img src="../img/01.png" alt="" width="70px" height="70px"></a>
+            </div>
+            <div class="li_right">
+              <a class="li_right_title" href="html/details_page.html"><h5>华东师范大学第二届创新创业大赛</h5></a>
+              <p>2016-11-23 13:00</p>
+            </div>
+          </div>
+
+
+          <div class="content_li">
+            <div class="li_left">
+              <a href="html/details_page.html" ><img src="../img/01.png" alt="" width="70px" height="70px"></a>
+            </div>
+            <div class="li_right">
+              <a class="li_right_title" href="html/details_page.html"><h5>可怕的辅修</h5></a>
+              <p>2016-10-28 18:00</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+          </div>
+    </div>
+    
+ <hr>
+
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright © MyWebsite. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../js/jquery-1.11.2.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/stickUp.min.js"></script>
+<script type="text/javascript">
+              //initiating jQuery
+              jQuery(function($) {
+                $(document).ready( function() {
+                  //enabling stickUp on the '.navbar-wrapper' class
+                  $('.sidebar_hot').stickUp();
+                });
+              });
+
+            </script>
+          </body>
+          </html>
