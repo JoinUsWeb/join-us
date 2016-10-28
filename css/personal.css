@@ -225,3 +225,28 @@ font-size: 15px;
  font-size: 14px;
  font-weight: bold;
  }
+
+/*我的消息部分css*/
+.per_message{
+    float: left;
+}
+.per_message_block{
+    margin: 30px;
+    width: 700px;
+}
+.per_message_title h5{
+    font-size: 20px;
+    font-weight: 500;
+    color: #60a773;
+}
+.message_bar{
+    border-top: 1px solid #60a773;
+
+}
+.message_bar li{
+    color: black;
+    font-size: 16px;
+    line-height: 40px;
+
+}
+/*我的消息部分css结束/
