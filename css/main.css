@@ -24,7 +24,7 @@
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	display: none;
-	cursor: pointer;
+	
 	border-radius: 0.2em;
 }
 #tiles li img{
@@ -180,3 +180,5 @@ footer a {
   color: #ccc;
   border: 1px #e4e4e4 solid;
 }
+#thumbs {position: relative; width: 895px; padding: 10px; }
+.imgbox {position: absolute; }

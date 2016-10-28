@@ -1,7 +1,10 @@
+.changeheight{
+  margin-bottom: -72px;
+}
 .messagebox {
   min-height: 20px;
   overflow: hidden;
-  margin: 18px 0 20px 0;
+  margin: 18px 0 -52px 0;
   background-color: #fff;
   
   /*border-radius: 4px;
@@ -133,7 +136,9 @@
   padding: 9px;
   border-radius: 3px;
 }
-
+.sidebar_hot{
+  margin-top: 72px;
+}
 .hot_hd{
   background-color: #fff;
   /*border: 1px solid #e3e3e3;*/
