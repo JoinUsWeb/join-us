@@ -387,6 +387,7 @@
 	<script src="js/jquery.imagesloaded.js"></script>
 	<script src="js/jquery.wookmark.js"></script>
 	<script type="text/javascript">
+	var count=1;
 		(function ($){
 			var $tiles = $('#tiles'),
 			$handler = $('li', $tiles),
@@ -433,6 +434,10 @@
 		        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
 		        
 		        if (closeToBottom) {
+		        	count++;
+		        	if(count>20){
+		        		return;
+		        	}
 		          // Get the first then items from the grid, clone them, and add them to the bottom of the grid
 		          var $items = $('li', $tiles),
 		          $firstTen = $items.slice(0, 10);
