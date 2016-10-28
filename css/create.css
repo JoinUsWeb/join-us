@@ -15,7 +15,7 @@ ul{
 	/*border-radius: 15px;*/
 }
 
-label{
+#create_hd label{
 	
 	clear: left;
 	margin: 3px 0;
@@ -36,7 +36,7 @@ label{
 #hd_place{
 	width: 528px;
 }
-input{
+#create_hd input{
 	width: 250px;
 	height: 35px;
 	line-height: 35px;
@@ -46,7 +46,7 @@ input{
 	color:#444;
 	border: 1px solid #d9d9d9;
 }
-input[type=file]{
+#create_hd input[type=file]{
 	width: 400px;
 	height: 35px;
 	border: 1px solid #556f8c;
@@ -56,7 +56,7 @@ input[type=file]{
 	color: #ffffff;
 	
 }
-input[type=submit]{
+#create_hd input[type=submit]{
 	width: 250px;
 	height: 40px;
 	
@@ -67,7 +67,7 @@ input[type=submit]{
 	border: 1px solid #d9d9d9;
 	
 }
-select{
+#create_hd select{
 	width: 90px;
 	height: 35px;
 	line-height: 35px;
@@ -78,7 +78,7 @@ select{
 	border: 1px solid #d9d9d9;
 
 }
-textarea{
+#create_hd textarea{
 	width: 650px;
 	height: 300px;
 	resize: none;
@@ -89,7 +89,7 @@ textarea{
 	color:#444;
 	border: 1px solid #d9d9d9;
 }
-img{
+#create_hd img{
 
 	margin: 0 0 30px 30px;
 
