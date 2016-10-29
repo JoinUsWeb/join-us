@@ -6623,27 +6623,10 @@ a.hd_title_block:active {
  font-size: 14px;
  font-weight: bold;
  }
-a.bounceIn{
-  display: inline-block;
-  width: 138px;
-  height:34px;
-  line-height: 32px;
-  border-radius: 3px;
-  font-size: 14px;
-  background-color: #0099e9;
-  color: #fff;
-  margin-left: 30px;
-  margin-top: 18px;
-  text-align: center;
-  text-decoration: none;
-}
+
 ul{
   list-style-type: none;
 }
-.button{
 
-  margin: 40px 0 0 0;
-  text-align: center;
-}
-}
+
 /*# sourceMappingURL=bootstrap.css.map */

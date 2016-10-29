@@ -80,6 +80,17 @@
 	border: 1px solid #d9d9d9;
 	
 }
+
+.add_member{
+	float: right;
+	margin-right: 30px;
+}
+.add_member i{
+	color: rgb(0,153,233);
+}
+.add_member a{
+	text-decoration: none;
+}
 .member_review_list{
 	margin:0;
 	padding: 0;

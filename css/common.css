@@ -288,6 +288,22 @@
   /*box-shadow:3px 2px 4px #ccc;
   -webkit-box-shadow:3px 2px 4px #ccc;*/
 }
+#dialog_add{
+  width:600px;
+  height:400px;
+  margin:0 auto;
+  display:none;
+  background-color:#ffffff;
+  position:fixed;
+  top:50%;left:50%;
+  margin:-200px 0 0 -300px;
+  z-index:10000;
+  border:1px solid #ccc;
+  border-radius:10px;
+  -webkit-border-radius:10px;
+  /*box-shadow:3px 2px 4px #ccc;
+  -webkit-box-shadow:3px 2px 4px #ccc;*/
+}
 .dialogTop{
   width:90%;
   margin:0 auto;
@@ -334,4 +350,30 @@
   /*box-shadow: 0 -3px 0 #2a6496 inset;
   -webkit-box-shadow: 0 -3px 0 #2a6496 inset;*/
 
+}
+.home_block a.bounceIn{
+  display: inline-block;
+  width: 138px;
+  height:34px;
+  line-height: 32px;
+  border-radius: 3px;
+  font-size: 14px;
+  background-color: #0099e9;
+  color: #fff;
+  margin-left: 30px;
+  margin-top: 18px;
+  text-align: center;
+  text-decoration: none;
+}
+.button_choose{
+
+  margin: 40px 0 0 0;
+  text-align: center;
+}
+.button_invite{
+  margin: 40px 0 0 0;
+  text-align: center;
+}
+.friends_list{
+  height: 250px;
 }
