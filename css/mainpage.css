@@ -86,7 +86,9 @@
   -ms-transform:translate(-120px,0);
 }
 
-
+.messagebox a:hover{
+  text-decoration: none;
+}
 .my_message_hd p,
 .my_message_yq p,.my_message_pl p,.my_message_sh p{
     font-size: 16px;

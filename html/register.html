@@ -65,7 +65,7 @@
 <div style="height: 72px;"></div>
 <div id="container">
 	
-	<form id="form" method="post" action="#">
+	<form id="register_form" method="post" action="#">
 		<fieldset>
 			<h3>用户注册</h3>
 			<ul>
@@ -107,29 +107,29 @@
 
 
 	</form>
-<script>
-	function valide_nickname(){
-		var nickName = document.forms["form"]["nickname"].value;
-		if (nickName.indexOf(" ") != -1){
-			/*错误处理*/
-			document.getElementById("nickname_error").innerHTML = "昵称不合法！";
-			return false;
+	<script>
+		function valide_nickname(){
+			var nickName = document.forms["form"]["nickname"].value;
+			if (nickName.indexOf(" ") != -1){
+				/*错误处理*/
+				document.getElementById("nickname_error").innerHTML = "昵称不合法！";
+				return false;
+			}
+			else{
+				document.getElementById("nickname_error").innerHTML = "";
+				return true;
+			}
 		}
-		else{
-			document.getElementById("nickname_error").innerHTML = "";
-			return true;
-		}
-	}
 
-	function confirm_password(){
-		var password_to_confirm = document.forms["form"]["password2"].value;
-		var password = document.forms["form"]["password"].value;
-		if (password != password_to_confirm){
-			/*错误处理示例  如果验证不通过*/
-			document.getElementById("confirm_error").innerHTML ="两次密码输入不一致！";
-			return false;
-		}
-		else{
+		function confirm_password(){
+			var password_to_confirm = document.forms["form"]["password2"].value;
+			var password = document.forms["form"]["password"].value;
+			if (password != password_to_confirm){
+				/*错误处理示例  如果验证不通过*/
+				document.getElementById("confirm_error").innerHTML ="两次密码输入不一致！";
+				return false;
+			}
+			else{
 			//如果验证通过  必须进行处理，否则原来的  错误提示  仍然会存在
 			document.getElementById("confirm_error").innerHTML ="";
 			return true;
@@ -141,8 +141,8 @@
 			document.getElementById("sign_up").submit();
 	}
 </script>
-	<script src="js/jquery-1.11.2.min.js"></script> 
-	<!-- Include all compiled plugins (below), or include individual files as needed --> 
-	<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

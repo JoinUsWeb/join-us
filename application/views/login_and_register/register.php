@@ -1,6 +1,6 @@
 <div id="container">
 
-    <?php echo form_open("register/"); ?>
+    <?php echo form_open("register/",array('id' => 'register_form')); ?>
     <fieldset>
         <h3>用户注册</h3>
         <ul>

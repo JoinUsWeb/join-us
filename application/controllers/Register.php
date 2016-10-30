@@ -14,7 +14,7 @@ class Register extends CI_Controller
         $this->load->library(array("form_validation", "session"));
         $this->load->model('User_model');
         $data['title'] = '注册';
-        $data['error'] = "";
+        $data['page_name']="register";
         $user_id = -1;
 
         /* 此处应区别是第一次加载还是误按注册键  并未实现*/
