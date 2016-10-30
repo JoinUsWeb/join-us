@@ -59,12 +59,29 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
             <? break;
-        case "favorites": ?>
+        /*case "favorites": ?>
+            <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
+            <? break;*/
+        case "group": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
             <? break;
+        case "group_detail": ?>
+            <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
+            <? break;
+        case "edit": ?>
+            <link rel="stylesheet" href="<?php echo base_url("css/create.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
+            <? break;
+
     } ?>
     <!--
     <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
@@ -76,6 +93,8 @@
     <link rel="stylesheet" href="<?php echo base_url("css/mainpage.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("css/login&register.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("css/main.css"); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
     -->
 
     <script type="text/javascript" src="<?php echo base_url("js/jquery.min.js"); ?>"></script>
