@@ -13,7 +13,6 @@ class Create_activity extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('form_validation');
-        $this->load->library('session');
         $this->load->model('activity_model');
         $this->load->model('first_label_model');
 

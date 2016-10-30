@@ -9,13 +9,15 @@
         </li>
         <li>
             <label for="hd_poster">活动海报</label>
-            <div>
-                <img src="#" alt="这是一张海报">
+            <div id="posterImg">
+                <img src="<?php echo base_url('/img/posterImg.png')?> alt="这是一张海报">
             </div>
-            <input type="file" id="hd_poster" name="poster">
+            <div id="create_button">
+                <input type="file" id="hd_poster" name="hd_poster">
+            </div>
         </li>
         <li>
-            <label for="start_date">活动开始时间</label>
+            <label for="start_date" class="label_style">活动开始时间</label>
             <input type="date" id="start_date" name="date_start" value="<?php echo set_value('date_start'); ?>"
                    placeholder="开始时间">
             <select name="time_start" value="<?php echo set_value('time_start'); ?>" id="start_hour">
@@ -27,7 +29,7 @@
             </select>
         </li>
         <li>
-            <label for="close_date">截止报名时间</label>
+            <label for="close_date" class="label_style">截止报名时间</label>
             <input type="date" id="close_date" name="date_expire" value="<?php echo set_value('date_expire'); ?>"
                    placeholder="截止报名时间">
             <select name="time_expire" value="<?php echo set_value('time_expire'); ?>" id="close_hour">
@@ -39,7 +41,7 @@
             </select>
         </li>
         <li>
-            <label for="hd_city">活动地点</label>
+            <label for="hd_city" class="label_style">活动地点</label>
             <select name="city" value="<?php echo set_value('city'); ?>" id="hd_city">
                 <option value="上海">上海</option>
                 <option value="其他">其他</option>
@@ -47,7 +49,7 @@
             <input type="text" id="hd_place" name="place" value="<?php echo set_value('place'); ?>" placeholder="活动地址">
         </li>
         <li>
-            <label for="hd_style_1st">活动类型</label>
+            <label for="hd_style_1st" class="label_style">活动类型</label>
             <select name="first_label_id" value="<?php echo set_value('first_label'); ?>" id="hd_style_1st">
                 <?php
                 foreach ($first_label as $first_label_item)
@@ -64,11 +66,11 @@
                    placeholder="">
         </li>
         <li>
-            <label for="num_limit">人数上限</label>
+            <label for="num_limit" class="label_style">人数上限</label>
             <input type="text" id="num_limit" name="amount_max" value="<?php echo set_value('amount_max'); ?>">
         </li>
         <li>
-            <label for="hd_detail">活动详情</label>
+            <label for="hd_detail" class="label_style">活动详情</label>
             <textarea name="brief" id="hd_detail" cols="30" rows="10"><?php echo set_value('brief'); ?></textarea>
         </li>
         <li>
