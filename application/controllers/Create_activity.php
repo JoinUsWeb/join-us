@@ -27,6 +27,7 @@ class Create_activity extends CI_Controller
 
     public function index()
     {
+        $data['page_name']="create";
         $this->form_validation->set_rules('name', 'name', 'required');
         $this->form_validation->set_rules('date_start', 'date_start', 'required');
         $this->form_validation->set_rules('time_start', 'time_start', 'required');

@@ -15,7 +15,7 @@ class Login extends CI_Controller
         $this->load->library(array("form_validation", "session"));
         $this->load->model('User_model');
         $data['title'] = "登录";
-        $data['error'] = "";
+        $data['page_name']="login";
 
         if ($this->form_process() == null) {
             setcookie('email', set_value('_email'));
