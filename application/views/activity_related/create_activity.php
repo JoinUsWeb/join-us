@@ -10,7 +10,7 @@
         <li>
             <label for="hd_poster">活动海报</label>
             <div id="posterImg">
-                <img src="<?php echo base_url('/img/posterImg.png')?> alt="这是一张海报">
+                <img src="<?php echo base_url('/img/posterImg.png')?>" alt="这是一张海报">
             </div>
             <div id="create_button">
                 <input type="file" id="hd_poster" name="hd_poster">
@@ -79,3 +79,11 @@
     </ul>
     </form>
 </div>
+<script type="text/javascript">
+    $("#hd_style_1st").change(function () {
+        $.post('localhost/join-us/index.php/separated_info/json_for_second_label/' + $("#hd_style_1st").val(),
+            function (data, status) {
+                alert(data);
+            });
+    });
+</script>
