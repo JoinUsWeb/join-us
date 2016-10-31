@@ -15,11 +15,10 @@ body{
     border: 1px solid rgb(221,221,221);
 	border-radius: 5px;
 }
-
 .personal_main{
     width: 800px;
     padding: 2px;
-    margin: 2px;
+    margin-left: 10px;
     float: left;
     border: 1px solid rgb(221,221,221);
 	border-radius: 5px;
@@ -75,11 +74,20 @@ body{
     color: black;
 }
 
+.p_tag{
+    float: left;
+    width: 40px;
+    color: black;
+}
+
 .hd_present{
     float: left;
-    padding: 10px;
-    margin: 2px;
-    width: 220px;
+    padding-top: 4px;
+    padding-left: 3.7px;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-bottom: 8px;
+    width: 250px;
         border: 1px solid rgb(221,221,221);
 	border-radius: 5px;
 }
@@ -98,8 +106,8 @@ body{
 }
 
 .hd_img{
-    width: 200px;
-    height: 100px;
+    width: 240px;
+    height: 120px;
 }
 
 .hd_title{

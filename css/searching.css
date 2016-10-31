@@ -7,14 +7,14 @@
 */
 .frame{
     padding: 1%;
-    border-color:cornflowerblue;
+    border-color:#1a2b3d;
     border-width: medium;
     border-style: solid;
     margin: 1%;
     overflow-x:hidden;
     overflow-y: hidden;
     margin-bottom: auto;
-    background-color:cornflowerblue;
+    background-color:#1a2d3b;
         color:white
                 border: 1px solid rgb(221,221,221);
 	border-radius: 5px;
@@ -27,6 +27,8 @@
     line-height: 30px;
     float: left;
     text-align: center;
+    color: aliceblue;
+    font-size: 16px;
 }
 
 .style{
@@ -36,6 +38,8 @@
 }
 
 .searching li{
+    font-size: 16px;
+    color: #fff;
     padding: 5px;
     width: 88px;
     height:29px;
@@ -46,22 +50,22 @@
 }
 
 a:link.thisover{
-    color:white;
+    color:aliceblue;
     text-decoration:none;
 }
 
-a:visited:thisover{
-    color: azure;
+a:visited.thisover{
+    color: aliceblue;
     text-decoration: none;
 }
 
 a:hover.thisover{
-    color: mistyrose;
+    color: white;
     text-decoration: none;
 }
 
 a:active.thisover{
-    color: brown;
+    color: white;
     text-decoration: none;
 }
 
@@ -91,7 +95,8 @@ a:active.thisover{
     margin-top: 20px;
     float: left;
     display:block;
-    padding: 15px;
+    padding:15px;
+    margin: 0;
     
 }
 
@@ -99,6 +104,7 @@ a:active.thisover{
     float:left;
     text-align: left;
 }
+
 
 .hd_name{
     text-align: left;
@@ -108,29 +114,21 @@ a:active.thisover{
 }
 
 .hd_creat{
-    padding: 8px;
+    margin: 0;
+    padding: 6px;
     text-align: left;
     padding-top: 2%;
     font-size: 14px;
 }
 
-.hd_label{
-    padding-left: 8px;
-    text-align: left;
-    padding-top: 2%;
-    font-size: 8px;
-}
-
-.hd_time, .hd_end{
-    padding: 1px;
-    margin: 2px;
-}
-
+.hd_label
+.hd_time
 .people_num{
-    padding: 1px;
+    padding: 2px;
     margin: 2px;
-    float: left;
-    text-align: right;
+    text-align: left;
+    font-size: 15px;
+    color: grey;
 }
 
 

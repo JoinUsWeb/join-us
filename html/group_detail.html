@@ -8,9 +8,44 @@
   <title>personal_test</title>
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" href="../css/personal.css">
+  <link rel="stylesheet" href="../css/detail.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/mainpage.css">
   <link rel="stylesheet" href="../css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="../css/default.css">
   <link rel="stylesheet" type="text/css" href="../css/component.css">
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  <script type="text/javascript">
+    var w,h,className;
+    function getSrceenWH(){
+      w = $(window).width();
+      h = $(window).height();
+      $('#dialogBg').width(w).height(h);
+    }
+
+    window.onresize = function(){  
+      getSrceenWH();
+    }  
+    $(window).resize();  
+
+    $(function(){
+      getSrceenWH();
+
+
+      $('.box a').click(function(){
+        className = $(this).attr('class');
+        $('#dialogBg').fadeIn(300);
+        $('#dialog_add').removeAttr('class').addClass('animated '+className+'').fadeIn();
+      });
+
+
+      $('.claseDialogBtn').click(function(){
+        $('#dialogBg').fadeOut(300,function(){
+          $('#dialog_add').addClass('bounceOutUp').fadeOut();
+        });
+      });
+    });
+  </script>
   <script src="js/modernizr.custom.js"></script>
 </head>
 
@@ -103,36 +138,79 @@
            <h3>小组成员</h3>
            <hr>
            <ul class="member_review_list">
-            <li class="member_review_main">
-              <div class="member_review_person">
-                <div class="person_headphoto">
-                  <a href="html/details_page.html" ><img src="../img/01.png" alt="" width="90px" height="90px"></a>
-                </div>
-                <div class="person_id_name">
-                  <a href="html/details_page.html" ><h5>金鑫</h5></a>
-                </div>
+          <li class="member_review_main">
+            <div class="member_review_person">
+              <div class="person_headphoto">
+                <a href="html/details_page.html" ><img src="../img/adobe.png" alt="" width="70px" height="70px"></a>
               </div>
-            </li>
-            <li class="member_review_main">
-              <div class="member_review_person">
-                <div class="person_headphoto">
-                  <a href="html/details_page.html" ><img src="../img/01.png" alt="" width="90px" height="90px"></a>
-                </div>
-                <div class="person_id_name">
-                  <a href="html/details_page.html" ><h5>金鑫</h5></a>
-                </div>
+              <div class="person_id_name">
+                <a href="html/details_page.html" ><h5>金鑫</h5></a>
               </div>
-            </li>
-            <li class="member_review_main">
-              <div class="member_review_person">
-                <div class="person_headphoto">
-                  <a href="html/details_page.html" ><img src="../img/01.png" alt="" width="90px" height="90px"></a>
-                </div>
-                <div class="person_id_name">
-                  <a href="html/details_page.html" ><h5>金鑫</h5></a>
-                </div>
+            </div>
+          </li>
+
+          <li class="member_review_main">
+            <div class="member_review_person">
+              <div class="person_headphoto">
+                <a href="html/details_page.html" ><img src="../img/adobe.png" alt="" width="70px" height="70px"></a>
               </div>
-            </li>
+              <div class="person_id_name">
+                <a href="html/details_page.html" ><h5>金鑫</h5></a>
+              </div>
+            </div>
+          </li>
+
+          <li class="member_review_main">
+            <div class="member_review_person">
+              <div class="person_headphoto">
+                <a href="html/details_page.html" ><img src="../img/adobe.png" alt="" width="70px" height="70px"></a>
+              </div>
+              <div class="person_id_name">
+                <a href="html/details_page.html" ><h5>金鑫</h5></a>
+              </div>
+            </div>
+          </li>
+<li>
+<div class="box">
+          <div class="demo">
+            <div class="add_member"><a class="bounceIn" href="javascript:;">
+              <i class="icon-plus-sign icon-5x"></i>
+            </a>
+          </div>
+        </div>
+        <div id="dialogBg"></div>
+        <div id="dialog_add" class="animated">
+          <img class="dialogIco" width="50" height="50" src="../img/ico.png" alt="" />
+          <div class="dialogTop">
+            <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
+          </div>
+          <form action="" method="post" id="editForm">
+          
+           <ul class="friends_list">
+              <li><label for="checkbox1">小石榴</label>
+              <input type="checkbox" name="" id="checkbox1"></li>
+              <li><label for="checkbox2">小石榴</label>
+              <input type="checkbox" name="" id="checkbox2"></li>
+              <li><label for="checkbox2">小石榴</label>
+              <input type="checkbox" name="" id="checkbox2"></li>
+              <li><label for="checkbox2">小石榴</label>
+              <input type="checkbox" name="" id="checkbox2"></li>
+              <li><label for="checkbox2">小石榴</label>
+              <input type="checkbox" name="" id="checkbox2"></li>
+              <li><label for="checkbox2">小石榴</label>
+              <input type="checkbox" name="" id="checkbox2"></li>
+           </ul>
+
+
+            <p class="button_invite">
+              <input type="submit" value="发送邀请" class="submitBtn" >
+            </p>
+
+          </form>
+        </div>
+      </div>
+  
+</li>
 
 
           </ul>
