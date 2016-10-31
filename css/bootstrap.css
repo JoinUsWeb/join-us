@@ -4506,11 +4506,11 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #222;
-  border-color: #080808;
+  background-color: #1a2b3c;
+  border-color:  #1a2b3c;
 }
 .navbar-inverse .navbar-brand {
-  color: #9d9d9d;
+  color: #fff;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
@@ -4518,10 +4518,10 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: transparent;
 }
 .navbar-inverse .navbar-text {
-  color: #9d9d9d;
+  color: #fff;
 }
-.navbar-inverse .navbar-nav > li > a,p {
-  color: #9d9d9d;
+.navbar-inverse .navbar-nav > li > a,.navbar-inverse .navbar-nav > li > p{
+  color: #fff;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -6627,6 +6627,9 @@ a.hd_title_block:active {
 ul{
   list-style-type: none;
 }
-
+.button{
+  margin: 40px 0 0 0;
+  text-align: center;
+}
 
 /*# sourceMappingURL=bootstrap.css.map */

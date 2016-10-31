@@ -1,3 +1,10 @@
+/*导航栏logo*/
+.navbar-brand img{
+height: 25px;
+margin-top: -3px;
+}
+
+
 .changeheight{
   margin-bottom: -72px;
 }
@@ -171,9 +178,13 @@
   float: left;
   overflow: hidden;
 }
+.li_left{
+  margin:5px;
+  border-radius: 5px;
+}
 .li_right{
-  padding-top:2px;
-  width: 186px;
+  padding-left:3px;
+  width: 170px;
 }
 .content_li{
   height: 70px;

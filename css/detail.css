@@ -82,8 +82,8 @@
 }
 
 .add_member{
-	float: right;
-	margin-right: 30px;
+	float: left;
+	margin:20px;
 }
 .add_member i{
 	color: rgb(0,153,233);
@@ -100,7 +100,7 @@
 	float: left;
 }
 .member_review_person{
-	margin:5px;
+	margin:20px 15px;
 }
  .person_id_name h5{
 text-align: center;
@@ -157,4 +157,7 @@ font-size: 15px;
 }
 .comments{
 	height: 300px;
+}
+.person_headphoto img,.comment_left img{
+	border-radius: 50%;
 }
