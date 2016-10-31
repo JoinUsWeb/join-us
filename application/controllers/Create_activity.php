@@ -13,7 +13,6 @@ class Create_activity extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('form_validation');
-        $this->load->library('session');
         $this->load->model('activity_model');
         $this->load->model('first_label_model');
 
@@ -27,6 +26,7 @@ class Create_activity extends CI_Controller
 
     public function index()
     {
+        $data['page_name']="create";
         $this->form_validation->set_rules('name', 'name', 'required');
         $this->form_validation->set_rules('date_start', 'date_start', 'required');
         $this->form_validation->set_rules('time_start', 'time_start', 'required');

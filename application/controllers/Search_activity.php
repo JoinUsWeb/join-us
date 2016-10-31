@@ -21,6 +21,8 @@ class Search_activity extends CI_Controller
     {
         $select = $this->input->get();
         $data['title'] = "search activity";
+        $data['page_name']="search";
+
         $data['first_label'] = $this->first_label_model->get_first_label();
         if (empty($select)) {
             $select['first_label_id'] = 0;

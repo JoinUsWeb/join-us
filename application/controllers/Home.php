@@ -32,6 +32,7 @@ class Home extends CI_Controller
         $recommended_activity = $this->get_recommended_activity();
 
         $data['title'] = 'Home';
+        $data['page_name']="home";
         $data['hot_activity'] = $hot_activity;
         $data['recommended_activity'] = $recommended_activity;
 

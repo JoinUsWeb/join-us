@@ -6,7 +6,7 @@ define('INVITATION',0);
  * Class Message_model
  *
  * message table：id  sender_id  recipent_id  type  detail  time  status  activity_id
- * 
+ *
  * insert new message
  * public function insert($message = null)
  *
@@ -27,7 +27,7 @@ class Message_model extends CI_Model
     /**
      * insert new message
      * $message = array(id  sender_id  recipent_id  type  detail  time  status  activity_id)
-     * @param array $message message 
+     * @param array $message message
      * @return bool    TRUE on success,FALSE on failure
      */
     public function insert($message = null)
@@ -58,7 +58,7 @@ class Message_model extends CI_Model
         $result=$this->db->get('message')->where('sender_id',$sender_id)->order_by('createtime','DESC')->result_array();
         return $result;
     }
-    
+
     /**
      * get message by sender_id and recipient_id
      * @param int   sender_id    sender's id

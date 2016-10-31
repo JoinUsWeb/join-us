@@ -1,7 +1,6 @@
-<div style="height: 72px;"></div>
 <div id="container">
 
-    <?php echo form_open("login/"); ?>
+    <?php echo form_open("login/",array('id' => 'register_form')); ?>
     <fieldset>
         <h3>登录</h3>
         <ul>

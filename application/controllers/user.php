@@ -29,6 +29,7 @@ class User extends CI_Controller
     {
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
+        $data['page_name'] = "applied";
 
         $row_activities_info = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
@@ -51,6 +52,7 @@ class User extends CI_Controller
     {
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
+        $data['page_name'] = "comments";
 
         $data['activities_info'] = null;
         $data['activities_info'] = $this->Member_and_activity_model
@@ -65,8 +67,10 @@ class User extends CI_Controller
     public function info()
     {
         $data['title'] = "个人中心";
+        $data['page_name'] = "info";
         $this->load->model('User_model');
         $this->load->model('User_and_first_label_model');
+
         $data['user_info'] = $this->User_model->get_user_by_id($this->user_id);
         $data['user_info']['interest'] = $this->User_and_first_label_model->get_first_label_by_user_id($this->user_id);
 
@@ -84,6 +88,7 @@ class User extends CI_Controller
     {
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
+        $data['page_name'] = "favorites";
 
         //需修改  没有判断是否是收藏了
         $data['activities_info'] = $this->Member_and_activity_model
@@ -99,6 +104,7 @@ class User extends CI_Controller
     {
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
+        $data['page_name'] = "joined";
 
         $row_activities_info = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
@@ -115,5 +121,26 @@ class User extends CI_Controller
         $this->load->view('template/nav');
         $this->load->view('person_related/personal_joined', $data);
         $this->load->view('template/footer');
+    }
+
+    public function group()
+    {
+        $data['title'] = "个人中心";
+        $data['page_name'] = 'group';
+
+    }
+
+    public function detail()
+    {
+        $data['title'] = "个人中心";
+        $data['page_name'] = 'group_detail';
+
+    }
+
+    public function edit()
+    {
+        $data['title'] = "个人中心";
+        $data['page_name'] = 'edit';
+
     }
 }
