@@ -26,7 +26,6 @@ class Create_activity extends CI_Controller
 
     public function index()
     {
-        $data['page_name']="create";
         $this->form_validation->set_rules('name', 'name', 'required');
         $this->form_validation->set_rules('date_start', 'date_start', 'required');
         $this->form_validation->set_rules('time_start', 'time_start', 'required');
@@ -41,6 +40,7 @@ class Create_activity extends CI_Controller
         if (!$this->form_validation->run()) {
             $data = array('error' => '', 'title' => 'create activity');
             $data['first_label'] = $this->first_label_model->get_first_label();
+            $data['page_name']="create";
             $this->load->view('template/header', $data);
             $this->load->view('template/nav');
             $this->load->view('activity_related/create_activity', $data);
@@ -49,6 +49,7 @@ class Create_activity extends CI_Controller
             if ($this->upload->error_msg[0] != 'You did not select a file to upload.') {
                 $data = array('error' => $this->upload->display_errors(), 'title' => 'create activity');
                 $data['first_label'] = $this->first_label_model->get_first_label();
+                $data['page_name']="create";
                 $this->load->view('template/header', $data);
                 $this->load->view('template/nav');
                 $this->load->view('activity_related/create_activity', $data);

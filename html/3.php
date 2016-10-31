@@ -26,7 +26,7 @@
                 <h3><div class="dr-icon dr-icon-user">个人信息</div></h3>
                 <hr>
                 <div class="head_portrait" align="center">
-                    <img alt="用户头像" src="<?php echo base_url("img/IMG_1035.JPG") ?>" width="150px" height="150px" style="border-radius:50%;">
+                    <img alt="用户昵称" src="../img/IMG_1035.JPG" width="150px" height="150px" style="border-radius:50%;">
                 </div>
                 <div class="p_data">
                     <ul>

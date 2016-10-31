@@ -128,12 +128,21 @@ class User extends CI_Controller
         $data['title'] = "个人中心";
         $data['page_name'] = 'group';
 
+        $this->load->view('template/header', $data);
+        $this->load->view('template/nav');
+        $this->load->view('person_related/personal_group', $data);
+        $this->load->view('template/footer');
     }
 
     public function detail()
     {
         $data['title'] = "个人中心";
         $data['page_name'] = 'group_detail';
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/nav');
+        $this->load->view('person_related/group_detail', $data);
+        $this->load->view('template/footer');
 
     }
 
