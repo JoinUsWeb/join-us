@@ -13,6 +13,7 @@ class Activity_detail extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('activity_model');
+        $this->load->model('member_and_activity_model');
     }
 
     public function index($activity_id)
@@ -24,10 +25,36 @@ class Activity_detail extends CI_Controller
             show_error('活动不存在，可能已经被取消');
         if (empty($data['activity']))
             show_error('活动不存在，可能已经被取消');
+        $data['member'] = $this->member_and_activity_model->get_member_by_activity_id($activity_id);
+        $data['hot_activity'] = $this->activity_model->get_activity_order_by_score();
+        $data['is_joined'] = $this->member_and_activity_model->is_exist($this->session->user_id,$activity_id);
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
         $this->load->view('activity_related/activity_detail', $data);
         $this->load->view('template/footer');
+    }
+
+    public function enter($activity_id)
+    {
+        $user_id=$this->session->user_id;
+        $activity=$this->activity_model->get_activity_by_id($activity_id);
+        if(isset($user_id)&&($activity['member_number']<$activity['amount_max']))
+        {
+            $this->member_and_activity_model->insert_new_relation($user_id,$activity_id);
+        }
+
+        redirect(site_url('activity_detail/index/'.$activity_id));
+    }
+
+    public function quit($activity_id)
+    {
+        $user_id=$this->session->user_id;
+        if(isset($user_id))
+        {
+            $this->member_and_activity_model->remove_member_from_activity_by_id($activity_id,$user_id);
+        }
+
+        redirect(site_url('activity_detail/index/'.$activity_id));
     }
 }

@@ -76,13 +76,33 @@ class Member_and_activity_model extends CI_Model
         }
     }
 
+    public function is_exist($member_id,$activity_id)
+    {
+        if($member_id<=0||$activity_id<=0)
+            return null;
+        else{
+            if(empty($this->db->get_where('relation_activity_members',array('member_id' => $member_id,'activity_id'=>$activity_id))->result_array()))
+                return false;
+            else
+                return true;
+        }
+    }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function remove_member_from_activity_by_id($activity_id = -1, $member_id = -1)
     {
         if ($activity_id <= 0 || $member_id <= 0)
             return null;
-        else {
+        else if($this->is_exist($member_id,$activity_id)){
+            $activity=$this->activity_model->get_activity_by_id($activity_id);
+            $activity['member_number']--;
+            if($activity['member_number']<0)
+                return false;
+            unset($activity['id']);
+            if($this->activity_model->update_activity_by_id($activity_id,$activity)==false)
+                return false;
+
             if ($this->db->delete('relation_activity_members', array('activity_id' => $activity_id, 'member_id' => $member_id)) == false)
                 return false;
             return true;
@@ -103,6 +123,16 @@ class Member_and_activity_model extends CI_Model
 
     public function remove_by_user_id($user_id)
     {
+        $activity=$this->get_activity_by_member_id($user_id);
+        foreach ($activity as $activity_item) {
+            $activity_to_delete=$this->activity_model->get_activity_by_id($activity_item['id']);
+            $activity_to_delete['member_number']--;
+            if($activity_to_delete['member_number']<0)
+                return false;
+            unset($activity_to_delete['id']);
+            if($this->activity_model->update_activity_by_id($activity_item['id'],$activity_to_delete)==false)
+                return false;
+        }
         if ($user_id <= 0)
             return null;
         else {
@@ -126,16 +156,27 @@ class Member_and_activity_model extends CI_Model
      */
     public function insert_new_relation($user_id = -1, $activity_id = -1)
     {
-        if ($user_id <= 0 || $activity_id <= 0)
-            return null;
-        else {
-            $data = array(
-                'member_id' => $user_id,
-                'activity_id' => $activity_id
-            );
-            if ($this->db->insert('relation_activity_members', $data) == false)
-                return false;
-            return true;
+        if(empty($this->db->get_where('relation_activity_members',array('member_id'=>$user_id,'activity_id'=>$activity_id))->result_array())) {
+            if ($user_id <= 0 || $activity_id <= 0)
+                return null;
+            else {
+                if($this->is_exist($user_id,$activity_id))
+                    return false;
+
+                $activity=$this->activity_model->get_activity_by_id($activity_id);
+                $activity['member_number']++;
+                unset($activity['id']);
+                if($this->activity_model->update_activity_by_id($activity_id,$activity)==false)
+                    return false;
+
+                $data = array(
+                    'member_id' => $user_id,
+                    'activity_id' => $activity_id
+                );
+                if ($this->db->insert('relation_activity_members', $data) == false)
+                    return false;
+                return true;
+            }
         }
     }
 }

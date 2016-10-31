@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title ?></title>
     <link rel="stylesheet" href="<?php echo base_url("css/bootstrap.css"); ?>">
-    <?php switch ($page_name) {
+    <?php /*switch ($page_name) {
         case "login": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/login&register.css"); ?>">
             <? break;
@@ -65,7 +65,7 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
             <? break;*/
-        case "group": ?>
+        /*case "group": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
@@ -82,8 +82,7 @@
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
             <? break;
 
-    } ?>
-    <!--
+    } */?>
     <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("css/detail.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("css/login&register.css"); ?>">
@@ -95,7 +94,6 @@
     <link rel="stylesheet" href="<?php echo base_url("css/main.css"); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
-    -->
 
     <script type="text/javascript" src="<?php echo base_url("js/jquery.min.js"); ?>"></script>
     <!--HTML5 shim and Respond . js for IE8 support of HTML5 elements and media queries-->
