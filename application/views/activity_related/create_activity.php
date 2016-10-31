@@ -1,16 +1,16 @@
 <div class="container">
     <?php echo $error ?>
     <?php echo validation_errors(); ?>
-    <?php echo form_open_multipart('create_activity'); ?>
+    <?php echo form_open_multipart('create_activity', array('id' => 'create_hd')); ?>
     <ul>
         <li>
-            <label for="hd_topic">活动主题</label>
+            <label for="hd_topic" class="label_style">活动主题</label>
             <input type="text" id="hd_topic" name="name" value="<?php echo set_value('name'); ?>" placeholder="请输入活动主题">
         </li>
         <li>
-            <label for="hd_poster">活动海报</label>
+            <label for="hd_poster" class="label_style">活动海报</label>
             <div id="posterImg">
-                <img src="<?php echo base_url('/img/posterImg.png')?>" alt="这是一张海报">
+                <img src="<?php echo base_url('/img/posterImg.png') ?>" alt="这是一张海报">
             </div>
             <div id="create_button">
                 <input type="file" id="hd_poster" name="hd_poster">
@@ -51,15 +51,14 @@
         <li>
             <label for="hd_style_1st" class="label_style">活动类型</label>
             <select name="first_label_id" value="<?php echo set_value('first_label'); ?>" id="hd_style_1st">
+                <option value="-1" selected>请选择</option>
                 <?php
                 foreach ($first_label as $first_label_item)
                     echo '<option value="' . $first_label_item['id'] . '">' . $first_label_item['name'] . '</option>';
                 ?>
             </select>
             <select name="second_label_id" value="<?php echo set_value('second_label'); ?>" id="hd_style_2nd">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <option id="second_label_1st" value="-1" selected>请选择</option>
             </select>
             <label for="newstyle">创建新类型</label>
             <input type="text" id="newstyle" name="new_label" value="<?php echo set_value('new_label'); ?>"
@@ -73,17 +72,30 @@
             <label for="hd_detail" class="label_style">活动详情</label>
             <textarea name="brief" id="hd_detail" cols="30" rows="10"><?php echo set_value('brief'); ?></textarea>
         </li>
-        <li>
-            <input type="submit" id="publish" value="发布活动">
-        </li>
     </ul>
+    <p id="publish">
+        <input value="发布活动" type="submit">
+    </p>
     </form>
 </div>
 <script type="text/javascript">
     $("#hd_style_1st").change(function () {
-        $.post('localhost/join-us/index.php/separated_info/json_for_second_label/' + $("#hd_style_1st").val(),
-            function (data, status) {
-                alert(data);
-            });
+        if ($("#hd_style_1st").val() != -1) {
+            $.post('<?php echo site_url("separated_info/json_for_second_label/")?>' + $("#hd_style_1st").val(),
+                function (data) {
+                    var second_labels = JSON.parse(data);
+                    var new_second_labels = "";
+                    var count = second_labels.length;
+                    $('#hd_style_2nd').children().not('#second_label_1st').remove();
+                    for (var i = 0; i < count; i++) {
+                        new_second_labels += '<option value =" ' + second_labels[i].id + '">'
+                            + second_labels[i].name + '</option>';
+                    }
+                    $("#second_label_1st").after(new_second_labels);
+                });
+        }
+        else {
+            $('#hd_style_2nd').children().not('#second_label_1st').remove();
+        }
     });
 </script>
