@@ -3,6 +3,30 @@
 /**
  * Class for message operation between users
  * @author <sei_jx2014@126.com>
+ *
+ * load view(person_related/personal_mymessages)
+ * public function personal_mymessages()
+ *
+ * 根据用户 id  获取显示在我的消息页面的多维数组
+ * public function get_message_by_user_id($user_id)
+ *
+ * 根据提供的用户 id 获取其参加的三天内活动提醒
+ * private function get_activity_in_three_day_by_member_id($user_id)
+ *
+ * 根据提供的用户 id   获取其组织的七天内活动提醒
+ * private function get_activity_in_a_week_by_creator_id($user_id)
+ *
+ * 根据提供的用户 id   获取其参与的有新公告的活动提醒
+ * private function get_activity_announcement_by_member_id($user_id)
+ *
+ * 根据提供的用户 id 和 获取其未评论的已结束的活动提醒
+ * private function get_unfinished_comment_by_member_id($user_id)
+ * 
+ * 根据提供的用户 id 和 获取其未读的活动邀请消息
+ * private function get_unread_invitation_by_recipient_id($user_id)
+ *
+ * 根据提供的邀请者 id 和 被邀请者 id 和活动 id 往数据库中插入一条邀请消息
+ * public function invite($sender_id,$recipient_id,$activity_id)
  */
 class Message extends CI_Controller
 {
@@ -11,6 +35,124 @@ class Message extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('message_model','message');
+        $this->load->model('member_and_activity_model','member_and_activity');
+    }
+
+    /**
+     *load view(person_related/personal_mymessages);
+     */
+    public function personal_mymessages(){
+        $data=$this->get_message_by_user_id(1);
+        $this->load->view('person_related/personal_mymessages',$data);
+    }
+
+    /**
+     *get personal messages by user's id
+     *@param int    $user_id    user's id
+     *@return array     $data   messages' array
+     *precondition: $user_id exits in TABLE user
+     *postcondition: return personal messages by user's id,messages includes as follows:
+        1.reminder of activity:
+            a.for participant
+                i)activities start in three days
+                ii)comment on finished activities
+                iii)announcement from the participated activity
+            b.for organizer
+                i)activities start in a week
+                ii)number of participant that changed
+        2.remider from the participated group
+            a.new announcement
+            b.new permission changed
+            c.new member changed
+        3.invitation
+        4.activities have been verified
+     */
+    public function get_message_by_user_id($user_id){
+        $data['activity_in_three_days']=$this->get_activity_in_three_day_by_member_id($user_id);
+        $data['activity_in_a_week']=$this->get_activity_in_a_week_by_creator_id($user_id);
+        $data['activity_announcement']=$this->get_activity_announcement_by_member_id($user_id);
+        $data['unfinished_comment']=$this->get_unfinished_comment_by_member_id($user_id);
+        $data['invitation']=$this->get_unread_invitation_by_recipient_id($user_id);
+        return $data;
+    }
+
+    /**
+     *get participated activity in three days by user's id
+     *@param int    $user_id    user's id
+     *@return array     $activity_in_three_days   participated activity' array
+     *precondition: $user_id exits in TABLE user
+     *postcondition: return participated activity in three days by user's id order by activity's id
+     */
+    private function get_activity_in_three_day_by_member_id($user_id){
+        $result=$this->member_and_activity->get_activity_by_member_id($user_id);
+        $activity_in_three_days=array();
+        foreach ($result as $activity_item) {
+            if(strtotime($activity_item['date_start']+" "+$activity_item['time_start'])-time()<3*24*60*60){
+                $activity_in_three_days[]=$activity_item;
+            }
+        }
+        return $activity_in_three_days;
+    }
+
+    /**
+     *get organized activity in a week by user's id
+     *@param int    $user_id    user's id
+     *@return array     $activity_in_a_week   organized activity' array
+     *precondition: $user_id exits in TABLE user
+     *postcondition: return organized activity in a week by user's id order by activity's id
+     */
+    private function get_activity_in_a_week_by_creator_id($user_id){
+        $result=$this->member_and_activity->get_activity_by_creator_id($user_id);
+        $activity_in_a_week=array();
+        foreach ($result as $activity_item) {
+            $time=strtotime($activity_item['date_start'].' '.$activity_item['time_start'])-strtotime(date("Y-m-d H:i:s"),time());
+            if($time>=0&&$time<7*24*60*60){
+                $activity_in_a_week[]=$activity_item;
+            }
+        }
+        return $activity_in_a_week;
+    }
+    
+    /**
+     *get unread activity announcement by user's id
+     *@param int    $user_id    user's id
+     *@return array     $activity_announcement  unread activity announcement's array
+     *precondition: $user_id exits in TABLE user
+     *postcondition: return unread activity announcement by user's id order by activity's id
+     */
+    private function get_activity_announcement_by_member_id($user_id){
+        $activity_announcement=array();
+        
+        /* unfinished */
+
+        return $activity_announcement;
+    }
+
+    /**
+     *get unfinished activity comment by user's id
+     *@param int    $user_id    user's id
+     *@return array     $activity_comment  unfinished activity comment's array
+     *precondition: $user_id exits in TABLE user
+     *postcondition: return unfinished activity comment by user's id order by activity's id
+     */
+    private function get_unfinished_comment_by_member_id($user_id){
+        $activity_comment=array();
+        
+        /* unfinished */
+
+        return $activity_comment;
+    }
+
+    /**
+     *get unread invitation by recipient's id
+     *@param int    $user_id    recipient's id
+     *@return array     $result  unread invitation' array
+     *precondition: $recipient exits in TABLE user
+     *postcondition: return unread invitation by recipient's id order by createtime
+     */
+    private function get_unread_invitation_by_recipient_id($user_id){
+        $result=$this->message->get_unread_invitation_by_recipient_id($user_id);
+        return $result;
     }
 
     /**
@@ -28,101 +170,7 @@ class Message extends CI_Controller
         $data['activity_id']=$activity_id;
         $data['status']=UNREAD;
         $data['type']=INVITATION;
-        $data['time']=time();
+        $data['createtime']=date('Y-m-d H:i:s',time());
         return $this->message->insert($data);
-    }
-
-    /**
-     * get message by recipient_id
-     * @param int   recipient_id    recipient's id
-     * @return array $message on success,bool false on failure
-     * precondition：recipient_id exits in TABLE user；
-     * postcondition：return message array order by time desc
-     */
-    public function get_message_by_recipient_id($recipient_id){
-        return $this->message->get_message_by_recipient_id($recipient_id);
-    }
-
-    /**
-     * get message by sender_id
-     * @param int   sender_id    sender's id
-     * @return array $message on success,bool false on failure
-     * precondition：sender_id exits in TABLE user；
-     * postcondition：return message array order by time desc
-     */
-    public function get_message_by_sender_id($sender_id){
-        return $this->message->get_message_by_sender_id($sender_id);
-    }
-
-    /**
-     * get message by sender_id and recipient_id
-     * @param int   sender_id    sender's id
-     * @param int   recipient_id    recipient's id
-     * @return array $message on success,bool false on failure
-     * precondition：sender_id and recipient_id exits in TABLE user；
-     * postcondition：return message array order by time desc
-     */ 
-    public function get_message_by_sender_id_and_recipient_id($sender_id,$recipient_id){
-        return $this->message->get_message_by_sender_id_and_recipient_id($sender_id,$recipient_id);
-    }
-
-    /**
-     * get unread message by recipient_id
-     * @param int   recipient_id    recipient's id
-     * @return array $message on success,bool false on failure
-     * precondition：recipient_id exits in TABLE user；
-     * postcondition：return unread message array order by time desc
-     */
-    public function get_unread_message_by_recipient_id($recipient_id){
-        return $this->message->get_unread_message_by_recipient_id($recipient_id);
-    }
-
-    /**
-     * get the number of activity messages by recipient_id
-     * For participant:activity messages include reminder of activities in three days ,reminder of comment on participated activities and announcement from organizer of the participated activity.
-     * For organizer:activity messages include remider of activities in a week and number of participant that changed.
-     * @param int   recipient_id    recipient's id
-     * @return int count    number of activity messages
-     * precondition：recipient_id exits in TABLE user；
-     * postcondition：return number of activity messages
-     */
-    public function get_activity_message_count_by_recipient_id($recipient_id){
-        $count=0;
-        /*reminder of comment on participated activities*/
-        //建议评论信息存储在relation_activity_members表中并添加是否评论的状态位
-        /*
-            在表activity join relation_activity_members查询符合下列条件的数组A：
-                member_id=recipient_id;
-                data_expire+time_expire<system_time;
-                is_comment=0;
-            count=count+count(数组A);
-        */
-        /*announcement from organizer of the participated activity*/
-        /*reminder of activities in a week for organizer and in three days for participant*/
-        /*
-            在表activity中查询符合下列条件的数组A：
-                creator_id=recipient_id;
-                data_start+time_start-system_time< 7 days;
-            在表activity join relation_activity_members中查询符合下列条件的数组B：
-                member_id=recipient_id;
-                data_start+time_start-system_time< 3 days;
-            合并数组A与数组B，并去除重复部分得到数组C；
-            count=count+count(数组C);
-         */
-        /*number of participant that changed*/
-        return $count;
-    }
-
-    /**
-     * get the number of unread invitation messages by recipient_id
-     * @param int   recipient_id    recipient's id
-     * @return int count    number of unread invitation messages
-     * precondition：recipient_id exits in TABLE user；
-     * postcondition：return number of unread invitation messages
-     */
-    public function get_invitation_message_count_by_recipient_id($recipient_id){
-        $count=0;
-        $count=count($this->message->get_unread_message_by_recipient_id_and_type($recipient_id,INVITATION));
-        return $count;
     }
 }

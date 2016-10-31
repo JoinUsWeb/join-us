@@ -10,10 +10,19 @@ define('INVITATION',0);
  * insert new message
  * public function insert($message = null)
  *
- * get message by recipient_id
+ * 根据提供的收信人 id 获取其受到的所有消息数组，根据时间降序
  * public function get_message_by_recipient_id($recipient_id=-1)
+ *
+ * 根据提供的发信人 id 获取其发送的所有消息数组，根据时间降序
+ * public function get_message_by_sender_id($sender_id = -1)
+ * 
+ * 根据提供的收信人 id 和 发信人 id 获取定向的从某人发送给某人的消息数组，根据时间降序
+ * public function get_message_by_sender_id_and_recipient_id($sender_id = -1,$recipient_id = -1)
+ *
+ * 根据提供的收信人 id 获取其未读的邀请消息数组，根据时间降序
+ * public function get_unread_invitation_by_recipient_id($recipient_id = -1)
  */
-class Activity_model extends CI_Model
+class Message_model extends CI_Model
 {
     /**
      * insert new message
@@ -34,7 +43,7 @@ class Activity_model extends CI_Model
      * postcondition：return message array order by time desc
      */
     public function get_message_by_recipient_id($recipient_id = -1){
-        $result=$this->db->get('message')->where('recipient_id',$recipient_id)->order_by('time','DESC')->result_array();
+        $result=$this->db->get('message')->where('recipient_id',$recipient_id)->order_by('createtime','DESC')->result_array();
         return $result;
     }
 
@@ -46,7 +55,7 @@ class Activity_model extends CI_Model
      * postcondition：return message array order by time desc
      */
     public function get_message_by_sender_id($sender_id = -1){
-        $result=$this->db->get('message')->where('sender_id',$sender_id)->order_by('time','DESC')->result_array();
+        $result=$this->db->get('message')->where('sender_id',$sender_id)->order_by('createtime','DESC')->result_array();
         return $result;
     }
     
@@ -62,7 +71,7 @@ class Activity_model extends CI_Model
         $result=$this->db->get('message')
         ->where('sender_id',$sender_id)
         ->where('recipient_id',$recipient_id)
-        ->order_by('time','DESC')->result_array();
+        ->order_by('createtime','DESC')->result_array();
         return $result;
     }
 
@@ -75,12 +84,18 @@ class Activity_model extends CI_Model
      * precondition：recipient_id exits in TABLE user；
      * postcondition：return unread message array order by time desc
      */
-    public function get_unread_message_by_recipient_id_and_type($recipient_id = -1,$type=-1){
-        $result=$this->db->get('message')
+    public function get_unread_invitation_by_recipient_id($recipient_id = -1){
+        $result=$this->db
+        ->select('user.nick_name')
+        ->select('activity.name')
+        ->join('user','message.sender_id=user.id')
+        ->join('activity','activity.id=message.activity_id')
         ->where('recipient_id',$recipient_id)
         ->where('status',UNREAD)
-        ->where('type',$type)
-        ->order_by('time','DESC')->result_array();
+        ->where('type',INVITATION)
+        ->order_by('createtime','DESC')
+        ->get('message')
+        ->result_array();
         return $result;
     }
 
