@@ -36,6 +36,7 @@ class Message extends CI_Controller
         $this->load->helper('url');
         $this->load->model('message_model','message');
         $this->load->model('member_and_activity_model','member_and_activity');
+        $this->load->model('Activity_model');
     }
 
     /**
@@ -43,7 +44,13 @@ class Message extends CI_Controller
      */
     public function personal_mymessages(){
         $data=$this->get_message_by_user_id(1);
+        $data['title'] = "个人中心";
+        $data['page_name'] = 'message';
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/nav');
         $this->load->view('person_related/personal_mymessages',$data);
+        $this->load->view('template/footer');
     }
 
     /**
@@ -102,7 +109,7 @@ class Message extends CI_Controller
      *postcondition: return organized activity in a week by user's id order by activity's id
      */
     private function get_activity_in_a_week_by_creator_id($user_id){
-        $result=$this->member_and_activity->get_activity_by_creator_id($user_id);
+        $result=$this->Activity_model->get_activity_by_creator_id($user_id);
         $activity_in_a_week=array();
         foreach ($result as $activity_item) {
             $time=strtotime($activity_item['date_start'].' '.$activity_item['time_start'])-strtotime(date("Y-m-d H:i:s"),time());

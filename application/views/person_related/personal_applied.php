@@ -1,60 +1,67 @@
-<table border=2 align=center width=60% height="600">
-    <tr>
-        <td>
-            <li><a href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
-        </td>
-        <td rowspan="5">
-            <?php if (count($activities_info) != 0) { ?>
+<!--个人中心导航栏-->
+<div class="container">
+    <script src="/adsense.js" type="text/javascript"></script>
+    <div class="main">
+        <div class="side">
+            <nav class="dr-menu">
+                <div class="dr-trigger"><span class="dr-icon dr-icon-menu"></span><a class="dr-label">我的主页</a></div>
+                <ul>
+                    <li><a class="dr-icon dr-icon-user" href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
+                    <li><a class="dr-icon dr-icon-camera" href="<?php echo site_url('user/joined'); ?>">已参加活动</a></li>
+                    <li><a class="dr-icon dr-icon-heart" href="<?php echo site_url('user/applied'); ?>">已报名活动</a></li>
+                    <li><a class="dr-icon dr-icon-bullhorn" href="<?php echo site_url('user/comments'); ?>">评价活动</a>
+                    </li>
+                    <li><a class="dr-icon dr-icon-download"
+                           href="<?php echo site_url('message/personal_mymessages'); ?>">我的消息</a></li>
+                    <li><a class="dr-icon dr-icon-settings" href="<?php echo site_url('user/group'); ?>">我的小组</a></li>
+                    <li><a class="dr-icon dr-icon-switch" href="#">退出登录</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <!--个人中心导航栏-->
+        <!--个人中心主页-->
+        <div class="personal-data personal_main">
+            <h3>
+                <div class="dr-icon dr-icon-heart"> 已报名活动</div>
+            </h3>
+            <hr>
+            <?php if (count($activities_info) != 0) : ?>
                 <?php foreach ($activities_info as $single_activity): ?>
                     <!-- 应该考虑加入对进行筛选活动，例如根据活动时间，否则数据太多，显示有困难 -->
-                    <table cellspacing="10px">
-                        <tr>
-                            <th>活动名称</th>
-                            <td><a href="<?php echo site_url('activity_detail/index/' . $single_activity['id']) ?>">
-                                    <?php echo $single_activity['name']; ?></a></td>
-                        </tr>
-                        <tr>
-                            <th>活动时间</th>
-                            <td><?php echo $single_activity['time_expire']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>活动地点</th>
-                            <td><?php echo $single_activity['place']; ?></td>
-                        </tr>
-                        <tr>
-                            <th>活动评分</th>
-                            <td><?php echo $single_activity['score']; ?> 您已进行评价！</td>
-                            <!-- 后期加入评价之后应该完成对有无评价的分类处理
-                             如果有评价 显示评价 （提示已经评价）
-                             如果无评价 主动提示需要评价-->
-                        </tr>
-                    </table>
+                    <div class="hd_present">
+                        <div>
+                            <a href="<?php echo site_url('activity_detail/index/' . $single_activity['id']) ?>"><img
+                                    src="<?php echo $single_activity['poster']; ?>" alt="nihao" class="hd_img"></a>
+                            <div>
+                                <a class="#"
+                                   href="<?php echo site_url('activity_detail/index/' . $single_activity['id']) ?>">
+                                    <span class="hd_title"><?php echo $single_activity['name']; ?></span>
+                                </a>
+                                <hr>
+                                <div class="hd_details"><i
+                                        class="icon-time icon-large"></i><?php echo $single_activity['date_expire'], " ", $single_activity['time_expire']; ?>
+                                </div>
+                                <div class="hd_details"><i
+                                        class="icon-map-marker icon-large"></i><?php echo $single_activity['place']; ?>
+                                </div>
+                                <div class="rating">
+                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <?php endforeach;
-            } else {
-                ?>
-                <span>你还没有参加过任何活动！</span>
-            <?php } ?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <li><a href="<?php echo site_url('user/applied'); ?>">我参加的活动</a></li>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <li><a href="<?php echo site_url('user/joined'); ?>">我报名的活动</a></li>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <li><a href="<?php echo site_url('user/favorites'); ?>">收藏活动</a></li>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <li><a href="<?php echo site_url('user/comments'); ?>">评论活动</a></li>
-        </td>
-    </tr>
+            else : ?>
+                <span>你还没有报名任何活动！</span>
+            <?php endif; ?>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <!--个人中心主页-->
+    <!-- /container -->
+    <script src="<?php echo base_url("js/ytmenu.js") ?>"></script>
 
-</table>
+
+    <div class="Clear"><!-- 清除浮动 --></div>
+</div>
