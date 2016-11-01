@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title ?></title>
     <link rel="stylesheet" href="<?php echo base_url("css/bootstrap.css"); ?>">
-    <?php /*switch ($page_name) {
+    <?php switch ($page_name) {
         case "login": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/login&register.css"); ?>">
             <?php break;
@@ -86,9 +86,9 @@
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
-            <?php break;
-    } */?>
-    
+            <?php break;*/
+    } ?>
+    <!--
     <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("css/detail.css"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("css/login&register.css"); ?>">
@@ -100,6 +100,7 @@
     <link rel="stylesheet" href="<?php echo base_url("css/main.css"); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
+    -->
 
     <script type="text/javascript" src="<?php echo base_url("js/jquery.min.js"); ?>"></script>
     <script src="<?php echo base_url("js/modernizr.custom.js"); ?>"></script>

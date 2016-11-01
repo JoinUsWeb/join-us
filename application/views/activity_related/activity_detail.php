@@ -1,3 +1,35 @@
+<script type="text/javascript">
+    var w,h,className;
+    function getSrceenWH(){
+        w = $(window).width();
+        h = $(window).height();
+        $('#dialogBg').width(w).height(h);
+    }
+
+    window.onresize = function(){
+        getSrceenWH();
+    }
+    $(window).resize();
+
+    $(function(){
+        getSrceenWH();
+
+
+        $('.box a').click(function(){
+            className = $(this).attr('class');
+            $('#dialogBg').fadeIn(300);
+            $('#dialog_add').removeAttr('class').addClass('animated '+className+'').fadeIn();
+        });
+
+
+        $('.claseDialogBtn').click(function(){
+            $('#dialogBg').fadeOut(300,function(){
+                $('#dialog_add').addClass('bounceOutUp').fadeOut();
+            });
+        });
+    });
+</script>
+
 <div class="container">
     <div class="row">
 
