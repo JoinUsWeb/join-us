@@ -112,7 +112,10 @@
                         else { ?>
                             <form action="
                             <?php
-                            echo site_url('activity_detail/enter/'.$activity['id']);
+                            if(isset($this->session->user_id))
+                                echo site_url('activity_detail/enter/'.$activity['id']);
+                            else
+                                echo site_url('login/index');
                             ?>" method="post">
                                 <p class="center">
                                     <input type="submit" id="apply" value="我要报名">
