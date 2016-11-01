@@ -8,171 +8,134 @@
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 
 </head>
-<body>
-<nav class="navbar navbar-inverse">
-	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myInverseNavbar2"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-			<a class="navbar-brand" href="../index.html">Join Us</a> </div>
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="myInverseNavbar2">
-			<ul class="nav navbar-nav navbar-right">
-				<li></li>
-				<li><a href="#">地区 </a></li>
-				<li><a href="searching.html">查找活动</a></li>
-				<li><a href="create.html">创建活动</a></li>
-				<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="personal_applied.html">我报名的</a></li>
-						<li><a href="personal_joined.html">我参加的</a></li>
-						<li><a href="personal_favorites.html">收藏</a></li>
-						<li><a href="personal_comments.html">评论</a></li>
-						<li class="divider"></li>
-						<li><a href="#">关于我们</a></li>
+
+<body BACKGROUND= '../img/apic324.jpg' style="background-repeat: no-repeat;background-attachment: scroll;margin: auto;"> 
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myInverseNavbar2"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+				<a class="navbar-brand" href="../index.html">Join Us</a> </div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="myInverseNavbar2">
+					<ul class="nav navbar-nav navbar-right">
+						<li></li>
+						<li><a href="#">地区 </a></li>
+						<li><a href="searching.html">查找活动</a></li>
+						<li><a href="create.html">创建活动</a></li>
+						<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+							<li><a href="personal_data.html">个人信息</a></li>
+								<li><a href="personal_joined.html">已参加活动</a></li>
+								<li><a href="personal_applied.html">已报名活动</a></li>
+								<li><a href="personal_comments.html">评价活动</a></li>
+								<li><a href="personal_mymessages.html">我的消息</a></li>
+								<li><a href="personal_group.html">我的小组</a></li>
+								<li class="divider"></li>
+								<li><a href="#">注销</a></li>
+							</ul>
+						</li>
 					</ul>
-				</li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container-fluid -->
-</nav>
-<div style="height: 72px;"></div>
-	
-	<div class="container">
-		<form id="create_hd" action="#" method="post">
-			<ul>
-				<li>
-					<label for="hd_topic" class="label_style">活动主题</label>
-					<input type="text" id="hd_topic" name="hd_topic" placeholder="请输入活动主题">
-				</li>
-				<li>
-					<label for="hd_poster" class="label_style">活动海报</label>
-					<div id="posterImg">
-						<img src="../img/posterImg.png" alt="这是一张海报">
-					</div>
-					<div id="create_button">
-						<input type="file" id="hd_poster" name="hd_poster">
-					</div>
-				</li>
-				<li>
-					<label for="start_date" class="label_style">活动开始时间</label>
-					<input type="date" id="start_date" name="start_date" placeholder="开始时间">
-					<select name="start_hour" id="start_hour">
-						<option value="0:00">0:00</option>
-						<option value="1:00">1:00</option>
-						<option value="2:00">2:00</option>
-						<option value="3:00">3:00</option>
-						<option value="4:00">4:00</option>
-					</select>
-				</li>
-				<li>
-					<label for="close_date" class="label_style">截止报名时间</label>
-					<input type="date" id="close_date" name="close_date" placeholder="截止报名时间">
-					<select name="close_hour" id="close_hour">
-						<option value="0:00">0:00</option>
-						<option value="1:00">1:00</option>
-						<option value="2:00">2:00</option>
-						<option value="3:00">3:00</option>
-						<option value="4:00">4:00</option>
-					</select>
-				</li>
-				<li>
-					<label for="hd_city" class="label_style">活动地点</label>
-					<select name="hd_city" id="hd_city" >
-						<option value="上海">上海</option>
-						<option value="其他">其他</option>
-					</select>
-					<input type="text" id="hd_place" name="hd_place" placeholder="活动地址">
-				</li>
-				<li>
-					<label for="hd_style_1st" class="label_style">活动类型</label>
-					<select name="hd_style_1st" id="hd_style_1st">
-						<option value="娱乐">娱乐</option>
-						<option value="体育">体育</option>
-					</select>
-					<select name="hd_style_2nd" id="hd_style_2nd">
-						<option value="足球">足球</option>
-						<option value="篮球">篮球</option>
-					</select>
-					<label for="newstyle">创建新类型</label>
-					<input type="text" id="newstyle" name="newstyle" placeholder="">
-				</li>
-				<li>
-					<label for="num_limit" class="label_style">人数上限</label>
-					<input type="text" id="num_limit" name="num_limit">
-				</li>
-				<li>
-					<label for="hd_detail" class="label_style">活动详情</label>
-					<textarea name="hd_detail" id="hd_detail" style="resize:none"></textarea>
-				</li>
-				</ul>
-				<p id="publish">
-					<input type="submit"  value="发布活动">
-				</p>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		<div style="height: 72px;"></div>
+
+		<div class="container">
+			<form id="create_hd" action="#" method="post">
+				
+					<ul>
+						<li>
+							<label for="hd_topic" class="label_style">活动主题</label>
+							<input type="text" id="hd_topic" name="hd_topic" placeholder="请输入活动主题">
+						</li>
+						<li>
+							<label for="hd_poster" class="label_style">活动海报</label>
+							<div id="posterImg">
+								<img src="../img/posterImg.png" alt="这是一张海报">
+							</div>
+							<div id="create_button">
+								<input type="file" id="hd_poster" name="hd_poster">
+							</div>
+						</li>
+						<li>
+							<label for="start_date" class="label_style">活动开始时间</label>
+							<input type="date" id="start_date" name="start_date" placeholder="开始时间">
+							<select name="start_hour" id="start_hour">
+								<option value="0:00">0:00</option>
+								<option value="1:00">1:00</option>
+								<option value="2:00">2:00</option>
+								<option value="3:00">3:00</option>
+								<option value="4:00">4:00</option>
+							</select>
+						</li>
+						<li>
+							<label for="close_date" class="label_style">截止报名时间</label>
+							<input type="date" id="close_date" name="close_date" placeholder="截止报名时间">
+							<select name="close_hour" id="close_hour">
+								<option value="0:00">0:00</option>
+								<option value="1:00">1:00</option>
+								<option value="2:00">2:00</option>
+								<option value="3:00">3:00</option>
+								<option value="4:00">4:00</option>
+							</select>
+						</li>
+						<li>
+							<label for="hd_city" class="label_style">活动地点</label>
+							<select name="hd_city" id="hd_city" >
+								<option value="上海">上海</option>
+								<option value="其他">其他</option>
+							</select>
+							<input type="text" id="hd_place" name="hd_place" placeholder="活动地址">
+						</li>
+						<li>
+							<label for="hd_style_1st" class="label_style">活动类型</label>
+							<select name="hd_style_1st" id="hd_style_1st">
+								<option value="娱乐">娱乐</option>
+								<option value="体育">体育</option>
+							</select>
+							<select name="hd_style_2nd" id="hd_style_2nd">
+								<option value="足球">足球</option>
+								<option value="篮球">篮球</option>
+							</select>
+							<label for="newstyle">创建新类型</label>
+							<input type="text" id="newstyle" name="newstyle" placeholder="">
+						</li>
+						<li>
+							<label for="num_limit" class="label_style">人数上限</label>
+							<input type="text" id="num_limit" name="num_limit">
+						</li>
+						<li>
+							<label for="hd_detail" class="label_style">活动详情</label>
+							<textarea name="hd_detail" id="hd_detail" style="resize:none"></textarea>
+						</li>
+					</ul>
+					<p id="publish">
+						<input type="submit"  value="发布活动">
+					</p>
 					
 				
-			
-		</form>
-	</div>	
-	<div class="container well">
-  <div class="row">
-    <div class="col-xs-6 col-sm-6 col-lg-4 col-md-4"> <span class="text-right">
-    </span>
-    <h3>About Us</h3>
-    <hr>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, consequatur neque exercitationem distinctio esse! Cupiditate doloribus a consequatur iusto illum eos facere vel iste iure maxime. Velit, rem, sunt obcaecati eveniet id nemo molestiae. In.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, consequatur neque exercitationem distinctio esse! Cupiditate doloribus a consequatur iusto illum eos facere vel iste iure maxime. Velit, rem, sunt obcaecati eveniet id nemo molestiae. In.</p>
-  </div>
-  <div class="col-xs-6 col-sm-6 col-lg-4 col-md-4 hidden-sm hidden-xs"> <span class="text-right"> </span>
-    <h3>Latest News</h3>
-    <hr>
-    <div class="media-object-default">
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">Heading 1</h4>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, quod temporibus veniam deserunt deleniti accusamus voluptatibus at illo sunt quisquam. </div>
-          <div class="media-right"> <a href="#"> <img class="media-object" src="../img/75X.gif" alt="placeholder image"></a></div>
-        </div>
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">Heading 2</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, iure nemo earum quae aliquid animi eligendi rerum rem porro facilis.</div>
-            <div class="media-right"> <a href="#"> <img class="media-object" src="../img/75X.gif" alt="placeholder image"></a></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-6 col-sm-6 col-lg-4 col-md-4"> <span class="text-right"> </span>
-        <h3>Contact Us</h3>
-        <hr>
 
-        <address>
-          <strong>MyStoreFront, Inc.</strong><br>
-          Indian Treasure Link<br>
-          Quitman, WA, 99110-0219<br>
-          <abbr title="Phone">P:</abbr> (123) 456-7890
-        </address>
+				
 
-        <address>
-          <strong>Full Name</strong><br>
-          <a href="mailto:#">first.last@example.com</a>
-        </address>
-      </div>
-    </div>
-  </div>
-	<footer class="text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <p>Copyright © MyWebsite. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="../js/jquery-1.11.2.min.js"></script> 
-<!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="../js/bootstrap.min.js"></script>
-</body>
-</html>
+			</form>
+		</div>	
+		
+			<footer class="text-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<p>Copyright © MyWebsite. All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+			<script src="../js/jquery-1.11.2.min.js"></script> 
+			<!-- Include all compiled plugins (below), or include individual files as needed --> 
+			<script src="../js/bootstrap.min.js"></script>
+		</body>
+		</html>
