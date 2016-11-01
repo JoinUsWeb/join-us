@@ -61,7 +61,7 @@ class Create_activity extends CI_Controller
                 } else {
                     //为了测试
                     unset($data['new_label']);
-                    $data['creator_id'] = $this->session['user_id'];
+                    $data['creator_id'] = $this->session->user_id;
                     $this->create_activity_no_poster($data);
                 }
             }

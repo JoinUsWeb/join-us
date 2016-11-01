@@ -1,3 +1,6 @@
+<?php
+    $time=array(array('1','一个月内'),array('2','两个月内'),array('3','三个月内'));
+?>
 <div class="container">
     <div class="searching">
         <form id="search_hd" action="#" method="post">
@@ -7,8 +10,14 @@
                     <ul class="style1">
                         <?php
                         foreach ($first_label as $first_label_item) {
-                            echo '<li><a class="thisover" href="http://localhost/index.php/search_activity/index?first_label_id=' . $first_label_item['id']
-                                . '&time=' . $select['time']
+                            echo '<li><a class="thisover" href="'.site_url('search_activity/index').'?first_label_id=';
+
+                            if($select['first_label_id']==$first_label_item['id'])
+                                echo '0'.'&time=' . $select['time']
+                            . '&city=' . $select['city']
+                            . '"><span>' . $first_label_item['name'] . '(已选)</span></a></li>';
+                            else
+                                echo $first_label_item['id'].'&time=' . $select['time']
                                 . '&city=' . $select['city']
                                 . '"><span>' . $first_label_item['name'] . '</span></a></li>';
                         }
@@ -18,18 +27,19 @@
                 <div class="frame" id="frame">
                     <div class="title" id="title">时间：</div>
                     <ul class="style1">
-                        <li><a class="thisover" href="
-                            <?php echo site_url('search_activity/index?first_label_id='.$select['first_label_id']); ?>
-                            &time=1&city=
-                            <?php echo $select['city']; ?>"><span>一个月内</span></a></li>
-                        <li><a class="thisover" href="
-                            <?php echo site_url('search_activity/index?first_label_id='.$select['first_label_id']); ?>
-                            &time=1&city=
-                            <?php echo $select['city']; ?>"><span>三个月内</span></a></li>
-                        <li><a class="thisover" href="
-                            <?php echo site_url('search_activity/index?first_label_id='.$select['first_label_id']); ?>
-                            &time=1&city=
-                            <?php echo $select['city']; ?>"><span>六个月内</span></a></li>
+                        <?php
+                        foreach ($time as $time_item) {
+                            echo '<li><a class="thisover" href="';
+                            echo site_url('search_activity/index?first_label_id=' . $select['first_label_id']);
+                            echo '&time=';
+                            if ($select['time'] == $time_item[0])
+                                echo '0'. '&city=' . $select['city']
+                                    . '"><span>' . $time_item[1] . '(已选)</span></a></li>';
+                            else
+                                echo $time_item[0]. '&city=' . $select['city']
+                                    . '"><span>' . $time_item[1] . '</span></a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <div class="frame" id="frame">

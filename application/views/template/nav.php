@@ -12,15 +12,15 @@
             <ul class="nav navbar-nav navbar-right">
                 <li></li>
                 <li><a href="<?php echo site_url("home"); ?>">主页</a></li>
-                <li><a href="<?php echo site_url("search_activity"); ?>">查找活动</a></li>
-                <li><a href="<?php echo site_url("create_activity"); ?>">创建活动</a></li>
+                <li><a href="<?php echo site_url("search_activity/index"); ?>">查找活动</a></li>
+                <li><a href="<?php echo site_url("create_activity/index"); ?>">创建活动</a></li>
                 <?php if(!isset($this->session->user_id)){ ?>
                 <li>
-                    <a id="login_p" href="<?php echo site_url("login"); ?>">登录</a>
+                    <a id="login_p" href="<?php echo site_url("login/index"); ?>">登录</a>
                 </li>
                 <li><p>|</p></li>
                 <li>
-                    <a id="register_p" href="<?php echo site_url("register"); ?>">注册</a>
+                    <a id="register_p" href="<?php echo site_url("register/index"); ?>">注册</a>
                 </li>
                 <?php }else{ ?>
                 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
