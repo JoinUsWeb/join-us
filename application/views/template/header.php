@@ -64,7 +64,7 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
             <?php break;*/
-        /*case "group": ?>
+        case "group": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
@@ -85,7 +85,7 @@
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
-            <?php break;*/
+            <?php break;
     } ?>
     <!--
     <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">

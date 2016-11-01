@@ -2,21 +2,7 @@
 <div class="container">
     <div class="main">
         <div class="side">
-            <nav class="dr-menu">
-                <div class="dr-trigger"><span class="dr-icon dr-icon-menu"></span><a class="dr-label">我的主页</a></div>
-                <ul>
-                    <li><a class="dr-icon dr-icon-user" href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
-                    <li><a class="dr-icon dr-icon-camera" href="<?php echo site_url('user/joined'); ?>">已参加活动</a></li>
-                    <li><a class="dr-icon dr-icon-heart" href="<?php echo site_url('user/applied'); ?>">已报名活动</a></li>
-                    <li><a class="dr-icon dr-icon-bullhorn" href="<?php echo site_url('user/comments'); ?>">评价活动</a>
-                    </li>
-                    <li><a class="dr-icon dr-icon-download"
-                           href="<?php echo site_url('message/personal_mymessages'); ?>">我的消息</a></li>
-                    <li><a class="dr-icon dr-icon-settings" href="<?php echo site_url('user/group'); ?>">我的小组</a></li>
-                    <li><a class="dr-icon dr-icon-switch" href="#">退出登录</a></li>
-                </ul>
-            </nav>
-
+            <?php echo $nav; ?>
         </div>
         <!--个人中心导航栏-->
         <!--个人中心主页-->

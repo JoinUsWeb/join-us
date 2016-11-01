@@ -10,6 +10,7 @@ class User extends CI_Controller
 {
 
     var $user_id = -1;
+    var $personal_nav;
 
     function __construct()
     {
@@ -20,6 +21,18 @@ class User extends CI_Controller
         } else {
             redirect('login');
         }
+        $this->personal_nav = "<nav class=\"dr-menu\">
+<div class=\"dr-trigger\"><span class=\"dr-icon dr-icon-menu\"></span><a class=\"dr-label\">我的主页</a></div>
+<ul>
+<li><a class=\"dr-icon dr-icon-user\" href=\"" . site_url('user/info') . "\">个人信息</a></li>
+<li><a class=\"dr-icon dr-icon-camera\" href=\"" . site_url('user/joined') . "\">已参加活动</a></li>
+<li><a class=\"dr-icon dr-icon-heart\" href=\"" . site_url('user/applied') . "\">已报名活动</a></li>
+<li><a class=\"dr-icon dr-icon-bullhorn\" href=\"" . site_url('user/comments') . "\">评价活动</a>
+</li>
+<li><a class=\"dr-icon dr-icon-download\" href=\"" . site_url('message/personal_mymessages') . "\">我的消息</a></li>
+<li><a class=\"dr-icon dr-icon-settings\" href=\"" . site_url('user/group') . "\">我的小组</a></li>
+</ul>
+</nav>";
     }
 
     /**
@@ -30,6 +43,7 @@ class User extends CI_Controller
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
         $data['page_name'] = "applied";
+        $data['nav'] = $this->personal_nav;
 
         $row_activities_info = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
@@ -53,6 +67,7 @@ class User extends CI_Controller
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
         $data['page_name'] = "comments";
+        $data['nav'] = $this->personal_nav;
 
         $data['activities_info'] = null;
         $data['activities_info'] = $this->Member_and_activity_model
@@ -70,6 +85,7 @@ class User extends CI_Controller
         $data['page_name'] = "info";
         $this->load->model('User_model');
         $this->load->model('User_and_first_label_model');
+        $data['nav'] = $this->personal_nav;
 
         $data['user_info'] = $this->User_model->get_user_by_id($this->user_id);
         $data['user_info']['interest'] = $this->User_and_first_label_model->get_first_label_by_user_id($this->user_id);
@@ -105,6 +121,7 @@ class User extends CI_Controller
         $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
         $data['page_name'] = "joined";
+        $data['nav'] = $this->personal_nav;
 
         $row_activities_info = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
@@ -127,6 +144,7 @@ class User extends CI_Controller
     {
         $data['title'] = "个人中心";
         $data['page_name'] = 'group';
+        $data['nav'] = $this->personal_nav;
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
@@ -138,6 +156,7 @@ class User extends CI_Controller
     {
         $data['title'] = "个人中心";
         $data['page_name'] = 'group_detail';
+        $data['nav'] = $this->personal_nav;
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
@@ -150,6 +169,7 @@ class User extends CI_Controller
     {
         $data['title'] = "个人中心";
         $data['page_name'] = 'edit';
+        $data['nav'] = $this->personal_nav;
 
     }
 }
