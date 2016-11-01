@@ -12,6 +12,7 @@ class Search_activity extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('activity_model');
         $this->load->model('search_activity_model');
         $this->load->model('first_label_model');
         $this->load->model('user_model');
@@ -37,6 +38,8 @@ class Search_activity extends CI_Controller
 
         $data['activity'] = $activity;
         $data['select'] = $select;
+
+        $data['hot_activity'] = $this->activity_model->get_activity_order_by_score();
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');

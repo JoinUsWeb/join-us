@@ -68,7 +68,6 @@
                                     echo $activity['time_expire'];
                                     ?>
                                 </span></div>
-
                         </div>
 
 
@@ -77,10 +76,8 @@
                              <?php
                              echo $activity['place'];
                              ?>
-            </span></div>
-
+                            </span></div>
                         </div>
-
                         <div id="detail_joinnum" class="detail" ms-controller="detail_join_party_list_controller">
 
                             <div class="title_txt">报名人数：<span class="num">已有
@@ -93,7 +90,6 @@
                                     echo $activity['amount_max'];
                                     ?>
                                     人报名</span></div>
-
                         </div>
 
                         <?php
@@ -122,11 +118,7 @@
                                 </p>
                             </form>
                         <?php } ?>
-
-
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -211,18 +203,12 @@
                                             <p class="button_invite">
                                                 <input type="submit" value="发送邀请" class="submitBtn" >
                                             </p>
-
                                         </form>
                                     </div>
                                 </div>
-
                             </li>
 
                         </ul>
-
-
-
-
                     </div>
                 </div>
 
@@ -245,16 +231,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-
-
-
-
-
         </div>
 
         <!--<div class="sidebar">-->
