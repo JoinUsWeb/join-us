@@ -192,43 +192,30 @@
 
                     <div class="hot_hd_content">
 
-                        <div class="content_li">
-                            <div class="li_left">
-                                <a href="#"><img src="<?php echo base_url("img/01.png"); ?>" alt="" width="60px"
-                                                 height="60px"></a>
-                            </div>
-                            <div class="li_right">
-                                <a class="li_right_title" href="#"><h5>校运会</h5></a>
-                                <p>2016-11-2 9:00</p>
-                            </div>
-                        </div>
-
-                        <div class="content_li">
-                            <div class="li_left">
-                                <a href="#"><img src="<?php echo base_url("img/adobe.png"); ?>" alt="" width="60px"
-                                                 height="60px"></a>
-                            </div>
-                            <div class="li_right">
-                                <a class="li_right_title" href="#"><h5>华东师范大学第二届创新创业大赛</h5></a>
-                                <p>2016-11-23 13:00</p>
-                            </div>
-                        </div>
-
-
-                        <div class="content_li">
-                            <div class="li_left">
-                                <a href="#"><img src="<?php echo base_url("img/转笔.jpg"); ?>" alt="" width="60px"
-                                                 height="60px"></a>
-                            </div>
-                            <div class="li_right">
-                                <a class="li_right_title" href="#"><h5>可怕的辅修</h5></a>
-                                <p>2016-10-28 18:00</p>
-                            </div>
-                        </div>
-
+                        <?php
+                        if(!empty($hot_activity))
+                            foreach ($hot_activity as $hot_activity_item){
+                                ?>
+                                <div class="content_li">
+                                    <div class="li_left">
+                                        <a href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>" >
+                                            <img src="<?php echo base_url($hot_activity_item['poster'])?>" alt="" width="60px" height="60px"></a>
+                                    </div>
+                                    <div class="li_right">
+                                        <a class="li_right_title" href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
+                                            <h5>
+                                                <?php
+                                                echo $hot_activity_item['name'];
+                                                ?>
+                                            </h5></a>
+                                        <p><?php
+                                            echo $hot_activity_item['date_start'].' '.$hot_activity_item['time_start'];
+                                            ?></p>
+                                    </div>
+                                </div>
+                            <?php } ?>
                     </div>
                 </div>
-
             </div>
 
         </div>

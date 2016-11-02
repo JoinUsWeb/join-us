@@ -16,7 +16,7 @@ class Create_activity extends CI_Controller
         $this->load->model('activity_model');
         $this->load->model('first_label_model');
 
-        $config['upload_path'] = FCPATH . '/img/';
+        $config['upload_path'] = FCPATH.'/img/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = 100;
         $config['max_width'] = 1024;
@@ -26,15 +26,18 @@ class Create_activity extends CI_Controller
 
     public function index()
     {
-        $this->form_validation->set_rules('name', 'name', 'required');
-        $this->form_validation->set_rules('date_start', 'date_start', 'required');
-        $this->form_validation->set_rules('time_start', 'time_start', 'required');
-        $this->form_validation->set_rules('date_expire', 'date_expire', 'required');
-        $this->form_validation->set_rules('time_expire', 'time_expire', 'required');
-        $this->form_validation->set_rules('place', 'place', 'required');
-        $this->form_validation->set_rules('city', 'city', 'required');
-        $this->form_validation->set_rules('first_label_id', 'first_label_id', 'required');
-        $this->form_validation->set_rules('brief', 'brief', 'required');
+        if(!isset($this->session->user_id))
+            redirect(site_url('login/index'));
+
+        $this->form_validation->set_rules('name', 'name', 'trim|required',array('required'=>'请输入活动名称'));
+        $this->form_validation->set_rules('date_start', 'date_start', 'required',array('required'=>'请输入活动开始日期'));
+        $this->form_validation->set_rules('time_start', 'time_start', 'required',array('required'=>'请输入活动开始时间'));
+        $this->form_validation->set_rules('date_expire', 'date_expire', 'required|callback_check_date[date_start]',array('required'=>'请输入报名截止日期'));
+        $this->form_validation->set_rules('time_expire', 'time_expire', 'required',array('required'=>'请输入报名截止时间'));
+        $this->form_validation->set_rules('place', 'place', 'trim|required',array('required'=>'请输入活动地点'));
+        $this->form_validation->set_rules('city', 'city', 'required',array('required'=>'请选择活动城市'));
+        $this->form_validation->set_rules('first_label_id', 'first_label_id', 'required',array('required'=>'请输入活动标签'));
+        $this->form_validation->set_rules('brief', 'brief', 'required',array('required'=>'请输入活动简介'));
 
 
         if (!$this->form_validation->run()) {
@@ -73,7 +76,7 @@ class Create_activity extends CI_Controller
                 //为了测试
                 unset($data['new_label']);
                 $data['creator_id'] = $this->session->user_id;
-                $this->create_activity($data, $this->upload->data()['full_path']);
+                $this->create_activity($data,'img/'.$this->upload->data()['file_name']);
             }
         }
     }
@@ -90,5 +93,16 @@ class Create_activity extends CI_Controller
     {
         $poster_path = 'img/first_label_' . $data['first_label_id'] . '.jpg';
         $this->create_activity($data, $poster_path);
+    }
+
+    public function check_date($date_expire,$date_start)
+    {
+        if($date_expire<$date_start)
+            return true;
+        else
+        {
+            $this->form_validation->set_message('check_date', '活动报名截止日期必须早于活动开始日期');
+            return false;
+        }
     }
 }

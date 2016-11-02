@@ -13,7 +13,7 @@
                 <img src="<?php echo base_url('/img/posterImg.png') ?>" alt="这是一张海报">
             </div>
             <div id="create_button">
-                <input type="file" id="hd_poster" name="hd_poster">
+                <input type="file" id="hd_poster" name="poster">
             </div>
         </li>
         <li>
