@@ -1,3 +1,10 @@
+body{
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+
+}
+
 /*导航栏logo*/
 .navbar-brand img{
 height: 25px;
@@ -12,7 +19,7 @@ margin-top: -3px;
   min-height: 20px;
   overflow: hidden;
   margin: 18px 0 -52px 0;
-  background-color: #fff;
+
   
   /*border-radius: 4px;
   border: 1px solid #e3e3e3;
@@ -222,4 +229,7 @@ a.li_right_title:active {
  text-decoration: none;
  font-size: 14px;
  font-weight: bold;
+ }
+ .demo{
+  height: 50px;
  }
