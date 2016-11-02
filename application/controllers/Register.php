@@ -36,10 +36,11 @@ class Register extends CI_Controller
     function form_process(&$user_id)
     {
         $this->form_validation->set_rules('_email', 'Email',
-            'trim|htmlspecialchars|required|valid_email',
+            'trim|htmlspecialchars|is_unique[user.email]|required|valid_email',
             array(
                 'required' => 'Please provide your email address!',
-                'valid_email' => 'Email address is invalid!'
+                'valid_email' => 'Email address is invalid!',
+                'is_unique' => 'This email address is used'
             ));
 
         $this->form_validation->set_rules('_password', 'Password',
@@ -49,7 +50,8 @@ class Register extends CI_Controller
             ));
 
         $this->form_validation->set_rules('_password2', "Password",
-            'trim|htmlspecialchars|required|matches[_password]', array(
+            'trim|htmlspecialchars|required|matches[_password]',
+            array(
                 'required' => 'Please type your password again!',
                 'matches' => "Fail to match!"
             ));

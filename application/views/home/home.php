@@ -1,16 +1,3 @@
-<?php
-$hot_activity_count = 0;
-$recommended_activity_count = 0;
-$class_array = array(
-    "col-lg-4 col-md-4 col-sm-6 col-xs-6",
-    "col-lg-4 col-md-4 col-sm-6 col-xs-6",
-    "col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs",
-    "col-lg-4 col-md-4 col-sm-6 col-xs-6",
-    "col-lg-4 col-md-4 col-sm-6 col-xs-6",
-    "col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs"
-);
-?>
-
 <script type="text/javascript">
     var w, h, className;
     function getSrceenWH() {
@@ -42,8 +29,6 @@ $class_array = array(
         });
     });
 </script>
-
-<!-- Hot activities MUST be shown here!  -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs">
@@ -56,7 +41,8 @@ $class_array = array(
                 <div class="carousel-inner">
                     <div class="item">
                         <img class="img-responsive"
-                             src="<?php echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
+                             src="<?php $hot_activity_count = 0;
+                             echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
                              alt="thumb">
                         <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
                             $hot_activity_count++; ?></div>
@@ -85,7 +71,6 @@ $class_array = array(
     <hr>
 </div>
 
-<!-- Recommended activities are shown here! -->
 <div class="container">
     <div class="row">
         <div class="col-lg-9 col-md-12">
@@ -101,241 +86,251 @@ $class_array = array(
                         <div class="dialogTop">
                             <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
                         </div>
-                        <form action="" method="post" id="editForm">
-                            <p class="editInfos">
-                                <label for="checkbox1">娱乐</label>
-                                <input type="checkbox" name="checkbox1" id="checkbox1">
-                                <label for="checkbox2">体育</label>
-                                <input type="checkbox" name="checkbox2" id="checkbox2">
-                                <label for="checkbox3">科技</label>
-                                <input type="checkbox" name="checkbox3" id="checkbox3">
-                            </p>
-                            <p class="button">
-                                <input type="submit" value="确定" class="submitBtn">
-                            </p>
+                        <?php echo form_open('home', array('id' => "editForm")); ?>
+                        <p class="editInfos">
+                            <?php foreach ($all_first_label as $single_label) : ?>
+                                <label for="<?php echo $single_label['id'] ?>">
+                                    <?php echo $single_label['name'] ?>
+                                </label>
+                                <input type="checkbox" name="first_label[]"
+                                       value="<?php echo $single_label['id'] ?>"
+                                       id="<?php echo $single_label['id'] ?>">
+                            <?php endforeach; ?>
+                        </p>
+                        <p class="button_choose">
+                            <input type="submit" id="select_label" value="确定" class="submitBtn">
+                        </p>
 
                         </form>
                     </div>
                 </div>
 
                 <br>
-                <!--
-                <div>
-                    <p>选择标签：</p>
-                    <form method="post" action="#">
-                        <input type="submit" value="娱乐">
-                        <input type="submit" value="体育">
-                        <input type="submit" value="科技">
 
-                    </form>
-                    <br>
+                <!-- 推荐的活动 -->
+                <div class="content">
+                    <div class="wrap">
+                        <div id="main" role="main">
+                            <ul id="tiles">
+                                <!-- <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">These are our grid blocks -->
+                                <?php foreach ($recommended_activity as $single_activity) : ?>
+                                    <li>
+                                        <a href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]); ?>">
+                                            <img src="<?php echo base_url($single_activity['poster']); ?>" width="200"
+                                                 height="200"></a>
+                                        <div class="caption">
+                                            <a class="hd_title_block"
+                                               href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]); ?>">
+                                                <h3 class="hd_title"><?php echo $single_activity["name"]; ?></h3>
+                                            </a>
+                                            <hr>
+                                            <p>
+                                                <i class="icon-time icon-large"></i><?php echo $single_activity["date_expire"] . " " . $single_activity['time_expire']; ?>
+                                                13:00</p>
+                                            <p>
+                                                <i class="icon-map-marker icon-large"></i><?php echo $single_activity["place"]; ?>
+                                            </p>
+
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            -->
+                <!-- 推荐的活动 -->
+
+                <div id="page-navigation" class="hide clear">
+                    <span class="disabled page-navigation-prev" title="上一页">«上一页</span>
+                    <a href="?&p=1" data-target="page" data-page="1" class="cur">1</a>
+                    <a href="?&p=2" data-target="page" data-page="2">2</a>
+                    <a href="?&p=3" data-target="page" data-page="3">3</a>
+                    <a href="?&p=4" data-target="page" data-page="4">4</a>
+                    <a href="?&p=5" data-target="page" data-page="5">5</a>
+                    <a href="?&p=6" data-target="page" data-page="6">6</a>
+                    <a href="?&p=7" data-target="page" data-page="7">7</a>
+                    <a href="?&p=8" data-target="page" data-page="8">8</a>
+                    <a href="?&p=9" data-target="page" data-page="9">9</a>
+                    <a href="?&p=10" data-target="page" data-page="10">10</a>
+                    <a href="?&p=2" class="page-navigation-next" data-page="2" title="下一页">下一页»</a>
+                </div>
+
             </div>
-        <!-- 推荐活动开始展示 -->
-        <?php foreach ($recommended_activity as $single_activity) :
-            if ($recommended_activity_count % 3 == 0): ?>
-                <div class="row">
-            <?php endif; ?>
-            <div class="<?php echo $class_array[$recommended_activity_count]; ?>">
-                <div class="thumbnail">
-                    <a href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]) ?>">
-                        <!-- 图片的路径未修改 应当修改-->
-                        <img src="img/400X200.gif" alt="Thumbnail Image 1"
-                             class="img-responsive"></a>
-                    <div class="caption">
-                        <a class="hd_title_block"
-                           href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]) ?>">
-                            <h3 class="hd_title"><?php echo $single_activity["name"]; ?></h3>
-                        </a>
-                        <hr>
-                        <!-- 此处应放什么时间？ -->
-                        <p>
-                            <i class="icon-time icon-large"></i><?php echo $single_activity["time_expire"]; ?>
-                        </p>
-                        <p>
-                            <i class="icon-map-marker icon-large"></i><?php echo $single_activity["place"]; ?>
-                        </p>
+
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+            <div class="messagebox">
+                <div class="my_message">
+                    <p>我的消息</p>
+                </div>
+                <a href="<?php echo site_url("message/personal_mymessages"); ?>">
+                    <div class="my_message_hd">
+
+                        <p><i class="icon-calendar"></i>活动提醒<!--2016-11-23创新创业大赛--></p>
+                    </div>
+                    <div class="my_message_pl">
+                        <p><i class="icon-comments"></i>小组动态</p>
+                    </div>
+                    <div class="my_message_yq">
+                        <p><i class="icon-user"></i>我的邀请</p>
+                    </div>
+                    <div class="my_message_sh">
+                        <p><i class="icon-ok-sign"></i>审核通过<!--您创建的2016-11-23创新创业大赛已审核通过--></p>
+                    </div>
+                </a>
+
+            </div>
+            <br>
+            <div class="sidebar_hot">
+                <div class="well">
+                    <div class="hot_hd">
+                        <p>热门活动</p>
+                    </div>
+
+                    <div class="hot_hd_content">
+
+                        <div class="content_li">
+                            <div class="li_left">
+                                <a href="#"><img src="<?php echo base_url("img/01.png"); ?>" alt="" width="60px"
+                                                 height="60px"></a>
+                            </div>
+                            <div class="li_right">
+                                <a class="li_right_title" href="#"><h5>校运会</h5></a>
+                                <p>2016-11-2 9:00</p>
+                            </div>
+                        </div>
+
+                        <div class="content_li">
+                            <div class="li_left">
+                                <a href="#"><img src="<?php echo base_url("img/adobe.png"); ?>" alt="" width="60px"
+                                                 height="60px"></a>
+                            </div>
+                            <div class="li_right">
+                                <a class="li_right_title" href="#"><h5>华东师范大学第二届创新创业大赛</h5></a>
+                                <p>2016-11-23 13:00</p>
+                            </div>
+                        </div>
+
+
+                        <div class="content_li">
+                            <div class="li_left">
+                                <a href="#"><img src="<?php echo base_url("img/转笔.jpg"); ?>" alt="" width="60px"
+                                                 height="60px"></a>
+                            </div>
+                            <div class="li_right">
+                                <a class="li_right_title" href="#"><h5>可怕的辅修</h5></a>
+                                <p>2016-10-28 18:00</p>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-            </div>
-            <?php $recommended_activity_count++;
-            if ($recommended_activity_count % 3 == 0): ?>
-                </div>
-            <?php endif;
-        endforeach;
-        if ($recommended_activity_count % 3 != 0) : ?>
-    </div>
-    <?php endif; ?>
-    <!-- 推荐的活动在此处结束 -->
 
-    <!--
-    <hr>
-    <div>
-        <div>
-            <h3>热门活动</h3>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                <div class="thumbnail">
-                    <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                          class="img-responsive"></a>
-                    <div class="caption">
-                        <a class="hd_title_block" href="html/details_page.html">
-                            <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                        </a>
-                        <hr>
-                        <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                        <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                <div class="thumbnail">
-                    <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                          class="img-responsive"></a>
-                    <div class="caption">
-                        <a class="hd_title_block" href="html/details_page.html">
-                            <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                        </a>
-                        <hr>
-                        <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                        <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 hidden-sm hidden-xs">
-                <div class="thumbnail">
-                    <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                          class="img-responsive"></a>
-                    <div class="caption">
-                        <a class="hd_title_block" href="html/details_page.html">
-                            <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                        </a>
-                        <hr>
-                        <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                        <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                <div class="thumbnail">
-                    <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                          class="img-responsive"></a>
-                    <div class="caption">
-                        <a class="hd_title_block" href="html/details_page.html">
-                            <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                        </a>
-                        <hr>
-                        <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                        <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-                <div class="thumbnail">
-                    <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                          class="img-responsive"></a>
-                    <div class="caption">
-                        <a class="hd_title_block" href="html/details_page.html">
-                            <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                        </a>
-                        <hr>
-                        <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                        <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
-                <div class="thumbnail">
-                    <a href="html/details_page.html"><img src="img/400X200.gif" alt="Thumbnail Image 1"
-                                                          class="img-responsive"></a>
-                    <div class="caption">
-                        <a class="hd_title_block" href="html/details_page.html">
-                            <h3 class="hd_title">华东师范大学第二届创新创业大赛</h3>
-                        </a>
-                        <hr>
-                        <p><i class="icon-time icon-large"></i>2016-11-23 13:00</p>
-                        <p><i class="icon-map-marker icon-large"></i>华东师范大学</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-</div>
-
-<div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
-    <div class="messagebox">
-        <div class="my_message">
-            <p>我的消息</p>
-        </div>
-        <div class="my_message_hd">
-
-            <p><i class="icon-calendar"></i>活动提醒<!--2016-11-23创新创业大赛--></p>
-        </div>
-        <div class="my_message_pl">
-            <p><i class="icon-comments"></i>评论提醒</p>
-        </div>
-        <div class="my_message_yq">
-            <p><i class="icon-user"></i>新的邀请</p>
-        </div>
-        <div class="my_message_sh">
-            <p><i class="icon-ok-sign"></i>审核通过<!--您创建的2016-11-23创新创业大赛已审核通过--></p>
-        </div>
-
-    </div>
-    <br>
-    <div class="well">
-        <div class="hot_hd">
-            <p>热门活动</p>
-        </div>
-
-        <div class="hot_hd_content">
-
-            <div class="content_li">
-                <div class="li_left">
-                    <a href="#"><img src="img/01.png" alt="" width="70px" height="70px"></a>
-                </div>
-                <div class="li_right">
-                    <a class="li_right_title" href="#"><h5>校运会</h5></a>
-                    <p>2016-11-2 9:00</p>
-                </div>
-            </div>
-
-
-            <div class="content_li">
-                <div class="li_left">
-                    <a href="#"><img src="img/01.png" alt="" width="70px" height="70px"></a>
-                </div>
-                <div class="li_right">
-                    <a class="li_right_title" href="#"><h5>华东师范大学第二届创新创业大赛</h5></a>
-                    <p>2016-11-23 13:00</p>
-                </div>
-            </div>
-
-
-            <div class="content_li">
-                <div class="li_left">
-                    <a href="#"><img src="img/01.png" alt="" width="70px" height="70px"></a>
-                </div>
-                <div class="li_right">
-                    <a class="li_right_title" href="#"><h5>可怕的辅修</h5></a>
-                    <p>2016-10-28 18:00</p>
-                </div>
             </div>
 
         </div>
     </div>
+</div>
 
-</div>
-</div>
+<script src="<?php echo base_url("js/jquery.imagesloaded.js") ?>"></script>
+<script src="<?php echo base_url("js/jquery.wookmark.js") ?>"></script>
+<script type="text/javascript">
+    var count = 1;
+    (function ($) {
+        var $tiles = $('#tiles'),
+            $handler = $('li', $tiles),
+            $main = $('#main'),
+            $window = $(window),
+            $document = $(document),
+            options = {
+                autoResize: true, // This will auto-update the layout when the browser window is resized.
+                container: $main, // Optional, used for some extra CSS styling
+                offset: 20, // Optional, the distance between grid items
+                itemWidth: 269 // Optional, the width of a grid item
+            };
+
+        /**
+         * Reinitializes the wookmark handler after all images have loaded
+         */
+        function applyLayout() {
+            $tiles.imagesLoaded(function () {
+                // Destroy the old handler
+                if ($handler.wookmarkInstance) {
+                    $handler.wookmarkInstance.clear();
+                }
+
+                // Create a new layout handler.
+                $handler = $('li', $tiles);
+                $handler.wookmark(options);
+            });
+        }
+
+        /**
+         * When scrolled all the way to the bottom, add more tiles
+         */
+        /*   function($loading, isBeyondMaxPage) {
+         if ( !isBeyondMaxPage ) {
+         $loading.fadeOut();
+         } else {
+         $loading.hide();
+         $('#page-navigation').show();
+         }
+         }
+         */
+
+        function onScroll() {
+
+            // Check if we're within 100 pixels of the bottom edge of the broser window.
+            var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
+                closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+
+            if (closeToBottom) {
+                // Get the first then items from the grid, clone them, and add them to the bottom of the grid
+                count++;
+                if (count > 4) {
+                    return;
+                }
+                var $items = $('li', $tiles),
+                    $firstTen = $items.slice(0, 10);
+                $tiles.append($firstTen.clone());
+
+                applyLayout();
+
+            }
+
+        };
+
+        // Call the layout function for the first time
+        applyLayout();
+
+        // Capture scroll event.
+        $window.bind('scroll.wookmark', onScroll);
+    })(jQuery);
+</script>
+<script src="<?php echo base_url("js/stickUp.min.js") ?>"></script>
+<script type="text/javascript">
+    //initiating jQuery
+    jQuery(function ($) {
+        $(document).ready(function () {
+            //enabling stickUp on the '.navbar-wrapper' class
+            $('.sidebar_hot').stickUp();
+        });
+    });
+
+    $("#select_label").click(function () {
+        var first_labels = new Array();
+        $("input:checkbox").each(function () {
+            if (this.checked == true)
+                first_labels.push(this.value);
+        });
+        var user_id = '<?php echo $_SESSION['user_id']; ?>';
+        $.post("<?php echo site_url('separated_info/select_first_label'); ?>",
+            {'first_label[]':first_labels,'user_id': user_id},
+            function (data) {
+                alert(JSON.parse(data));
+            });
+    })
+
+</script>

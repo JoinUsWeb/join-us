@@ -17,7 +17,7 @@ class User extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         if (isset($_SESSION['user_id'])) {
-            $this->user_id = $_SESSION['user_id'];
+            $this->user_id = (int)$_SESSION['user_id'];
         } else {
             redirect('login');
         }

@@ -16,7 +16,7 @@ class Home extends CI_Controller
         $this->load->model('Activity_model');
         $this->load->model('First_label_model');
         $this->load->model("User_and_first_label_model");
-        $this->load->helper('url');
+        $this->load->helper(array('url','form'));
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
         } else {
@@ -31,6 +31,7 @@ class Home extends CI_Controller
 
         $recommended_activity = $this->get_recommended_activity();
 
+        $data['all_first_label'] = $this->First_label_model->get_first_label();
         $data['title'] = 'Home';
         $data['page_name']="home";
         $data['hot_activity'] = $hot_activity;

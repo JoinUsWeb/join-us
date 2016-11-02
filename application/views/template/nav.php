@@ -25,6 +25,7 @@
                 <?php }else{ ?>
                 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
                         <li><a href="<?php echo site_url('user/applied'); ?>">我报名的</a></li>
                         <li><a href="<?php echo site_url('user/joined'); ?>">我参加的</a></li>
                         <li><a href="<?php echo site_url('user/favorites'); ?>">收藏</a></li>

@@ -124,11 +124,14 @@ class User_and_first_label_model extends CI_Model
             return null;
         else {
             $data = array(
-                'user_id' => $user_id,
-                'first_label_id' => $first_label);
-            if ($this->db->insert("relation_user_firstlabel", $data) == false)
-                return false;
-            return true;
+                'first_label_id' => $first_label,
+                'user_id' => $user_id);
+            if (($result = $this->db->get_where("relation_user_firstlabel",$data)->result_array()) == null){
+                if ($this->db->insert("relation_user_firstlabel", $data) == false)
+                    return false;
+                return true;
+            }
+            return false;
         }
     }
 }

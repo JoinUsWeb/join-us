@@ -131,9 +131,12 @@ class User_and_second_label_model extends CI_Model
             $data = array(
                 'user_id' => $user_id,
                 'second_label_id' => $second_label_id);
-            if ($this->db->insert('relation_user_secondlabel', $data) == false)
-                return false;
-            return true;
+            if (($result = $this->db->get_where('relation_user_secondlabel', $data)->result_array()) == null) {
+                if ($this->db->insert('relation_user_secondlabel', $data) == false)
+                    return false;
+                return true;
+            }
+            return false;
         }
 
     }

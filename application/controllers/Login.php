@@ -17,6 +17,10 @@ class Login extends CI_Controller
         $data['title'] = "登录";
         $data['page_name']="login";
 
+        if ($this->session->has_userdata('user_id')){
+            redirect('home');
+            return;
+        }
         if ($this->form_process() == null) {
             setcookie('email', set_value('_email'));
             setcookie('password', set_value('_password'));
@@ -52,9 +56,9 @@ class Login extends CI_Controller
             ));
 
         if ($this->form_validation->run() == false)
-            return "数据不合法！";
+            return "Invalid";
         else if ($this->User_model->validate_user(set_value('_email'), set_value('_password')) === false)
-            return "用户名或密码错误！";
+            return "Wrong";
         else
             return null;
     }

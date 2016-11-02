@@ -134,6 +134,8 @@ class User_model extends CI_Model
 
     /**
      *
+     * 提交注册表单时已完成是否重复检验
+     *
      * array_for_user_info = array(
      *      email  nick_name  password  phone_number )
      *

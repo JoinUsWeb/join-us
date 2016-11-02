@@ -18,4 +18,14 @@ class Separated_info extends CI_Controller {
             return json_encode('');
         echo json_encode($return_info);
     }
+
+    function select_first_label(){
+        if ($_POST['first_label'] == null || $_POST['user_id'] <= 0)
+            return "";
+        $this->load->model("User_and_first_label_model");
+        foreach ($_POST['first_label'] as $single_1st_label){
+            $this->User_and_first_label_model->insert_new_relation(intval($_POST['user_id']),$single_1st_label);
+        }
+        echo json_encode('success');
+    }
 }
