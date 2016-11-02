@@ -78,6 +78,7 @@
                 <div class="box home_block">
                     <div class="demo">
                         <h3 style="float: left;">推荐活动</h3>
+                        <?php if ($need_first_label) :?>
                         <a class="bounceIn" href="javascript:;">请选择兴趣爱好</a>
                     </div>
                     <div id="dialogBg"></div>
@@ -86,7 +87,6 @@
                         <div class="dialogTop">
                             <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
                         </div>
-                        <?php echo form_open('home', array('id' => "editForm")); ?>
                         <p class="editInfos">
                             <?php foreach ($all_first_label as $single_label) : ?>
                                 <label for="<?php echo $single_label['id'] ?>">
@@ -98,11 +98,12 @@
                             <?php endforeach; ?>
                         </p>
                         <p class="button_choose">
-                            <input type="submit" id="select_label" value="确定" class="submitBtn">
+                            <button id="select_label" class="submitBtn">确定</button>
                         </p>
-
-                        </form>
                     </div>
+                    <?php else :?>
+                    </div>
+                    <?php endif; ?>
                 </div>
 
                 <br>
@@ -326,11 +327,17 @@
                 first_labels.push(this.value);
         });
         var user_id = '<?php echo $_SESSION['user_id']; ?>';
-        $.post("<?php echo site_url('separated_info/select_first_label'); ?>",
-            {'first_label[]':first_labels,'user_id': user_id},
-            function (data) {
-                alert(JSON.parse(data));
-            });
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url('separated_info/select_first_label/'); ?>',
+            data: {'first_label[]': first_labels, 'user_id': user_id},
+            success: function () {
+                location.reload(true);
+            }
+        });
+        $('#dialogBg').fadeOut(300, function () {
+            $('#dialog').addClass('bounceOutUp').fadeOut();
+        });
     })
 
 </script>

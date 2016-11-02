@@ -36,6 +36,7 @@ class Home extends CI_Controller
         $data['page_name']="home";
         $data['hot_activity'] = $hot_activity;
         $data['recommended_activity'] = $recommended_activity;
+        $data['need_first_label'] = $this->User_and_first_label_model->get_first_label_by_user_id($this->user_id) == null ? true : false;
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
