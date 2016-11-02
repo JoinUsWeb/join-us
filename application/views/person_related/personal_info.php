@@ -44,7 +44,7 @@
                                 <div class="p_tag" style="display:block"><?php echo $single_interest['name']; ?></div>
                             <?php endforeach; ?>
                         </li>
-                        <li><a href="../html/personal_edit.html"><i class="icon-pencil"></i>编辑个人信息</a></li>
+                        <li><a href="<?php echo site_url('user/edit'); ?>"><i class="icon-pencil"></i>编辑个人信息</a></li>
                     </ul>
                 </div>
             </div>
