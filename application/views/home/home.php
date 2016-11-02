@@ -78,7 +78,7 @@
                 <div class="box home_block">
                     <div class="demo">
                         <h3 style="float: left;">推荐活动</h3>
-                        <?php if ($need_first_label) :?>
+                        <?php if ($need_first_label) : ?>
                         <a class="bounceIn" href="javascript:;">请选择兴趣爱好</a>
                     </div>
                     <div id="dialogBg"></div>
@@ -101,46 +101,47 @@
                             <button id="select_label" class="submitBtn">确定</button>
                         </p>
                     </div>
-                    <?php else :?>
-                    </div>
-                    <?php endif; ?>
+                    <?php else : ?>
                 </div>
+                <?php endif; ?>
+            </div>
 
-                <br>
+            <br>
 
-                <!-- 推荐的活动 -->
-                <div class="content">
-                    <div class="wrap">
-                        <div id="main" role="main">
-                            <ul id="tiles">
-                                <!-- <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">These are our grid blocks -->
-                                <?php foreach ($recommended_activity as $single_activity) : ?>
-                                    <li>
-                                        <a href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]); ?>">
-                                            <img src="<?php echo base_url($single_activity['poster']); ?>" width="200"
-                                                 height="200"></a>
-                                        <div class="caption">
-                                            <a class="hd_title_block"
-                                               href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]); ?>">
-                                                <h3 class="hd_title"><?php echo $single_activity["name"]; ?></h3>
-                                            </a>
-                                            <hr>
-                                            <p>
-                                                <i class="icon-time icon-large"></i><?php echo $single_activity["date_expire"] . " " . $single_activity['time_expire']; ?>
-                                                13:00</p>
-                                            <p>
-                                                <i class="icon-map-marker icon-large"></i><?php echo $single_activity["place"]; ?>
-                                            </p>
+            <!-- 推荐的活动 -->
+            <div class="content">
+                <div class="wrap">
+                    <div id="main" role="main">
+                        <ul id="tiles">
+                            <!-- <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">These are our grid blocks -->
+                            <?php foreach ($recommended_activity as $single_activity) : ?>
+                                <li>
+                                    <a href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]); ?>">
+                                        <img src="<?php echo base_url($single_activity['poster']); ?>" width="200"
+                                             height="200"></a>
+                                    <div class="caption">
+                                        <a class="hd_title_block"
+                                           href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]); ?>">
+                                            <h3 class="hd_title"><?php echo $single_activity["name"]; ?></h3>
+                                        </a>
+                                        <hr>
+                                        <p>
+                                            <i class="icon-time icon-large"></i><?php echo $single_activity["date_expire"] . " " . $single_activity['time_expire']; ?>
+                                            13:00</p>
+                                        <p>
+                                            <i class="icon-map-marker icon-large"></i><?php echo $single_activity["place"]; ?>
+                                        </p>
 
-                                        </div>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                 </div>
-                <!-- 推荐的活动 -->
+            </div>
+            <!-- 推荐的活动 -->
 
+            <?php if (!$need_first_label) : ?>
                 <div id="page-navigation" class="hide clear">
                     <span class="disabled page-navigation-prev" title="上一页">«上一页</span>
                     <a href="?&p=1" data-target="page" data-page="1" class="cur">1</a>
@@ -155,39 +156,53 @@
                     <a href="?&p=10" data-target="page" data-page="10">10</a>
                     <a href="?&p=2" class="page-navigation-next" data-page="2" title="下一页">下一页»</a>
                 </div>
-
-            </div>
-
+            <?php endif; ?>
 
         </div>
 
-        <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
-            <div class="messagebox">
-                <div class="my_message">
-                    <p>我的消息</p>
-                </div>
-                <a href="<?php echo site_url("message/personal_mymessages"); ?>">
-                    <div class="my_message_hd">
 
-                        <p><i class="icon-calendar"></i>活动提醒<!--2016-11-23创新创业大赛--></p>
-                    </div>
-                    <div class="my_message_pl">
-                        <p><i class="icon-comments"></i>小组动态</p>
-                    </div>
-                    <div class="my_message_yq">
-                        <p><i class="icon-user"></i>我的邀请</p>
-                    </div>
-                    <div class="my_message_sh">
-                        <p><i class="icon-ok-sign"></i>审核通过<!--您创建的2016-11-23创新创业大赛已审核通过--></p>
-                    </div>
-                </a>
+    </div>
 
+    <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+        <div class="messagebox">
+            <div class="my_message">
+                <p>我的消息</p>
             </div>
-            <br>
-            <div class="sidebar_hot">
-                <div class="well">
-                    <div class="hot_hd">
-                        <p>热门活动</p>
+            <a href="<?php echo site_url("message/personal_mymessages"); ?>">
+                <div class="my_message_hd">
+
+                    <p><i class="icon-calendar"></i>活动提醒<!--2016-11-23创新创业大赛--></p>
+                </div>
+                <div class="my_message_pl">
+                    <p><i class="icon-comments"></i>小组动态</p>
+                </div>
+                <div class="my_message_yq">
+                    <p><i class="icon-user"></i>我的邀请</p>
+                </div>
+                <div class="my_message_sh">
+                    <p><i class="icon-ok-sign"></i>审核通过<!--您创建的2016-11-23创新创业大赛已审核通过--></p>
+                </div>
+            </a>
+
+        </div>
+        <br>
+        <div class="sidebar_hot">
+            <div class="well">
+                <div class="hot_hd">
+                    <p>热门活动</p>
+                </div>
+
+                <div class="hot_hd_content">
+
+                    <div class="content_li">
+                        <div class="li_left">
+                            <a href="#"><img src="<?php echo base_url("img/01.png"); ?>" alt="" width="60px"
+                                             height="60px"></a>
+                        </div>
+                        <div class="li_right">
+                            <a class="li_right_title" href="#"><h5>校运会</h5></a>
+                            <p>2016-11-2 9:00</p>
+                        </div>
                     </div>
 
                     <div class="hot_hd_content">
@@ -219,7 +234,9 @@
             </div>
 
         </div>
+
     </div>
+</div>
 </div>
 
 <script src="<?php echo base_url("js/jquery.imagesloaded.js") ?>"></script>

@@ -168,8 +168,62 @@ class User extends CI_Controller
     public function edit()
     {
         $data['title'] = "个人中心";
+        $this->load->model('User_model');
+        $this->load->library('form_validation');
+        $this->load->helper(array('form', 'url'));
         $data['page_name'] = 'edit';
-        $data['nav'] = $this->personal_nav;
+        $data['user_info'] = $this->User_model->get_user_by_id($this->user_id);
 
+
+        if (isset($_POST))
+            $this->update_user_info();
+
+        $this->load->view('template/header', $data);
+        $this->load->view('template/nav');
+        $this->load->view('person_related/personal_edit', $data);
+        $this->load->view('template/footer');
+
+    }
+
+    public function update_user_info()
+    {
+        $user_info = array();
+        if (!empty($_POST['password'])) {
+            $this->form_validation->set_rules('password2', 'Password',
+                'trim|htmlspecialchars|required|matches[password]',
+                array(
+                    'required' => 'Please type your password again!',
+                    'matches' => "Fail to match!"
+                ));
+            if ($this->form_validation->run() == false) {
+                return;
+            }
+            $user_info['password'] = $_POST['password'];
+        }
+        if (!empty($_POST['nick_name'])) {
+            $this->form_validation->set_rules('nick_name', 'Nickname',
+                'trim|htmlspecialchars|required|is_unique[user.nick_name]',
+                array(
+                    'required' => 'Please provide your nickname!',
+                    'is_unique' => '%s is used!'
+                ));
+            if ($this->form_validation->run() == false) {
+                return;
+            }
+            $user_info['nick_name'] = $_POST['nick_name'];
+        }
+        if (!empty($_POST['phone_number'])) {
+            $this->form_validation->set_rules('phone_number', 'Phone number',
+                'trim|htmlspecialchars|required|is_natural',
+                array(
+                    'required' => 'Please provide your phone number!',
+                    'is_natural' => 'Invalid phone number!'
+                ));
+            if ($this->form_validation->run() == false) {
+                return;
+            }
+            $user_info['phone_number'] = $_POST['phone_number'];
+        }
+        $this->User_model->update_user_info_by_id($user_info);
     }
 }
