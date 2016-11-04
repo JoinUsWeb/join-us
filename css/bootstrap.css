@@ -1128,7 +1128,7 @@ img {
 .carousel-inner > .item > a > img {
   display: block;
   max-width: 100%;
-  height: auto;
+  /*height: auto;*/
 }
 .img-rounded {
   border-radius: 6px;
@@ -6633,3 +6633,8 @@ ul{
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
+/*导航栏logo*/
+.navbar-brand img{
+height: 25px;
+margin-top: -3px;
+}

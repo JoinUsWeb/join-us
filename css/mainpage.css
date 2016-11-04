@@ -5,12 +5,6 @@ body{
 
 }
 
-/*导航栏logo*/
-.navbar-brand img{
-height: 25px;
-margin-top: -3px;
-}
-
 
 .changeheight{
   margin-bottom: -72px;
@@ -232,4 +226,8 @@ a.li_right_title:active {
  }
  .demo{
   height: 50px;
+ }
+ .carousel-inner img{
+height: 296.87px;
+width: 1140px;
  }
