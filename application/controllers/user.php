@@ -188,9 +188,9 @@ class User extends CI_Controller
     public function update_user_info()
     {
         $user_info = array();
-        if (!empty($_POST['password'])) {
-            $this->form_validation->set_rules('password2', 'Password',
-                'trim|htmlspecialchars|required|matches[password]',
+        if (!empty($_POST['_password'])) {
+            $this->form_validation->set_rules('_password2', 'Password',
+                'trim|htmlspecialchars|required|matches[_password]',
                 array(
                     'required' => 'Please type your password again!',
                     'matches' => "Fail to match!"
