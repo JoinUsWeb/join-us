@@ -7,7 +7,7 @@
         </div>
         <!--个人中心导航栏-->
         <!--个人中心主页-->
-        <div class="personal_main">
+        <div class="personal_main personal-data">
             <h3><div class="dr-icon dr-icon-settings"> 我的小组</div></h3>
             <hr>
             <div class="hd_present">

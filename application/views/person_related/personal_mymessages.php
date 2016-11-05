@@ -8,7 +8,7 @@
         <!--个人中心导航栏-->
         <!--个人中心主页-->
 
-        <div class="per_message">
+        <div class="per_message personal-data personal_main">
             <div class="per_message_block">
                 <div class="per_message_title">
                     <h5><i class="icon-calendar"></i>活动提醒</h5>

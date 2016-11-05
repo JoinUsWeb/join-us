@@ -8,7 +8,7 @@
 
     window.onresize = function () {
         getSrceenWH();
-    }
+    };
     $(window).resize();
 
     $(function () {
@@ -39,7 +39,7 @@
         <!--个人中心导航栏-->
         <!--个人中心主页-->
         <div>
-            <div class="group_gg">
+            <div class="group_gg personal-data">
                 <h3>小组公告</h3>
                 <hr>
                 <div class="gg_present">11月9日英美文化体验前九周期末考试！？！<br>
@@ -56,7 +56,7 @@
     </form>-->
 
             </div>
-            <div class="group_member">
+            <div class="group_member personal-data">
                 <h3>小组成员</h3>
                 <hr>
                 <ul class="member_review_list">
