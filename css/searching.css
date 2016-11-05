@@ -10,7 +10,7 @@
     border-color:#1a2b3d;
     border-width: medium;
     border-style: solid;
-    margin: 1%;
+    margin: 1% 0;
     overflow-x:hidden;
     overflow-y: hidden;
     margin-bottom: auto;
@@ -72,7 +72,7 @@ a:active.thisover{
 .search_out{
     background-color:azure;
     padding: 1%;
-    margin:  1%;
+   
     border-color: seashell;
         border: 1px solid rgb(221,221,221);
 	border-radius: 5px;
@@ -132,3 +132,6 @@ a:active.thisover{
 }
 
 
+#frame3{
+    margin-bottom: 15px;
+}
