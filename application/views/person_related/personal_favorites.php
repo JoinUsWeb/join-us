@@ -4,7 +4,7 @@
             <li><a href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
         </td>
         <td rowspan="5">
-            <?php if (count($activities_info) != 0) { ?>
+                <?php if (count($activities_info) != 0) { ?>
                 <?php foreach ($activities_info as $single_activity): ?>
                     <!-- 应该考虑加入对进行筛选活动，例如根据活动时间，否则数据太多，显示有困难
                      同时需要对活动是否被收藏进行判断  或者让数据保证是推荐的活动-->
