@@ -94,7 +94,20 @@ class Message extends CI_Controller
         $data['activity_announcement']=$this->get_activity_announcement_by_member_id($user_id);
         $data['unfinished_comment']=$this->get_unfinished_comment_by_member_id($user_id);
         $data['invitation']=$this->get_unread_invitation_by_recipient_id($user_id);
+        $data['verified_activity']=$this->get_verified_activity_by_creator_id($user_id);
         return $data;
+    }
+
+    /**
+     *get verified activity  by user's id
+     *@param int    $user_id    user's id
+     *@return array     $verified_activity   verified activity' array
+     *precondition: $user_id exits in TABLE user
+     *postcondition: return verified activity by user's id order by activity's id
+     */
+    private function get_verified_activity_by_creator_id($user_id){
+        $verified_activity=$this->Activity_model->get_activity_by_creator_id($user_id);
+        return $verified_activity;
     }
 
     /**

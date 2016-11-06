@@ -74,15 +74,18 @@
                 </div>
                 <div class="message_bar">
                     <ul>
-                        <li>
-                            您创建的活动 华东师范大学第二届创新创业大赛 已通过审核！
-                        </li>
-                        <li>
-                            您创建的活动 夏雨艺苑万圣节party 已通过审核！
-                        </li>
-                        <li>
-
-                        </li>
+                       <!--  <li>
+                           您创建的活动 华东师范大学第二届创新创业大赛 已通过审核！
+                       </li>
+                       <li>
+                           您创建的活动 夏雨艺苑万圣节party 已通过审核！
+                       </li>
+                       <li>
+                       
+                       </li> -->
+                        <?php foreach ($verified_activity as $row): ?>
+                            <li>您创建的活动 <?= $row['name'] ?> 已通过审核!</li>
+                        <? endforeach; ?>
                     </ul>
                 </div>
             </div>
