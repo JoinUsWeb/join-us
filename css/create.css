@@ -1,5 +1,5 @@
 body{
-   background:url(../img/apic324.jpg);
+   background:url(../img/01.jpg);
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
@@ -43,8 +43,11 @@ ul{
 	
 }
 #hd_place{
-	width: 528px;
+	width: 498px;
 
+}
+#newstyle{
+	width:190px;
 }
 input{
     width: 250px;
@@ -79,7 +82,7 @@ input[type=file]{
 	
 }
 select{
-	width: 90px;
+	width: 120px;
 	height: 35px;
 	line-height: 35px;
 	margin: 0 30px;	
@@ -115,4 +118,7 @@ select{
 #publish{
 	margin: 60px 0 ;
 	text-align: center;
+}
+hr{
+		border-top:1px solid #1a2b3c;
 }
