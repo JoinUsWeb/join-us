@@ -26,7 +26,7 @@ class Activity_detail extends CI_Controller
         if (empty($data['activity']))
             show_error('活动不存在，可能已经被取消');
         $data['member'] = $this->member_and_activity_model->get_member_by_activity_id($activity_id);
-        $data['hot_activity'] = $this->activity_model->get_activity_order_by_score();
+        $data['hot_activity'] = $this->activity_model->get_activity_order_by_score(3);
         $data['is_joined'] = $this->member_and_activity_model->is_exist($this->session->user_id,$activity_id);
 
         $this->load->view('template/header', $data);

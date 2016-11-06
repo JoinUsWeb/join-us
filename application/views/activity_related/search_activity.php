@@ -94,9 +94,7 @@
                     <div class="hot_hd">
                         <p>热门活动</p>
                     </div>
-
                     <div class="hot_hd_content">
-
                         <?php
                         if(!empty($hot_activity))
                             foreach ($hot_activity as $hot_activity_item){
@@ -125,8 +123,6 @@
         </div>
     </div>
 </div>
-
-<script src="<?php echo base_url("js/stickUp.min.js") ?>"></script>
 
 <script type="text/javascript">
     //initiating jQuery

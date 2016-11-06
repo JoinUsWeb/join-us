@@ -103,6 +103,7 @@
 
     <script type="text/javascript" src="<?php echo base_url("js/jquery.min.js"); ?>"></script>
     <script src="<?php echo base_url("js/modernizr.custom.js"); ?>"></script>
+    <script src="<?php echo base_url("js/stickUp.min.js") ?>"></script>
     <!--HTML5 shim and Respond . js for IE8 support of HTML5 elements and media queries-->
     <!--WARNING: Respond . js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

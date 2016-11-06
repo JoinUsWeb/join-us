@@ -242,9 +242,7 @@
                     <div class="hot_hd">
                         <p>热门活动</p>
                     </div>
-
                     <div class="hot_hd_content">
-
                         <?php
                         if(!empty($hot_activity))
                             foreach ($hot_activity as $hot_activity_item){
