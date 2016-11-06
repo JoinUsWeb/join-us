@@ -1,29 +1,29 @@
 <script type="text/javascript">
-    var w,h,className;
-    function getSrceenWH(){
+    var w, h, className;
+    function getSrceenWH() {
         w = $(window).width();
         h = $(window).height();
         $('#dialogBg').width(w).height(h);
     }
 
-    window.onresize = function(){
+    window.onresize = function () {
         getSrceenWH();
     }
     $(window).resize();
 
-    $(function(){
+    $(function () {
         getSrceenWH();
 
 
-        $('.box a').click(function(){
+        $('.box a').click(function () {
             className = $(this).attr('class');
             $('#dialogBg').fadeIn(300);
-            $('#dialog_add').removeAttr('class').addClass('animated '+className+'').fadeIn();
+            $('#dialog_add').removeAttr('class').addClass('animated ' + className + '').fadeIn();
         });
 
 
-        $('.claseDialogBtn').click(function(){
-            $('#dialogBg').fadeOut(300,function(){
+        $('.claseDialogBtn').click(function () {
+            $('#dialogBg').fadeOut(300, function () {
                 $('#dialog_add').addClass('bounceOutUp').fadeOut();
             });
         });
@@ -38,9 +38,7 @@
             <div class="xxxx">
                 <div class="content_head_l">
                     <img src="
-                    <?php
-                    echo base_url($activity['poster']);
-                    ?>" alt="海报海报photo">
+                    <?php echo base_url($activity['poster']); ?>" alt="海报海报photo">
                 </div>
 
                 <div class="content_head_r">
@@ -57,7 +55,7 @@
                         <div class="detail">
                             <div class="title_txt">开始时间：<span>
                                     <?php
-                                    echo $activity['time_start'];
+                                    echo $activity['date_start'].' '.$activity['time_start'];
                                     ?>
                                 </span></div>
 
@@ -65,7 +63,7 @@
                         <div class="detail">
                             <div class="title_txt">截止报名时间：<span>
                                     <?php
-                                    echo $activity['time_expire'];
+                                    echo $activity['date_expire'].' '.$activity['time_expire'];
                                     ?>
                                 </span></div>
                         </div>
@@ -93,23 +91,22 @@
                         </div>
 
                         <?php
-                        if($is_joined){ ?>
+                        if ($is_joined) { ?>
                             <form action="
                             <?php
-                            echo site_url('activity_detail/quit/'.$activity['id']);
+                            echo site_url('activity_detail/quit/' . $activity['id']);
                             ?>" method="post">
                                 <p class="center">
                                     <input type="submit" id="apply" value="退出活动">
                                 </p>
                             </form>
-                        <?php }
-                        else if($activity['member_number']>=$activity['amount_max'])
+                        <?php } else if ($activity['member_number'] >= $activity['amount_max'])
                             echo '<p>报名人数已满</p>';
                         else { ?>
                             <form action="
                             <?php
-                            if(isset($this->session->user_id))
-                                echo site_url('activity_detail/enter/'.$activity['id']);
+                            if (isset($this->session->user_id))
+                                echo site_url('activity_detail/enter/' . $activity['id']);
                             else
                                 echo site_url('login/index');
                             ?>" method="post">
@@ -130,7 +127,7 @@
         <div class="col-lg-9 col-md-12">
             <div class="detail_description">
                 <div class="hdxq">
-                    <div class="information"><p>活动详情</p> </div>
+                    <div class="information"><p>活动详情</p></div>
                     <div class="context"><p>
                             <?php
                             echo $activity['brief'];
@@ -139,24 +136,24 @@
                 </div>
 
                 <div class="cyyh">
-                    <div class="information"><p>参与用户</p> </div>
+                    <div class="information"><p>参与用户</p></div>
                     <div class="context">
 
                         <ul class="member_review_list">
                             <?php
-                            $count=0;
-                            foreach ($member as $member_item){
-                                $count = ($count+1)%8;?>
+                            $count = 0;
+                            foreach ($member as $member_item) {
+                                $count = ($count + 1) % 8; ?>
                                 <li class="member_review_main">
                                     <div class="member_review_person">
                                         <div class="person_headphoto">
-                                            <a href="html/details_page.html" ><img src="
+                                            <a href="html/details_page.html"><img src="
                                                     <?php
                                                 echo base_url($member_item['avatar']);
                                                 ?>" alt="" width="70px" height="70px"></a>
                                         </div>
                                         <div class="person_id_name">
-                                            <a href="html/details_page.html" >
+                                            <a href="html/details_page.html">
                                                 <h5>
                                                     <?php
                                                     echo $member_item['nick_name'];
@@ -165,7 +162,8 @@
                                         </div>
                                     </div>
                                 </li>
-                                <?php if($count==0) echo '<br/>';} ?>
+                                <?php if ($count == 0) echo '<br/>';
+                            } ?>
 
 
                             <li>
@@ -178,9 +176,11 @@
                                     </div>
                                     <div id="dialogBg"></div>
                                     <div id="dialog_add" class="animated">
-                                        <img class="dialogIco" width="50" height="50" src="<?php echo base_url('img/ico.png')?>" alt="" />
+                                        <img class="dialogIco" width="50" height="50"
+                                             src="<?php echo base_url('img/ico.png') ?>" alt=""/>
                                         <div class="dialogTop">
-                                            <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
+                                            <a href="javascript:;" class="claseDialogBtn"
+                                               style=" text-decoration: none;color: black;">关闭</a>
                                         </div>
                                         <form action="" method="post" id="editForm">
 
@@ -201,7 +201,7 @@
 
 
                                             <p class="button_invite">
-                                                <input type="submit" value="发送邀请" class="submitBtn" >
+                                                <input type="submit" value="发送邀请" class="submitBtn">
                                             </p>
                                         </form>
                                     </div>
@@ -213,10 +213,11 @@
                 </div>
 
                 <div class="hdxq">
-                    <div class="information"><p>用户评论</p> </div>
+                    <div class="information"><p>用户评论</p></div>
                     <div class="context">
                         <div class="comment_left">
-                            <img src="<?php echo base_url('img/adobe.png')?>" alt="" width="70px" height="70px" class="member_review_main">
+                            <img src="<?php echo base_url('img/adobe.png') ?>" alt="" width="70px" height="70px"
+                                 class="member_review_main">
                         </div>
                         <div class="comment_right">
                             <form action="#" method="post" class="member_review_main">
@@ -227,7 +228,7 @@
                             </form>
                         </div>
                         <div class="comments">
-                            <p>未完待续~感觉1.0版可以不做</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -242,27 +243,27 @@
                     <div class="hot_hd">
                         <p>热门活动</p>
                     </div>
-
                     <div class="hot_hd_content">
-
                         <?php
-                        if(!empty($hot_activity))
-                            foreach ($hot_activity as $hot_activity_item){
+                        if (!empty($hot_activity))
+                            foreach ($hot_activity as $hot_activity_item) {
                                 ?>
                                 <div class="content_li">
                                     <div class="li_left">
-                                        <a href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>" >
-                                            <img src="<?php echo base_url($hot_activity_item['poster'])?>" alt="" width="60px" height="60px"></a>
+                                        <a href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
+                                            <img src="<?php echo base_url($hot_activity_item['poster']) ?>" alt=""
+                                                 width="60px" height="60px"></a>
                                     </div>
                                     <div class="li_right">
-                                        <a class="li_right_title" href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
+                                        <a class="li_right_title"
+                                           href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
                                             <h5>
                                                 <?php
                                                 echo $hot_activity_item['name'];
                                                 ?>
                                             </h5></a>
                                         <p><?php
-                                            echo $hot_activity_item['date_start'].' '.$hot_activity_item['time_start'];
+                                            echo $hot_activity_item['date_start'] . ' ' . $hot_activity_item['time_start'];
                                             ?></p>
                                     </div>
                                 </div>
@@ -273,3 +274,13 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    //initiating jQuery
+    jQuery(function ($) {
+        $(document).ready(function () {
+            //enabling stickUp on the '.navbar-wrapper' class
+            $('.sidebar_hot').stickUp();
+        });
+    });
+
+</script>

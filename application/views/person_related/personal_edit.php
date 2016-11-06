@@ -13,12 +13,12 @@
         </li>
         <li>
             <label for="password" class="title">密码：</label>
-            <input type="password" id="password" name="_password" placeholder="请输入密码"><br>
-            <?php echo form_error('_password2', '<span>', '</span>'); ?>
+            <input type="password" id="password" name="password" placeholder="请输入密码"><br>
+            <?php echo form_error('password2', '<span>', '</span>'); ?>
         </li>
         <li>
             <label for="password2" class="title">确认密码：</label>
-            <input type="password" id="password2" name="_password2" placeholder="请再次输入密码"
+            <input type="password" id="password2" name="password2" placeholder="请再次输入密码"
                    onchange="confirm_password()">
             <br>
             <span id="confirm_error"></span>

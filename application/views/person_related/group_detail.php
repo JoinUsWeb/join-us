@@ -8,7 +8,7 @@
 
     window.onresize = function () {
         getSrceenWH();
-    };
+    }
     $(window).resize();
 
     $(function () {
@@ -106,7 +106,7 @@
                             <div id="dialogBg"></div>
                             <div id="dialog_add" class="animated">
                                 <img class="dialogIco" width="50" height="50"
-                                     src="<?php echo base_url("img/ico.png") ?>" alt=""/>
+                                     src="<?php echo base_url('img/ico.png') ?>" alt=""/>
                                 <div class="dialogTop">
                                     <a href="javascript:;" class="claseDialogBtn"
                                        style=" text-decoration: none;color: black;">关闭</a>
@@ -132,7 +132,6 @@
                                     <p class="button_invite">
                                         <input type="submit" value="发送邀请" class="submitBtn">
                                     </p>
-
                                 </form>
                             </div>
                         </div>

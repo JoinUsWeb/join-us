@@ -18,7 +18,7 @@
                     <div class="hd_present">
                         <div>
                             <a href="<?php echo site_url('activity_detail/index/' . $single_activity['id']) ?>"><img
-                                    src="<?php echo $single_activity['poster']; ?>" alt="nihao" class="hd_img"></a>
+                                    src="<?php echo base_url($single_activity['poster']); ?>" alt="nihao" class="hd_img"></a>
                             <div>
                                 <a class="#"
                                    href="<?php echo site_url('activity_detail/index/' . $single_activity['id']) ?>">

@@ -86,7 +86,7 @@ class Create_activity extends CI_Controller
     {
         $data['poster'] = $poster_path;
         $this->activity_model->insert_new_activity($data);
-        redirect(site_url('activity_detail/index/' . $this->db->insert_id()));
+        redirect('activity_detail/index/' . $this->db->insert_id());
     }
 
     public function create_activity_no_poster($data)

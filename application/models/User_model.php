@@ -3,7 +3,8 @@
 /**
  * Class User_model
  *
- * 预定义返回null代表参数不合法 返回false代表数据库操作失败  用户信息： email  nick_name  password  phone_number
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败
+ * 用户信息： email  nick_name  password  phone_number avatar
  *
  * 获取所有的用户信息  返回所有用户信息的多维数组
  * public function get_user()
@@ -31,6 +32,10 @@
  */
 class User_model extends CI_Model
 {
+    /**
+     * @var array
+     */
+    var $user_info_available = array('email', 'nick_name','password','phone_number','avatar');
 
     public function validate_user($user_email = null, $user_password = null)
     {
@@ -59,16 +64,23 @@ class User_model extends CI_Model
      * 获得指定用户
      *
      * 通过用户ID查找用户。函数接受一个参数用户ID，如果合法（id>0），返回该用户；
+     * 也可以提供需要查询的条目名称返回对应单条数据
      *
      * @param int $id
-     * @return null OR $data
+     * @param null $info_selected
+     * @return array|null
      */
-    public function get_user_by_id($id = -1)
+    public function get_user_by_id($id = -1,$info_selected = null)
     {
         if ($id < 0)
             return null;
-        else
-            return $this->db->get_where('user', array('id' => $id))->row_array();
+        else{
+            $result = $this->db->get_where('user', array('id' => $id))->row_array();
+            if ($info_selected == null)
+                return $result;
+            else if (in_array($info_selected,$this->user_info_available) == true)
+                return $result[$info_selected];
+        }
     }
 
     /**

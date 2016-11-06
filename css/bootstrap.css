@@ -6635,6 +6635,18 @@ ul{
 /*# sourceMappingURL=bootstrap.css.map */
 /*导航栏logo*/
 .navbar-brand img{
-height: 25px;
-margin-top: -3px;
+  height: 25px;
+  margin-top: -3px;
 }
+　　input::-webkit-input-placeholder {
+　　color: #D6D0CA !important; 
+　　}
+　　input:-moz-placeholder {
+　　color: #D6D0CA !important; }
+
+　　input::-moz-placeholder {
+　　color: #D6D0CA !important; 
+　　}
+　　input:-ms-input-placeholder {
+  　　color: #D6D0CA !important; 
+　　}

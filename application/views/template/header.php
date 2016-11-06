@@ -72,6 +72,9 @@
             <?php break;
         case "group_detail": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/detail.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/common.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/mainpage.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
@@ -103,6 +106,7 @@
 
     <script type="text/javascript" src="<?php echo base_url("js/jquery.min.js"); ?>"></script>
     <script src="<?php echo base_url("js/modernizr.custom.js"); ?>"></script>
+    <script src="<?php echo base_url("js/stickUp.min.js") ?>"></script>
     <!--HTML5 shim and Respond . js for IE8 support of HTML5 elements and media queries-->
     <!--WARNING: Respond . js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

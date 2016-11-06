@@ -39,7 +39,7 @@ class Search_activity extends CI_Controller
         $data['activity'] = $activity;
         $data['select'] = $select;
 
-        $data['hot_activity'] = $this->activity_model->get_activity_order_by_score();
+        $data['hot_activity'] = $this->activity_model->get_activity_order_by_score(3);
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');

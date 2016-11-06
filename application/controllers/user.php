@@ -187,9 +187,12 @@ class User extends CI_Controller
 
     public function update_user_info()
     {
+        $this->load->model('User_model');
         $user_info = array();
         if (!empty($_POST['_password'])) {
-            $this->form_validation->set_rules('_password2', 'Password',
+            $this->form_validation->set_rules('password', 'Password',
+                'trim|htmlspecialchars|required');
+            $this->form_validation->set_rules('password2', 'Password',
                 'trim|htmlspecialchars|required|matches[_password]',
                 array(
                     'required' => 'Please type your password again!',
@@ -201,16 +204,18 @@ class User extends CI_Controller
             $user_info['password'] = $_POST['password'];
         }
         if (!empty($_POST['nick_name'])) {
-            $this->form_validation->set_rules('nick_name', 'Nickname',
-                'trim|htmlspecialchars|required|is_unique[user.nick_name]',
-                array(
-                    'required' => 'Please provide your nickname!',
-                    'is_unique' => '%s is used!'
-                ));
-            if ($this->form_validation->run() == false) {
-                return;
+            if ($_POST['nick_name'] != $this->User_model->get_user_by_id($this->user_id, 'nick_name')) {
+                $this->form_validation->set_rules('nick_name', 'Nickname',
+                    'trim|htmlspecialchars|required|is_unique[user.nick_name]',
+                    array(
+                        'required' => 'Please provide your nickname!',
+                        'is_unique' => '%s is used!'
+                    ));
+                if ($this->form_validation->run() == false) {
+                    return;
+                }
+                $user_info['nick_name'] = $_POST['nick_name'];
             }
-            $user_info['nick_name'] = $_POST['nick_name'];
         }
         if (!empty($_POST['phone_number'])) {
             $this->form_validation->set_rules('phone_number', 'Phone number',
@@ -224,6 +229,7 @@ class User extends CI_Controller
             }
             $user_info['phone_number'] = $_POST['phone_number'];
         }
-        $this->User_model->update_user_info_by_id($user_info);
+        if ($this->User_model->update_user_info_by_id($this->user_id, $user_info) == true)
+            redirect('user/info');
     }
 }
