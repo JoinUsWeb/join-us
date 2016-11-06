@@ -17,6 +17,6 @@ class Log_off extends CI_Controller
     public function index()
     {
         unset($_SESSION['user_id']);
-        redirect(site_url('home/index'));
+        redirect('home/index');
     }
 }
