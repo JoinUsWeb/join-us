@@ -50,13 +50,18 @@ class Message extends CI_Controller
 <li><a class=\"dr-icon dr-icon-settings\" href=\"" . site_url('user/group') . "\">我的小组</a></li>
 </ul>
 </nav>";
+        if (isset($_SESSION['user_id'])) {
+            $this->user_id = $_SESSION['user_id'];
+        } else {
+            redirect('login');
+        }
     }
 
     /**
      *load view(person_related/personal_mymessages);
      */
     public function personal_mymessages(){
-        $data=$this->get_message_by_user_id(1);
+        $data=$this->get_message_by_user_id($this->session->user_id);
         $data['title'] = "个人中心";
         $data['page_name'] = 'message';
         $data['nav'] = $this->personal_nav;
