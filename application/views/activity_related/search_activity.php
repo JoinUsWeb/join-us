@@ -5,7 +5,7 @@
     <div class="searching">
         <form id="search_hd" action="#" method="post">
             <div class="search" id="search">
-                <div class="frame" id="frame">
+                <div class="frame" id="frame1">
                     <div class="title" id="title">兴趣分类：</div>
                     <ul class="style1">
                         <?php
@@ -24,7 +24,7 @@
                         ?>
                     </ul>
                 </div>
-                <div class="frame" id="frame">
+                <div class="frame" id="frame2">
                     <div class="title" id="title">时间：</div>
                     <ul class="style1">
                         <?php
@@ -42,7 +42,7 @@
                         ?>
                     </ul>
                 </div>
-                <div class="frame" id="frame">
+                <div class="frame" id="frame3">
                     <div class="title" id="title">地区：</div>
                     <ul class="style1">
                         <li><a class="thisover" href="#"><span>上海</span></a></li>
@@ -125,6 +125,8 @@
         </div>
     </div>
 </div>
+
+<script src="<?php echo base_url("js/stickUp.min.js") ?>"></script>
 
 <script type="text/javascript">
     //initiating jQuery

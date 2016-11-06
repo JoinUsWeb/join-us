@@ -191,22 +191,7 @@
                 <div class="hot_hd">
                     <p>热门活动</p>
                 </div>
-
-                <div class="hot_hd_content">
-
-                    <div class="content_li">
-                        <div class="li_left">
-                            <a href="#"><img src="<?php echo base_url("img/01.png"); ?>" alt="" width="60px"
-                                             height="60px"></a>
-                        </div>
-                        <div class="li_right">
-                            <a class="li_right_title" href="#"><h5>校运会</h5></a>
-                            <p>2016-11-2 9:00</p>
-                        </div>
-                    </div>
-
                     <div class="hot_hd_content">
-
                         <?php
                         if(!empty($hot_activity))
                             foreach ($hot_activity as $hot_activity_item){
@@ -232,11 +217,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-    </div>
-</div>
 </div>
 
 <script src="<?php echo base_url("js/jquery.imagesloaded.js") ?>"></script>
