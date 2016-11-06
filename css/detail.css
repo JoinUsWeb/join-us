@@ -24,8 +24,14 @@
 }
 .content_head_l{
 	float: left;
-	width:450px;
+	width:400px;
+	height: 300px;
+	margin-right: 20px;
 	margin-top:14px; 
+}
+.content_head_l img{
+	width: 400px;
+	height: 250px;
 }
 .content_head_r{
 	float: left;

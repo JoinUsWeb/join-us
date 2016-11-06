@@ -1,22 +1,33 @@
+body{
+
+   background:url(../img/02.jpg);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+
+}
 ul{
 	padding: 0;
 	margin:0;
 	list-style-type: none;
 }
+
 #register_form fieldset{
+	background-color:rgba(255,255,255,0.7);
 	width: 400px;
 	margin: 50px auto;
 	padding: 50px 20px;
-	background: #c9d0de;
-	border: 1px solid #elelel;
+	/*background: ;*/
+	border: 1px solid #c9d0de;
 	border-radius: 15px;
+	min-height: 490px;
 }
 #register_form h3{
-	font-size: 28px;
-	color:#445668;
+	font-size: 28px ; 
+	color:rgb(100,100,100);
 	text-align: center;
 	margin: 0 0 40px 0;
-	text-shadow: 0px 2px 0px #f2f2f2;
+	/*text-shadow: 0px 2px 0px #f2f2f2;*/
 }
 #register_form label{
 	float: left;
@@ -26,20 +37,20 @@ ul{
 	text-align: right;
 	font-size: 18px;
 	
-	color: #445668;
-	text-shadow: 0px 2px 0px #f2f2f2;
+	color: rgb(100,100,100);
+	/*text-shadow: 0px 2px 0px #f2f2f2;#5E768D*/
 }
 #register_form input{
 	width: 180px;
 	height: 36px;
 	padding: 1px 15px 0px 15px;
 	margin: 0 0 20px 0;
-	background: #5E768D;
+	background:#fff ;
 	border-radius: 5px;
 	
 	font-size: 16px;
-	color:#ffffff;
-	text-shadow: 0px -1px 0px #38506b;
+	color:black;
+	/*text-shadow: 0px -1px 0px #38506b;*/
 
 }
 
@@ -48,10 +59,14 @@ ul{
 	height: 40px;
 	border: 1px solid #556f8c;
 	cursor: pointer;
-	color: #ffffff;
+	color: azure;
+	background:#5E768D;
 	
 }
 .words{
 	float: right;
 	margin: 0  60px 0 0;
+}
+ hr{
+	border-top:1px solid #1a2b3c;
 }
