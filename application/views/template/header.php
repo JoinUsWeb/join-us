@@ -72,6 +72,9 @@
             <?php break;
         case "group_detail": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/detail.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/common.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/mainpage.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">

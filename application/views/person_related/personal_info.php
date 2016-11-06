@@ -32,7 +32,7 @@
                             <div class="p_present">上海</div>
                         </li>
                         <li><i class=" icon-bookmark"></i>个人介绍:
-                            <div class="p_present">大脚好！</div>
+                            <div class="p_present">这个人好烂，还没写个人介绍！</div>
                         </li>
                     </ul>
                 </div>

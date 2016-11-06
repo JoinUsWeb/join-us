@@ -31,7 +31,7 @@
             <li>
                 <label for="phone_number" class="title">手机号：</label>
                 <input type="tel" id="phone_number" name="_phoneNumber"
-                       value="<?php echo set_value("_phoneNumber"); ?>">
+                       value="<?php echo set_value("_phoneNumber"); ?>" placeholder="请输入手机号">
                 <?php echo form_error('_phoneNumber', '<span>', '</span>'); ?>
             </li>
         </ul>
