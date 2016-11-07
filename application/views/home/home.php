@@ -39,27 +39,28 @@
                     <li data-target="#carousel-299058" data-slide-to="2" class=""></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="item">
-                        <img class="img-responsive"
-                             src="<?php $hot_activity_count = 0;
-                             echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
-                             alt="thumb">
+                    <div class="item"><a href="<?php  $hot_activity_count = 0;
+                        echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
+                            <img class="img-responsive"
+                                 src="<?php
+                                 echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
+                                 alt="thumb">
                         <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div>
+                            $hot_activity_count++; ?></div></a>
                     </div>
-                    <div class="item active">
+                    <div class="item active"><a href="<?php echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
                         <img class="img-responsive"
                              src="<?php echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
                              alt="thumb">
                         <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div>
+                            $hot_activity_count++; ?></div></a>
                     </div>
-                    <div class="item">
+                    <div class="item"><a href="<?php echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
                         <img class="img-responsive"
                              src="<?php echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
                              alt="thumb">
                         <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div>
+                            $hot_activity_count++; ?></div></a>
                     </div>
                 </div>
                 <?php $hot_activity_count = 0; ?>
@@ -191,33 +192,35 @@
                 <div class="hot_hd">
                     <p>热门活动</p>
                 </div>
-                    <div class="hot_hd_content">
-                        <?php
-                        if(!empty($hot_activity))
-                            foreach ($hot_activity as $hot_activity_item){
-                                ?>
-                                <div class="content_li">
-                                    <div class="li_left">
-                                        <a href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>" >
-                                            <img src="<?php echo base_url($hot_activity_item['poster'])?>" alt="" width="60px" height="60px"></a>
-                                    </div>
-                                    <div class="li_right">
-                                        <a class="li_right_title" href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
-                                            <h5>
-                                                <?php
-                                                echo $hot_activity_item['name'];
-                                                ?>
-                                            </h5></a>
-                                        <p><?php
-                                            echo $hot_activity_item['date_start'].' '.$hot_activity_item['time_start'];
-                                            ?></p>
-                                    </div>
+                <div class="hot_hd_content">
+                    <?php
+                    if (!empty($hot_activity))
+                        foreach ($hot_activity as $hot_activity_item) {
+                            ?>
+                            <div class="content_li">
+                                <div class="li_left">
+                                    <a href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
+                                        <img src="<?php echo base_url($hot_activity_item['poster']) ?>" alt=""
+                                             width="60px" height="60px"></a>
                                 </div>
-                            <?php } ?>
-                    </div>
+                                <div class="li_right">
+                                    <a class="li_right_title"
+                                       href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
+                                        <h5>
+                                            <?php
+                                            echo $hot_activity_item['name'];
+                                            ?>
+                                        </h5></a>
+                                    <p><?php
+                                        echo $hot_activity_item['date_start'] . ' ' . $hot_activity_item['time_start'];
+                                        ?></p>
+                                </div>
+                            </div>
+                        <?php } ?>
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
 <script src="<?php echo base_url("js/jquery.imagesloaded.js") ?>"></script>
