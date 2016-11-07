@@ -50,9 +50,9 @@ class User extends CI_Controller
         $current_date = date("Y-m-d");
         $data['activities_info'] = array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date = date_create($single_activity_info['time_expire'])->format("Y-m-d");
+            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
             // 查看活动是否已经结束 结束代表已经参加过
-            if (strtotime($current_date) > strtotime($activity_date)) {
+            if (strtotime($current_date) <= strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
             }
         }
@@ -69,9 +69,17 @@ class User extends CI_Controller
         $data['page_name'] = "comments";
         $data['nav'] = $this->personal_nav;
 
-        $data['activities_info'] = null;
-        $data['activities_info'] = $this->Member_and_activity_model
+        $row_activities_info = $this->Member_and_activity_model
             ->get_activity_by_member_id($this->user_id);
+        $current_date = date("Y-m-d");
+        $data['activities_info'] = array();
+        foreach ($row_activities_info as $single_activity_info) {
+            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
+            // 查看活动是否已经结束 结束代表已经参加过
+            if (strtotime($current_date) > strtotime($activity_date)) {
+                $data['activities_info'][] = $single_activity_info;
+            }
+        }
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
@@ -129,7 +137,7 @@ class User extends CI_Controller
         $data['activities_info'] = array();
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
-            if (strtotime($current_date) <= strtotime($activity_date)) {
+            if (strtotime($current_date) > strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
             }
         }

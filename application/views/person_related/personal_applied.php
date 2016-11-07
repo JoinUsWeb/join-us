@@ -31,9 +31,9 @@
                                 <div class="hd_details"><i
                                         class="icon-map-marker icon-large"></i><?php echo $single_activity['place']; ?>
                                 </div>
-                                <div class="rating">
+                                <!-- <div class="rating">
                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

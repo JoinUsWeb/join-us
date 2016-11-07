@@ -12,14 +12,14 @@
             <hr>
             <div class="hd_present">
                 <div>
-                    <a href="<?php echo site_url("user/detail") ?>"><img src="<?php echo base_url("img/400X200.gif") ?>" alt="nihao" class="hd_img"></a>
+                    <a href="<?php echo site_url("user/detail") ?>"><img src="<?php echo base_url("img/paobu.jpg") ?>" alt="nihao" class="hd_img"></a>
                     <div>
                         <a class="#" href="<?php echo site_url("user/detail") ?>">
                             <span class="hd_title">华师大第二届创新创业大赛</span>
                         </a>
                         <hr>
-                        <div class="hd_details"><i class="icon-tag icon-large"></i>兴趣标签：<span>经济学</span></div>
-                        <div class="hd_details"><i class="icon-user-md icon-large"></i>小组组长：<span>无说明</span></div>
+                        <div class="hd_details"><i class="icon-tag icon-large"></i>兴趣标签：<span>运动健身</span></div>
+                        <div class="hd_details"><i class="icon-user-md icon-large"></i>小组组长：<span>用户1</span></div>
 
                     </div>
                 </div>

@@ -91,7 +91,18 @@
                         </div>
 
                         <?php
-                        if ($is_joined) { ?>
+                        if ($activity['creator_id']==$this->session->user_id) { ?>
+                        <form action="
+                            <?php
+                        echo site_url('activity_detail/index/' . $activity['id']);
+                        ?>" method="post">
+                            <p class="center">
+                                <input type="submit" id="apply" value="结束活动">
+                            </p>
+                        </form>
+                        <?php }
+
+                        else if ($is_joined) { ?>
                             <form action="
                             <?php
                             echo site_url('activity_detail/quit/' . $activity['id']);
@@ -185,17 +196,17 @@
                                         <form action="" method="post" id="editForm">
 
                                             <ul class="friends_list">
-                                                <li><label for="checkbox1">小石榴</label>
+                                                <li><label for="checkbox1">用户1</label>
                                                     <input type="checkbox" name="" id="checkbox1"></li>
-                                                <li><label for="checkbox2">小石榴</label>
+                                                <li><label for="checkbox2">用户2</label>
                                                     <input type="checkbox" name="" id="checkbox2"></li>
-                                                <li><label for="checkbox2">小石榴</label>
+                                                <li><label for="checkbox2">用户3</label>
                                                     <input type="checkbox" name="" id="checkbox2"></li>
-                                                <li><label for="checkbox2">小石榴</label>
+                                                <li><label for="checkbox2">用户4</label>
                                                     <input type="checkbox" name="" id="checkbox2"></li>
-                                                <li><label for="checkbox2">小石榴</label>
+                                                <li><label for="checkbox2">用户5</label>
                                                     <input type="checkbox" name="" id="checkbox2"></li>
-                                                <li><label for="checkbox2">小石榴</label>
+                                                <li><label for="checkbox2">用户6</label>
                                                     <input type="checkbox" name="" id="checkbox2"></li>
                                             </ul>
 
@@ -216,7 +227,7 @@
                     <div class="information"><p>用户评论</p></div>
                     <div class="context">
                         <div class="comment_left">
-                            <img src="<?php echo base_url('img/adobe.png') ?>" alt="" width="70px" height="70px"
+                            <img src="<?php echo base_url('img/IMG_1035.jpg') ?>" alt="" width="70px" height="70px"
                                  class="member_review_main">
                         </div>
                         <div class="comment_right">

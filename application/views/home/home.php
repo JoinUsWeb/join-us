@@ -43,24 +43,24 @@
                         echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
                             <img class="img-responsive"
                                  src="<?php
-                                 echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
+                                 echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/11.jpg'); ?>"
                                  alt="thumb">
-                        <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div></a>
+                        <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
+                            $hot_activity_count++; ?>-->双十一大狂欢</div></a>
                     </div>
                     <div class="item active"><a href="<?php echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
                         <img class="img-responsive"
-                             src="<?php echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
+                             src="<?php echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/dsn.jpg'); ?>"
                              alt="thumb">
-                        <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div></a>
+                        <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
+                            $hot_activity_count++; ?>-->迪士尼之夜</div></a>
                     </div>
                     <div class="item"><a href="<?php echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
                         <img class="img-responsive"
-                             src="<?php echo base_url($hot_activity[$hot_activity_count]['poster']); ?>"
+                             src="<?php echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/bj2.jpg'); ?>"
                              alt="thumb">
-                        <div class="carousel-caption"><?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?></div></a>
+                        <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
+                            $hot_activity_count++; ?>-->一起去看星星</div></a>
                     </div>
                 </div>
                 <?php $hot_activity_count = 0; ?>
@@ -84,7 +84,7 @@
                     </div>
                     <div id="dialogBg"></div>
                     <div id="dialog" class="animated">
-                        <img class="dialogIco" width="50" height="50" src="img/ico.png" alt=""/>
+                        <img class="dialogIco" width="50" height="50" src="<?php echo base_url('img/ico.png'); ?>" alt=""/>
                         <div class="dialogTop">
                             <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
                         </div>

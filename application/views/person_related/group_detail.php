@@ -42,9 +42,8 @@
             <div class="group_gg personal-data">
                 <h3>小组公告</h3>
                 <hr>
-                <div class="gg_present">11月9日英美文化体验前九周期末考试！？！<br>
-                    11月9日英美文化体验前九周期末考试！？！<br>
-                    11月9日英美文化体验前九周期末考试！？！
+                <div class="gg_present">今天晚上出来聚会吧<br>
+                    有好多桌游等你来哦<br>
                 </div>
 
                 <!--小组组长可见（修改公告）
@@ -63,11 +62,11 @@
                     <li class="member_review_main">
                         <div class="member_review_person">
                             <div class="person_headphoto">
-                                <a href="#"><img src="<?php echo base_url("img/adobe.png") ?>" alt="" width="70px"
+                                <a href="#"><img src="<?php echo base_url("img/IMG_1035.jpg") ?>" alt="" width="70px"
                                                  height="70px"></a>
                             </div>
                             <div class="person_id_name">
-                                <a href="#"><h5>金鑫</h5></a>
+                                <a href="#"><h5>用户1</h5></a>
                             </div>
                         </div>
                     </li>
@@ -75,11 +74,11 @@
                     <li class="member_review_main">
                         <div class="member_review_person">
                             <div class="person_headphoto">
-                                <a href="#"><img src="<?php echo base_url("img/adobe.png") ?>" alt="" width="70px"
+                                <a href="#"><img src="<?php echo base_url("img/IMG_1035.jpg") ?>" alt="" width="70px"
                                                  height="70px"></a>
                             </div>
                             <div class="person_id_name">
-                                <a href="#"><h5>金鑫</h5></a>
+                                <a href="#"><h5>用户2</h5></a>
                             </div>
                         </div>
                     </li>
@@ -87,11 +86,11 @@
                     <li class="member_review_main">
                         <div class="member_review_person">
                             <div class="person_headphoto">
-                                <a href="#"><img src="<?php echo base_url("img/adobe.png") ?>" alt="" width="70px"
+                                <a href="#"><img src="<?php echo base_url("img/IMG_1035.jpg") ?>" alt="" width="70px"
                                                  height="70px"></a>
                             </div>
                             <div class="person_id_name">
-                                <a href="#"><h5>金鑫</h5></a>
+                                <a href="#"><h5>用户3</h5></a>
                             </div>
                         </div>
                     </li>
@@ -114,17 +113,17 @@
                                 <form action="" method="post" id="editForm">
 
                                     <ul class="friends_list">
-                                        <li><label for="checkbox1">小石榴</label>
+                                        <li><label for="checkbox1">用户1</label>
                                             <input type="checkbox" name="" id="checkbox1"></li>
-                                        <li><label for="checkbox2">小石榴</label>
+                                        <li><label for="checkbox2">用户2</label>
                                             <input type="checkbox" name="" id="checkbox2"></li>
-                                        <li><label for="checkbox2">小石榴</label>
+                                        <li><label for="checkbox2">用户3</label>
                                             <input type="checkbox" name="" id="checkbox2"></li>
-                                        <li><label for="checkbox2">小石榴</label>
+                                        <li><label for="checkbox2">用户4</label>
                                             <input type="checkbox" name="" id="checkbox2"></li>
-                                        <li><label for="checkbox2">小石榴</label>
+                                        <li><label for="checkbox2">用户5</label>
                                             <input type="checkbox" name="" id="checkbox2"></li>
-                                        <li><label for="checkbox2">小石榴</label>
+                                        <li><label for="checkbox2">用户6</label>
                                             <input type="checkbox" name="" id="checkbox2"></li>
                                     </ul>
 

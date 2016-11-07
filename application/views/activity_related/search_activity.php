@@ -15,7 +15,7 @@
                             if($select['first_label_id']==$first_label_item['id'])
                                 echo '0'.'&time=' . $select['time']
                             . '&city=' . $select['city']
-                            . '"><span>' . $first_label_item['name'] . '(已选)</span></a></li>';
+                            . '"><b style="color : yellow;">' . $first_label_item['name'] . '</b></a></li>';
                             else
                                 echo $first_label_item['id'].'&time=' . $select['time']
                                 . '&city=' . $select['city']
@@ -34,7 +34,7 @@
                             echo '&time=';
                             if ($select['time'] == $time_item[0])
                                 echo '0'. '&city=' . $select['city']
-                                    . '"><span>' . $time_item[1] . '(已选)</span></a></li>';
+                                    . '"><b style="color : yellow;">' . $time_item[1] . '</b></a></li>';
                             else
                                 echo $time_item[0]. '&city=' . $select['city']
                                     . '"><span>' . $time_item[1] . '</span></a></li>';
