@@ -2,7 +2,7 @@ body{
 
    background:url(../img/02.jpg);
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-size: cover;
 
 }
@@ -14,13 +14,13 @@ ul{
 
 #register_form fieldset{
 	background-color:rgba(255,255,255,0.7);
-	width: 400px;
-	margin: 50px auto;
+	width: 420px;
+	margin: 50px auto 150px auto;
 	padding: 50px 20px;
 	/*background: ;*/
 	border: 1px solid #c9d0de;
 	border-radius: 15px;
-	min-height: 490px;
+	
 }
 #register_form h3{
 	font-size: 28px ; 
@@ -41,9 +41,9 @@ ul{
 	/*text-shadow: 0px 2px 0px #f2f2f2;#5E768D*/
 }
 #register_form input{
-	width: 180px;
+	width: 200px;
 	height: 36px;
-	padding: 1px 15px 0px 15px;
+	padding: 1px 8px 0px 8px;
 	margin: 0 0 20px 0;
 	background:#fff ;
 	border-radius: 5px;
@@ -69,4 +69,7 @@ ul{
 }
  hr{
 	border-top:1px solid #1a2b3c;
+}
+.words a:hover {
+  text-decoration: none;
 }
