@@ -226,21 +226,53 @@
                 <div class="hdxq">
                     <div class="information"><p>用户评论</p></div>
                     <div class="context">
+                        <div class="pinglun">
                         <div class="comment_left">
                             <img src="<?php echo base_url('img/IMG_1035.jpg') ?>" alt="" width="70px" height="70px"
                                  class="member_review_main">
                         </div>
                         <div class="comment_right">
-                            <form action="#" method="post" class="member_review_main">
+                            <form action="<?php echo site_url('activity_detail/index/'.$activity['id']);?>" method="post" class="member_review_main">
                                 <textarea name="comment" id="yh_comments" placeholder="来说两句吧~"></textarea>
                                 <div class="submit_comment">
                                     <input type="submit" id="submit_comment" value="发表评论">
                                 </div>
                             </form>
                         </div>
-                        <div class="comments">
-                            <p></p>
                         </div>
+
+
+                        <?php
+                        if(empty($comment))
+                            echo '暂时没有评论';
+                        else
+                            foreach ($comment as $comment_item) {
+                                ?>
+                                <div class="comments">
+                                    <div>
+                                        <div class="comment_left">
+                                            <img src="<?php echo $comment_item['creator']['avatar']; ?>"
+                                                 alt="头像无法显示" width="60px" height="60px" class="comment_left_img">
+                                        </div>
+                                        <div class="comment_right">
+                                            <div class="comment_right_name"><h5>
+                                                    <?php echo $comment_item['creator']['nick_name'] ?></h5></div>
+                                            <div class="comment_right_time"><h5>
+                                                    <?php echo $comment_item['date'] . ' ' . $comment_item['time'] ?>
+                                                    发表</h5></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="comment_frame"><p>
+                                            <?php
+                                            echo $comment_item['content'];
+                                            ?>
+                                        </p></div>
+                                </div>
+                                <?php
+                            }
+                        ?>
+
                     </div>
                 </div>
             </div>
