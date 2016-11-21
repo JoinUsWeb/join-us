@@ -44,7 +44,7 @@ class Activity_detail extends CI_Controller
             $this->member_and_activity_model->insert_new_relation($user_id,$activity_id);
         }
 
-        redirect(site_url('activity_detail/index/'.$activity_id));
+        redirect('activity_detail/index/'.$activity_id);
     }
 
     public function quit($activity_id)
@@ -55,6 +55,6 @@ class Activity_detail extends CI_Controller
             $this->member_and_activity_model->remove_member_from_activity_by_id($activity_id,$user_id);
         }
 
-        redirect(site_url('activity_detail/index/'.$activity_id));
+        redirect('activity_detail/index/'.$activity_id);
     }
 }
