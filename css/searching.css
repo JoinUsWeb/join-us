@@ -60,7 +60,7 @@ a:visited.thisover{
 }
 
 a:hover.thisover{
-    color: white;
+    color: rgb(205,237,18);
     text-decoration: none;
 }
 
