@@ -251,7 +251,7 @@
                                 <div class="comments">
                                     <div>
                                         <div class="comment_left">
-                                            <img src="<?php echo $comment_item['creator']['avatar']; ?>"
+                                            <img src="<?php echo base_url($comment_item['creator']['avatar']); ?>"
                                                  alt="头像无法显示" width="60px" height="60px" class="comment_left_img">
                                         </div>
                                         <div class="comment_right">

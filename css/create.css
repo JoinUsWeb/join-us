@@ -126,3 +126,6 @@ select{
 hr{
 		border-top:1px solid #1a2b3c;
 }
+.submit_hd:hover{
+background-color: rgb(0,140,225);
+}
