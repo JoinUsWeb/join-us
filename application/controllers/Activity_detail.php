@@ -40,6 +40,7 @@ class Activity_detail extends CI_Controller
             $comment['creator_id']=$this->session->user_id;
             $comment['content']=$this->input->post()['comment'];
             $this->activity_comment_model->insert_new_comment($comment);
+
         }
 
         $this->load->view('template/header', $data);
