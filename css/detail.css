@@ -14,7 +14,7 @@
 .information{
 	height: 30px;
 	width: 100px;
-	background-color: rgb(0,153,233);
+	background-color:#1a2b3c;
 	border-radius: 3px;
 }
 .information p{
@@ -203,4 +203,11 @@ font-size: 15px;
 }
 .pinglun{
 	height: 180px;
+}
+#apply:hover{
+background-color: rgb(0,140,225);
+
+}
+#submit_comment:hover{
+	background-color: rgb(0,140,225);
 }
