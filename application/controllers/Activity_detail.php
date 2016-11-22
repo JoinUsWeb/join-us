@@ -12,8 +12,10 @@ class Activity_detail extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->library('form_validation');
         $this->load->model('activity_model');
         $this->load->model('member_and_activity_model');
+        $this->load->model('activity_comment_model');
     }
 
     public function index($activity_id)
@@ -28,6 +30,17 @@ class Activity_detail extends CI_Controller
         $data['member'] = $this->member_and_activity_model->get_member_by_activity_id($activity_id);
         $data['hot_activity'] = $this->activity_model->get_activity_order_by_score(3);
         $data['is_joined'] = $this->member_and_activity_model->is_exist($this->session->user_id,$activity_id);
+        $data['comment']=$this->activity_comment_model->get_completed_comment_by_activity_id($activity_id);
+
+        $this->form_validation->set_rules('comment', 'comment', 'trim|required',array('required'=>'请输入评论再发表'));
+        if(isset($this->session->user_id)&&$this->form_validation->run())
+        {
+            $comment=array();
+            $comment['activity_id']=$activity_id;
+            $comment['creator_id']=$this->session->user_id;
+            $comment['content']=$this->input->post()['comment'];
+            $this->activity_comment_model->insert_new_comment($comment);
+        }
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
@@ -44,7 +57,7 @@ class Activity_detail extends CI_Controller
             $this->member_and_activity_model->insert_new_relation($user_id,$activity_id);
         }
 
-        redirect(site_url('activity_detail/index/'.$activity_id));
+        redirect('activity_detail/index/'.$activity_id);
     }
 
     public function quit($activity_id)
@@ -55,6 +68,6 @@ class Activity_detail extends CI_Controller
             $this->member_and_activity_model->remove_member_from_activity_by_id($activity_id,$user_id);
         }
 
-        redirect(site_url('activity_detail/index/'.$activity_id));
+        redirect('activity_detail/index/'.$activity_id);
     }
 }

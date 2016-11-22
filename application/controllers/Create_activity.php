@@ -27,7 +27,7 @@ class Create_activity extends CI_Controller
     public function index()
     {
         if(!isset($this->session->user_id))
-            redirect(site_url('login/index'));
+            redirect('login/index');
 
         $this->form_validation->set_rules('name', 'name', 'trim|required',array('required'=>'请输入活动名称'));
         $this->form_validation->set_rules('date_start', 'date_start', 'required',array('required'=>'请输入活动开始日期'));
