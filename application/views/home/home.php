@@ -43,24 +43,24 @@
                         echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
                             <img class="img-responsive"
                                  src="<?php
-                                 echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/11.jpg'); ?>"
+                                 echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/07.jpg'); ?>"
                                  alt="thumb">
                         <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?>-->双十一大狂欢</div></a>
+                            $hot_activity_count++; ?>-->"寻味"小分队</div></a>
                     </div>
                     <div class="item active"><a href="<?php echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
                         <img class="img-responsive"
-                             src="<?php echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/dsn.jpg'); ?>"
+                             src="<?php echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/08.jpg'); ?>"
                              alt="thumb">
                         <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?>-->迪士尼之夜</div></a>
+                            $hot_activity_count++; ?>-->周末单车约起来</div></a>
                     </div>
                     <div class="item"><a href="<?php echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
                         <img class="img-responsive"
-                             src="<?php echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/bj2.jpg'); ?>"
+                             src="<?php echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/09.jpg'); ?>"
                              alt="thumb">
                         <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?>-->一起去看星星</div></a>
+                            $hot_activity_count++; ?>-->加入滑板运动</div></a>
                     </div>
                 </div>
                 <?php $hot_activity_count = 0; ?>
