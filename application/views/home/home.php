@@ -142,6 +142,7 @@
             </div>
             <!-- 推荐的活动 -->
 
+            <!--
             <?php if (!$need_first_label) : ?>
                 <div id="page-navigation" class="hide clear">
                     <span class="disabled page-navigation-prev" title="上一页">«上一页</span>
@@ -157,7 +158,7 @@
                     <a href="?&p=10" data-target="page" data-page="10">10</a>
                     <a href="?&p=2" class="page-navigation-next" data-page="2" title="下一页">下一页»</a>
                 </div>
-            <?php endif; ?>
+            <?php endif; ?> -->
 
         </div>
 
@@ -278,7 +279,7 @@
             if (closeToBottom) {
                 // Get the first then items from the grid, clone them, and add them to the bottom of the grid
                 count++;
-                if (count > 4) {
+                if (count > 1) {
                     return;
                 }
                 var $items = $('li', $tiles),

@@ -10,7 +10,7 @@
         <li>
             <label for="hd_poster" class="label_style">活动海报</label>
             <div id="posterImg">
-                <img src="<?php echo base_url('/img/posterImg.png') ?>" alt="这是一张海报">
+                <!--<img src="<?php echo base_url('/img/posterImg.png') ?>" alt="这是一张海报"> -->
             </div>
             <div id="create_button">
                 <input type="file" id="hd_poster" name="poster">
@@ -21,11 +21,31 @@
             <input type="date" id="start_date" name="date_start" value="<?php echo set_value('date_start'); ?>"
                    placeholder="开始时间">
             <select name="time_start" value="<?php echo set_value('time_start'); ?>" id="start_hour">
-                <option value="00:00:00">0:00</option>
-                <option value="01:00:00">1:00</option>
-                <option value="02:00:00">2:00</option>
-                <option value="03:00:00">3:00</option>
-                <option value="04:00:00">4:00</option>
+                <option value="00:00:00">00:00</option>
+                <option value="01:00:00">01:00</option>
+                <option value="02:00:00">02:00</option>
+                <option value="03:00:00">03:00</option>
+                <option value="04:00:00">04:00</option>
+                <option value="05:00:00">05:00</option>
+                <option value="06:00:00">06:00</option>
+                <option value="07:00:00">07:00</option>
+                <option value="08:00:00">08:00</option>
+                <option value="09:00:00">09:00</option>
+                <option value="10:00:00">10:00</option>
+                <option value="11:00:00">11:00</option>
+                <option value="12:00:00">12:00</option>
+                <option value="13:00:00">13:00</option>
+                <option value="14:00:00">14:00</option>
+                <option value="15:00:00">15:00</option>
+                <option value="16:00:00">16:00</option>
+                <option value="17:00:00">17:00</option>
+                <option value="18:00:00">18:00</option>
+                <option value="19:00:00">19:00</option>
+                <option value="20:00:00">20:00</option>
+                <option value="21:00:00">21:00</option>
+                <option value="22:00:00">22:00</option>
+                <option value="23:00:00">23:00</option>
+                <option value="24:00:00">24:00</option>
             </select>
         </li>
         <li>
@@ -33,11 +53,31 @@
             <input type="date" id="close_date" name="date_expire" value="<?php echo set_value('date_expire'); ?>"
                    placeholder="截止报名时间">
             <select name="time_expire" value="<?php echo set_value('time_expire'); ?>" id="close_hour">
-                <option value="00:00:00">0:00</option>
-                <option value="01:00:00">1:00</option>
-                <option value="02:00:00">2:00</option>
-                <option value="03:00:00">3:00</option>
-                <option value="04:00:00">4:00</option>
+                <option value="00:00:00">00:00</option>
+                <option value="01:00:00">01:00</option>
+                <option value="02:00:00">02:00</option>
+                <option value="03:00:00">03:00</option>
+                <option value="04:00:00">04:00</option>
+                <option value="05:00:00">05:00</option>
+                <option value="06:00:00">06:00</option>
+                <option value="07:00:00">07:00</option>
+                <option value="08:00:00">08:00</option>
+                <option value="09:00:00">09:00</option>
+                <option value="10:00:00">10:00</option>
+                <option value="11:00:00">11:00</option>
+                <option value="12:00:00">12:00</option>
+                <option value="13:00:00">13:00</option>
+                <option value="14:00:00">14:00</option>
+                <option value="15:00:00">15:00</option>
+                <option value="16:00:00">16:00</option>
+                <option value="17:00:00">17:00</option>
+                <option value="18:00:00">18:00</option>
+                <option value="19:00:00">19:00</option>
+                <option value="20:00:00">20:00</option>
+                <option value="21:00:00">21:00</option>
+                <option value="22:00:00">22:00</option>
+                <option value="23:00:00">23:00</option>
+                <option value="24:00:00">24:00</option>
             </select>
         </li>
         <li>
