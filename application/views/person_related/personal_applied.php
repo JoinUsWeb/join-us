@@ -1,6 +1,5 @@
 <!--个人中心导航栏-->
 <div class="container">
-    <script src="/adsense.js" type="text/javascript"></script>
     <div class="main">
         <div class="side">
             <?php echo $nav; ?>
