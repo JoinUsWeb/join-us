@@ -258,7 +258,7 @@
                                             <div class="comment_right_name"><h5>
                                                     <?php echo $comment_item['creator']['nick_name'] ?></h5></div>
                                             <div class="comment_right_time"><h5>
-                                                    <?php echo $comment_item['date'] . ' ' . $comment_item['time'] ?>
+                                                    <?php echo $comment_item['date'] . ' ' . $comment_item['time']; ?>
                                                     发表</h5></div>
                                         </div>
                                     </div>
