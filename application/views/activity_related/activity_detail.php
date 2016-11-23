@@ -233,7 +233,7 @@
                         </div>
                         <div class="comment_right">
                             <form action="<?php echo site_url('activity_detail/index/'.$activity['id']);?>" method="post" class="member_review_main">
-                                <textarea name="comment" id="yh_comments" placeholder="来说两句吧~"></textarea>
+                                <textarea name="comment" id="yh_comments" placeholder="来说两句吧~" style="resize:none"></textarea>
                                 <div class="submit_comment">
                                     <input type="submit" id="submit_comment" value="发表评论">
                                 </div>
