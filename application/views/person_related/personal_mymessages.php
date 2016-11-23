@@ -97,7 +97,7 @@
     </div>
     <!--个人中心主页-->
     <!-- /container -->
-    <script src="<?php echo base_url("js/ytmenu.js") ?>"></script>
+    <!--<script src="<?php echo base_url("js/ytmenu.js") ?>"></script>-->
 
 
     <div class="Clear"><!-- 清除浮动 --></div>

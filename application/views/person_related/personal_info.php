@@ -13,7 +13,7 @@
                 </h3>
                 <hr>
                 <div class="head_portrait" align="center">
-                    <img alt="用户头像" src="<?php echo base_url("img/IMG_1035.JPG") ?>" width="150px" height="150px"
+                    <img alt="用户头像" src="<?php echo base_url($user_info['avatar']); ?>" width="150px" height="150px"
                          style="border-radius:50%;">
                 </div>
                 <div class="p_data">
@@ -54,7 +54,7 @@
     </div>
     <!--个人中心主页-->
     <!-- /container -->
-    <script src="<?php echo base_url("js/ytmenu.js") ?>"></script>
+    <!--<script src="<?php echo base_url("js/ytmenu.js") ?>"></script>-->
 
     <div class="Clear"><!-- 清除浮动 --></div>
 </div>

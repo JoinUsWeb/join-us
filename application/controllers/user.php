@@ -21,16 +21,16 @@ class User extends CI_Controller
         } else {
             redirect('login');
         }
-        $this->personal_nav = "<nav class=\"dr-menu\">
-<div class=\"dr-trigger\"><span class=\"dr-icon dr-icon-menu\"></span><a class=\"dr-label\">我的主页</a></div>
+        $this->personal_nav = "<nav class=\"dr-menu  dr-menu-open\">
+<div class=\"dr-trigger\"><span class=\"dr-label\">我的主页</span></div>
 <ul>
-<li><a class=\"dr-icon dr-icon-user\" href=\"" . site_url('user/info') . "\">个人信息</a></li>
-<li><a class=\"dr-icon dr-icon-camera\" href=\"" . site_url('user/joined') . "\">已参加活动</a></li>
-<li><a class=\"dr-icon dr-icon-heart\" href=\"" . site_url('user/applied') . "\">已报名活动</a></li>
-<li><a class=\"dr-icon dr-icon-bullhorn\" href=\"" . site_url('user/comments') . "\">评价活动</a>
+<li><a class=\"dr-icon dr-icon-user\" href=\"http://[::1]/join-us/index.php/user/info\">个人信息</a></li>
+<li><a class=\"dr-icon dr-icon-camera\" href=\"http://[::1]/join-us/index.php/user/joined\">已参加活动</a></li>
+<li><a class=\"dr-icon dr-icon-heart\" href=\"http://[::1]/join-us/index.php/user/applied\">已报名活动</a></li>
+<li><a class=\"dr-icon dr-icon-bullhorn\" href=\"http://[::1]/join-us/index.php/user/comments\">评价活动</a>
 </li>
-<li><a class=\"dr-icon dr-icon-download\" href=\"" . site_url('message/personal_mymessages') . "\">我的消息</a></li>
-<li><a class=\"dr-icon dr-icon-settings\" href=\"" . site_url('user/group') . "\">我的小组</a></li>
+<li><a class=\"dr-icon dr-icon-download\" href=\"http://[::1]/join-us/index.php/message/personal_mymessages\">我的消息</a></li>
+<li><a class=\"dr-icon dr-icon-settings\" href=\"http://[::1]/join-us/index.php/user/group\">我的小组</a></li>
 </ul>
 </nav>";
     }

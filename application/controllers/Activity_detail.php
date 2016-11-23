@@ -30,7 +30,6 @@ class Activity_detail extends CI_Controller
         $data['member'] = $this->member_and_activity_model->get_member_by_activity_id($activity_id);
         $data['hot_activity'] = $this->activity_model->get_activity_order_by_score(3);
         $data['is_joined'] = $this->member_and_activity_model->is_exist($this->session->user_id,$activity_id);
-        $data['comment']=$this->activity_comment_model->get_completed_comment_by_activity_id($activity_id);
 
         $this->form_validation->set_rules('comment', 'comment', 'trim|required',array('required'=>'请输入评论再发表'));
         if(isset($this->session->user_id)&&$this->form_validation->run())
@@ -40,8 +39,8 @@ class Activity_detail extends CI_Controller
             $comment['creator_id']=$this->session->user_id;
             $comment['content']=$this->input->post()['comment'];
             $this->activity_comment_model->insert_new_comment($comment);
-
         }
+        $data['comment']=$this->activity_comment_model->get_completed_comment_by_activity_id($activity_id);
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
