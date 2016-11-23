@@ -31,15 +31,6 @@ class Activity_detail extends CI_Controller
         $data['hot_activity'] = $this->activity_model->get_activity_order_by_score(3);
         $data['is_joined'] = $this->member_and_activity_model->is_exist($this->session->user_id,$activity_id);
 
-        $this->form_validation->set_rules('comment', 'comment', 'trim|required',array('required'=>'请输入评论再发表'));
-        if(isset($this->session->user_id)&&$this->form_validation->run())
-        {
-            $comment=array();
-            $comment['activity_id']=$activity_id;
-            $comment['creator_id']=$this->session->user_id;
-            $comment['content']=$this->input->post()['comment'];
-            $this->activity_comment_model->insert_new_comment($comment);
-        }
         $data['comment']=$this->activity_comment_model->get_completed_comment_by_activity_id($activity_id);
 
         $this->load->view('template/header', $data);
@@ -69,5 +60,17 @@ class Activity_detail extends CI_Controller
         }
 
         redirect('activity_detail/index/'.$activity_id);
+    }
+
+    function comment_check(){
+        $this->form_validation->set_rules('comment', 'comment', 'trim|required',array('required'=>'请输入评论再发表'));
+        if(isset($this->session->user_id)&&$this->form_validation->run())
+        {
+            $comment=array();
+            $comment['activity_id']=$_POST["activity_id"];
+            $comment['creator_id']=$this->session->user_id;
+            $comment['content']=$this->input->post()['comment'];
+            $this->activity_comment_model->insert_new_comment($comment);
+        }
     }
 }

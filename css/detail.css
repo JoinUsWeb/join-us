@@ -155,7 +155,7 @@ font-size: 15px;
 #submit_comment{
 	float: right;
 }
-.submit_comment input[type=submit]{
+.submit_comment input[type=button]{
 	width: 100px;
 	height: 30px;
 	

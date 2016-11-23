@@ -55,7 +55,7 @@
                         <div class="detail">
                             <div class="title_txt">开始时间：<span>
                                     <?php
-                                    echo $activity['date_start'].' '.$activity['time_start'];
+                                    echo $activity['date_start'] . ' ' . $activity['time_start'];
                                     ?>
                                 </span></div>
 
@@ -63,7 +63,7 @@
                         <div class="detail">
                             <div class="title_txt">截止报名时间：<span>
                                     <?php
-                                    echo $activity['date_expire'].' '.$activity['time_expire'];
+                                    echo $activity['date_expire'] . ' ' . $activity['time_expire'];
                                     ?>
                                 </span></div>
                         </div>
@@ -91,18 +91,16 @@
                         </div>
 
                         <?php
-                        if ($activity['creator_id']==$this->session->user_id) { ?>
-                        <form action="
+                        if ($activity['creator_id'] == $this->session->user_id) { ?>
+                            <form action="
                             <?php
-                        echo site_url('activity_detail/index/' . $activity['id']);
-                        ?>" method="post">
-                            <p class="center">
-                                <input type="submit" id="apply" value="结束活动">
-                            </p>
-                        </form>
-                        <?php }
-
-                        else if ($is_joined) { ?>
+                            echo site_url('activity_detail/index/' . $activity['id']);
+                            ?>" method="post">
+                                <p class="center">
+                                    <input type="submit" id="apply" value="结束活动">
+                                </p>
+                            </form>
+                        <?php } else if ($is_joined) { ?>
                             <form action="
                             <?php
                             echo site_url('activity_detail/quit/' . $activity['id']);
@@ -227,23 +225,22 @@
                     <div class="information"><p>用户评论</p></div>
                     <div class="context">
                         <div class="pinglun">
-                        <div class="comment_left">
-                            <img src="<?php echo base_url('img/IMG_1035.jpg') ?>" alt="" width="70px" height="70px"
-                                 class="member_review_main">
-                        </div>
-                        <div class="comment_right">
-                            <form action="<?php echo site_url('activity_detail/index/'.$activity['id']);?>" method="post" class="member_review_main">
-                                <textarea name="comment" id="yh_comments" placeholder="来说两句吧~" style="resize:none"></textarea>
+                            <div class="comment_left">
+                                <img src="<?php echo base_url('img/IMG_1035.jpg') ?>" alt="" width="70px" height="70px"
+                                     class="member_review_main">
+                            </div>
+                            <div class="comment_right">
+                                <textarea name="comment" id="yh_comments" placeholder="来说两句吧~"
+                                          style="resize:none"></textarea>
                                 <div class="submit_comment">
-                                    <input type="submit" id="submit_comment" value="发表评论">
+                                    <input type="button" id="submit_comment" value="发表评论">
                                 </div>
-                            </form>
-                        </div>
+                            </div>
                         </div>
 
 
                         <?php
-                        if(empty($comment))
+                        if (empty($comment))
                             echo '暂时没有评论';
                         else
                             foreach ($comment as $comment_item) {
@@ -325,5 +322,17 @@
             $('.sidebar_hot').stickUp();
         });
     });
+
+    $("#submit_comment").click(function () {
+        var comment = $("#yh_comments").val();
+        $.ajax({
+            type: "post",
+            url: '<?php echo site_url("activity_detail/comment_check"); ?>',
+            data: {'comment': comment, 'activity_id' : <?php echo $activity['id']; ?>},
+            success: function () {
+                location.reload(true);
+            }
+        });
+    })
 
 </script>
