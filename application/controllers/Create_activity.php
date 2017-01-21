@@ -13,8 +13,8 @@ class Create_activity extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('form_validation');
-        $this->load->model('activity_model');
-        $this->load->model('first_label_model');
+        $this->load->model('Activity_model');
+        $this->load->model('First_label_model');
 
         $config['upload_path'] = FCPATH.'/img/';
         $config['allowed_types'] = 'gif|jpg|png';
@@ -42,7 +42,7 @@ class Create_activity extends CI_Controller
 
         if (!$this->form_validation->run()) {
             $data = array('error' => '', 'title' => 'create activity');
-            $data['first_label'] = $this->first_label_model->get_first_label();
+            $data['first_label'] = $this->First_label_model->get_first_label();
             $data['page_name']="create";
             $this->load->view('template/header', $data);
             $this->load->view('template/nav');
@@ -51,7 +51,7 @@ class Create_activity extends CI_Controller
         } else if (!$this->upload->do_upload('poster')) {
             if ($this->upload->error_msg[0] != 'You did not select a file to upload.') {
                 $data = array('error' => $this->upload->display_errors(), 'title' => 'create activity');
-                $data['first_label'] = $this->first_label_model->get_first_label();
+                $data['first_label'] = $this->First_label_model->get_first_label();
                 $data['page_name']="create";
                 $this->load->view('template/header', $data);
                 $this->load->view('template/nav');
@@ -85,7 +85,7 @@ class Create_activity extends CI_Controller
     public function create_activity($data, $poster_path)
     {
         $data['poster'] = $poster_path;
-        $this->activity_model->insert_new_activity($data);
+        $this->Activity_model->insert_new_activity($data);
         redirect('activity_detail/index/' . $this->db->insert_id());
     }
 

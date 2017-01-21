@@ -10,7 +10,7 @@ class Search_activity_model extends CI_Model
 {
     public function __construct()
     {
-        $this->load->model('activity_model');
+        $this->load->model('Activity_model');
     }
 
     public function search_activity($first_label_id, $city, $time)

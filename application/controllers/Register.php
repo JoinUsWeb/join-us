@@ -14,7 +14,7 @@ class Register extends CI_Controller
         $this->load->library(array("form_validation", "session"));
         $this->load->model('User_model');
         $data['title'] = '注册';
-        $data['page_name']="register";
+        $data['page_name'] = "register";
         $user_id = -1;
 
         /* 此处应区别是第一次加载还是误按注册键  并未实现*/
@@ -57,10 +57,12 @@ class Register extends CI_Controller
             ));
 
         $this->form_validation->set_rules('_phoneNumber', 'Phone number',
-            'trim|htmlspecialchars|required|is_natural',
+            'trim|htmlspecialchars|required|is_natural|min_length[11]|max_length[11]',
             array(
                 'required' => 'Please provide your phone number!',
-                'is_natural' => 'Invalid phone number!'
+                'is_natural' => 'Invalid phone number!',
+                'min_length' => 'Invalid phone number!',
+                'max_length' => 'Invalid phone number!'
             ));
 
         $this->form_validation->set_rules('_nickName', 'Nickname',

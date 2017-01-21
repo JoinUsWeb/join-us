@@ -30,4 +30,32 @@ class Separated_info extends CI_Controller
         }
         echo json_encode('success');
     }
+
+
+    public function register_info_check($field = null)
+    {
+        if ($field == null) return;
+        $this->load->helper("form");
+        $this->load->library("form_validation");
+        switch ($field) {
+            case "email":
+                $this->form_validation->set_rules('_email', 'Email',
+                    'trim|htmlspecialchars|is_unique[user.email]|required', null);
+                if ($this->form_validation->run() == true) {
+                    echo "true";
+                } else {
+                    echo "false";
+                }
+                break;
+            case "nickname":
+                $this->form_validation->set_rules('_nickName', 'Nickname',
+                    'trim|htmlspecialchars|required|is_unique[user.nick_name]', null);
+                if ($this->form_validation->run() == true) {
+                    echo "true";
+                } else {
+                    echo "false";
+                }
+                break;
+        }
+    }
 }
