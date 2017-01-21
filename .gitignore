@@ -1,4 +1,5 @@
-.DS_Store
+# Ignore following files
+*.DS_Store
 
 application/controllers/Test.php
 application/views/test
@@ -13,6 +14,14 @@ application/logs/*
 !application/logs/.htaccess
 
 application/config/database
+application/config/config.php
+
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
 
 user_guide_src/build/*
 user_guide_src/cilexer/build/*

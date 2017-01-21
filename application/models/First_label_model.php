@@ -61,7 +61,7 @@ class First_label_model extends CI_Model
     public function get_first_label_by_activity_id($activity_id = -1)
     {
         $this->load->model('activity_model');
-        $activity = $this->activity_model->get_activity_by_id($activity_id);
+        $activity = $this->Activity_model->get_activity_by_id($activity_id);
         if ($activity == null)
             return null;
         else {

@@ -43,7 +43,7 @@ class Activity_comment_model extends CI_Model
             $comment=$this->get_comment_by_activity_id($activity_id);
             foreach($comment as $key => $comment_item)
             {
-                $comment[$key]['creator'] = $this->user_model->get_user_by_id($comment_item['creator_id']);
+                $comment[$key]['creator'] = $this->User_model->get_user_by_id($comment_item['creator_id']);
             }
             return $comment;
         }

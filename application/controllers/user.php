@@ -35,9 +35,6 @@ class User extends CI_Controller
 </nav>";
     }
 
-    /**
-     * 需要根据活动参加实践和现在的时间进行比较 再做筛选  以下实现并没有起到实际效果
-     */
     public function applied()
     {
         $this->load->model('Member_and_activity_model');
@@ -105,9 +102,7 @@ class User extends CI_Controller
     }
 
 
-    /**
-     * 需要根据活动是否被收藏进行筛选  以下实现并没有起到实际效果
-     */
+    /* 功能被撤销
     public function favorites()
     {
         $this->load->model('Member_and_activity_model');
@@ -122,7 +117,7 @@ class User extends CI_Controller
         $this->load->view('template/nav');
         $this->load->view('person_related/personal_favorites', $data);
         $this->load->view('template/footer');
-    }
+    }*/
 
     public function joined()
     {
