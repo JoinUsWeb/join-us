@@ -205,15 +205,22 @@
     };
 </script>
 <script type="text/javascript" src="https://cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('js/my_bootstrap-datetimepicker.js'); ?>"></script>
 <script type="text/javascript">
     $(function () {
-        $('#start_date').datetimepicker();
-    });
-
-    $(function () {
-        $('#close_date').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
-    });
+        $.fn.my_datetimepicker = function () {
+            console.log('my_datetimepicker: start');
+            offset = this.offset();
+            this.datetimepicker({
+                format: 'YYYY-MM-DD',
+                personal: JSON.stringify({
+                    'position': 'absolute',
+                    'left': offset.left,
+                    'top': offset.top + this.height() + 10
+                })
+            });
+        };
+        $('#start_date').my_datetimepicker();
+        $('#close_date').my_datetimepicker();
+    })
 </script>
