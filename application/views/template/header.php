@@ -28,7 +28,8 @@
         case "create": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/create.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
-            <?php break;
+            <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css">
+    <?php break;
         case "search": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/searching.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/mainpage.css"); ?>">
@@ -104,7 +105,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
     -->
 
-    <script type="text/javascript" src="<?php echo base_url("js/jquery.min.js"); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("js/jquery-3.1.1.min.js"); ?>"></script>
     <script src="<?php echo base_url("js/modernizr.custom.js"); ?>"></script>
     <script src="<?php echo base_url("js/stickUp.min.js") ?>"></script>
     <!--HTML5 shim and Respond . js for IE8 support of HTML5 elements and media queries-->

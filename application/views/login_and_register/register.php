@@ -51,8 +51,9 @@
         var reg_check = false;
         var unique_check = false;
         var email_text = this.value;
-        if (email_text.length <= 0) {
+        if (email_text.length <= 0 || email_text.trim() == 0) {
             // 显示错误信息
+            alert("邮箱不能为空或全为空格！");
             return;
         }
         required_check = true;
@@ -61,6 +62,7 @@
             reg_check = true;
         } else {
             // 显示错误提示
+            alert("邮箱格式错误！");
             return;
         }
         $.ajax({
@@ -72,6 +74,7 @@
                     unique_check = true;
                 else {
                     // 显示错误提示
+                    alert("该邮箱已注册，请登录！");
                 }
             }
         });
@@ -83,8 +86,9 @@
         var required_check = false;
         var unique_check = false;
         var nickname_text = this.value;
-        if (nickname_text.length <= 0) {
+        if (nickname_text.length <= 0 || nickname_text.trim() == 0) {
             //显示错误信息
+            alert("昵称不能为空或全为空格！");
             return;
         }
         required_check = true;
@@ -97,6 +101,7 @@
                     unique_check = true;
                 else {
                     // 显示错误提示
+                    alert("昵称已被使用！");
                 }
             }
         });
@@ -108,26 +113,28 @@
         var password = this.value;
         if (password.length <= 0) {
             // 显示错误信息
+            alert("密码不能为空！");
             return;
         } else if (password.length <= 6) {
             // 显示错误信息
+            alert("密码长度至少6位！");
             return;
         }
-    }
+    };
     document.getElementById("password2").onblur = function () {
         var password2 = this.value;
         var password = document.getElementById("password").value;
         if (password2.length <= 0) {
             // 显示错误信息
+            alert("请确认密码！");
             return;
         } else if (password2 != password) {
             // 显示错误信息
+            alert("两次密码不匹配！");
             return;
         } else if (password2 == password) {
-            // 显示错误信息
-            return;
+            // 清空错误信息
         }
-
     };
     document.getElementById("phone_number").onblur = function () {
         var phone_number = this.value;
@@ -135,11 +142,14 @@
             var reg = new RegExp("[0-9]{11}");
             if (reg.test(phone_number) != true) {
                 // 显示错误消息
+                alert("手机号格式错误，请输入11位手机号！");
                 return;
             }
         } else {
             // 显示错误消息
+            alert("请输入11位手机号！");
             return;
         }
+        // 清空错误信息
     };
 </script>

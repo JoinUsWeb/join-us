@@ -18,7 +18,7 @@
         </li>
         <li>
             <label for="start_date" class="label_style">活动开始时间</label>
-            <input type="date" id="start_date" name="date_start" value="<?php echo set_value('date_start'); ?>"
+            <input type="text" id="start_date" name="date_start" value="<?php echo set_value('date_start'); ?>"
                    placeholder="开始时间">
             <select name="time_start" value="<?php echo set_value('time_start'); ?>" id="start_hour">
                 <option value="00:00:00">00:00</option>
@@ -50,7 +50,7 @@
         </li>
         <li>
             <label for="close_date" class="label_style">截止报名时间</label>
-            <input type="date" id="close_date" name="date_expire" value="<?php echo set_value('date_expire'); ?>"
+            <input type="text" id="close_date" name="date_expire" value="<?php echo set_value('date_expire'); ?>"
                    placeholder="截止报名时间">
             <select name="time_expire" value="<?php echo set_value('time_expire'); ?>" id="close_hour">
                 <option value="00:00:00">00:00</option>
@@ -137,5 +137,83 @@
         else {
             $('#hd_style_2nd').children().not('#second_label_1st').remove();
         }
+    });
+
+    function verify_string(data) {
+        return (data.length <= 0 || data.trim().length <= 0 || data == null || data == undefined);
+    }
+
+    document.getElementById("hd_topic").onblur = function () {
+        var topic = this.value;
+        if (verify_string(topic)) {
+            // 显示错误信息
+            alert("活动主题不能为空！");
+            return;
+        }
+        // 清空错误信息
+    };
+    document.getElementById("start_date").onblur = function () {
+        var start_date = this.value;
+        if (verify_string(start_date)) {
+            // 显示错误信息
+            alert("请填写活动开始时间！");
+            return;
+        }
+        // 清空错误信息
+    };
+    document.getElementById("close_date").onblur = function () {
+        var close_date = this.value;
+        if (verify_string(close_date)) {
+            // 显示错误信息
+            alert("请填写截止报名时间！");
+            return;
+        }
+        // 清空错误信息
+    };
+    document.getElementById("hd_place").onblur = function () {
+        var hd_place = this.value;
+        if (verify_string(hd_place)) {
+            // 显示错误信息
+            alert("请填写活动举办地点！");
+            return;
+        }
+        // 清空错误信息
+    };
+    document.getElementById("num_limit").onblur = function () {
+        var num_limit = this.value;
+        if (num_limit.length == 0) {
+            // 显示错误信息
+            alert("请填写活动人数上限！");
+            return;
+
+        }
+        if (!isNaN(num_limit)) {
+            // 显示错误信息
+            alert("请用数字填写活动人数上限！");
+            return;
+        }
+        // 清空错误信息
+    };
+    document.getElementById("hd_detail").onblur = function () {
+        var hd_detail = this.value;
+        if (verify_string(hd_detail)) {
+            // 显示错误信息
+            alert("请填写活动详情！");
+            return;
+        }
+        // 清空错误信息
+    };
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#start_date').datetimepicker();
+    });
+
+    $(function () {
+        $('#close_date').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
     });
 </script>
