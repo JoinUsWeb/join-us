@@ -1,8 +1,8 @@
     /*! version : 4.17.45
      =========================================================
      bootstrap-datetimejs
-     https://github.com/Eonasdan/bootstrap-datetimepicker
-     Copyright (c) 2015 Jonathan Peterson
+     https://github.com/Eonasdan/bootstrap-datetimepic
+     Copyright (c) 2015 Jonathan Petersonker
      =========================================================
      */
     /*
@@ -50,7 +50,8 @@
             }
             factory(jQuery, moment);
         }
-    }(function ($, moment) {
+    }
+    (function ($, moment) {
         'use strict';
         if (!moment) {
             throw new Error('bootstrap-datetimepicker requires Moment.js to be loaded first');
@@ -456,11 +457,11 @@
                         offset = (component || element).offset(),
                         vertical = options.widgetPositioning.vertical,
                         horizontal = options.widgetPositioning.horizontal,
-                        
+
                         // Anderson
                         personal = JSON.parse(options.widgetPositioning.personal),
-                        
-                        
+
+
                         parent;
 
                     if (options.widgetParent) {
@@ -513,7 +514,7 @@
                             return $(this).css('position') !== 'static';
                         }).first();
                     }
-                    
+
                     /* Origin
                     if (parent.length === 0) {
                     	 throw new Error('datetimepicker component should be placed within a non-static positioned container');
@@ -530,7 +531,7 @@
                     */
 
                     if (parent.length === 0) {
-                    	
+
                     	  // Anderson
                         if (personal.length == 0)
                             throw new Error('datetimepicker component should be placed within a non-static positioned container');
@@ -2077,14 +2078,21 @@
                     }
                     options.widgetPositioning.vertical = widgetPositioning.vertical;
                 }
+
+                // Anderson
+                if (widgetPositioning.personal) {
+                    if (typeof widgetPositioning.personal !== 'string') {
+                        throw new TypeError('widgetPositioning() personal variable must be a string');
+                    }
+                    widgetPositioning.personal = widgetPositioning.personal.toLowerCase();
+                    options.widgetPositioning.personal = widgetPositioning.personal;
+                }
+
                 update();
                 return picker;
             };
 
-						// Anderson
-            picker.personal = function (personal) {
-                options.widgetPositioning.personal = personal;
-            };
+
 
             picker.calendarWeeks = function (calendarWeeks) {
                 if (arguments.length === 0) {
@@ -2517,6 +2525,10 @@
                         throw new Error('bootstrap-datetimepicker("' + options + '") method was called on an element that is not using DateTimePicker');
                     }
 
+                    // Anderson
+                    if (instance[options] == undefined)
+                        throw new TypeError('Invalid arguments for DateTimePicker: ' + options);
+
                     returnValue = instance[options].apply(instance, args);
                     isInstance = returnValue === instance;
                 });
@@ -2528,7 +2540,12 @@
                 return returnValue;
             }
 
-            throw new TypeError('Invalid arguments for DateTimePicker: ' + options);
+            // Anderson
+            else{
+                throw new TypeError('Invalid arguments for DateTimePicker: ' + options + '. Please use object or string');
+            }
+
+
         };
 
         $.fn.datetimepicker.defaults = {
@@ -2595,7 +2612,7 @@
             widgetPositioning: {
                 horizontal: 'auto',
                 vertical: 'auto',
-                
+
                 // Anderson
                 personal: ''
             },

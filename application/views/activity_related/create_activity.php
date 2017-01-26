@@ -209,15 +209,16 @@
 <script type="text/javascript">
     $(function () {
         $.fn.my_datetimepicker = function () {
-            console.log('my_datetimepicker: start');
             offset = this.offset();
             this.datetimepicker({
                 format: 'YYYY-MM-DD',
-                personal: JSON.stringify({
-                    'position': 'absolute',
-                    'left': offset.left,
-                    'top': offset.top + this.height() + 10
-                })
+                widgetPositioning: {
+                    personal: JSON.stringify({
+                        'position': 'absolute',
+                        'left': offset.left,
+                        'top': offset.top + this.height() + 10
+                    })
+                }
             });
         };
         $('#start_date').my_datetimepicker();

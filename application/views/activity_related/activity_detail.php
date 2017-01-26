@@ -314,6 +314,7 @@
         </div>
     </div>
 </div>
+<script src="<?php echo base_url("js/stickUp.min.js") ?>"></script>
 <script type="text/javascript">
     //initiating jQuery
     jQuery(function ($) {
