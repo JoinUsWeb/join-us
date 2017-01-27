@@ -320,7 +320,9 @@
     jQuery(function ($) {
         $(document).ready(function () {
             //enabling stickUp on the '.navbar-wrapper' class
-            $('.sidebar_hot').stickUp();
+            $('.sidebar_hot').stickUp({
+                topMargin: '70px'
+            });
         });
     });
 
