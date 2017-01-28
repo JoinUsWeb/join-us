@@ -32,7 +32,7 @@ class Create_activity extends CI_Controller
         $this->form_validation->set_rules('name', 'name', 'trim|required',array('required'=>'请输入活动名称'));
         $this->form_validation->set_rules('date_start', 'date_start', 'required',array('required'=>'请输入活动开始日期'));
         $this->form_validation->set_rules('time_start', 'time_start', 'required',array('required'=>'请输入活动开始时间'));
-        $this->form_validation->set_rules('date_expire', 'date_expire', 'required|callback_check_date[date_start]',array('required'=>'请输入报名截止日期'));
+        $this->form_validation->set_rules('date_expire', 'date_expire', 'callback_check_date|required',array('required'=>'请输入报名截止日期'));
         $this->form_validation->set_rules('time_expire', 'time_expire', 'required',array('required'=>'请输入报名截止时间'));
         $this->form_validation->set_rules('place', 'place', 'trim|required',array('required'=>'请输入活动地点'));
         $this->form_validation->set_rules('city', 'city', 'required',array('required'=>'请选择活动城市'));
@@ -95,9 +95,10 @@ class Create_activity extends CI_Controller
         $this->create_activity($data, $poster_path);
     }
 
-    public function check_date($date_expire,$date_start)
+    public function check_date($date_expire)
     {
-        if($date_expire<$date_start)
+        $date_start=$this->input->post()['date_start'];
+        if(empty($date_start)|$date_expire<=$date_start)
             return true;
         else
         {

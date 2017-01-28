@@ -53,13 +53,25 @@ class Activity_model extends CI_Model
     {
         return $this->db->get('activity')->result_array();
     }
-
+    /**
+     * 获得分数靠前的活动
+     *
+     * 传入一个查找数量。返回所有对应数目的活动的一个数组，按活动的评分从大到小排列；
+     * 如果没有参数传入，则返回全部活动的数组，并按活动评分从大到小排列
+     *
+     * @param int $limit
+     * @return array $data
+     */
     public function get_activity_order_by_score($limit = -1)
     {
         if ($limit <= 0)
             return $this->db->order_by('score', 'DESC')->get('activity')->result_array();
         else
             return $this->db->limit($limit)->order_by('score', 'DESC')->get('activity')->result_array();
+    }
+
+    public function get_activity_available(){
+        return $this->db->get_where('activity',array( 'isVerified' => 1 ))->result_array();
     }
 
     /**
@@ -142,7 +154,7 @@ class Activity_model extends CI_Model
                 return false;
             if ($this->db->delete('activity', array('id' => $activity_id)) == false)
                 return false;
-            return false;
+            return true;
         }
     }
 
@@ -154,6 +166,7 @@ class Activity_model extends CI_Model
             if ($result == null || $result == false)
                 return $result;
         }
+        return true;
     }
 
     public function remove_activity_by_first_label_id($first_label_id = -1)

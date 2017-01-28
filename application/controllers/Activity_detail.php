@@ -67,7 +67,7 @@ class Activity_detail extends CI_Controller
         if(isset($this->session->user_id)&&$this->form_validation->run())
         {
             $comment=array();
-            $comment['activity_id']=$_POST["activity_id"];
+            $comment['activity_id']=$this->input->post()["activity_id"];
             $comment['creator_id']=$this->session->user_id;
             $comment['content']=$this->input->post()['comment'];
             $this->Activity_comment_model->insert_new_comment($comment);
