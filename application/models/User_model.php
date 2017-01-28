@@ -117,8 +117,6 @@ class User_model extends CI_Model
         return $user_info['id'];
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public function remove_by_id($user_id = -1)
     {
         if ($user_id <= 0)

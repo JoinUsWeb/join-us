@@ -4,51 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/create.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
 </head>
 <body>
-<body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#myInverseNavbar2"><span class="sr-only">Toggle navigation</span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="http://[::1]/join-us/index.php/home ">
-                <img src="http://[::1]/join-us/img/logo.png" alt="" width="102" height="27"></a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="myInverseNavbar2">
-            <ul class="nav navbar-nav navbar-right">
-                <li></li>
-                <li><a href="http://[::1]/join-us/index.php/home">主页</a></li>
-                <li><a href="http://[::1]/join-us/index.php/search_activity/index">查找活动</a></li>
-                <li><a href="http://[::1]/join-us/index.php/create_activity/index">创建活动</a></li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-expanded="false">个人中心 <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="http://[::1]/join-us/index.php/user/info">个人信息</a></li>
-                        <li><a href="http://[::1]/join-us/index.php/user/joined">已参加活动</a></li>
-                        <li><a href="http://[::1]/join-us/index.php/user/applied">已报名活动</a></li>
-                        <li><a href="http://[::1]/join-us/index.php/user/comments">评价活动</a></li>
-                        <li><a href="http://[::1]/join-us/index.php/message/personal_mymessages">我的消息</a></li>
-                        <li><a href="http://[::1]/join-us/index.php/user/group">我的小组</a></li>
 
-                        <li><a href="http://[::1]/join-us/index.php/log_off">注销</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">关于我们</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
 <div style="height: 72px;"></div><div class="container">
-    <form action="http://[::1]/join-us/index.php/create_activity" id="create_hd" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+    <form action="./index.php/create_activity" id="create_hd" enctype="multipart/form-data" method="post" accept-charset="utf-8">
         <ul>
             <li>
                 <label for="hd_topic" class="label_style">活动主题</label>
@@ -57,7 +19,7 @@
             <li>
                 <label for="hd_poster" class="label_style">活动海报</label>
                 <div id="posterImg">
-                    <!--<img src="http://[::1]/join-us/img/posterImg.png" alt="这是一张海报"> -->
+                    <!--<img src="./img/posterImg.png" alt="这是一张海报"> -->
                 </div>
                 <div id="create_button">
                     <input type="file" id="hd_poster" name="poster">

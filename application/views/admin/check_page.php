@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>管理员界面</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/font-awesome.min.css'); ?>">
+
+    <link rel="stylesheet" href="<?php echo base_url('css/mainpage.css'); ?>">
+
+    <link rel="stylesheet" href="<?php echo base_url('css/main.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/detail.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('css/admin.css'); ?>">
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="javascript:;"><img src="<?php echo base_url('img/logo.png'); ?>" alt=""
+                                                             width="102" height="27"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="myInverseNavbar2">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a id="cancel_p" href="admin_login.php">注销</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div style="height: 52px;"></div>
+
+<div class="container_admin">
+    <div class="left_bar">
+        <ul>
+            <li class="active">
+                <a href="admin_main.php">
+                    <i class="icon-ok-circle icon-large"></i>
+                    <span>活动审核</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin_main.php">
+                    <i class="icon-ok-circle icon-large"></i>
+                    <span>活动审核</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin_main.php">
+                    <i class="icon-ok-circle icon-large"></i>
+                    <span>活动审核</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin_main.php">
+                    <i class="icon-ok-circle icon-large"></i>
+                    <span>活动审核</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="right_content">
+        <div class="back"><a href="admin_main.php">返回上一页</a><span> > 创新创业大赛</span></div>
+        <div class="check_content">
+            <div class="content_head_l">
+                <img src="<?php echo base_url('img/02.jpg'); ?>" alt="海报海报photo">
+            </div>
+
+            <div class="content_head_r">
+                <div class="detail_title">
+                    <h2>
+                        华东师范大学第二届创新创业大赛
+                    </h2>
+                </div>
+                <hr>
+
+                <div id="detail_block">
+                    <div class="detail">
+                        <div class="title_txt">开始时间：<span>2016-11-23 13:00</span></div>
+
+                    </div>
+                    <div class="detail">
+                        <div class="title_txt">截止报名时间：<span>2016-10-07 24:00</span></div>
+
+                    </div>
+
+
+                    <div class="detail">
+                        <div class="title_txt">地点：<span>
+                    上海市普陀区中山北路3663号华东师范大学
+                  </span></div>
+
+                    </div>
+
+                    <div id="detail_joinnum" class="detail" ms-controller="detail_join_party_list_controller">
+
+                        <div class="title_txt">人数上限：<span class="num">30人</span></div>
+
+                    </div>
+                    <div class="detail">
+                        <div class="title_txt">活动类型：<span>
+                    运动健身
+                  </span></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="hdxq">
+            <div class="information"><p>活动详情</p></div>
+            <div class="context"><p>
+                    我们在用户注册时提供一级兴趣选择（一级兴趣包括：娱乐、体育、科技、美食、军事、历史、社会、旅游、影视、其他等，一级兴趣下再细化二级兴趣），多级区域选择，及其所处年龄层等信息。根据以上用户数据收集，推荐其喜好的活动。在推荐活动时，优先考虑二级兴趣标签及所在区域，其次推荐一级兴趣活动。同时，我们也会向用户提供实时热门活动，以及好友活动动态，避免单一推荐过少或无推荐活动的情况发生。活动来源一部分根据时下热门，由网站管理员创建，一部分由用户（活动组织者）创建。用户创建的活动会有12个小时的审核时间，过审后才可在网站上发布（我们会根据活动举办时间优先审核最近的活动）。创建活动时，用户可以选择一级兴趣标签，二级兴趣标签由管理员审核后进行分类，并在审核过后告知用户分类到哪一级标签下。而前期用户在注册时，必须填写推荐人的唯一ID。我们在用户注册时提供一级兴趣选择（一级兴趣包括：娱乐、体育、科技、美食、军事、历史、社会、旅游、影视、其他等，一级兴趣下再细化二级兴趣），多级区域选择，及其所处年龄层等信息。根据以上用户数据收集，推荐其喜好的活动。在推荐活动时，优先考虑二级兴趣标签及所在区域，其次推荐一级兴趣活动。同时，我们也会向用户提供实时热门活动，以及好友活动动态，避免单一推荐过少或无推荐活动的情况发生。活动来源一部分根据时下热门，由网站管理员创建，一部分由用户（活动组织者）创建。用户创建的活动会有12个小时的审核时间，过审后才可在网站上发布（我们会根据活动举办时间优无推荐活动的情况发生。活动来源一部分根据时下热门，由网站管理员创建，一部分由用户（活动组织者）创建。用户创建的活动会有12个小时的审核时间，过审后才可在网站上发布（我们会根据活动举办时间优先审核最近的活动）。创建活动时，用户可以选择一级兴趣标签，二级兴趣标签由管理员审核后进行分类，并在审核过后告知用户分类到哪一级标签下。而前期用户在注册时，必须填写推荐人的唯一ID。我们在用户注册时提供一级兴趣选择（一级兴趣包括：娱乐、体育、科技、美食、军事、历史、社会、旅游、影视、其他等，一级兴趣下再细化二级兴趣），多级区域选择，及其所处年龄层等信息。根据以上用户数据收集，推荐其喜好的活动。在推荐活动时，优先考虑二级兴趣标签及所在区域，其次推荐一级兴趣活动。同无推荐活动的情况发生。活动来源一部分根据时下热门，由网站管理员创建，一部分由用户（活动组织者）创建。用户创建的活动会有12个小时的审核时间，过审后才可在网站上发布（我们会根据活动举办时间优先审核最近的活动）。创建活动时，用户可以选择一级兴趣标签，二级兴趣标签由管理员审核后进行分类，并在审核过后告知用户分类到哪一级标签下。而前期用户在注册时，必须填写推荐人的唯一ID。我们在用户注册时提供一级兴趣选择（一级兴趣包括：娱乐、体育、科技、美食、军事、历史、社会、旅游、影视、其他等，一级兴趣下再细化二级兴趣），多级区域选择，及其所处年龄层等信息。根据以上用户数据收集，推荐其喜好的活动。在推荐活动时，优先考虑二级兴趣标签及所在区域，其次推荐一级兴趣活动。同</p>
+            </div>
+
+
+        </div>
+        <div class="check_button">
+            <form action="" method="post">
+              <span class="center">
+                <input type="submit" id="check_yes" value="审核通过">
+              </span>
+                <span class="center">
+                <input type="submit" id="check_no" value="审核不通过">
+              </span>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<footer class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Copyright © JoinUs Web. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
