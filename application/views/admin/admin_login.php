@@ -41,7 +41,7 @@
 <div style="height: 72px;"></div>
 <div id="container" style="margin-top: 125px">
 
-    <?php echo form_open("admin/login", array('id' => 'register_form')); ?>
+    <?php echo form_open("admin/login", array('id' => 'login_form')); ?>
     <fieldset>
         <h3><i class="icon-user"></i> 管理员登录</h3>
         <ul>
@@ -56,14 +56,49 @@
         </ul>
 
         <p class="button">
-            <input type="submit" id="login_button" value="登录">
+            <input type="submit" id="login_button" value="登录" onclick="encrypt()">
         </p>
 
     </fieldset>
     </form>
 </div>
+<script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/core-min.js"></script>
+<script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/md5-min.js"></script>
+<script type="text/javascript">
+    function encrypt() {
+        var doc = document;
+        var password = doc.getElementById('password').value;
+        document.getElementById('password').value = CryptoJS.MD5(password);
+    }
+    document.getElementById("user_name").onblur = function () {
+        var required_check = false;
+        var reg_check = false;
+        var user_name = this.value;
+        if (user_name.length <= 0) {
+            // 显示错误信息
+            alert("请输入用户名！");
+            return;
+        }
+        required_check = true;
+        if (required_check) {
+            // 错误信息置为空
+        }
+    };
+    document.getElementById("password").onblur = function () {
+        var required_check = false;
+        var password = this.value;
+        if (password.length <= 0) {
+            // 显示错误信息
+            alert("请输入密码！");
+            return;
+        }
+        required_check = true;
+        if (required_check) {
+            // 错误信息置为空
+        }
+    };
+</script>
 <hr>
-
 <footer class="text-center">
     <div class="container">
         <div class="row">

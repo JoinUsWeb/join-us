@@ -54,7 +54,7 @@ ul{
 
 }
 
-#login_form input[type=button], #register_form input[type=button]{
+#login_form input[type=submit], #register_form input[type=submit]{
 	width: 120px;
 	height: 40px;
 	border: 1px solid #556f8c;

@@ -45,6 +45,15 @@
 
     </form>
 </div>
+<script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/core-min.js"></script>
+<script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/md5-min.js"></script>
+<script type="text/javascript">
+    function encrypt() {
+        var doc = document;
+        var password = doc.getElementById('password').value;
+        document.getElementById('password').value = CryptoJS.MD5(password);
+    }
+</script>
 <script type="text/javascript">
     document.getElementById("email").onblur = function () {
         var required_check = false;

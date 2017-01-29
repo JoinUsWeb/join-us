@@ -20,7 +20,7 @@ class Admin_model extends CI_Model
     {
         if ($user_name == null)
             return null;
-        return $this->db->get_where('admin', array('user_name' => $user_name));
+        return $this->db->get_where('admin', array('user_name' => $user_name))->row_array();
     }
 
     public function get_admin_id_by_user_name($user_name = null)
@@ -41,5 +41,20 @@ class Admin_model extends CI_Model
         if ($info['password'] == $password)
             return true;
         return false;
+    }
+
+    public function get_activity_by_admin_id($id = -1)
+    {
+        $this->load->model('User_model');
+        $info = $this->db
+            ->join('relation_admin_firstlabel', 'relation_admin_firstlabel.admin_id = ' . $id)
+            ->where('activity.first_label_id = relation_admin_firstlabel.first_label_id')
+            ->get('activity')
+            ->result_array();
+        $length = count($info);
+        for ($index = 0; $index < $length; $index++) {
+            $info[$index]['creator_name'] = $this->User_model->get_user_by_id($info[$index]['creator_id'], 'nick_name');
+        }
+        return $info;
     }
 }

@@ -34,7 +34,7 @@
                             <li><a href="<?php echo site_url('message/personal_mymessages'); ?>">我的消息</a></li>
                             <li><a href="<?php echo site_url('user/group'); ?>">我的小组</a></li>
 
-                            <li><a href="<?php echo site_url("log_off"); ?>">注销</a></li>
+                            <li><a href="<?php echo site_url("log_off/index/u"); ?>">注销</a></li>
                             <li class="divider"></li>
                             <li><a href="#">关于我们</a></li>
                         </ul>

@@ -8,12 +8,25 @@
  */
 class Admin extends CI_Controller
 {
+    var $admin_id;
+
     public function __construct()
     {
         parent::__construct();
         $this->load->library(array('form_validation', 'session'));
         $this->load->helper(array('url', 'form'));
         $this->load->model('Admin_model');
+        $this->load->model('Admin_first_label_model');
+    }
+
+    private function check_status()
+    {
+        if (isset($_SESSION['admin_id'])) {
+            $this->admin_id = $_SESSION['admin_id'];
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     public function login()
@@ -36,13 +49,31 @@ class Admin extends CI_Controller
 
     public function main()
     {
-        $this->load->view('admin/admin_main');
+        if ($this->check_status() == 0) {
+            redirect('admin/login');
+            return;
+        }
+        $data['to_verify'] = $this->Admin_model->get_activity_by_admin_id($this->admin_id);
+        $this->load->view('admin/admin_main',$data);
     }
 
 
-    public function check()
+    public function check($activity_id = -1)
     {
-        $this->load->view('admin/check_page');
+        $this->load->model('Activity_model');
+        $this->load->model('First_label_model');
+        $this->load->model('Second_label_model');
+        if ($activity_id == -1) {
+            redirect('admin/main');
+            return;
+        }
+        if ($this->check_status() == 0) {
+            redirect('admin/login');
+            return;
+        }
+        $data['activity_info'] = $this->Activity_model->get_activity_by_id($activity_id);
+        $data['activity_info']['first_label_id'] = $this->First_label_model->get_first_label_by_activity_id($activity_id)['name'];
+        $this->load->view('admin/check_page',$data);
     }
 
     function form_process()
@@ -59,4 +90,5 @@ class Admin extends CI_Controller
         else
             return null;
     }
+
 }

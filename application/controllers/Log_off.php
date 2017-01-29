@@ -14,9 +14,19 @@ class Log_off extends CI_Controller
         $this->load->helper('url');
     }
 
-    public function index()
+    public function index($type = null)
     {
-        unset($_SESSION['user_id']);
-        redirect('home/index');
+        if ($type == null)
+            return null;
+        switch ($type){
+            case 'u':
+                unset($_SESSION['user_id']);
+                redirect('login');
+                break;
+            case 'a':
+                unset($_SESSION['admin_id']);
+                redirect('admin/login');
+                break;
+        }
     }
 }

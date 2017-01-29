@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="myInverseNavbar2">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a id="cancel_p" href="admin_login.php">注销</a>
+                    <a id="cancel_p" href="<?php echo site_url("log_off/index/a"); ?>">注销</a>
                 </li>
 
             </ul>
@@ -97,46 +97,25 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><a href="check_page.html">第二届创新创业大赛</a></td>
-                        <td class="center">Internet
-                        </td>
-                        <td class="center">2017-01-27</td>
-                        <td class="center">未审核</td>
-                        <td class="center">
-                            <form method="post" action="#">
-                                <input type="submit" class="pass_button" value="通过">
-                                <input type="submit" class="pass_button" value="不通过">
+                    <?php foreach ($to_verify as $item) { ?>
 
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tridenf</td>
-                        <td class="center">Internet
-                        </td>
-                        <td class="center">Win 95+</td>
-                        <td class="center">未审核</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td class="center">Internet
-                            Explorer
-                        </td>
-                        <td class="center">Win 95+</td>
-                        <td class="center">未审核</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr>
-                        <td>Trident</td>
-                        <td class="center">Internet
-                            Explorer 6
-                        </td>
-                        <td class="center">Win 98+</td>
-                        <td class="center">未审核</td>
-                        <td class="center">A</td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <a href="<?php echo site_url('admin/check/' . $item['id']); ?>"><?php echo $item['name'] ?></a>
+                            </td>
+                            <td class="center"><?php echo $item['creator_name']; ?></td>
+                            <td class="center"><?php echo $item['date_start']; ?></td>
+                            <td class="center"><?php echo $item['isVerified'] == 1 ? '已审核' : '未审核'; ?></td>
+                            <td class="center">
+                                <form method="post" action="#">
+                                    <input type="submit" class="pass_button" value="通过">
+                                    <input type="submit" class="pass_button" value="不通过">
+
+                                </form>
+                            </td>
+                        </tr>
+
+                    <?php } ?>
                     </tbody>
                 </table>
             </div>
