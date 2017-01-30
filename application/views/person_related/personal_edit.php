@@ -50,19 +50,36 @@
     </form>
 </div>
 <script type="text/javascript">
-    document.getElementById("nickname").onblur = function () {
-        var required_check = false;
+    var nick_name_check = false, password_check = false,
+        password_confirm_check = false, phone_check = false;
+    function check() {
+        check_nick_name(false);
+        check_password();
+        check_password_confirm();
+        check_phone();
+        if (nick_name_check && password_check &&
+            password_confirm_check && phone_check) {
+            var password = document.getElementById('password').value;
+            document.getElementById('password').value = CryptoJS.MD5(password);
+            var password2 = document.getElementById('password2').value;
+            document.getElementById('password2').value = CryptoJS.MD5(password2);
+            return true;
+        }
+        return false;
+    }
+    function check_nick_name(sync) {
+        nick_name_check = false;
         var unique_check = false;
-        var nickname_text = this.value;
+        var nickname_text = document.getElementById("nickname").value;
         if (nickname_text.length <= 0 || nickname_text.trim() == 0) {
             //显示错误信息
             alert("昵称不能为空或全为空格！");
             return;
         }
-        required_check = true;
         $.ajax({
             url: '<?php echo site_url('separated_info/register_info_check/nickname'); ?>',
             type: 'POST',
+            async: sync == undefined,
             data: {'_nickName': nickname_text},
             success: function (info) {
                 if (info == "true")
@@ -73,39 +90,43 @@
                 }
             }
         });
-        if (required_check && unique_check) {
+        if (unique_check) {
             // 错误信息置为空
+            nick_name_check = true;
         }
-    };
-    document.getElementById("password").onblur = function () {
-        var password = this.value;
-        if (password.length <= 0) {
+    }
+    function check_password() {
+        password_check = false;
+        var password = document.getElementById("password").value;
+        if (password.length == 0) {
             // 显示错误信息
             alert("密码不能为空！");
             return;
-        } else if (password.length <= 6) {
+        } else if (password.length < 6) {
             // 显示错误信息
             alert("密码长度至少6位！");
             return;
         }
-    };
-    document.getElementById("password2").onblur = function () {
-        var password2 = this.value;
+        password_check = true;
+    }
+    function check_password_confirm() {
+        password_confirm_check = false;
+        var password2 = document.getElementById("password2").value;
         var password = document.getElementById("password").value;
-        if (password2.length <= 0) {
+        if (password2.length == 0) {
             // 显示错误信息
             alert("请确认密码！");
-            return;
         } else if (password2 != password) {
             // 显示错误信息
             alert("两次密码不匹配！");
-            return;
         } else if (password2 == password) {
             // 清空错误信息
+            password_confirm_check = true;
         }
-    };
-    document.getElementById("phone_number").onblur = function () {
-        var phone_number = this.value;
+    }
+    function check_phone() {
+        phone_check = false;
+        var phone_number = document.getElementById("phone_number").value;
         if (phone_number.length == 11) {
             var reg = new RegExp("[0-9]{11}");
             if (reg.test(phone_number) != true) {
@@ -119,15 +140,20 @@
             return;
         }
         // 清空错误信息
-    };
-    document.("personal_jj").onchange = function(){
-        var brief = this.value;
-        if (brief.length > 50){
-            // 显示错误信息
-            alert("个人简历最多50字！");
-            this.value = brief.substring(0,50);
-            return;
+        phone_check = true;
+    }
+    function check_brief() {
+        var brief = document.("personal_jj").value;
+        brief_check = false;
+        if (brief.length != 0) {
+            if (brief.length > 50) {
+                // 显示错误信息
+                alert("个人简历最多50字！");
+                document.("personal_jj").value = brief.substring(0, 50);
+                return;
+            }
         }
         // 清空错误信息
+        brief_check = true;
     }
 </script>

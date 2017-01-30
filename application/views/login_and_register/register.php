@@ -7,37 +7,38 @@
             <li>
                 <label for="email" class="title">邮箱：</label>
                 <input type="email" id="email" name="_email" placeholder="请输入邮箱" autocomplete="off"
-                       value="<?php echo set_value("_email"); ?>">
+                       value="<?php echo set_value("_email"); ?>" onblur="check_email()" required>
                 <?php echo form_error('_email', '<span>', '</span>'); ?>
             </li>
             <li>
                 <label for="nickname" class="title">昵称：</label>
                 <input type="text" id="nickname" name="_nickName" placeholder="请输入昵称"
-                       value="<?php echo set_value("_nickName"); ?>">
+                       value="<?php echo set_value("_nickName"); ?>" onblur="check_nick_name()" required>
                 <?php echo form_error('_nickName', '<span>', '</span>'); ?>
             </li>
             <li>
                 <label for="password" class="title">密码：</label>
                 <input type="password" id="password" name="_password" placeholder="请输入密码"
-                       value="<?php echo set_value("_password"); ?>">
+                       value="<?php echo set_value("_password"); ?>" onblur="check_password()" required>
                 <?php echo form_error('_password', '<span>', '</span>'); ?>
             </li>
             <li>
                 <label for="password2" class="title">确认密码：</label>
                 <input type="password" id="password2" name="_password2" placeholder="请再次输入密码"
-                       value="<?php echo set_value("_password"); ?>">
+                       value="<?php echo set_value("_password"); ?>" onblur="check_password_confirm()" required>
                 <?php echo form_error('_password2', '<span>', '</span>'); ?>
             </li>
             <li>
                 <label for="phone_number" class="title">手机号：</label>
                 <input type="tel" id="phone_number" name="_phoneNumber"
-                       value="<?php echo set_value("_phoneNumber"); ?>" placeholder="请输入手机号">
+                       value="<?php echo set_value("_phoneNumber"); ?>" onblur="check_phone()"
+                       placeholder="请输入手机号" required>
                 <?php echo form_error('_phoneNumber', '<span>', '</span>'); ?>
             </li>
         </ul>
 
         <p class="button">
-            <input type="submit" id="sign_up" value="注册">
+            <input type="submit" id="sign_up" value="注册" onclick="return check()">
         </p>
 
         <p class="words">已有账号？<a href="<?php echo site_url('login'); ?>">请登录</a></p>
@@ -48,28 +49,35 @@
 <script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/core-min.js"></script>
 <script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/md5-min.js"></script>
 <script type="text/javascript">
-    function encrypt() {
-        var doc = document;
-        var password = doc.getElementById('password').value;
-        document.getElementById('password').value = CryptoJS.MD5(password);
+    var email_check = false, nick_name_check = false, password_check = false,
+        password_confirm_check = false, phone_check = false;
+    function check() {
+        check_email(false);
+        check_nick_name(false);
+        check_password();
+        check_password_confirm();
+        check_phone();
+        if (email_check && nick_name_check && password_check &&
+            password_confirm_check && phone_check) {
+            var password = document.getElementById('password').value;
+            document.getElementById('password').value = CryptoJS.MD5(password);
+            var password2 = document.getElementById('password2').value;
+            document.getElementById('password2').value = CryptoJS.MD5(password2);
+            return true;
+        }
+        return false;
     }
-</script>
-<script type="text/javascript">
-    document.getElementById("email").onblur = function () {
-        var required_check = false;
-        var reg_check = false;
+    function check_email(sync) {
+        email_check = false;
         var unique_check = false;
-        var email_text = this.value;
+        var email_text = document.getElementById("email").value;
         if (email_text.length <= 0 || email_text.trim() == 0) {
             // 显示错误信息
             alert("邮箱不能为空或全为空格！");
             return;
         }
-        required_check = true;
         var reg = new RegExp("(([a-zA-Z]?[0-9]+)|([a-zA-Z]+[0-9]?))@([a-zA-z0-9]{1,}.){1,3}[a-zA-z]{1,}");
-        if (reg.test(email_text)) {
-            reg_check = true;
-        } else {
+        if (!reg.test(email_text)) {
             // 显示错误提示
             alert("邮箱格式错误！");
             return;
@@ -77,6 +85,7 @@
         $.ajax({
             url: '<?php echo site_url('separated_info/register_info_check/email'); ?>',
             type: 'POST',
+            async: sync == undefined,
             data: {'_email': email_text},
             success: function (info) {
                 if (info == "true")
@@ -87,23 +96,24 @@
                 }
             }
         });
-        if (reg_check && unique_check && required_check) {
+        if (unique_check) {
             // 错误信息置为空
+            email_check = true;
         }
-    };
-    document.getElementById("nickname").onblur = function () {
-        var required_check = false;
+    }
+    function check_nick_name(sync) {
+        nick_name_check = false;
         var unique_check = false;
-        var nickname_text = this.value;
+        var nickname_text = document.getElementById("nickname").value;
         if (nickname_text.length <= 0 || nickname_text.trim() == 0) {
             //显示错误信息
             alert("昵称不能为空或全为空格！");
             return;
         }
-        required_check = true;
         $.ajax({
             url: '<?php echo site_url('separated_info/register_info_check/nickname'); ?>',
             type: 'POST',
+            async: sync == undefined,
             data: {'_nickName': nickname_text},
             success: function (info) {
                 if (info == "true")
@@ -114,39 +124,43 @@
                 }
             }
         });
-        if (required_check && unique_check) {
+        if (unique_check) {
             // 错误信息置为空
+            nick_name_check = true;
         }
-    };
-    document.getElementById("password").onblur = function () {
-        var password = this.value;
+    }
+    function check_password() {
+        password_check = false;
+        var password = document.getElementById("password").value;
         if (password.length <= 0) {
             // 显示错误信息
             alert("密码不能为空！");
             return;
-        } else if (password.length <= 6) {
+        } else if (password.length < 6) {
             // 显示错误信息
             alert("密码长度至少6位！");
             return;
         }
-    };
-    document.getElementById("password2").onblur = function () {
-        var password2 = this.value;
+        password_check = true;
+    }
+    function check_password_confirm() {
+        password_confirm_check = false;
+        var password2 = document.getElementById("password2").value;
         var password = document.getElementById("password").value;
         if (password2.length <= 0) {
             // 显示错误信息
             alert("请确认密码！");
-            return;
         } else if (password2 != password) {
             // 显示错误信息
             alert("两次密码不匹配！");
-            return;
         } else if (password2 == password) {
             // 清空错误信息
+            password_confirm_check = true;
         }
-    };
-    document.getElementById("phone_number").onblur = function () {
-        var phone_number = this.value;
+    }
+    function check_phone() {
+        phone_check = false;
+        var phone_number = document.getElementById("phone_number").value;
         if (phone_number.length == 11) {
             var reg = new RegExp("[0-9]{11}");
             if (reg.test(phone_number) != true) {
@@ -160,5 +174,6 @@
             return;
         }
         // 清空错误信息
-    };
+        phone_check = true;
+    }
 </script>
