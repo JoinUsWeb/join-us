@@ -2,62 +2,192 @@ body{
     font-family: "微软雅黑";
     font-size: 16px;
     font-weight: normal;
-    background:url(../img/01.jpg);
+    background:url();
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
-
+    background-color: ghostwhite;
 }
 
 .h3{
     color: aliceblue;
 }
 
-.personal_nav{
-    width: 25%;
-    height: 70%;
-    padding: 3%;
-    margin-left: 2.01%;
-    float: left;
+.col-row{
+    width: 900px;
+    min-height: 500px;
+    float: left;  
+}
+
+/*侧边栏css*/
+.personal_height{
+    position: relative;
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-right: 70px;
+}
+
+.personalbar{
+    margin-left: -20px;
+    margin-right: 70px;
+    width: 240px;
     border-color: #080808;
     border-bottom-style:none;
-    border: 1px solid rgb(221,221,221);
-	border-radius: 5px;
+    box-shadow: 0px 0px 3px #666;
+    border-radius: 3px;
+    position: relative;
+}
+.personal_wall {
+  min-height: 20px;
+  padding: 0;
+  background-color: ghostwhite;
+  border-radius: 4px;
+  border: 1px solid #e3e3e3;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.personal_recent_hd{
+  background-color: ghostwhite;
+  padding-top: 7px;
+  border-top: 8px;
+  border-bottom: 0;
+  height: 47px;
+}
+
+.personal_recent_hd p{
+    font-family: "华文楷体";
+    font-size: 24px;
+    text-align: center;
+    color: black;
+}
+
+.pr_recent_hd{
+  background-color: ghostwhite;
+  /*border: 1px solid #e3e3e3;*/
+  border-bottom: 0;
+  height: 45px;
+  overflow: hidden;
+}
+.pr_recent_hd p{
+  font-size: 22px;
+  color:black;
+  margin-left: 92px;
+  line-height: 45px;
+}
+.pr_hd_content{
+  background-color: ghostwhite;
+  border-top: 1px solid #e3e3e3;
+  padding: 2px;
+}
+.pr_hd_content ul{
+  margin-left: -40px;
+}
+.pr_hd_content li{
+  margin:10px 10px;
+  border: 1px solid #1a2b3c;
+
+}
+
+.personal_recent_member{
+  background-color: ghostwhite;
+  padding-top: 7px;
+  border-top: 8px;
+  border-bottom: 0;
+  height: 47px;
+}
+
+.personal_recent_member p{
+    font-family: "华文楷体";
+    font-size: 24px;
+    text-align: center;
+    color: black;
+}
+/*侧边栏css结束*/
+
+/*重写的个人中心信息页面样式*/
+
+.p_show{
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 500px;
+    height: 100px;
+    color: cadetblue;
+}
+
+.p_show li{
+    padding: 3px;
+}
+
+.personal_body{
+    box-shadow: 0px 0px 9px #666;
+}
+
+.personal_cover{
+    padding-top: 50px;
+    border-color: #080808;
+    border-bottom-style:none;
+}
+.personal_nav{
+    width: 850px;
+    height: 150px;
+    padding: 30px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-left: 70px;
+    margin-right: 0px;
+    border-color: #080808;
+    border-bottom-style:none;
+    box-shadow: 0px 0px 3px #666;
+    border-radius: 3px;
+    position: relative;
 }
 .personal_main{
-    width: 800px;
+    width: 850px;
     padding: 2px;
-    margin-left: 10px;
+    margin-left: 70px;
     float: left;
     border: 1px solid rgb(221,221,221);
 	border-radius: 5px;
 }
 
-.personal_title{
-    padding:auto;
-    margin:2px;
-    margin-bottom:20px;
-    overflow-x:hidden;
-    overflow-y: hidden;
-    text-decoration: none;
-    display: block;
-    list-style-type: none;
-    font-size: 18px;
-    border-bottom-style: groove;
+.personal_data{
+    float: left;
+    width: 850px;
+    padding: 20px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-left: 70px;
+    margin-top: 10px;
+    box-shadow: 0px 0px 3px #666;
+    border-color: #080808;
+    border-bottom-style:none;
+    border-radius: 3px;
 }
 
-.personal-data{
-    align-self: center;
-    background-color:#fff;
+.personal_data li{
+    float: left;
 }
 
-.head_portrait{
+.personal_portrait{
+    width: 120px;
+    height: 125px;
+    background-color: white;
+    border: 5px solid white;
+    border-radius: 5px;
+    position: relative;
+    top: -70px;
+    left: 20px;
+    box-shadow: 0px 0px 13px #666;
     padding-bottom: 10px;
-    padding-top: 16px;
+    color:blanchedalmond
 }
 
-.head_portrait img{
-    border:1px solid #000;
+.personal_portrait img{
+    width: 110px;
+    height: 110px;
+    border-radius:50px;
+    float: left;
 }
 
 .p_data{
@@ -80,13 +210,148 @@ body{
     color:dimgray;
 }
 
+
+.p_nav{
+    padding-left: 0px;
+    margin-left: 0px;
+    width: 800px;
+    height: 60px;
+}
+
+.p_nav a{
+    float: left;
+    border-left: 2px solid cadetblue;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 33px;
+    font-size: 22px;
+    font-family: 微软雅黑;
+    color: cadetblue;
+}
+
+/*重写结束*/
+/*重写个人活动页面样式*/
+
+.personal_hd{
+    margin-top: 7px;
+    padding: 10px;
+}
+
+.personal_hd_nav{
+    width: 500px;
+    position: relative;
+    padding: 3px;
+    padding-left: 30px;
+    margin-top: 0;
+}
+
+.personal_hd_nav a{
+    width: 74.7px;
+    height: 20px;
+    float: left;
+}
+.pipe{
+    margin:3px;
+    color: #CCC;
+}
+
+.personal_hd_joined{
+    float: left;
+}
+
+.p_hd_main{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    float: left;
+    padding-left: 15px;
+    width: 830px;
+    height: 170px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: cadetblue;
+}
+
+.hd_img{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.hd_img img{
+    width: 248.8px;
+    height: 140px;
+}
+
+.p_hd_present{
+    margin-left: 10px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.p_hd_title{
+    margin-top: 0px;
+    padding-bottom: 2px;
+    padding-top: 0px;
+    font-size: 22px;
+}
+
+.p_hd_details{
+    font-size: 16px;
+    width: 260px;
+    float: left;
+}
+
+.p_hd_bd{
+    margin-top: 10px;
+    padding-top: 16px;
+    font-size: 13px;
+}
+
+
+/*重写结束*/
+.personal_title{
+    padding:auto;
+    margin:2px;
+    margin-bottom:20px;
+    overflow-x:hidden;
+    overflow-y: hidden;
+    text-decoration: none;
+    display: block;
+    list-style-type: none;
+    font-size: 18px;
+    border-bottom-style: groove;
+}
+
+.personal-data{
+    align-self: center;
+    background-color:#fff;
+}
+
+
+.head_portrait{
+    padding-bottom: 10px;
+    padding-top: 16px;
+}
+
+.head_portrait img{
+    border:1px solid #000;
+}
+
+.p_portrait img{
+    margin-bottom: 100px;
+    float: left;
+    border:1px solid #000;
+}
+
+
 .p_present{
-    color: black;
+    color: dimgray;
 }
 
 .p_tag{
     float: left;
-    width: 100px;
+    width: 80px;
     color: black;
 }
 
