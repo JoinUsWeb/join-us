@@ -91,4 +91,18 @@ class Admin extends CI_Controller
             return null;
     }
 
+    public function is_approved($id = -1)
+    {
+        $this->load->model('Activity_model');
+        if ($id == -1)
+            return;
+        if (isset($_POST['approve'])){
+            $this->Activity_model->update_activity_by_id($id,array('isVerified' => 1));
+            header('location: '.$_SERVER['HTTP_REFERER']);
+        }elseif (isset($_POST['disapprove'])){
+            $this->Activity_model->update_activity_by_id($id,array('isVerified' => 2));
+            header('location: '.$_SERVER['HTTP_REFERER']);
+        }
+    }
+
 }

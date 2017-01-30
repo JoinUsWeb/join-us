@@ -55,25 +55,25 @@
     <div class="left_bar">
         <ul>
             <li class="active">
-                <a href="admin_main.php">
+                <a href="<?php echo site_url('admin/main'); ?>">
                     <i class="icon-ok-circle icon-large"></i>
                     <span>活动审核</span>
                 </a>
             </li>
             <li>
-                <a href="admin_main.php">
+                <a href="<?php echo site_url('admin/main'); ?>">
                     <i class="icon-ok-circle icon-large"></i>
                     <span>活动审核</span>
                 </a>
             </li>
             <li>
-                <a href="admin_main.php">
+                <a href="<?php echo site_url('admin/main'); ?>">
                     <i class="icon-ok-circle icon-large"></i>
                     <span>活动审核</span>
                 </a>
             </li>
             <li>
-                <a href="admin_main.php">
+                <a href="<?php echo site_url('admin/main'); ?>">
                     <i class="icon-ok-circle icon-large"></i>
                     <span>活动审核</span>
                 </a>
@@ -148,13 +148,34 @@
 
         </div>
         <div class="check_button">
-            <form action="" method="post">
-              <span class="center">
-                <input type="submit" id="check_yes" value="审核通过">
-              </span>
-                <span class="center">
-                <input type="submit" id="check_no" value="审核不通过">
-              </span>
+            <?php echo form_open('admin/is_approved/' . $activity_info['id']);
+            switch ($activity_info['isVerified']) {
+                case 0: ?>
+                    <span class="center">
+                    <input type="submit" id="check_yes" name="approve" value="审核通过">
+                </span>
+                    <span class="center">
+                    <input type="submit" id="check_no" name="disapprove" value="审核不通过">
+                </span>
+                    <?php break;
+                case 1: ?>
+                    <span class="center">
+                    <input type="submit" id="check_yes" name="approve" value="审核通过" disabled>
+                </span>
+                    <span class="center">
+                    <input type="submit" id="check_no" name="disapprove" value="审核不通过">
+                </span>
+                    <?php break;
+                case 2: ?>
+                    <span class="center">
+                    <input type="submit" id="check_yes" name="approve" value="审核通过">
+                </span>
+                    <span class="center">
+                    <input type="submit" id="check_no" name="disapprove" value="审核不通过" disabled>
+                </span>
+                    <?php break;
+            } ?>
+
             </form>
 
         </div>

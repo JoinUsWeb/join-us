@@ -54,25 +54,25 @@
     <div class="left_bar">
         <ul style="display: block;">
             <li class="active">
-                <a href="admin_main.php">
+                <a href="<?php echo site_url('admin/main'); ?>">
                     <i class="icon-ok-circle icon-large"></i>
                     <span>活动审核</span>
                 </a>
             </li>
             <li>
-                <a href="admin_main.php">
+                <a href="<?php echo site_url('admin/main'); ?>">
                     <i class="icon-ok-circle icon-large"></i>
                     <span>活动审核</span>
                 </a>
             </li>
             <li>
-                <a href="admin_main.php">
+                <a href="<?php echo site_url('admin/main'); ?>">
                     <i class="icon-ok-circle icon-large"></i>
                     <span>活动审核</span>
                 </a>
             </li>
             <li>
-                <a href="admin_main.php">
+                <a href="<?php echo site_url('admin/main'); ?>">
                     <i class="icon-ok-circle icon-large"></i>
                     <span>活动审核</span>
                 </a>
@@ -105,23 +105,32 @@
                             </td>
                             <td class="center"><?php echo $item['creator_name']; ?></td>
                             <td class="center"><?php echo $item['date_start']; ?></td>
-                            <td class="center"><?php echo $item['isVerified'] == 1 ? '已审核' : '未审核'; ?></td>
+                            <td class="center"><?php echo $item['isVerified'] == 2 ? '审核未通过' : ($item['isVerified'] == 1 ? '已审核' : '未审核'); ?></td>
                             <td class="center">
-                                <form method="post" action="#">
-                                    <input type="submit" class="pass_button" value="通过">
-                                    <input type="submit" class="pass_button" value="不通过">
-
+                                <?php echo form_open('admin/is_approved/' . $item['id']);
+                                switch ($item['isVerified']) {
+                                    case 0: ?>
+                                        <input type="submit" class="pass_button" name="approve" value="通过">
+                                        <input type="submit" class="pass_button" name="disapprove" value="不通过">
+                                        <?php break;
+                                    case 1: ?>
+                                        <input type="submit" class="pass_button" name="approve" value="通过" disabled>
+                                        <input type="submit" class="pass_button" name="disapprove" value="不通过">
+                                        <?php break;
+                                    case 2: ?>
+                                        <input type="submit" class="pass_button" name="approve" value="通过">
+                                        <input type="submit" class="pass_button" name="disapprove" value="不通过" disabled>
+                                        <?php break;
+                                } ?>
                                 </form>
                             </td>
                         </tr>
-
                     <?php } ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </div>
 
 <footer class="text-center">
