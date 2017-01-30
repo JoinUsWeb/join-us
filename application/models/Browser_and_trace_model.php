@@ -172,22 +172,23 @@ class Browser_and_trace_model extends CI_Model
      *
      * 三个参数如果不合法，返回null
      *
-     * 如果合法，插入 （user_id, browsed_time，browsed_activity_id） ，如果失败返回false
+     * 如果合法，插入 （user_id, browsed_date，browsed_activity_id） ，如果失败返回false
      *
      * @param int $browser_id
-     * @param int $browser_time
+     * @param int $browsed_date
      * @param int $activity_id
      * @return bool|null
      */
-    public function insert_new_relation($browser_id = -1, $browser_time = null, $activity_id = -1)
+    public function insert_new_relation($browser_id = -1, $browsed_date = null, $browsed_time = null, $activity_id = -1)
     {
-        if ($browser_id <= 0 || $browser_time == null || $activity_id <= 0)
+        if ($browser_id <= 0 || $browsed_time == null || $browsed_date == null || $activity_id <= 0)
             return null;
         else {
             $data = array(
+                'browser_id' => $browser_id,
                 'browsed_activity_id' => $activity_id,
-                'browsed_time' => $browser_time,
-                'user_id' => $browser_id);
+                'browsed_date' => $browsed_date,
+                'browsed_time' => $browsed_time);
             if ($this->db->insert('relation_trace', $data) == false)
                 return false;
             return true;
