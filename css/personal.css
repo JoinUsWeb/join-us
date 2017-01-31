@@ -25,9 +25,11 @@ body{
     margin-left: 0px;
     padding-left: 0px;
     margin-right: 70px;
+    margin-bottom: -72px;
 }
 
 .personalbar{
+    margin-top: 72px;
     margin-left: -20px;
     margin-right: 70px;
     width: 240px;
@@ -106,7 +108,6 @@ body{
 /*侧边栏css结束*/
 
 /*重写的个人中心信息页面样式*/
-
 .p_show{
     margin-top: 50px;
     margin-left: 100px;
@@ -125,6 +126,7 @@ body{
 
 .personal_cover{
     padding-top: 50px;
+    margin-bottom: 1px;
     border-color: #080808;
     border-bottom-style:none;
 }
