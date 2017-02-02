@@ -18,7 +18,14 @@ body{
     min-height: 500px;
     float: left;  
 }
-
+.hd_null{
+    width: auto;
+    height: auto;
+    font-size: 23px;
+    color: darkgrey;
+    text-align: center;
+    margin-top: 100px;
+}
 /*侧边栏css*/
 .personal_height{
     position: relative;
@@ -182,7 +189,6 @@ body{
     left: 20px;
     box-shadow: 0px 0px 13px #666;
     padding-bottom: 10px;
-    color:blanchedalmond
 }
 
 .personal_portrait img{
@@ -299,8 +305,9 @@ body{
 }
 
 .p_hd_details{
+    padding: 1px;
     font-size: 16px;
-    width: 260px;
+    width: 170px;
     float: left;
 }
 
@@ -310,8 +317,217 @@ body{
     font-size: 13px;
 }
 
-
 /*重写结束*/
+/*重写个人小组界面样式*/
+.g_leftbar{
+    float: left;
+    width: 260px;
+    height: 300px;
+    border-right: 1.3px solid #dedede;
+}
+
+.g_rightbar{
+    float: left;
+    width: 534px;
+    height: 300px;
+}
+
+.p_group_main{
+    margin: 13px;
+    padding: 3px;
+    float: left;
+    width: 800px;
+    min-height:360px;
+    border-bottom: 2.3333px solid cadetblue;
+}
+
+.pg_img{
+    float: left;
+    width: 250px;
+    height: 142px;
+}
+
+.pg_img img{
+    width: 248.8px;
+    height: 140px;
+}
+
+.group_posts{
+    float: left;
+    width: 540px;
+    height: 145px;
+    padding-left: 8px;
+    margin-top: 0px;
+}
+
+.group_posts h3{
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+    font-weight: 100;
+    font-size: 22px;
+}
+
+.group_posts hr{
+    padding: 2px;
+    margin: 1px;
+}
+
+.group_posts_details{
+    padding-bottom: 5px;
+    font-size: 15px;
+    font-weight: 300;
+    height: 80px;
+}
+
+.group_infor{
+    margin: 2px;
+    float: left;
+}
+
+.group{
+    margin: 2px;
+    float: left;
+    width: 540px;
+    height: 150px;
+    padding-left: 8px;
+}
+
+.group h3{
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+    font-weight: 100;
+    font-size: 22px;
+}
+
+.group hr{
+    padding: 2px;
+    margin: 1px;
+}
+
+.group img{
+    width: 80px;
+    height: 80px;
+    border-radius:50px;
+    float: left;
+}
+
+.group_creater{
+    float: left; 
+    padding: 7px;
+}
+
+.group_creater a{
+    float: left;
+    height: 90px;
+}
+
+.group_creater img{
+    box-shadow: 0px 0px 8px #666;
+}
+
+.group_creater p{
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.group_member{
+    float: left;
+    width: 420px;
+    height: 130px;
+    padding: 7px;
+}
+
+.group_member ul{
+    float: left;
+    padding-left: 10px;
+}
+
+.group_member a{
+    float: left;
+    height: 90px;
+    padding:0 5px;
+}
+
+.group_member p{
+    text-align: center;
+    font-size: 13px;
+    font-family: sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+/*小组详情页面*/
+.p_dialogTop{
+  width: 580px;
+  margin:0 5px;
+  border-bottom:1px dotted #ccc;
+  letter-spacing:1px;
+  padding:10px 0;
+  text-align:right;
+}
+.p_add_member{
+	float: left;
+	margin:5px;
+}
+.p_add_member i{
+	color: rgb(0,153,233);
+}
+.p_add_member a{
+	text-decoration: none;
+}
+.p_friends_list{
+    height: 260px;
+}
+.p_friends_list li{
+    padding: 2px;
+    float: left;
+    width: 300px;
+}
+.p_friends_list img{
+    padding: 0px;
+    margin: 0px 3px;
+    width: 20px;
+    height: 20px;
+}
+.p_button_invite{
+    width: 600px;
+    margin: 10px 50px;
+    float: left;
+    text-align: center;
+}
+.g_recent_hd{
+    padding:10px 8px;
+    margin:10px 2px;
+    float: left;
+    width: 800px;
+    height: 300px;
+}
+.g_recent_hd h3{
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+    font-weight: 100;
+    font-size: 22px;
+}
+.g_recent_hd hr{
+    padding: 2px;
+    margin: 1px;
+}
+.g_recent_hdshow{
+    padding: 5px 10px;
+    margin: 5px 5px;
+    float: left;
+    width: 260px;
+    height: 270px;
+}
+/*重写结束*/
+
 .personal_title{
     padding:auto;
     margin:2px;
@@ -456,16 +672,6 @@ a:active.thisover{
 	border-radius: 5px;
 }
 
-.group_member{
-        margin:2px;
-	padding: 2px;
-	height: auto;
-    float: left;
-    width: 800px;
-    border: 1px solid rgb(221,221,221);
-	border-radius: 5px;
-}
-
 .gg_present{
     padding-left: 5px;
     margin: 10px;
@@ -538,4 +744,4 @@ font-size: 15px;
     font-size: 16px;
     line-height: 40px;
 }
-/*我的消息部分css结束/
+/*我的消息部分css结束*/
