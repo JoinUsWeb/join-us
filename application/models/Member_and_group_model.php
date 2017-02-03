@@ -20,7 +20,7 @@ class Member_and_group_model extends CI_Model
             $data = array();
             $relation = $this->db->get_where('relation_group_members', array('group_id' => $group_id))->result_array();
             foreach ($relation as $relation_item) {
-                $data[] = $this->Activity_model->get_activity_by_id($relation_item['member_id']);
+                $data[] = $this->User_model->get_user_by_id($relation_item['member_id']);
             }
             return $data;
         }
@@ -33,7 +33,7 @@ class Member_and_group_model extends CI_Model
             $data = array();
             $relation = $this->db->get_where('relation_group_members', array('member_id' => $use_id))->result_array();
             foreach ($relation as $relation_item) {
-                $data[] = $this->Activity_model->get_activity_by_id($relation_item['group_id']);
+                $data[] = $this->Group_model->get_group_by_id($relation_item['group_id']);
             }
             return $data;
         }

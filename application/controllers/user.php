@@ -145,12 +145,28 @@ class User extends CI_Controller
 
     public function group()
     {
-        $data['title'] = "个人中心";
-        $data['page_name'] = 'group';
-        $data['nav'] = $this->personal_nav;
-
-        $this->load->view('template/header', $data);
+        $header['title'] = "个人中心";
+        $header['page_name'] = 'group';
+        $this->load->view('template/header', $header);
         $this->load->view('template/nav');
+
+        $this->load->model('User_model');
+        $user_data=$this->User_model->get_user_by_id($this->user_id);
+        $this->load->view('template/personal_nav',$user_data);
+
+        $this->load->model('Group_model');
+        $this->load->model('Member_and_group_model');
+        $data=array();
+        $created_groups=$this->Group_model->get_group_by_creator_id($this->user_id);
+        foreach ($created_groups as $created_group_item){
+            $created_group_item['members']=$this->Member_and_group_model->get_members_by_group_id($created_group_item['id']);
+            $data['created_groups'][]=$created_group_item;
+        }
+        $joined_groups=$this->Member_and_group_model->get_group_by_user_id($this->user_id);
+        foreach ($joined_groups as $joined_groups_item){
+            $joined_groups_item['members']=$this->Member_and_group_model->get_members_by_group_id($joined_groups_item['id']);
+            $data['joined_groups'][]=$joined_groups_item;
+        }
         $this->load->view('person_related/personal_group', $data);
         $this->load->view('template/footer');
     }
