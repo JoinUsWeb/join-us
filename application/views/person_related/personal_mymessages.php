@@ -15,22 +15,13 @@
                 <div class="message_bar">
                     <ul>
                         <?php foreach ($activity_in_three_days as $row): ?>
-                            <li>您报名参加的 <?= $row['name'] ?> 将于 <?= $row['date_start'] . ' ' . $row['time_start'] ?>开始活动
+                            <li>您报名参加的 <?php echo $row['name'] ?> 将于 <?php echo $row['date_start'] . ' ' . $row['time_start']; ?>开始活动
                             </li>
-                        <? endforeach; ?>
+                        <?php endforeach; ?>
                         <?php foreach ($activity_in_a_week as $row): ?>
-                            <li>您组织的 <?= $row['name'] ?> 将于 <?= $row['date_start'] . ' ' . $row['time_start'] ?>开始活动
+                            <li>您组织的 <?php echo $row['name']; ?> 将于 <?php echo $row['date_start'] . ' ' . $row['time_start']; ?>开始活动
                             </li>
-                        <? endforeach; ?>
-                        <!-- <li>
-                            您报名参加的华东师范大学第二届创新创业大赛将于2016-11-23开始活动
-                        </li>
-                        <li>
-                            您报名参加的沉迷php研讨会已经结束，请前往评论！
-                        </li>
-                        <li>
-                            您报名参加的 新生汇演 有新公告啦！
-                        </li> -->
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -61,8 +52,8 @@
                 <div class="message_bar">
                     <ul>
                         <?php foreach ($invitation as $row): ?>
-                            <li>您收到了一条来自 <?= $row['nick_name'] ?> 的活动邀请-<?= $row['name'] ?></li>
-                        <? endforeach; ?>
+                            <li>您收到了一条来自 <?php echo $row['nick_name']; ?> 的活动邀请-<?php echo $row['name']; ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -73,18 +64,13 @@
                 </div>
                 <div class="message_bar">
                     <ul>
-                       <!--  <li>
-                           您创建的活动 华东师范大学第二届创新创业大赛 已通过审核！
-                       </li>
-                       <li>
-                           您创建的活动 夏雨艺苑万圣节party 已通过审核！
-                       </li>
-                       <li>
-                       
-                       </li> -->
-                        <?php foreach ($verified_activity as $row): ?>
-                            <li>您创建的活动 <?= $row['name'] ?> 已通过审核!</li>
-                        <? endforeach; ?>
+                        <?php
+                        /**
+                         * @todo 需要区分活动状态
+                         */
+                        foreach ($verified_activity as $row): ?>
+                            <li>您创建的活动 <?php echo $row['name']; ?> 已通过审核!</li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -96,8 +82,6 @@
     </div>
     <!--个人中心主页-->
     <!-- /container -->
-    <!--<script src="<?php echo base_url("js/ytmenu.js") ?>"></script>-->
-
 
     <div class="Clear"><!-- 清除浮动 --></div>
 </div>

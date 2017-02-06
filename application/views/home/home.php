@@ -8,7 +8,7 @@
 
     window.onresize = function () {
         getSrceenWH();
-    }
+    };
     $(window).resize();
 
     $(function () {
@@ -39,34 +39,22 @@
                     <li data-target="#carousel-299058" data-slide-to="2" class=""></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="item"><a href="<?php  $hot_activity_count = 0;
-                        echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
-                            <img class="img-responsive"
-                                 src="<?php
-                                 echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/07.jpg'); ?>"
-                                 alt="thumb">
-                        <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?>-->"寻味"小分队</div></a>
-                    </div>
-                    <div class="item active"><a href="<?php echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
-                        <img class="img-responsive"
-                             src="<?php echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/08.jpg'); ?>"
-                             alt="thumb">
-                        <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?>-->周末单车约起来</div></a>
-                    </div>
-                    <div class="item"><a href="<?php echo site_url("activity_detail/index/".$hot_activity[$hot_activity_count]["id"]); ?>">
-                        <img class="img-responsive"
-                             src="<?php echo base_url(/*$hot_activity[$hot_activity_count]['poster']*/'img/09.jpg'); ?>"
-                             alt="thumb">
-                        <div class="carousel-caption"><!--<?php echo $hot_activity[$hot_activity_count]['name'];
-                            $hot_activity_count++; ?>-->加入滑板运动</div></a>
-                    </div>
+                    <?php $num = count($hot_activity);
+                    for ($count = 0; $count < $num; $count++) : ?>
+                        <div class="<?php echo $count == 1 ? "item active" : "item"; ?>">
+                            <a href="<?php echo site_url("activity_detail/index/" . $hot_activity[$count]["id"]); ?>">
+                                <img class="img-responsive"
+                                     src="<?php
+                                     echo base_url($hot_activity[$count]['poster']); ?>"
+                                     alt="thumb">
+                                <div class="carousel-caption"><?php echo $hot_activity[$count]['name']; ?></div>
+                            </a>
+                        </div>
+                    <?php endfor; ?>
                 </div>
-                <?php $hot_activity_count = 0; ?>
                 <a class="left carousel-control" href="#carousel-299058" data-slide="prev"><span
-                        class="icon-prev"></span></a> <a class="right carousel-control" href="#carousel-299058"
-                                                         data-slide="next"><span class="icon-next"></span></a></div>
+                            class="icon-prev"></span></a> <a class="right carousel-control" href="#carousel-299058"
+                                                             data-slide="next"><span class="icon-next"></span></a></div>
         </div>
     </div>
     <hr>
@@ -84,7 +72,8 @@
                     </div>
                     <div id="dialogBg"></div>
                     <div id="dialog" class="animated">
-                        <img class="dialogIco" width="50" height="50" src="<?php echo base_url('img/ico.png'); ?>" alt=""/>
+                        <img class="dialogIco" width="50" height="50" src="<?php echo base_url('img/ico.png'); ?>"
+                             alt=""/>
                         <div class="dialogTop">
                             <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
                         </div>
@@ -182,7 +171,7 @@
                     <p><i class="icon-user"></i>我的邀请</p>
                 </div>
                 <div class="my_message_sh">
-                    <p><i class="icon-ok-sign"></i>审核通过<!--您创建的2016-11-23创新创业大赛已审核通过--></p>
+                    <p><i class="icon-ok-sign"></i>审核通过</p>
                 </div>
             </a>
 
@@ -290,7 +279,7 @@
 
             }
 
-        };
+        }
 
         // Call the layout function for the first time
         applyLayout();

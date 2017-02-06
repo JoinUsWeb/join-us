@@ -1,36 +1,68 @@
-<!--个人中心导航栏-->
-<div class="container">
-    <script src="/adsense.js" type="text/javascript"></script>
-    <div class="main">
-        <div class="side">
-            <?php echo $nav; ?>
-        </div>
-        <!--个人中心导航栏-->
-        <!--个人中心主页-->
-        <div class="personal_main personal-data">
-            <h3><div class="dr-icon dr-icon-settings"> 我的小组</div></h3>
-            <hr>
-            <div class="hd_present">
-                <div>
-                    <a href="<?php echo site_url("user/detail") ?>"><img src="<?php echo base_url("img/paobu.jpg") ?>" alt="nihao" class="hd_img"></a>
-                    <div>
-                        <a class="#" href="<?php echo site_url("user/detail") ?>">
-                            <span class="hd_title">华师大第二届创新创业大赛</span>
-                        </a>
-                        <hr>
-                        <div class="hd_details"><i class="icon-tag icon-large"></i>兴趣标签：<span>运动健身</span></div>
-                        <div class="hd_details"><i class="icon-user-md icon-large"></i>小组组长：<span>用户1</span></div>
-
+            <div class="personal_data personal_hd">
+                <div class="personal_hd_joined">
+                <?php
+                    if(isset($joined_groups)&&!empty($joined_groups)) 
+                    foreach ($joined_groups as $joined_group_item):
+                        $group_members=$joined_group_item['members'];
+                    ?>
+                    <div class="p_group_main">
+                        <div class="g_leftbar">
+                            <div class="pg_img">
+                                <a href="<?php echo site_url('activity_detail/'.$joined_group_item['activity_id']);?>">
+                                    <img src="<?php echo base_url($joined_group_item['poster']);?>" alt="小组海报"></a>
+                            </div>
+                            <div class="group_infor">       <!--小组简介-->
+                                <a class="#" href="<?php echo site_url('activity_detail/'.$joined_group_item['activity_id']);?>">
+                                    <span class="hd_title"><?php echo $joined_group_item['name'];?></span>
+                                </a>
+                                <hr>
+                                <div class="hd_details"><i class="icon-tag"></i>兴趣标签：
+                                    <span><?php echo $joined_group_item['first_label'];?></span></div>
+                                <div class="hd_details"><i class="icon-user-md"></i>创建时间：
+                                    <span><?php echo $joined_group_item['created_time'];?></span></div>
+                            </div>
+                        </div>
+                        <div class="g_rightbar">
+                            <div class="group_posts">       <!--小组公告-->
+                                <h3>小组公告</h3>
+                                <hr>
+                                <p class="group_posts_details"><?php echo $joined_group_item['announcement'];?></p>
+                            </div>
+                            <div class="group">
+                                <h3>小组成员</h3>
+                                <hr>
+                                <div class="group_creater">     <!--组长-->
+                                    <a href="../html/personal_data.html"><img src="../img/jiansheng.jpg"></a>
+                                    <p><?php echo $joined_group_item['creator']['name']; ?></p>
+                                </div>
+                                <div class="group_member">      <!--成员-->
+                                    <ul>
+                                    <?php
+                                    if(isset($joined_group_item['members'])&&!empty($joined_group_item['members']))
+                                    foreach ($joined_group_item['members'] as $member_item):
+                                        ?>
+                                        <li>
+                                            <a href="../html/personal_data.html">
+                                                <img src="<?php echo base_url($member_item['avatar']); ?>"></a>
+                                            <p><?php echo $member_item['nick_name']; ?></p>
+                                        </li>
+                                        <?php
+                                    endforeach;
+                                    else
+                                        echo '小组还没有任何成员';
+                                    ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <?php
+                endforeach;
+                else echo '未参加任何小组';
+                ?>
+
                 </div>
             </div>
         </div>
-        <div style="clear:both"></div>
     </div>
-    <!--个人中心主页-->
-    <!-- /container -->
-    <!--<script src="<?php echo base_url("js/ytmenu.js") ?>"></script>-->
-
-    <div class="Clear"><!-- 清除浮动 --></div>
 </div>
-
