@@ -31,6 +31,7 @@
 class Message extends CI_Controller
 {
     var $personal_nav;
+    var $user_id;
     public function __construct()
     {
         parent::__construct();
@@ -111,7 +112,7 @@ class Message extends CI_Controller
      *postcondition: return verified activity by user's id order by activity's id
      */
     private function get_verified_activity_by_creator_id($user_id){
-        $verified_activity=$this->Activity_model->get_activity_by_creator_id($user_id);
+        $verified_activity=$this->Activity_model->get_activity_by_where_string("creator_id = ".$user_id);
         return $verified_activity;
     }
 
