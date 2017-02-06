@@ -3,7 +3,7 @@
 /**
  * Class Activity_model
  *
- * 预定义返回null代表参数不合法 返回false代表数据库操作失败 默认返回的活动是通过审核的
+ * 预定义返回null代表参数不合法 返回false代表数据库操作失败
  * 活动信息： name  time_expire  time_start  place  brief  amount_max  creator_id  first_label_id
  *            second_label_id  score
  *
@@ -53,7 +53,6 @@ class Activity_model extends CI_Model
     {
         return $this->db->get('activity')->result_array();
     }
-
     /**
      * 获得分数靠前的活动
      *
@@ -66,35 +65,13 @@ class Activity_model extends CI_Model
     public function get_activity_order_by_score($limit = -1)
     {
         if ($limit <= 0)
-            return $this->db
-                ->where("isVerified =1")
-                ->order_by('score', 'DESC')
-                ->get('activity')
-                ->result_array();
+            return $this->db->order_by('score', 'DESC')->get('activity')->result_array();
         else
-            return $this->db
-                ->where("isVerified =1")
-                ->limit($limit)
-                ->order_by('score', 'DESC')
-                ->get('activity')
-                ->result_array();
+            return $this->db->limit($limit)->order_by('score', 'DESC')->get('activity')->result_array();
     }
 
-    /**
-     *
-     * 提供 WHERE 判断条件，返回对应查询结果
-     *
-     * @param null $where_string
-     * @return null
-     */
-    public function get_activity_by_where_string($where_string = null)
-    {
-        if ($where_string == null)
-            return null;
-        return $this->db
-            ->where($where_string)
-            ->get("activity")
-            ->result_array();
+    public function get_activity_available(){
+        return $this->db->get_where('activity',array( 'isVerified' => 1 ))->result_array();
     }
 
     /**
@@ -110,7 +87,7 @@ class Activity_model extends CI_Model
         if ($id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('id' => $id, 'isVerified' => 1))->row_array();
+            return $this->db->get_where('activity', array('id' => $id))->row_array();
     }
 
     /**
@@ -126,7 +103,7 @@ class Activity_model extends CI_Model
         if ($creator_id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('creator_id' => $creator_id, 'isVerified' => 1))->result_array();
+            return $this->db->get_where('activity', array('creator_id' => $creator_id))->result_array();
     }
 
     /**
@@ -142,7 +119,7 @@ class Activity_model extends CI_Model
         if ($first_label_id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('first_label_id' => $first_label_id, 'isVerified' => 1))->result_array();
+            return $this->db->get_where('activity', array('first_label_id' => $first_label_id))->result_array();
     }
 
     /**
@@ -158,7 +135,7 @@ class Activity_model extends CI_Model
         if ($second_label_id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('second_label_id' => $second_label_id, 'isVerified' => 1))->result_array();
+            return $this->db->get_where('activity', array('second_label_id' => $second_label_id))->result_array();
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -36,10 +36,10 @@ class Admin extends CI_Controller
             return;
         }
         if ($this->form_process() == null) {
-            $this->admin_id = $this->Admin_model->get_admin_id_by_user_name(set_value('_user_name'));
+            $admin_id = $this->Admin_model->get_admin_id_by_user_name(set_value('_user_name'));
 
             $this->session->set_userdata(array(
-                'admin_id' => $this->admin_id,
+                'admin_id' => $admin_id,
             ));
             redirect('admin/main');
             return;
@@ -71,7 +71,7 @@ class Admin extends CI_Controller
             redirect('admin/login');
             return;
         }
-        $data['activity_info'] = $this->Admin_model->get_activity_detail_by_activity_id($activity_id);
+        $data['activity_info'] = $this->Activity_model->get_activity_by_id($activity_id);
         $data['activity_info']['first_label_id'] = $this->First_label_model->get_first_label_by_activity_id($activity_id)['name'];
         $this->load->view('admin/check_page',$data);
     }
@@ -94,7 +94,6 @@ class Admin extends CI_Controller
     public function is_approved($id = -1)
     {
         $this->load->model('Activity_model');
-        $this->load->model('Message_model');
         if ($id == -1)
             return;
         if (isset($_POST['approve'])){

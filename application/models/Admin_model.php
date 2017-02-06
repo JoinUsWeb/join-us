@@ -57,11 +57,4 @@ class Admin_model extends CI_Model
         }
         return $info;
     }
-
-    public function get_activity_detail_by_activity_id($id = -1){
-        if ($id < 0)
-            return null;
-        else
-            return $this->db->get_where('activity', array('id' => $id))->row_array();
-    }
 }
