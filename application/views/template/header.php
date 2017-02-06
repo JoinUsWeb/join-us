@@ -80,16 +80,15 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
             <?php break;
         case 'personal':?>
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/personal.css">
-        <link rel="stylesheet" href="../css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="../css/default.css">
-        <link rel="stylesheet" type="text/css" href="../css/component.css">
-        <link rel="stylesheet" href="../css/detail.css">
-        <link rel="stylesheet" href="../css/common.css">
-        <link rel="stylesheet" href="../css/mainpage.css">
-        <link rel="stylesheet" href="../css/font-awesome.min.css">
-        <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
+        <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
+        <link rel="stylesheet" href="<?php echo base_url("css/detail.css"); ?>">
+        <link rel="stylesheet" href="<?php echo base_url("css/common.css"); ?>">
+        <link rel="stylesheet" href="<?php echo base_url("css/mainpage.css"); ?>">
+        <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
+        <script type="text/javascript" src="<?php echo base_url("js/jquery-3.1.1.min.js");?>"></script>
         <script type="text/javascript">
                 var w,h,className;
                 function getSrceenWH(){
@@ -115,7 +114,7 @@
                         });
                 });
         </script>
-        <script src="js/modernizr.custom.js"></script>
+        <script src="<?php echo base_url("js/modernizr.custom.js");?>"></script>
         <?php break;
     } ?>
 

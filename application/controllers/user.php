@@ -25,7 +25,7 @@ class User extends CI_Controller
     public function info()
     {
         $header['title'] = "个人中心";
-        $header['page_name'] = 'info';
+        $header['page_name'] = 'personal';
         $this->load->view('template/header', $header);
         $this->load->view('template/nav');
 
