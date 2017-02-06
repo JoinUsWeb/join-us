@@ -14,8 +14,8 @@ body{
 }
 
 .col-row{
-    width: 900px;
-    min-height: 500px;
+    width: 70%;
+    height: auto;
     float: left;  
 }
 .hd_null{
@@ -137,6 +137,10 @@ body{
     border-color: #080808;
     border-bottom-style:none;
 }
+.personal_cover img{
+    width: 100%;
+    height: 200px;
+}
 .personal_nav{
     width: 850px;
     height: 150px;
@@ -163,11 +167,11 @@ body{
 .personal_data{
     float: left;
     width: 850px;
-    padding: 20px;
+    padding: 0px 20px;
     padding-bottom: 0px;
     margin-bottom: 0px;
     margin-left: 70px;
-    margin-top: 10px;
+    margin-top: 5px;
     box-shadow: 0px 0px 3px #666;
     border-color: #080808;
     border-bottom-style:none;
@@ -218,24 +222,51 @@ body{
     color:dimgray;
 }
 
+.p_details_present{
+    height: 90px;
+}
+
+.p_data_button{
+    float: left;
+    margin: 0px 30px;
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: #EAEAEB;
+    border-radius: 5px;
+    color:#8B8B8B;
+}
 
 .p_nav{
-    padding-left: 0px;
-    margin-left: 0px;
-    width: 800px;
-    height: 60px;
+    float: left;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 40px;
 }
 
 .p_nav a{
     float: left;
-    border-left: 2px solid cadetblue;
     position: relative;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 5px;
     height: 33px;
     font-size: 22px;
-    font-family: 微软雅黑;
-    color: cadetblue;
+    font-family: "微软雅黑";
+    color: #999;
+}
+
+
+.p_nav p{
+    border-bottom: 2.3px solid crimson;
+    margin-bottom: 0px;
+}
+
+p_nav li{
+    text-indent: -9999px;
+    margin-bottom: 0px;
+    padding: 0px;
 }
 
 /*重写结束*/
@@ -258,7 +289,16 @@ body{
     width: 74.7px;
     height: 20px;
     float: left;
+    color: #999;
+    text-decoration: none;
 }
+
+
+
+.personal_hd_nav a.hd_a{
+    color: #333;
+}
+
 .pipe{
     margin:3px;
     color: #CCC;
@@ -266,6 +306,14 @@ body{
 
 .personal_hd_joined{
     float: left;
+}
+
+a, a:visited.hd_a, a:hover.hd_a{
+    text-decoration: none;
+}
+
+a:hover.hd_a{
+    color: #999;
 }
 
 .p_hd_main{
@@ -528,6 +576,56 @@ body{
 }
 /*重写结束*/
 
+/*个人编辑界面重写*/
+
+#personal_edit{
+    width: 100%;
+    margin: 10px;
+    margin-left: 0px;
+    padding: 20px 10px;
+    min-height: 400px;
+}
+
+#personal_edit label{
+    clear: left;
+    margin: 10px 5px;
+    width: 100px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    text-align: left;
+    font-size: 16px;
+}
+
+#personal_edit li{
+    margin: 20px;
+    width: 500px;
+}
+
+.label_style{
+    float: left;
+    color: #999;
+}
+
+#p_publish{
+    width: 100%;
+    float: left;
+    margin-top: 60px;
+    text-align: center;
+}
+
+#personal_jj{
+	width: 600px;
+	height: 200px;
+	line-height: 20px;
+	margin: 0 30px;	
+	padding-left: 30px;
+	font-size: 16px;
+	color:#444;
+	border: 1px solid #d9d9d9;
+}
+/*重写结束*/
+
 .personal_title{
     padding:auto;
     margin:2px;
@@ -613,12 +711,12 @@ body{
 }
 
 a:link.thisover{
-    color:gainsboro;
+    color:#999;
     text-decoration: none;
 }
 
-a:visited:thisover{
-    color: white;
+a:visited.thisover{
+    color: black;
     text-decoration: none;
 }
 
@@ -631,6 +729,7 @@ a:active.thisover{
     color: brown;
     text-decoration: none;
 }
+
 
 .rating > span:hover:before {
    content: "\2605";
