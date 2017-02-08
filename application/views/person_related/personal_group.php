@@ -8,11 +8,11 @@
                     <div class="p_group_main">
                         <div class="g_leftbar">
                             <div class="pg_img">
-                                <a href="<?php echo site_url('activity_detail/'.$joined_group_item['activity_id']);?>">
+                                <a href="<?php echo site_url('user/group_detail/'.$joined_group_item['id']);?>">
                                     <img src="<?php echo base_url($joined_group_item['poster']);?>" alt="小组海报"></a>
                             </div>
                             <div class="group_infor">       <!--小组简介-->
-                                <a class="#" href="<?php echo site_url('activity_detail/'.$joined_group_item['activity_id']);?>">
+                                <a class="#" href="<?php echo site_url('user/group_detail/'.$joined_group_item['id']);?>">
                                     <span class="hd_title"><?php echo $joined_group_item['name'];?></span>
                                 </a>
                                 <hr>

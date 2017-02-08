@@ -158,7 +158,6 @@ class User extends CI_Controller
         $user_data=$this->User_model->get_user_by_id($this->user_id);
         $this->load->view('template/personal_nav',$user_data);
 
-        $this->load->model('Group_model');
         $this->load->model('Member_and_group_model');
         /*也许会用上的创建的活动
         $data['created_groups']=array();
@@ -178,15 +177,25 @@ class User extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function group_detail()
+    public function group_detail($group_id)
     {
-        $data['title'] = "个人中心";
-        $data['page_name'] = 'group_detail';
-        $data['nav'] = $this->personal_nav;
-
-        $this->load->view('template/header', $data);
+        $header['title'] = "个人中心";
+        $header['page_name'] = 'personal';
+        $this->load->view('template/header', $header);
         $this->load->view('template/nav');
-        $this->load->view('person_related/group_detail', $data);
+
+        $this->load->model('User_model');
+        $user_data=$this->User_model->get_user_by_id($this->user_id);
+        $this->load->view('template/personal_nav',$user_data);
+
+        $this->load->model('Group_model');
+        $this->load->model('Member_and_group_model');
+        $group=$this->Group_model->get_group_by_id($group_id);
+        if(!empty($group)){
+            $group['members']=$this->Member_and_group_model->get_members_by_group_id($group_id);
+            $group['creator']=$this->User_model->get_user_by_id($group['creator']);
+        }
+        $this->load->view('personal_related/group_detail',array('group',$group));
         $this->load->view('template/footer');
 
     }

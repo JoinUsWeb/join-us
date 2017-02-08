@@ -1,152 +1,95 @@
-<script type="text/javascript">
-    var w, h, className;
-    function getSrceenWH() {
-        w = $(window).width();
-        h = $(window).height();
-        $('#dialogBg').width(w).height(h);
-    }
+            <div class="personal_data personal_hd">
+                <div class="personal_hd_joined">
+                    <div class="p_group_main">
+                        <div class="g_rightbar">
+                            <div class="group_posts">       <!--小组公告-->
+                                <h3>小组公告</h3>
+                                <hr>
+                                <p class="group_posts_details"><?php echo $group['announcement']; ?></p>
 
-    window.onresize = function () {
-        getSrceenWH();
-    }
-    $(window).resize();
+                                <!--小组组长可见（修改公告）
+                                    <form action="#" method="post" class="gg_review_main">
+                                        <textarea name="g_notice" id="g_notice" placeholder="请填写公告" resize: none;></textarea>
+                                    <div class="submit_comment">
+                                        <input type="submit" id="submit_comment" value="张贴公告">
+                                    </div>
+                                </form>-->
 
-    $(function () {
-        getSrceenWH();
-
-
-        $('.box a').click(function () {
-            className = $(this).attr('class');
-            $('#dialogBg').fadeIn(300);
-            $('#dialog_add').removeAttr('class').addClass('animated ' + className + '').fadeIn();
-        });
-
-
-        $('.claseDialogBtn').click(function () {
-            $('#dialogBg').fadeOut(300, function () {
-                $('#dialog_add').addClass('bounceOutUp').fadeOut();
-            });
-        });
-    });
-</script>
-
-<!--个人中心导航栏-->
-<div class="container">
-    <div class="main">
-        <div class="side">
-            <?php echo $nav; ?>
-        </div>
-        <!--个人中心导航栏-->
-        <!--个人中心主页-->
-        <div>
-            <div class="group_gg personal-data">
-                <h3>小组公告</h3>
-                <hr>
-                <div class="gg_present">今天晚上出来聚会吧<br>
-                    有好多桌游等你来哦<br>
-                </div>
-
-                <!--小组组长可见（修改公告）
-      <form action="#" method="post" class="gg_review_main">
-      <textarea name="g_notice" id="g_notice" placeholder="请填写公告" resize: none;></textarea>
-      <div class="submit_comment">
-        <input type="submit" id="submit_comment" value="张贴公告">
-      </div>
-    </form>-->
-
-            </div>
-            <div class="group_member personal-data">
-                <h3>小组成员</h3>
-                <hr>
-                <ul class="member_review_list">
-                    <li class="member_review_main">
-                        <div class="member_review_person">
-                            <div class="person_headphoto">
-                                <a href="#"><img src="<?php echo base_url("img/IMG_1035.jpg") ?>" alt="" width="70px"
-                                                 height="70px"></a>
                             </div>
-                            <div class="person_id_name">
-                                <a href="#"><h5>用户1</h5></a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="member_review_main">
-                        <div class="member_review_person">
-                            <div class="person_headphoto">
-                                <a href="#"><img src="<?php echo base_url("img/IMG_1035.jpg") ?>" alt="" width="70px"
-                                                 height="70px"></a>
-                            </div>
-                            <div class="person_id_name">
-                                <a href="#"><h5>用户2</h5></a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="member_review_main">
-                        <div class="member_review_person">
-                            <div class="person_headphoto">
-                                <a href="#"><img src="<?php echo base_url("img/IMG_1035.jpg") ?>" alt="" width="70px"
-                                                 height="70px"></a>
-                            </div>
-                            <div class="person_id_name">
-                                <a href="#"><h5>用户3</h5></a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="box">
-                            <div class="demo">
-                                <div class="add_member"><a class="bounceIn" href="javascript:;">
-                                        <i class="icon-plus-sign icon-5x"></i>
-                                    </a>
+                            <div class="group">
+                                <h3>小组成员</h3>
+                                <hr>
+                                <div class="group_creater">     <!--组长-->
+                                    <a href="../html/personal_data.html">
+                                        <img src="<?php echo base_url($group['creator']['avatar']);?>"></a>
+                                    <p><?php echo $group['creator']['nick_name'];?></p>
                                 </div>
-                            </div>
-                            <div id="dialogBg"></div>
-                            <div id="dialog_add" class="animated">
-                                <img class="dialogIco" width="50" height="50"
-                                     src="<?php echo base_url('img/ico.png') ?>" alt=""/>
-                                <div class="dialogTop">
-                                    <a href="javascript:;" class="claseDialogBtn"
-                                       style=" text-decoration: none;color: black;">关闭</a>
-                                </div>
-                                <form action="" method="post" id="editForm">
+                                <div class="group_member">      <!--成员-->
+                                    <ul>
+                                        <?php
+                                        if(!empty($group['members']))
+                                        foreach ($group['members'] as $member_item):?>
+                                            <li>
+                                                <a href="../html/personal_data.html">
+                                                    <img src="<?php echo base_url($member_item['creator']['avatar']);?>"></a>
+                                                <p><?php echo $member_item['nick_name'];?></p>
+                                            </li>
+                                        <?php endforeach;
+                                        else
+                                            echo "还没有任何成员";
+                                        ?>
+                                        <li>
+                                            <div class="box">
+                                                <div class="demo">
+                                                    <div class="p_add_member"><a class="bounceIn" href="javascript:;">
+                                                            <i class="icon-plus-sign icon-5x" style="width: auto"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div id="dialogBg"></div>
+                                                <div id="dialog_add" class="animated">
+                                                    <img class="dialogIco" width="50" height="50" src="../img/ico.png" alt="" />
+                                                    <div class="p_dialogTop">
+                                                        <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
+                                                    </div>
+                                                    <form action="" method="post" id="editForm">
 
-                                    <ul class="friends_list">
-                                        <li><label for="checkbox1">用户1</label>
-                                            <input type="checkbox" name="" id="checkbox1"></li>
-                                        <li><label for="checkbox2">用户2</label>
-                                            <input type="checkbox" name="" id="checkbox2"></li>
-                                        <li><label for="checkbox2">用户3</label>
-                                            <input type="checkbox" name="" id="checkbox2"></li>
-                                        <li><label for="checkbox2">用户4</label>
-                                            <input type="checkbox" name="" id="checkbox2"></li>
-                                        <li><label for="checkbox2">用户5</label>
-                                            <input type="checkbox" name="" id="checkbox2"></li>
-                                        <li><label for="checkbox2">用户6</label>
-                                            <input type="checkbox" name="" id="checkbox2"></li>
+                                                        <ul class="p_friends_list">
+                                                            <li><label for="checkbox1"><img src="../img/01.jpg">小石榴</label>
+                                                                <input type="checkbox" name="" id="checkbox1"></li>
+                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                                                <input type="checkbox" name="" id="checkbox2"></li>
+                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                                                <input type="checkbox" name="" id="checkbox2"></li>
+                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                                                <input type="checkbox" name="" id="checkbox2"></li>
+                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                                                <input type="checkbox" name="" id="checkbox2"></li>
+                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                                                <input type="checkbox" name="" id="checkbox2"></li>
+                                                        </ul>
+                                                        <p class="p_button_invite">
+                                                            <input type="submit" value="发送邀请" class="submitBtn" >
+                                                        </p>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </li>
                                     </ul>
-
-
-                                    <p class="button_invite">
-                                        <input type="submit" value="发送邀请" class="submitBtn">
-                                    </p>
-                                </form>
+                                </div>
                             </div>
                         </div>
-
-                    </li>
-
-
-                </ul>
+                        <div class="g_recent_hd">
+                            <h3>小组近期活动</h3>
+                            <hr>
+                            <div class="hd_null">
+                                <span>最近没有小组活动</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
-        <div style="clear:both"></div>
     </div>
-    <!--个人中心主页-->
-    <!-- /container -->
-    <!--<script src="<?php echo base_url("js/ytmenu.js") ?>"></script>-->
-
-    <div class="Clear"><!-- 清除浮动 --></div>
 </div>
