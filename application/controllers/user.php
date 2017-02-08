@@ -10,7 +10,6 @@ class User extends CI_Controller
 {
 
     var $user_id = -1;
-    var $personal_nav;
 
     function __construct()
     {
@@ -21,43 +20,88 @@ class User extends CI_Controller
         } else {
             redirect('login');
         }
-        $this->personal_nav = "<nav class=\"dr-menu  dr-menu-open\">
-<div class=\"dr-trigger\"><span class=\"dr-label\">我的主页</span></div>
-<ul>
-<li><a class=\"dr-icon dr-icon-user\" href=".site_url('user/info').">个人信息</a></li>
-<li><a class=\"dr-icon dr-icon-camera\" href=".site_url('user/joined').">已参加活动</a></li>
-<li><a class=\"dr-icon dr-icon-heart\" href=".site_url('user/applied').">已报名活动</a></li>
-<li><a class=\"dr-icon dr-icon-bullhorn\" href=".site_url('user/comments').">评价活动</a>
-</li>
-<li><a class=\"dr-icon dr-icon-download\" href=".site_url('message/personal_mymessages').">我的消息</a></li>
-<li><a class=\"dr-icon dr-icon-settings\" href=".site_url('user/group').">我的小组</a></li>
-</ul>
-</nav>";
+    }
+
+    public function info()
+    {
+        $header['title'] = "个人中心";
+        $header['page_name'] = 'personal';
+        $this->load->view('template/header', $header);
+        $this->load->view('template/nav');
+
+        $this->load->model('User_model');
+        $user_data=$this->User_model->get_user_by_id($this->user_id);
+        $this->load->view('template/personal_nav',$user_data);
+
+        $this->load->model('User_and_first_label_model');
+        $data=array();
+        $data['interests'] = $this->User_and_first_label_model->get_first_label_by_user_id($this->user_id);
+
+        $this->load->view('person_related/personal_info', $data);
+        $this->load->view('template/footer');
+    }
+
+    //参数model表示显示的活动类型是什么，参加的:1，评价的：2；收藏的：3
+    public function activities($model=1)
+    {
+        switch ($model){
+            case 1:$this->applied();break;
+            case 2:$this->applied();break;
+            case 3:$this->applied();break;
+            default:$this->applied();
+        }
     }
 
     public function applied()
     {
-        $this->load->model('Member_and_activity_model');
-        $data['title'] = "个人中心";
-        $data['page_name'] = "applied";
-        $data['nav'] = $this->personal_nav;
+        $header['title'] = "个人中心";
+        $header['page_name'] = 'personal';
+        $this->load->view('template/header', $header);
+        $this->load->view('template/nav');
 
-        $row_activities_info = $this->Member_and_activity_model
-            ->get_activity_by_member_id($this->user_id);
+        $this->load->model('User_model');
+        $user_data=$this->User_model->get_user_by_id($this->user_id);
+        $this->load->view('template/personal_nav',$user_data);
+
+        $this->load->model('Member_and_activity_model');
+        $row_activities_info = $this->Member_and_activity_model->get_activity_by_member_id($this->user_id);
         $current_date = date("Y-m-d");
-        $data['activities_info'] = array();
+        $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
-            // 查看活动是否已经结束 结束代表已经参加过
             if (strtotime($current_date) <= strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
             }
         }
-        $this->load->view('template/header', $data);
-        $this->load->view('template/nav');
-        $this->load->view('person_related/personal_applied', $data);
+        $this->load->view('person_related/personal_joined', $data);
         $this->load->view('template/footer');
     }
+
+    public function joined()
+    {
+        $header['title'] = "个人中心";
+        $header['page_name'] = 'personal';
+        $this->load->view('template/header', $header);
+        $this->load->view('template/nav');
+
+        $this->load->model('User_model');
+        $user_data=$this->User_model->get_user_by_id($this->user_id);
+        $this->load->view('template/personal_nav',$user_data);
+
+        $this->load->model('Member_and_activity_model');
+        $row_activities_info = $this->Member_and_activity_model->get_activity_by_member_id($this->user_id);
+        $current_date = date("Y-m-d");
+        $data['activities_info']=array();
+        foreach ($row_activities_info as $single_activity_info) {
+            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
+            if (strtotime($current_date) > strtotime($activity_date)) {
+                $data['activities_info'][] = $single_activity_info;
+            }
+        }
+        $this->load->view('person_related/personal_joined', $data);
+        $this->load->view('template/footer');
+    }
+
 
     public function comments()
     {
@@ -84,22 +128,6 @@ class User extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function info()
-    {
-        $data['title'] = "个人中心";
-        $data['page_name'] = "info";
-        $this->load->model('User_model');
-        $this->load->model('User_and_first_label_model');
-        $data['nav'] = $this->personal_nav;
-
-        $data['user_info'] = $this->User_model->get_user_by_id($this->user_id);
-        $data['user_info']['interest'] = $this->User_and_first_label_model->get_first_label_by_user_id($this->user_id);
-
-        $this->load->view('template/header', $data);
-        $this->load->view('template/nav');
-        $this->load->view('person_related/personal_info', $data);
-        $this->load->view('template/footer');
-    }
 
 
     /* 功能被撤销
@@ -119,43 +147,38 @@ class User extends CI_Controller
         $this->load->view('template/footer');
     }*/
 
-    public function joined()
-    {
-        $this->load->model('Member_and_activity_model');
-        $data['title'] = "个人中心";
-        $data['page_name'] = "joined";
-        $data['nav'] = $this->personal_nav;
-
-        $row_activities_info = $this->Member_and_activity_model
-            ->get_activity_by_member_id($this->user_id);
-        $current_date = date("Y-m-d");
-        $data['activities_info'] = array();
-        foreach ($row_activities_info as $single_activity_info) {
-            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
-            if (strtotime($current_date) > strtotime($activity_date)) {
-                $data['activities_info'][] = $single_activity_info;
-            }
-        }
-
-        $this->load->view('template/header', $data);
-        $this->load->view('template/nav');
-        $this->load->view('person_related/personal_joined', $data);
-        $this->load->view('template/footer');
-    }
-
     public function group()
     {
-        $data['title'] = "个人中心";
-        $data['page_name'] = 'group';
-        $data['nav'] = $this->personal_nav;
-
-        $this->load->view('template/header', $data);
+        $header['title'] = "个人中心";
+        $header['page_name'] = 'personal';
+        $this->load->view('template/header', $header);
         $this->load->view('template/nav');
+
+        $this->load->model('User_model');
+        $user_data=$this->User_model->get_user_by_id($this->user_id);
+        $this->load->view('template/personal_nav',$user_data);
+
+        $this->load->model('Group_model');
+        $this->load->model('Member_and_group_model');
+        /*也许会用上的创建的活动
+        $data['created_groups']=array();
+        $created_groups=$this->Group_model->get_group_by_creator_id($this->user_id);
+        foreach ($created_groups as $created_group_item){
+            $created_group_item['members']=$this->Member_and_group_model->get_members_by_group_id($created_group_item['id']);
+            $data['created_groups'][]=$created_group_item;
+        }*/
+        $data['joined_groups']=array();
+        $joined_groups=$this->Member_and_group_model->get_groups_by_user_id($this->user_id);
+        foreach ($joined_groups as $joined_groups_item){
+            $joined_groups_item['members']=$this->Member_and_group_model->get_members_by_group_id($joined_groups_item['id']);
+            $joined_groups_item['creator']=$this->User_model->get_user_by_id($joined_groups_item['creator_id']);
+            $data['joined_groups'][]=$joined_groups_item;
+        }
         $this->load->view('person_related/personal_group', $data);
         $this->load->view('template/footer');
     }
 
-    public function detail()
+    public function group_detail()
     {
         $data['title'] = "个人中心";
         $data['page_name'] = 'group_detail';
