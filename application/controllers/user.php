@@ -68,7 +68,7 @@ class User extends CI_Controller
         $current_date = date("Y-m-d");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
+            $activity_date = substr($single_activity_info['date_time_start'],0,10);
             if (strtotime($current_date) <= strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
             }
@@ -93,7 +93,7 @@ class User extends CI_Controller
         $current_date = date("Y-m-d");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
+            $activity_date = substr($single_activity_info['date_time_start'],0,10);
             if (strtotime($current_date) > strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
             }
@@ -115,7 +115,7 @@ class User extends CI_Controller
         $current_date = date("Y-m-d");
         $data['activities_info'] = array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
+            $activity_date = substr($single_activity_info['date_time_start'],0,10);
             // 查看活动是否已经结束 结束代表已经参加过
             if (strtotime($current_date) > strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
