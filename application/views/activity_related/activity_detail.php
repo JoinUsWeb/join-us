@@ -55,7 +55,7 @@
                         <div class="detail">
                             <div class="title_txt">开始时间：<span>
                                     <?php
-                                    echo $activity['date_start'] . ' ' . $activity['time_start'];
+                                    echo $activity['date_time_start'];
                                     ?>
                                 </span></div>
 
@@ -63,7 +63,7 @@
                         <div class="detail">
                             <div class="title_txt">截止报名时间：<span>
                                     <?php
-                                    echo $activity['date_expire'] . ' ' . $activity['time_expire'];
+                                    echo $activity['date_time_expire'];
                                     ?>
                                 </span></div>
                         </div>
@@ -255,7 +255,7 @@
                                             <div class="comment_right_name"><h5>
                                                     <?php echo $comment_item['creator']['nick_name'] ?></h5></div>
                                             <div class="comment_right_time"><h5>
-                                                    <?php echo $comment_item['date'] . ' ' . $comment_item['time']; ?>
+                                                    <?php echo $comment_item['date_time']; ?>
                                                     发表</h5></div>
                                         </div>
                                     </div>
@@ -303,7 +303,7 @@
                                                 ?>
                                             </h5></a>
                                         <p><?php
-                                            echo $hot_activity_item['date_start'] . ' ' . $hot_activity_item['time_start'];
+                                            echo $hot_activity_item['date_time_start'];
                                             ?></p>
                                     </div>
                                 </div>

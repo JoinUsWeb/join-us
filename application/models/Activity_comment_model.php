@@ -56,12 +56,10 @@ class Activity_comment_model extends CI_Model
         $this->load->helper('date');
         if ($activity_info == null)
             return null;
-        $date = mdate('%Y-%m-%d',time());
-        $time = mdate('%H:%i:%s',time());
-        $activity_info['date'] = $date;
-        $activity_info['time'] = $time;
         if((!isset($activity_info['activity_id']))||(!isset($activity_info['creator_id'])))
             return false;
+        $date_time = date("Y-m-d H:i:s");
+        $activity_info['date_time'] = $date_time;
         if ($this->db->insert('activity_comment', $activity_info) == false)
             return false;
         return true;

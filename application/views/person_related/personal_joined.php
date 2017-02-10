@@ -21,7 +21,7 @@
                             <div class="p_hd_title"><a class="thisover" href="<?php echo site_url('activity_detail/'.$activity_item['id']); ?>">
                                     <span><?php echo $activity_item['name']; ?></span></a></div>
                             <div class="p_hd_details"><i class="icon-time"></i>
-                                <?php echo $activity_item['date_start'].$activity_item['time_start'];?></div>
+                                <?php echo $activity_item['date_time_start'];?></div>
                             <div class="p_hd_details"><i class="icon-map-marker"></i><?php echo $activity_item['place']; ?></div>
                             <div class="p_hd_bd"><a class="thisover" href="../html/details_page.html"><?php echo $activity_item['brief']; ?></a>
                             </div>

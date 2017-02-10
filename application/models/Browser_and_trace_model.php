@@ -98,7 +98,7 @@ class Browser_and_trace_model extends CI_Model
         if ($browser_id <= 0) {
             return null;
         } else {
-            return $this->db->order_by('browsed_time', 'DESC')
+            return $this->db->order_by('browsed_date_time', 'DESC')
                 ->get_where('relation_trace', array('user_id' => $browser_id))
                 ->result_array();
         }
@@ -117,7 +117,7 @@ class Browser_and_trace_model extends CI_Model
         if ($activity_id <= 0) {
             return null;
         } else {
-            return $this->db->order_by('browsed_time', 'DESC')
+            return $this->db->order_by('browsed_date_time', 'DESC')
                 ->get_where('relation_trace', array('browsed_activity_id' => $activity_id))
                 ->result_array();
         }
@@ -157,11 +157,11 @@ class Browser_and_trace_model extends CI_Model
         }
     }
 
-    public function remove_by_time($browsed_time = -1)
+    public function remove_activity_before_given_date_time($browsed_date_time = null)
     {
-        if ($browsed_time === -1)
+        if ($browsed_date_time === null)
             return null;
-        if ($this->db->where('browsed_time<', $browsed_time)->delete('relation_trace') == false)
+        if ($this->db->where('browsed_date_time <', $browsed_date_time)->delete('relation_trace') == false)
             return false;
         return true;
     }
@@ -172,23 +172,22 @@ class Browser_and_trace_model extends CI_Model
      *
      * 三个参数如果不合法，返回null
      *
-     * 如果合法，插入 （user_id, browsed_date，browsed_activity_id） ，如果失败返回false
+     * 如果合法，插入 （user_id, browsed_date_time，browsed_activity_id） ，如果失败返回false
      *
      * @param int $browser_id
-     * @param int $browsed_date
+     * @param int $browsed_date_time
      * @param int $activity_id
      * @return bool|null
      */
-    public function insert_new_relation($browser_id = -1, $browsed_date = null, $browsed_time = null, $activity_id = -1)
+    public function insert_new_relation($browser_id = -1, $browsed_date_time = null, $activity_id = -1)
     {
-        if ($browser_id <= 0 || $browsed_time == null || $browsed_date == null || $activity_id <= 0)
+        if ($browser_id <= 0 || $browsed_date_time == null || $activity_id <= 0)
             return null;
         else {
             $data = array(
                 'browser_id' => $browser_id,
                 'browsed_activity_id' => $activity_id,
-                'browsed_date' => $browsed_date,
-                'browsed_time' => $browsed_time);
+                'browsed_date_time' => $browsed_date_time);
             if ($this->db->insert('relation_trace', $data) == false)
                 return false;
             return true;

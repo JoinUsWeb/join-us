@@ -25,7 +25,7 @@
                                 </a>
                                 <hr>
                                 <div class="hd_details"><i
-                                        class="icon-time icon-large"></i><?php echo $single_activity['date_expire'], " ", $single_activity['time_expire']; ?>
+                                        class="icon-time icon-large"></i><?php echo $single_activity['date_time_expire']; ?>
                                 </div>
                                 <div class="hd_details"><i
                                         class="icon-map-marker icon-large"></i><?php echo $single_activity['place']; ?>

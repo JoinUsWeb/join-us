@@ -15,11 +15,11 @@
                 <div class="message_bar">
                     <ul>
                         <?php foreach ($activity_in_three_days as $row): ?>
-                            <li>您报名参加的 <?php echo $row['name'] ?> 将于 <?php echo $row['date_start'] . ' ' . $row['time_start']; ?>开始活动
+                            <li>您报名参加的 <?php echo $row['name'] ?> 将于 <?php echo $row['date_time_start']; ?>开始活动
                             </li>
                         <?php endforeach; ?>
                         <?php foreach ($activity_in_a_week as $row): ?>
-                            <li>您组织的 <?php echo $row['name']; ?> 将于 <?php echo $row['date_start'] . ' ' . $row['time_start']; ?>开始活动
+                            <li>您组织的 <?php echo $row['name']; ?> 将于 <?php echo $row['date_time_start']; ?>开始活动
                             </li>
                         <?php endforeach; ?>
                     </ul>

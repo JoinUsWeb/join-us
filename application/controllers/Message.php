@@ -21,7 +21,7 @@
  *
  * 根据提供的用户 id 和 获取其未评论的已结束的活动提醒
  * private function get_unfinished_comment_by_member_id($user_id)
- * 
+ *
  * 根据提供的用户 id 和 获取其未读的活动邀请消息
  * private function get_unread_invitation_by_recipient_id($user_id)
  *
@@ -127,7 +127,7 @@ class Message extends CI_Controller
         $result=$this->member_and_activity->get_activity_by_member_id($user_id);
         $activity_in_three_days=array();
         foreach ($result as $activity_item) {
-            if(strtotime($activity_item['date_start']+" "+$activity_item['time_start'])-time()<3*24*60*60){
+            if(strtotime($activity_item['date_time_start'])-time()<3*24*60*60){
                 $activity_in_three_days[]=$activity_item;
             }
         }
@@ -145,14 +145,14 @@ class Message extends CI_Controller
         $result=$this->Activity_model->get_activity_by_creator_id($user_id);
         $activity_in_a_week=array();
         foreach ($result as $activity_item) {
-            $time=strtotime($activity_item['date_start'].' '.$activity_item['time_start'])-strtotime(date("Y-m-d H:i:s"),time());
+            $time=strtotime($activity_item['date_time_start'])-strtotime(date("Y-m-d H:i:s"),time());
             if($time>=0&&$time<7*24*60*60){
                 $activity_in_a_week[]=$activity_item;
             }
         }
         return $activity_in_a_week;
     }
-    
+
     /**
      *get unread activity announcement by user's id
      *@param int    $user_id    user's id
@@ -162,7 +162,7 @@ class Message extends CI_Controller
      */
     private function get_activity_announcement_by_member_id($user_id){
         $activity_announcement=array();
-        
+
         /* unfinished */
 
         return $activity_announcement;
@@ -177,7 +177,7 @@ class Message extends CI_Controller
      */
     private function get_unfinished_comment_by_member_id($user_id){
         $activity_comment=array();
-        
+
         /* unfinished */
 
         return $activity_comment;
