@@ -39,18 +39,6 @@ class Message extends CI_Controller
         $this->load->model('message_model','message');
         $this->load->model('member_and_activity_model','member_and_activity');
         $this->load->model('Activity_model');
-        $this->personal_nav = "<nav class=\"dr-menu  dr-menu-open\">
-<div class=\"dr-trigger\"><span class=\"dr-label\">我的主页</span></div>
-<ul>
-<li><a class=\"dr-icon dr-icon-user\" href=".site_url('user/info').">个人信息</a></li>
-<li><a class=\"dr-icon dr-icon-camera\" href=".site_url('user/joined').">已参加活动</a></li>
-<li><a class=\"dr-icon dr-icon-heart\" href=".site_url('user/applied').">已报名活动</a></li>
-<li><a class=\"dr-icon dr-icon-bullhorn\" href=".site_url('user/comments').">评价活动</a>
-</li>
-<li><a class=\"dr-icon dr-icon-download\" href=".site_url('message/personal_mymessages').">我的消息</a></li>
-<li><a class=\"dr-icon dr-icon-settings\" href=".site_url('user/group').">我的小组</a></li>
-</ul>
-</nav>";
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
         } else {
@@ -65,10 +53,14 @@ class Message extends CI_Controller
         $data=$this->get_message_by_user_id($this->session->user_id);
         $data['title'] = "个人中心";
         $data['page_name'] = 'message';
-        $data['nav'] = $this->personal_nav;
 
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
+
+        $this->load->model('User_model');
+        $user_data=$this->User_model->get_user_by_id($this->user_id);
+        $this->load->view('template/personal_nav',$user_data);
+
         $this->load->view('person_related/personal_mymessages',$data);
         $this->load->view('template/footer');
     }

@@ -22,9 +22,11 @@
                     </ul>
                 </div>
                 <div class="p_data">
-                    <ul>
-                        <li><a class="thisover" href="../html/personal_edit.html">这里准备放编辑页面的按钮</a></li>
-                    </ul>
+                    <a class="p_button" href="../html/personal_edit.html">
+                        <div class="p_data_button">
+                            点击修改个人信息
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

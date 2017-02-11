@@ -32,7 +32,7 @@
                         <li><a class="thisover" href="<?php echo site_url('user/info'); ?>">个人信息</a></li>
                         <li><a class="thisover" href="<?php echo site_url('user/activities'); ?>">我的活动</a></li>
                         <li><a class="thisover" href="<?php echo site_url('user/group'); ?>">我的小组</a></li>
-                        <li><a class="thisover" href="<?php echo site_url('user/info'); ?>">我的消息</a></li>
+                        <li><a class="thisover" href="<?php echo site_url('message/personal_mymessages'); ?>">我的消息</a></li>
                         <li><a></a></li>
                     </ul>
                 </div>
