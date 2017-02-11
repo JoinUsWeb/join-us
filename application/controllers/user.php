@@ -65,11 +65,11 @@ class User extends CI_Controller
 
         $this->load->model('Member_and_activity_model');
         $row_activities_info = $this->Member_and_activity_model->get_activity_by_member_id($this->user_id);
-        $current_date = date("Y-m-d h:i:sa");
+        $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['date_time_start']));
-            if (strtotime($current_date) <= strtotime($activity_date_time)) {
+            if (strtotime($current_date_time) <= strtotime($activity_date_time)) {
                 $data['activities_info'][] = $single_activity_info;
             }
         }
@@ -90,11 +90,11 @@ class User extends CI_Controller
 
         $this->load->model('Member_and_activity_model');
         $row_activities_info = $this->Member_and_activity_model->get_activity_by_member_id($this->user_id);
-        $current_date = date("Y-m-d");
+        $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
-            if (strtotime($current_date) > strtotime($activity_date)) {
+            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['date_time_start']));
+            if (strtotime($current_date_time) > strtotime($activity_date_time)) {
                 $data['activities_info'][] = $single_activity_info;
             }
         }
@@ -115,7 +115,7 @@ class User extends CI_Controller
         $current_date = date("Y-m-d");
         $data['activities_info'] = array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date = date_create($single_activity_info['date_expire'])->format("Y-m-d");
+            $activity_date = substr($single_activity_info['date_time_start'],0,10);
             // 查看活动是否已经结束 结束代表已经参加过
             if (strtotime($current_date) > strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
