@@ -37,8 +37,7 @@ body{
 
 .personalbar{
     margin-top: 72px;
-    margin-left: -20px;
-    margin-right: 70px;
+    margin-right: 80px;
     width: 240px;
     border-color: #080808;
     border-bottom-style:none;
@@ -142,12 +141,11 @@ body{
     height: 200px;
 }
 .personal_nav{
-    width: 850px;
+    width: 900px;
     height: 150px;
     padding: 30px;
     padding-bottom: 0px;
     margin-bottom: 0px;
-    margin-left: 70px;
     margin-right: 0px;
     border-color: #080808;
     border-bottom-style:none;
@@ -166,11 +164,10 @@ body{
 
 .personal_data{
     float: left;
-    width: 850px;
+    width: 900px;
     padding: 0px 20px;
     padding-bottom: 0px;
     margin-bottom: 0px;
-    margin-left: 70px;
     margin-top: 5px;
     box-shadow: 0px 0px 3px #666;
     border-color: #080808;
@@ -224,6 +221,7 @@ body{
 
 .p_details_present{
     height: 90px;
+    padding-left: 27px;
 }
 
 .p_data_button{
