@@ -44,7 +44,7 @@ ul{
 	width: 200px;
 	height: 36px;
 	padding: 1px 8px 0px 8px;
-	margin: 0 0 20px 0;
+
 	background:#fff ;
 	border-radius: 5px;
 	
@@ -54,6 +54,11 @@ ul{
 
 }
 
+#email_error{
+	margin-left: 135px;
+	height: 30px;
+
+}
 #login_form input[type=submit], #register_form input[type=submit]{
 	width: 120px;
 	height: 40px;
