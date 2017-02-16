@@ -10,6 +10,7 @@
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="../css/bootstrap.css">
 	<link rel="stylesheet" href="../css/login&register.css">
+
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -78,14 +79,14 @@
          <input type="email" id="email" name="email" placeholder="请输入邮箱" value="" onblur="check_email()">
         
          <br>
-            <span id="email_error">hhh</span>
+            <div id="email_error"></div>
 					
 				</li>
 				<li>
 					<label for="password" class="title">密码：</label>
-					<input type="password" id="password" name="password" placeholder="请输入密码" value="">
+					<input type="password" id="password" name="password" placeholder="请输入密码" value="" onblur="check_password()">
            <br>
-            <span id="psd_error">fvcx</span>
+            <div id="psd_error"></div>
 				</li>
 			</ul>
 			
