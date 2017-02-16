@@ -84,8 +84,8 @@ class Create_activity extends CI_Controller
 
     public function create_activity($data, $poster_path)
     {
-        $data['date_time_start'] = $data['date_start'] . ' ' . $data['time_start'];
-        $data['date_time_expire'] = $data['date_expire'] . ' ' . $data['time_expire'];
+        $data['activity_start'] = $data['date_start'] . ' ' . $data['time_start'];
+        $data['apply_expire'] = $data['date_expire'] . ' ' . $data['time_expire'];
         unset($data['date_start'], $data['time_start'], $data['date_expire'], $data['time_expire']);
         $data['poster'] = $poster_path;
         $this->Activity_model->insert_new_activity($data);

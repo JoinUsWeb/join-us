@@ -55,7 +55,7 @@
                         <div class="detail">
                             <div class="title_txt">开始时间：<span>
                                     <?php
-                                    echo $activity['date_time_start'];
+                                    echo $activity['activity_start'];
                                     ?>
                                 </span></div>
 
@@ -63,7 +63,7 @@
                         <div class="detail">
                             <div class="title_txt">截止报名时间：<span>
                                     <?php
-                                    echo $activity['date_time_expire'];
+                                    echo $activity['apply_expire'];
                                     ?>
                                 </span></div>
                         </div>
@@ -303,7 +303,7 @@
                                                 ?>
                                             </h5></a>
                                         <p><?php
-                                            echo $hot_activity_item['date_time_start'];
+                                            echo $hot_activity_item['activity_start'];
                                             ?></p>
                                     </div>
                                 </div>

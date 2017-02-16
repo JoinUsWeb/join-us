@@ -101,13 +101,13 @@
                 <div id="detail_block">
                     <div class="detail">
                         <div class="title_txt">
-                            开始时间：<span><?php echo $activity_info['date_time_start']; ?></span>
+                            开始时间：<span><?php echo $activity_info['activity_start']; ?></span>
                         </div>
 
                     </div>
                     <div class="detail">
                         <div class="title_txt">
-                            截止报名时间：<span><?php echo $activity_info['date_time_expire']; ?></span>
+                            截止报名时间：<span><?php echo $activity_info['apply_expire']; ?></span>
                         </div>
 
                     </div>

@@ -2,9 +2,10 @@
                 <div class="personal_hd_nav">
                     <ul>
                         <li></li>
-                        <li><a class="thisover" href="<?php site_url('joined/1'); ?>">参与活动<span class="pipe">|</span></a></li>
-                        <li><a class="thisover" href="<?php site_url('joined/2'); ?>">评价活动<span class="pipe">|</span></a></li>
-                        <li><a class="thisover" href="<?php site_url('joined/3'); ?>">收藏活动</a></li>
+                        <li><a href="<?php site_url('joined/1'); ?>">创建活动<span class="pipe">|</span></a></li>
+                        <li><a class="hd_a" href="<?php site_url('joined/1'); ?>">参与活动<span class="pipe">|</span></a></li>
+                        <li><a href="<?php site_url('join/2'); ?>">评价活动<span class="pipe">|</span></a></li>
+                        <li><a href="<?php site_url('joined/3'); ?>">收藏活动</a></li>
                     </ul>
                 </div>
                 <div class="personal_hd_joined">
@@ -21,9 +22,9 @@
                             <div class="p_hd_title"><a class="thisover" href="<?php echo site_url('activity_detail/'.$activity_item['id']); ?>">
                                     <span><?php echo $activity_item['name']; ?></span></a></div>
                             <div class="p_hd_details"><i class="icon-time"></i>
-                                <?php echo $activity_item['date_time_start'];?></div>
+                                <?php echo $activity_item['activity_start'];?></div>
                             <div class="p_hd_details"><i class="icon-map-marker"></i><?php echo $activity_item['place']; ?></div>
-                            <div class="p_hd_bd"><a class="thisover" href="../html/details_page.html"><?php echo $activity_item['brief']; ?></a>
+                            <div class="p_hd_bd"><a class="thisover" href="<?php echo site_url("activity_detail/index/".$activity_item["id"]); ?>"><?php echo $activity_item['brief']; ?></a>
                             </div>
                         </div>
                     </div>

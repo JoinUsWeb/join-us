@@ -4,7 +4,7 @@
  * Class Activity_model
  *
  * 预定义返回null代表参数不合法 返回false代表数据库操作失败 默认返回的活动是通过审核的
- * 活动信息： name  date_time_expire  date_time_start  place  brief  amount_max  creator_id  first_label_id
+ * 活动信息： name  apply_expire  activity_start  place  brief  amount_max  creator_id  first_label_id
  *            second_label_id  score
  *
  * 获取所有活动  返回活动信息组成的多维数组
@@ -219,7 +219,7 @@ class Activity_model extends CI_Model
     /**
      *
      * data = array(
-     *      name  date_time_expire  date_time_start  place  brief  amount_max  creator_id  first_label_id
+     *      name  apply_expire  activity_start  place  brief  amount_max  creator_id  first_label_id
      *      second_label_id  score poster)
      *
      * @param $activity_info
@@ -238,7 +238,7 @@ class Activity_model extends CI_Model
     /**
      *
      * activity_info_array_for_update = array(
-     *      name  date_time_expire  date_time_start  place  brief  amount_max  creator_id  first_label_id
+     *      name  apply_expire  activity_start  place  brief  amount_max  creator_id  first_label_id
      *      second_label_id  score)
      *
      * @param int $activity_id

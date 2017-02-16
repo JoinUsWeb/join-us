@@ -104,7 +104,7 @@
                                 <a href="<?php echo site_url('admin/check/' . $item['id']); ?>"><?php echo $item['name'] ?></a>
                             </td>
                             <td class="center"><?php echo $item['creator_name']; ?></td>
-                            <td class="center"><?php echo substr($item['date_time_start'],0,10); ?></td>
+                            <td class="center"><?php echo substr($item['activity_start'],0,10); ?></td>
                             <td class="center"><?php echo $item['isVerified'] == 2 ? '审核未通过' : ($item['isVerified'] == 1 ? '已审核' : '未审核'); ?></td>
                             <td class="center">
                                 <?php echo form_open('admin/is_approved/' . $item['id']);

@@ -71,6 +71,13 @@ class User_and_first_label_model extends CI_Model
         }
     }
 
+    public function query_exist($user_id = -1, $first_label_id = -1){
+        if ($user_id == -1 || $first_label_id == -1)
+            return null;
+        return $this->db->get_where("relation_user_firstlabel",array('user_id' => $user_id, 'first_label_id' => $first_label_id))->row_array();
+    }
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function remove_first_label_from_user_by_id($user_id = -1, $first_label_id = -1)

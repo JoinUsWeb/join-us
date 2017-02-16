@@ -116,7 +116,7 @@
                                         </a>
                                         <hr>
                                         <p>
-                                            <i class="icon-time icon-large"></i><?php echo $single_activity["date_time_expire"]; ?>
+                                            <i class="icon-time icon-large"></i><?php echo $single_activity["apply_expire"]; ?>
                                         </p>
                                         <p>
                                             <i class="icon-map-marker icon-large"></i><?php echo $single_activity["place"]; ?>
@@ -202,7 +202,7 @@
                                             ?>
                                         </h5></a>
                                     <p><?php
-                                        echo $hot_activity_item['date_time_start'];
+                                        echo $hot_activity_item['activity_start'];
                                         ?></p>
                                 </div>
                             </div>

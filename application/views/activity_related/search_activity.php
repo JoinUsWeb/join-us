@@ -74,7 +74,7 @@
                         </div>
                         <div class="hd_label"><i class="icon-tag"></i> <span><?php echo $activity_item['first_label_name']?></span>
                         </div>
-                        <div class="hd_time"><i class="icon-calendar "></i><span><?php echo $activity_item['date_time_start']?></span>
+                        <div class="hd_time"><i class="icon-calendar "></i><span><?php echo $activity_item['activity_start']?></span>
                         </div>
                         <div class="people_num"><i class=" icon-group"></i> <span><?php echo $activity_item['member_number'] . '/' . $activity_item['amount_max'] ?></span>
                         </div>
@@ -112,7 +112,7 @@
                                                 ?>
                                             </h5></a>
                                         <p><?php
-                                            echo $hot_activity_item['date_time_start'];
+                                            echo $hot_activity_item['activity_start'];
                                             ?></p>
                                     </div>
                                 </div>

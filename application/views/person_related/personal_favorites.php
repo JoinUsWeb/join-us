@@ -16,7 +16,7 @@
                         </tr>
                         <tr>
                             <th>活动时间</th>
-                            <td><?php echo $single_activity['date_time_expire']; ?></td>
+                            <td><?php echo $single_activity['apply_expire']; ?></td>
                         </tr>
                         <tr>
                             <th>活动地点</th>

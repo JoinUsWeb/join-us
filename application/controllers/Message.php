@@ -119,7 +119,7 @@ class Message extends CI_Controller
         $result=$this->member_and_activity->get_activity_by_member_id($user_id);
         $activity_in_three_days=array();
         foreach ($result as $activity_item) {
-            if(strtotime($activity_item['date_time_start'])-time()<3*24*60*60){
+            if(strtotime($activity_item['activity_start'])-time()<3*24*60*60){
                 $activity_in_three_days[]=$activity_item;
             }
         }
@@ -137,7 +137,7 @@ class Message extends CI_Controller
         $result=$this->Activity_model->get_activity_by_creator_id($user_id);
         $activity_in_a_week=array();
         foreach ($result as $activity_item) {
-            $time=strtotime($activity_item['date_time_start'])-strtotime(date("Y-m-d H:i:s"),time());
+            $time=strtotime($activity_item['activity_start'])-strtotime(date("Y-m-d H:i:s"),time());
             if($time>=0&&$time<7*24*60*60){
                 $activity_in_a_week[]=$activity_item;
             }
