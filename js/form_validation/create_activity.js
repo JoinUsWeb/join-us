@@ -1,17 +1,8 @@
 /**
  * Created by zhang on 2017/2/12.
  */
-
-function getRoot() {
-    var url = window.document.location.href;
-    var pathname = window.document.location.pathname;
-    return url.substr(0, url.indexOf(pathname));
-}
-
-var root = getRoot();
-
 var topic_check = false, start_date_check = false, close_date_check = false, place_check = false, num_limit_check = false,
-    detail_check = false;
+    detail_check = false, end_date_check = false;
 
 function check() {
     check_topic();
@@ -20,12 +11,13 @@ function check() {
     check_num_limit();
     check_place();
     check_detail();
+    check_end_date();
     if ($('#hd_style_1st').val() == -1 || $('#hd_style_2nd').val() == -1) {
         document.getElementById("style_error").innerHTML="请选择活动标签！";
         return false;
     }
     return topic_check && start_date_check && close_date_check && place_check && num_limit_check &&
-        detail_check;
+        detail_check && end_date_check;
 }
 
 function verify_string(data) {
@@ -39,8 +31,8 @@ function check_topic() {
         document.getElementById("topic_error").innerHTML="活动主题不能为空！";
         return;
     }
-    else document.getElementById("topic_error").innerHTML="";
     // 清空错误信息
+    document.getElementById("topic_error").innerHTML="";
     topic_check = true;
 }
 function check_start_date() {
@@ -82,9 +74,10 @@ function check_place() {
     if (verify_string(hd_place)) {
         // 显示错误信息
         document.getElementById("place_error").innerHTML="请填写活动举办地点！";
+        return;
     }
-    else document.getElementById("place_error").innerHTML="";
     // 清空错误信息
+    document.getElementById("place_error").innerHTML="";
     place_check = true;
 }
 function check_num_limit() {
@@ -93,15 +86,15 @@ function check_num_limit() {
     if (num_limit.length == 0) {
         // 显示错误信息
         document.getElementById("num_error").innerHTML="请填写活动人数上限！";
+        return;
     }
     if (isNaN(num_limit)) {
         // 显示错误信息
         document.getElementById("num_error").innerHTML="请用数字填写活动人数上限！";
-        
         return;
     }
-    else document.getElementById("num_error").innerHTML="";
     // 清空错误信息
+    document.getElementById("num_error").innerHTML="";
     num_limit_check = true;
 }
 function check_detail() {
@@ -113,6 +106,6 @@ function check_detail() {
         return;
     }
     // 清空错误信息
-    else document.getElementById("detail_error").innerHTML="";
+    document.getElementById("detail_error").innerHTML="";
     detail_check = true;
 }

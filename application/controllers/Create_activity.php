@@ -32,6 +32,8 @@ class Create_activity extends CI_Controller
         $this->form_validation->set_rules('name', 'name', 'trim|required', array('required' => '请输入活动名称'));
         $this->form_validation->set_rules('date_start', 'date_start', 'required', array('required' => '请输入活动开始日期'));
         $this->form_validation->set_rules('time_start', 'time_start', 'required', array('required' => '请输入活动开始时间'));
+        $this->form_validation->set_rules('end_date', 'end_date', 'required', array('required' => '请输入活动结束日期'));
+        $this->form_validation->set_rules('end_hour', 'end_hour', 'required', array('required' => '请输入活动结束时间'));
         $this->form_validation->set_rules('date_expire', 'date_expire', 'callback_check_date|required', array('required' => '请输入报名截止日期'));
         $this->form_validation->set_rules('time_expire', 'time_expire', 'required', array('required' => '请输入报名截止时间'));
         $this->form_validation->set_rules('place', 'place', 'trim|required', array('required' => '请输入活动地点'));
@@ -86,7 +88,8 @@ class Create_activity extends CI_Controller
     {
         $data['activity_start'] = $data['date_start'] . ' ' . $data['time_start'];
         $data['apply_expire'] = $data['date_expire'] . ' ' . $data['time_expire'];
-        unset($data['date_start'], $data['time_start'], $data['date_expire'], $data['time_expire']);
+        $data['activity_expire'] = $data['end_date'] . ' ' . $data['end_hour'];
+        unset($data['date_start'], $data['time_start'], $data['date_expire'], $data['time_expire'], $data['end_date'], $data['end_hour']);
         $data['poster'] = $poster_path;
         $this->Activity_model->insert_new_activity($data);
         redirect('activity_detail/index/' . $this->db->insert_id());

@@ -8,13 +8,17 @@
                 <label for="email" class="title">邮箱：</label>
                 <input type="email" id="email" name="_email" placeholder="请输入邮箱"
                        value="" onblur="check_email()" required>
-                <?php echo form_error('_email', '<span>', '</span>') ?>
+                <br>
+                <div id="email_error"><?php echo form_error('_email'); ?></div>
+
             </li>
             <li>
                 <label for="password" class="title">密码：</label>
                 <input type="password" id="password" name="_password" placeholder="请输入密码"
                        value="" onblur="check_password()" required>
-                <?php echo form_error('_password', '<span>', '</span>') ?>
+                <br>
+                <div id="psd_error"><?php echo form_error('_password'); ?></div>
+
             </li>
         </ul>
 
@@ -29,4 +33,4 @@
 </div>
 <script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/core-min.js"></script>
 <script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/md5-min.js"></script>
-<script type="text/javascript" src="<?php echo base_url("js/form_validation/login.js")?>"></script>
+<script type="text/javascript" src="<?php echo base_url("js/form_validation/login.js") ?>"></script>

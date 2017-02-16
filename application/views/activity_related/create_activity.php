@@ -1,12 +1,13 @@
 <div class="container">
     <?php echo $error ?>
-    <?php echo validation_errors(); ?>
     <?php echo form_open_multipart('create_activity', array('id' => 'create_hd')); ?>
     <ul>
         <li>
             <label for="hd_topic" class="label_style">活动主题</label>
             <input type="text" id="hd_topic" name="name" value="<?php echo set_value('name'); ?>" onblur="check_topic()"
                    placeholder="请输入活动主题">
+            <br>
+            <div id="topic_error"><?php echo form_error('name'); ?></div>
         </li>
         <li>
             <label for="hd_poster" class="label_style">活动海报</label>
@@ -16,6 +17,8 @@
             <div id="create_button">
                 <input type="file" id="hd_poster" name="poster">
             </div>
+            <br>
+            <div id="poster_error"><?php echo form_error('poster'); ?></div>
         </li>
         <li>
             <label for="start_date" class="label_style">活动开始时间</label>
@@ -49,6 +52,41 @@
                 <option value="23:00:00">23:00</option>
                 <option value="24:00:00">24:00</option>
             </select>
+            <br>
+            <div id="start_error"><?php echo form_error('date_start'); ?></div>
+        </li>
+        <li>
+            <label for="end_date" class="label_style">活动结束时间</label>
+            <input type="text" id="end_date" name="end_date" value="<?php echo set_value('end_start'); ?>" placeholder="结束时间" onblur="check_end_date()">
+            <select name="end_hour" id="end_hour">
+                <option value="00:00:00">00:00</option>
+                <option value="01:00:00">01:00</option>
+                <option value="02:00:00">02:00</option>
+                <option value="03:00:00">03:00</option>
+                <option value="04:00:00">04:00</option>
+                <option value="05:00:00">05:00</option>
+                <option value="06:00:00">06:00</option>
+                <option value="07:00:00">07:00</option>
+                <option value="08:00:00">08:00</option>
+                <option value="09:00:00">09:00</option>
+                <option value="10:00:00">10:00</option>
+                <option value="11:00:00">11:00</option>
+                <option value="12:00:00">12:00</option>
+                <option value="13:00:00">13:00</option>
+                <option value="14:00:00">14:00</option>
+                <option value="15:00:00">15:00</option>
+                <option value="16:00:00">16:00</option>
+                <option value="17:00:00">17:00</option>
+                <option value="18:00:00">18:00</option>
+                <option value="19:00:00">19:00</option>
+                <option value="20:00:00">20:00</option>
+                <option value="21:00:00">21:00</option>
+                <option value="22:00:00">22:00</option>
+                <option value="23:00:00">23:00</option>
+                <option value="24:00:00">24:00</option>
+            </select>
+            <br>
+            <div id="end_error"><?php echo form_error('end_date'); ?></div>
         </li>
         <li>
             <label for="close_date" class="label_style">截止报名时间</label>
@@ -82,6 +120,8 @@
                 <option value="23:00:00">23:00</option>
                 <option value="24:00:00">24:00</option>
             </select>
+            <br>
+            <div id="close_error"><?php echo form_error('date_expire'); ?></div>
         </li>
         <li>
             <label for="hd_city" class="label_style">活动地点</label>
@@ -91,6 +131,8 @@
             </select>
             <input type="text" id="hd_place" name="place" value="<?php echo set_value('place'); ?>"
                    onblur="check_place()" placeholder="活动地址">
+            <br>
+            <div id="place_error"><?php echo form_error('city'); ?></div>
         </li>
         <li>
             <label for="hd_style_1st" class="label_style">活动类型</label>
@@ -107,16 +149,22 @@
             <label for="newstyle">创建新类型</label>
             <input type="text" id="newstyle" name="new_label" value="<?php echo set_value('new_label'); ?>"
                    placeholder="">
+            <br>
+            <div id="style_error"></div>
         </li>
         <li>
             <label for="num_limit" class="label_style">人数上限</label>
             <input type="text" id="num_limit" name="amount_max" value="<?php echo set_value('amount_max'); ?>"
                    onblur="check_num_limit()">
+            <br>
+            <div id="num_error"><?php echo form_error('amount_max'); ?></div>
         </li>
         <li>
             <label for="hd_detail" class="label_style">活动详情</label>
             <textarea name="brief" id="hd_detail" cols="30" rows="10"
                       onblur="check_detail()"><?php echo set_value('brief'); ?></textarea>
+            <br>
+            <div id="detail_error"><?php echo form_error('brief'); ?></div>
         </li>
     </ul>
     <p id="publish">
@@ -159,11 +207,13 @@
                         'position': 'absolute',
                         'left': offset.left,
                         'top': offset.top + this.height() + 10
-                    })
+                    }),
+                    vertical: "bottom"
                 }
             });
         };
         $('#start_date').my_datetimepicker();
         $('#close_date').my_datetimepicker();
+        $('#end_date').my_datetimepicker();
     })
 </script>
