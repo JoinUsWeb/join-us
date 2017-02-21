@@ -48,27 +48,51 @@
   </script>
   <script src="js/modernizr.custom.js"></script>
 		<script>
-			window.onload=function (){
-				var oDiv=document.getElementById('div1');
-				var aBtn=oDiv.getElementsByTagName('input');
-				var aDiv=oDiv.getElementsByTagName('div');
-				
-				
-				for(var i=0;i<aBtn.length;i++){			//遍历div1中的按钮
-					
-					aBtn[i].index=i;			//给aBth[]添加自定义属性
-					aBtn[i].onclick=function (){
-						
-						for(var i=0;i<aBtn.length;i++){	//遍历按钮，将class清除
-							aBtn[i].className='';
-							aDiv[i].style.display='none';
-						}
-						this.className='active';
-                        console.dir(aDiv[this.index]);
-						aDiv[this.index].style.display='block';
-					}
-				}
-			}
+         /*把相应section的id和用户点击的导航栏href值比较，改变各个section的display属性*/
+            function showSection(id) {
+                var sections = document.getElementsByTagName("section");
+                for(var i=0;i<sections.length;i++) {
+                    if(sections[i].getAttribute("id") != id) {
+                        sections[i].style.display = "none";
+                    }else {
+                        sections[i].style.display = "block";
+                    }
+                }
+            }
+          /*把导航栏href和用户点击href比较，改变相应元素的父元素的className*/
+            function changeColor(id) {
+                var navs = document.getElementsByTagName("nav");
+                var links = navs[0].getElementsByTagName("a");
+                for (var i = 0; i <links.length; i++) {
+                    var sectionId = links[i].getAttribute("href").split("#")[1];
+                    if(sectionId == id){
+                        links[i].parentNode.className = "special";
+                    }else {
+                        links[i].parentNode.className = "";
+                    }
+                }
+            }
+            function getId() {
+                var navs = document.getElementsByTagName("nav");
+                var links = navs[0].getElementsByTagName("a");
+                for (var i = 0; i <links.length; i++) {
+                    //获取导航栏的href值
+                    var secId = links[i].getAttribute("href").split("#")[1];
+                    if (!document.getElementById(secId)) continue;
+                    //设置最初的演示
+                    document.getElementById(secId).style.display = "none";
+                    document.getElementById("edit").style.display = "block";
+                    /*这里存在作用域问题，secId是个局部变量，它在getId函数执行期间存在，
+                    到时间处理函数执行的时候就不存在了，故在这里为每个链接创建了一个自定义的属性destination*/
+                    links[i].destination = secId;
+                    links[i].onclick = function() {
+                        showSection(this.destination);
+                        changeColor(this.destination);
+                        return false;
+                    }
+
+                };
+            }
 		</script>
 </head>
 
@@ -149,18 +173,41 @@
             </ul>
             <h2 class="page_title"></h2>
         </div>
-        
     </div>
         
     
     <div class="personal_data personal_hd">
-            <div id="div1" class="edit_page">
-			<input class="active" type="button" style="border:none;background:ghostwhite" value="基本信息" />
-                <span class="pipe">|</span>
-			<input type="button" style="border:none;background:ghostwhite" value="密码安全" />
-                <span class="pipe">|</span>
-			<input type="button" style="border:none;background:ghostwhite" value="修改头像" />
-			<div style="display:block;"><form id="personal_edit" action="#" method="post">
+        <nav class="personal_hd_nav">
+          <ul>
+            <li class="special"><a href="#edit">基本信息</a></li>
+            <li><a  href="#password">密码安全</a></li>
+            <li><a  href="#personal_img">修改头像</a></li>
+          </ul>
+        </nav>
+            <section id="edit">
+                <form id="personal_edit" action="#" method="post">
+			<ul>
+				<li>
+					<label for="nickname" class="label_style">昵称：</label>
+					<input type="text" id="nickname" name="nickname" placeholder="请输入昵称">
+				</li>
+				<li>
+					<label for="phone_number" class="label_style">手机号：</label>
+					<input type="tel" id="phone_number" name="phone_number" placeholder="请输入手机号码"><br>
+				</li>
+				<li>
+					<label for="personal_jj" class="label_style">个人简介：</label>
+					<textarea name="personal_jj" id="personal_jj" style="resize:none" placeholder="（不超过50字）"></textarea>
+				</li>
+				</ul>
+				<p id="p_publish">
+					<input type="submit"  value="确认修改">
+				</p>
+			
+		</form>
+            </section>
+            <section id="password">
+                <form id="personal_edit" action="#" method="post">
 			<ul>
                 <li>
 					<label for="password" class="title">密码：</label>
@@ -177,10 +224,11 @@
 					<input type="submit"  value="确认修改">
 				</p>
 			
-		</form></div>
-			<div>222</div>
-			<div>333</div>
-		</div>
+		</form>
+            </section>
+            <section id="personal_img">
+                asdasd
+            </section>
     </div>
 </div>
         

@@ -646,21 +646,6 @@ a:hover.hd_a{
     padding: 0px;
 }
 
-.edit_page{
-    margin:0px 25px;
-    padding:0px 37px;
-}
-
-#div1 .active{
-    background-color: ghostwhite;
-}
-			
-#div1 div{	
-    margin: 10px;
-    width:100%;		
-    min-height:200px;
-    display:none;	
-}
 
 #personal_edit{
     width: 100%;
