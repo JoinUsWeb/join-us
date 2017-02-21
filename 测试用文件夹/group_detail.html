@@ -47,29 +47,6 @@
     });
   </script>
   <script src="js/modernizr.custom.js"></script>
-		<script>
-			window.onload=function (){
-				var oDiv=document.getElementById('div1');
-				var aBtn=oDiv.getElementsByTagName('input');
-				var aDiv=oDiv.getElementsByTagName('div');
-				
-				
-				for(var i=0;i<aBtn.length;i++){			//遍历div1中的按钮
-					
-					aBtn[i].index=i;			//给aBth[]添加自定义属性
-					aBtn[i].onclick=function (){
-						
-						for(var i=0;i<aBtn.length;i++){	//遍历按钮，将class清除
-							aBtn[i].className='';
-							aDiv[i].style.display='none';
-						}
-						this.className='active';
-                        console.dir(aDiv[this.index]);
-						aDiv[this.index].style.display='block';
-					}
-				}
-			}
-		</script>
 </head>
 
 <body>
@@ -120,9 +97,10 @@
 </div>
 <!-- /.container-fluid --> 
 </nav>
-      <div class="personal_cover">
+    
+    <div class="personal_cover">
         <img src="../img/01.jpg" alt="">
-    </div>  
+    </div>
 <div class="container">
     <div class="row">
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-9 hidden-xs">
@@ -141,46 +119,109 @@
         </div>
         <div class="p_nav">
             <ul>
-                <li><a class="thisover" href="../html/personal_data.html"><p>个人信息</p></a></li>
+                <li><a class="thisover" href="../html/personal_data.html">个人信息</a></li>
                 <li><a class="thisover" href="../html/personal_joined.html">我的活动</a></li>
-                <li><a class="thisover" href="../html/personal_group.html">我的小组</a></li>
+                <li><a class="thisover" href="../html/personal_group.html"><p>我的小组</p></a></li>
                 <li><a class="thisover" href="../html/personal_mymessages.html">我的消息</a></li>
                 <li><a></a></li>
             </ul>
-            <h2 class="page_title"></h2>
         </div>
         
     </div>
         
     
     <div class="personal_data personal_hd">
-            <div id="div1" class="edit_page">
-			<input class="active" type="button" style="border:none;background:ghostwhite" value="基本信息" />
-                <span class="pipe">|</span>
-			<input type="button" style="border:none;background:ghostwhite" value="密码安全" />
-                <span class="pipe">|</span>
-			<input type="button" style="border:none;background:ghostwhite" value="修改头像" />
-			<div style="display:block;"><form id="personal_edit" action="#" method="post">
-			<ul>
-                <li>
-					<label for="password" class="title">密码：</label>
-					<input type="password" id="password" name="password" placeholder="请输入密码" value=""><br>
-				</li>
-				<li>
-					<label for="password2" class="title">确认密码：</label>
-					<input type="password" id="password2" name="password2" placeholder="请再次输入密码" value="" onchange="confirm_password()">
-					<br>
-					<span id="confirm_error"></span>
-				</li>
-				</ul>
-				<p id="p_publish">
-					<input type="submit"  value="确认修改">
-				</p>
-			
-		</form></div>
-			<div>222</div>
-			<div>333</div>
-		</div>
+    <div class="personal_hd_joined">
+        <div class="p_group_main">
+            <div class="g_rightbar">
+                <div class="group_posts">       <!--小组公告-->
+                  <h3>小组公告</h3>
+                    <hr>
+                  <p class="group_posts_details">本小组致力于打造良好的学习js和jQuery的氛围，你没事的时候一定要来看我们的小组，里面有所有你想要的东西。</p>
+              
+                <!--小组组长可见（修改公告）
+                    <form action="#" method="post" class="gg_review_main">
+                        <textarea name="g_notice" id="g_notice" placeholder="请填写公告" resize: none;></textarea>
+                    <div class="submit_comment">
+                        <input type="submit" id="submit_comment" value="张贴公告">
+                    </div>
+                </form>-->
+                
+                </div>
+                <div class="group">
+                  <h3>小组成员</h3>
+                   <hr>
+                    <div class="group_creater">     <!--组长-->
+                        <a href="../html/personal_data.html"><img src="../img/jiansheng.jpg"></a>
+                        <p>光明安慕希</p>
+                    </div>
+                    <div class="group_member">      <!--成员-->
+                        <ul>
+                            <li>
+                                <a href="../html/personal_data.html"><img src="../img/01.jpg"></a>
+                                <p>JoinUs</p>
+                            </li>
+                            <li>
+                                <a href="../html/personal_data.html"><img src="../img/02.jpg"></a>
+                                <p>QMS</p>
+                            </li>
+                            <li>
+                                <a href="../html/personal_data.html"><img src="../img/04.jpg"></a>
+                                <p>Soilder77</p>
+                            </li>
+                            <li>
+                                <div class="box">
+                                  <div class="demo">
+                                    <div class="p_add_member"><a class="bounceIn" href="javascript:;">
+                                      <i class="icon-plus-sign icon-5x" style="width: auto"></i>
+                                    </a>
+                                  </div>
+                                </div>
+                                <div id="dialogBg"></div>
+                                <div id="dialog_add" class="animated">
+                                  <img class="dialogIco" width="50" height="50" src="../img/ico.png" alt="" />
+                                  <div class="p_dialogTop">
+                                    <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
+                                  </div>
+                                  <form action="" method="post" id="editForm">
+
+                                   <ul class="p_friends_list">
+                                      <li><label for="checkbox1"><img src="../img/01.jpg">小石榴</label>
+                                      <input type="checkbox" name="" id="checkbox1"></li>
+                                      <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                      <input type="checkbox" name="" id="checkbox2"></li>
+                                      <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                      <input type="checkbox" name="" id="checkbox2"></li>
+                                      <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                      <input type="checkbox" name="" id="checkbox2"></li>
+                                      <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                      <input type="checkbox" name="" id="checkbox2"></li>
+                                      <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
+                                      <input type="checkbox" name="" id="checkbox2"></li>
+                                   </ul>
+                                    <p class="p_button_invite">
+                                      <input type="submit" value="发送邀请" class="submitBtn" >
+                                    </p>
+
+                                  </form>
+                                </div>
+                              </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="g_recent_hd">
+                <h3>小组近期活动</h3>
+                <hr>
+                <div class="hd_null">
+                    <span>最近没有小组活动</span>
+                </div>
+            </div>
+          </div>
+            
+
+        </div>
     </div>
 </div>
         
@@ -276,7 +317,7 @@
               jQuery(function($) {
                 $(document).ready( function() {
                   //enabling stickUp on the '.navbar-wrapper' class
-                  $('.personalbar').stickUp();
+                  $('.sidebar_hot').stickUp();
                 });
               });
 

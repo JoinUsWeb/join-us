@@ -43,8 +43,17 @@ body{
     border-bottom-style:none;
     box-shadow: 0px 0px 3px #666;
     border-radius: 3px;
-    position: relative;
 }
+
+.sidebar_col{
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    float: left;
+    width: 16.66666667%;
+    margin-left: 50px;
+}
+
 .personal_wall {
   min-height: 20px;
   padding: 0;
@@ -304,6 +313,8 @@ p_nav li{
 
 .personal_hd_joined{
     float: left;
+    width: 90%;
+    min-height: 300px;
 }
 
 a, a:visited.hd_a, a:hover.hd_a{
@@ -317,10 +328,11 @@ a:hover.hd_a{
 .p_hd_main{
     margin-top: 20px;
     margin-bottom: 10px;
+    margin-left: 14px;
     float: left;
-    padding-left: 15px;
-    width: 830px;
-    height: 170px;
+    padding-left: 20px;
+    width: 850px;
+    height: 180px;
     border-width: 0 0 1px 0;
     border-style: solid;
     border-color: cadetblue;
@@ -353,7 +365,7 @@ a:hover.hd_a{
 .p_hd_details{
     padding: 1px;
     font-size: 16px;
-    width: 170px;
+    width: 270px;
     float: left;
 }
 
@@ -363,6 +375,44 @@ a:hover.hd_a{
     font-size: 13px;
 }
 
+.p_hd_condition{
+    float: left;
+    width: 100%;
+    text-align: right;
+    color: #aaa;
+}
+.p_hd_comment{
+    margin-top: 17px;
+    padding-top: 5px;
+    width: 200px;
+    float: right;
+    text-align: right;
+    color: #5B5B5B;
+    font-family: "华文宋体";
+    font-weight: 100;
+}
+
+.rating {
+    margin-top: 17px;
+    width: 130px;
+    float: right;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    color: darkslategrey;
+    font-weight: 100;
+}
+.rating > span {
+    display: inline-block;
+    position: relative;
+    width: 23px;
+    font-size: 22px;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+    color:#FF9224;
+}
 /*重写结束*/
 /*重写个人小组界面样式*/
 .g_leftbar{
@@ -507,6 +557,13 @@ a:hover.hd_a{
     padding: 0px;
 }
 
+.group_details_button{
+    padding: 10px;
+    text-align: right;
+    float: left;
+    width: 100%;
+}
+
 /*小组详情页面*/
 .p_dialogTop{
   width: 580px;
@@ -575,6 +632,35 @@ a:hover.hd_a{
 /*重写结束*/
 
 /*个人编辑界面重写*/
+.page_title{
+    width: 100%;
+    height: 1px;
+    line-height: 70px;
+    border-bottom: 1px solid #e5e7ea;
+    text-align: right;
+    color: #cfd8dc;
+    font-weight: 400;
+    font-size: 36px;
+    font-family: initial;
+    margin-top: 37px;
+    padding: 0px;
+}
+
+.edit_page{
+    margin:0px 25px;
+    padding:0px 37px;
+}
+
+#div1 .active{
+    background-color: ghostwhite;
+}
+			
+#div1 div{	
+    margin: 10px;
+    width:100%;		
+    min-height:200px;
+    display:none;	
+}
 
 #personal_edit{
     width: 100%;
@@ -728,37 +814,6 @@ a:hover.thisover{
 a:active.thisover{
     color: brown;
     text-decoration: none;
-}
-
-
-.rating > span:hover:before {
-   content: "\2605";
-   position: absolute;
-}
-
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-}
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-}
-
-.rating {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-}
-.rating > span {
-  display: inline-block;
-  position: relative;
-  width: 1.1em;
-}
-.rating > span:hover:before,
-.rating > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
 }
 
 .group_gg{
