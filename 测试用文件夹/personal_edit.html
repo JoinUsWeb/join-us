@@ -47,7 +47,7 @@
     });
   </script>
   <script src="js/modernizr.custom.js"></script>
-		<script>
+		    <script>
          /*把相应section的id和用户点击的导航栏href值比较，改变各个section的display属性*/
             function showSection(id) {
                 var sections = document.getElementsByTagName("section");
@@ -62,7 +62,7 @@
           /*把导航栏href和用户点击href比较，改变相应元素的父元素的className*/
             function changeColor(id) {
                 var navs = document.getElementsByTagName("nav");
-                var links = navs[0].getElementsByTagName("a");
+                var links = navs[1].getElementsByTagName("a");
                 for (var i = 0; i <links.length; i++) {
                     var sectionId = links[i].getAttribute("href").split("#")[1];
                     if(sectionId == id){
@@ -74,7 +74,7 @@
             }
             function getId() {
                 var navs = document.getElementsByTagName("nav");
-                var links = navs[0].getElementsByTagName("a");
+                var links = navs[1].getElementsByTagName("a");
                 for (var i = 0; i <links.length; i++) {
                     //获取导航栏的href值
                     var secId = links[i].getAttribute("href").split("#")[1];
@@ -93,6 +93,10 @@
 
                 };
             }
+            
+        window.onload = function(){
+            getId();
+        }
 		</script>
 </head>
 
@@ -179,11 +183,12 @@
     <div class="personal_data personal_hd">
         <nav class="personal_hd_nav">
           <ul>
-            <li class="special"><a href="#edit">基本信息</a></li>
-            <li><a  href="#password">密码安全</a></li>
+            <li class="special"><a href="#edit">基本信息<span class="pipe">|</span></a></li>
+            <li><a  href="#password">密码安全<span class="pipe">|</span></a></li>
             <li><a  href="#personal_img">修改头像</a></li>
           </ul>
         </nav>
+        <div class="">
             <section id="edit">
                 <form id="personal_edit" action="#" method="post">
 			<ul>
@@ -227,8 +232,25 @@
 		</form>
             </section>
             <section id="personal_img">
-                asdasd
+                <form id="personal_edit" action="#" method="post">
+			<ul>
+                <li>
+					<label for="personal_img" class="label_style">个人头像：</label>
+					<div id="personal_img">
+						<img src="../img/posterImg.png" alt="这是一张海报">
+					</div>
+					<div id="create_button">
+						<input type="file" id="personal_img" name="personal_img">
+					</div>
+				</li>
+				</ul>
+				<p id="p_publish">
+					<input type="submit"  value="确认修改">
+				</p>
+			
+		</form>
             </section>
+        </div>
     </div>
 </div>
         
@@ -329,6 +351,7 @@
               });
 
             </script>
+
 </body>
 </html>
 
