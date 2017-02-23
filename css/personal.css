@@ -126,7 +126,7 @@ body{
 .p_show{
     margin-top: 50px;
     margin-left: 100px;
-    width: 500px;
+    width: 400px;
     height: 100px;
     color: cadetblue;
 }
@@ -135,12 +135,16 @@ body{
     padding: 3px;
 }
 
+.p_present{
+    color: dimgray;
+    padding-left: 25px;
+}
+
 .personal_body{
     box-shadow: 0px 0px 9px #666;
 }
 
 .personal_cover{
-    padding-top: 50px;
     margin-bottom: 1px;
     border-color: #080808;
     border-bottom-style:none;
@@ -300,7 +304,7 @@ p_nav li{
     text-decoration: none;
 }
 
-.special{
+.personal_hd_nav li.special{
     color: #333；
 }
 
@@ -452,7 +456,6 @@ a:hover.hd_a{
 
 .group_posts{
     float: left;
-    width: 540px;
     height: 145px;
     padding-left: 8px;
     margin-top: 0px;
@@ -487,11 +490,18 @@ a:hover.hd_a{
 .group{
     margin: 2px;
     float: left;
-    width: 540px;
     height: 150px;
     padding-left: 8px;
 }
-
+.g_width_lg{
+    width:  540px;
+}
+.width_lg{
+    width: 100%;
+}
+.min-width-lg{
+    width: 600px;
+}
 .group h3{
     margin-top: 0px;
     padding-top: 0px;
@@ -535,7 +545,6 @@ a:hover.hd_a{
 
 .group_member{
     float: left;
-    width: 420px;
     height: 130px;
     padding: 7px;
 }
@@ -567,6 +576,11 @@ a:hover.hd_a{
 }
 
 /*小组详情页面*/
+.g_title{
+    width: 100%;
+    float: left;
+    height: 300px;
+}
 .p_dialogTop{
   width: 580px;
   margin:0 5px;
@@ -605,12 +619,19 @@ a:hover.hd_a{
     float: left;
     text-align: center;
 }
+.group_quit{
+    margin-top: 100px;
+    float: left;
+}
+.quit_button{
+    
+}
 .g_recent_hd{
     padding:10px 8px;
     margin:10px 2px;
     float: left;
     width: 800px;
-    height: 300px;
+    min-height: 300px;
 }
 .g_recent_hd h3{
     margin-top: 0px;
@@ -625,11 +646,97 @@ a:hover.hd_a{
     margin: 1px;
 }
 .g_recent_hdshow{
-    padding: 5px 10px;
-    margin: 5px 5px;
+    padding: 10px 7px;
+    margin: 5px 0px;
+    min-height: 160px;
     float: left;
-    width: 260px;
-    height: 270px;
+}
+.recenthd_leftbar{
+    width: 15%;
+    height: 200px;
+    float: left;
+    padding-right: 10px;
+}
+
+.recenthd_rightbar{
+    width: 85%;
+    min-height: 200px;
+    float: left;
+}
+.rhd_creater{
+    float: left;
+    padding: 5px;
+    width: auto;
+    height: 180px;;
+}
+.rhd_creater_name{
+    font-size: 16px;
+    text-align: center;
+    font-family: "微软雅黑";
+    padding-top: 20px;
+    margin-top: 70px;
+}
+.rhd_creater img{
+    width: 80px;
+    height: 80px;
+    border-radius:50px;
+    float: left;
+}
+.recent_hd_title{
+    padding: 3px;
+    font-size: 22px;
+}
+.recent_hd{
+    font-size: 20px;
+    text-decoration: none;
+}
+.recent_hd_ul{
+    width: 200px;
+    height: 50px;
+}
+.recent_hd_tags{
+    padding: 3px;
+    padding-top: 10px;
+    font-size: 16px;
+    width: 50%;
+    float: left;
+    color: #5B5B5B;
+}
+.tag_right{
+    text-align: right;
+}
+.recent_hd_detials{
+    padding: 1px;
+    font-size: 16px;
+    width: 100%;
+    float: left;
+    min-height: 70px;
+}
+.img_outter{
+    width: 600px;
+    height: 100px;
+    padding: 0px;
+    margin: 0px;
+    display: block;
+    float: left;
+}
+.img_inner{
+    width: 300px;
+    transition: transform 0.4s ease-in-out 0s;
+    transition-property: transform;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    display: block;
+}
+.img_inner img{
+    width: 500px;
+    height: 100px;
+}
+a:-webkit-any-link.show {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
 }
 /*重写结束*/
 
@@ -731,11 +838,6 @@ a:hover.hd_a{
     border:1px solid #000;
 }
 
-
-.p_present{
-    color: dimgray;
-    padding-left: 25px;
-}
 
 .p_tag{
     float: left;
