@@ -161,6 +161,8 @@ class User extends CI_Controller
         $this->load->view('template/personal_nav',$user_data);
 
         $this->load->model('Member_and_group_model');
+        $this->load->model('Group_model');
+        $this->load->model('First_label_model');
         /*也许会用上的创建的活动
         $data['created_groups']=array();
         $created_groups=$this->Group_model->get_group_by_creator_id($this->user_id);
@@ -170,9 +172,13 @@ class User extends CI_Controller
         }*/
         $data['joined_groups']=array();
         $joined_groups=$this->Member_and_group_model->get_groups_by_user_id($this->user_id);
+        $created_groups=$this->Group_model->get_groups_by_leader_id($this->user_id);
+        if($created_groups!=null)
+            $joined_groups=array_merge($joined_groups,$created_groups);
         foreach ($joined_groups as $joined_groups_item){
             $joined_groups_item['members']=$this->Member_and_group_model->get_members_by_group_id($joined_groups_item['id']);
-            $joined_groups_item['creator']=$this->User_model->get_user_by_id($joined_groups_item['creator_id']);
+            $joined_groups_item['leader']=$this->User_model->get_user_by_id($joined_groups_item['leader_id']);
+            $joined_groups_item['first_label']=$this->First_label_model->get_first_label_by_id($joined_groups_item['first_label_id']);
             $data['joined_groups'][]=$joined_groups_item;
         }
         $this->load->view('person_related/personal_group', $data);
@@ -193,13 +199,43 @@ class User extends CI_Controller
         $this->load->model('Group_model');
         $this->load->model('Member_and_group_model');
         $group=$this->Group_model->get_group_by_id($group_id);
+        $invite_users=array();
+        $group['invite_users']=array();
         if(!empty($group)){
             $group['members']=$this->Member_and_group_model->get_members_by_group_id($group_id);
-            $group['creator']=$this->User_model->get_user_by_id($group['creator']);
+            $group['leader']=$this->User_model->get_user_by_id($group['leader_id']);
+            $joined_groups=$this->Member_and_group_model->get_groups_by_user_id($this->user_id);
+            $created_groups=$this->Group_model->get_groups_by_leader_id($this->user_id);
+            if($created_groups!=null)
+                $joined_groups=array_merge($joined_groups,$created_groups);
+            foreach ($joined_groups as $joined_groups_item){
+                if($group_id!=$joined_groups_item['id']) {
+                    $group_item_members=$this->Member_and_group_model->get_members_by_group_id($joined_groups_item['id']);
+                    $group_item_members[] = $this->User_model->get_user_by_id($joined_groups_item['leader_id']);
+                    $invite_users = array_merge($invite_users, $group_item_members);
+                }
+            }
+            //删除不可邀请对象
+            foreach ($invite_users as $invite_user_item)
+                $group['invite_users'][(string)$invite_user_item['id']]=$invite_user_item;
+            foreach ($group['members'] as $repeated_user)
+                unset($group['invite_users'][(string)$repeated_user['id']]);
+            unset($group['invite_users'][(string)$group['leader']['id']]);
+            unset($group['invite_users'][(string)$this->user_id]);
         }
-        $this->load->view('personal_related/group_detail',array('group',$group));
+        $this->load->view('person_related/group_detail',array('group'=>$group));
         $this->load->view('template/footer');
 
+    }
+
+    public function invite_users(){
+        $group_id=$this->input->post('group_id');
+        $invited_users=$this->input->post('invited_users');
+        $this->load->model('Member_and_group_model');
+        foreach ($invited_users as $invited_user_item){
+            $this->Member_and_group_model->insert_new_member_to_group($invited_user_item,$group_id);
+        }
+        echo json_encode('success');
     }
 
     public function edit()

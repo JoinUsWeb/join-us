@@ -3,28 +3,28 @@
 class Group_model extends CI_Model
 {
     public function get_group(){
-        return $this->db->get("group")->result_array();
+        return $this->db->get("group")->row_array();
     }
 
     public function get_group_by_id($group_id=-1){
         if($group_id<=0)
             return null;
         else
-            return $this->db->get_where('group',array('id'=>$group_id))->result_array();
+            return $this->db->get_where('group',array('id'=>$group_id))->row_array();
     }
 
     public function get_group_by_activity_id($activity_id=-1){
         if($activity_id<=0)
             return null;
         else
-            return $this->db->get_where("group",array("activity_id"=>$activity_id))->result_array();
+            return $this->db->get_where("group",array("activity_id"=>$activity_id))->row_array();
     }
 
-    public function get_group_by_creator_id($creator_id=-1){
-        if($creator_id<=0)
+    public function get_groups_by_leader_id($leader_id=-1){
+        if($leader_id<=0)
             return null;
         else
-            return $this->db->get_where("group",array("creator_id"=>$creator_id))->result_array();
+            return $this->db->get_where("group",array("leader_id"=>$leader_id))->result_array();
     }
 
     public function remove_group_by_id($group_id=-1){

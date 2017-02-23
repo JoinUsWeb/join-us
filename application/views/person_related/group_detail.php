@@ -21,8 +21,8 @@
                                 <hr>
                                 <div class="group_creater">     <!--组长-->
                                     <a href="../html/personal_data.html">
-                                        <img src="<?php echo base_url($group['creator']['avatar']);?>"></a>
-                                    <p><?php echo $group['creator']['nick_name'];?></p>
+                                        <img src="<?php echo base_url($group['leader']['avatar']);?>"></a>
+                                    <p><?php echo $group['leader']['nick_name'];?></p>
                                 </div>
                                 <div class="group_member">      <!--成员-->
                                     <ul>
@@ -31,7 +31,7 @@
                                         foreach ($group['members'] as $member_item):?>
                                             <li>
                                                 <a href="../html/personal_data.html">
-                                                    <img src="<?php echo base_url($member_item['creator']['avatar']);?>"></a>
+                                                    <img src="<?php echo base_url($member_item['avatar']);?>"></a>
                                                 <p><?php echo $member_item['nick_name'];?></p>
                                             </li>
                                         <?php endforeach;
@@ -48,28 +48,31 @@
                                                 </div>
                                                 <div id="dialogBg"></div>
                                                 <div id="dialog_add" class="animated">
-                                                    <img class="dialogIco" width="50" height="50" src="../img/ico.png" alt="" />
+                                                    <img class="dialogIco" width="50" height="50" src="<?php echo base_url('img/ico.png');?>" alt="" />
                                                     <div class="p_dialogTop">
                                                         <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
                                                     </div>
                                                     <form action="" method="post" id="editForm">
 
                                                         <ul class="p_friends_list">
-                                                            <li><label for="checkbox1"><img src="../img/01.jpg">小石榴</label>
-                                                                <input type="checkbox" name="" id="checkbox1"></li>
-                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
-                                                                <input type="checkbox" name="" id="checkbox2"></li>
-                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
-                                                                <input type="checkbox" name="" id="checkbox2"></li>
-                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
-                                                                <input type="checkbox" name="" id="checkbox2"></li>
-                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
-                                                                <input type="checkbox" name="" id="checkbox2"></li>
-                                                            <li><label for="checkbox2"><img src="../img/01.jpg">小石榴</label>
-                                                                <input type="checkbox" name="" id="checkbox2"></li>
+                                                        <?php
+                                                            if(!empty($group['invite_users']))
+                                                                foreach ($group['invite_users'] as $invite_user_item):
+                                                                ?>
+                                                                <li><label for="checkbox<?php echo $invite_user_item['id'];?>">
+                                                                        <img src="<?php echo base_url($invite_user_item['avatar']);?>">
+                                                                        <?php echo $invite_user_item['nick_name'];?></label>
+                                                                    <input type="checkbox" name="invited_users" id="checkbox<?php echo $invite_user_item['id'];?>"
+                                                                        value="<?php echo $invite_user_item['id']?>"></li>
+                                                            <?php
+                                                            endforeach;
+                                                            else{
+                                                                echo '没有可以邀请的对象';
+                                                            }
+                                                        ?>
                                                         </ul>
                                                         <p class="p_button_invite">
-                                                            <input type="submit" value="发送邀请" class="submitBtn" >
+                                                            <button onclick="invite()" value="发送邀请" class="submitBtn" >
                                                         </p>
 
                                                     </form>
@@ -81,7 +84,7 @@
                             </div>
                         </div>
                         <div class="g_recent_hd">
-                            <h3>小组近期活动</h3>
+                            <h3 id="test">小组近期活动</h3>
                             <hr>
                             <div class="hd_null">
                                 <span>最近没有小组活动</span>
@@ -90,6 +93,25 @@
                     </div>
                 </div>
             </div>
+
+            <script type="application/javascript">
+                function invite() {
+                    var check_box=document.getElementsByName("invited_users");
+                    var chosed_users=new Array();
+                    for(var i=0;i<check_box.length;i++){
+                        if(check_box[i].checked==true)
+                            chosed_users.push(check_box[i].value);
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo site_url('user/invite_users/'); ?>',
+                        data: {'invited_users[]': chosed_users, 'group_id': <?php echo $group['id'];?>},
+                        success: function () {
+                            location.reload();
+                        }
+                    });
+                }
+            </script>
         </div>
     </div>
 </div>

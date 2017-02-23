@@ -17,7 +17,7 @@
                                 </a>
                                 <hr>
                                 <div class="hd_details"><i class="icon-tag"></i>兴趣标签：
-                                    <span><?php echo $joined_group_item['first_label'];?></span></div>
+                                    <span><?php echo $joined_group_item['first_label']['name'];?></span></div>
                                 <div class="hd_details"><i class="icon-user-md"></i>创建时间：
                                     <span><?php echo $joined_group_item['created_time'];?></span></div>
                             </div>
@@ -32,8 +32,8 @@
                                 <h3>小组成员</h3>
                                 <hr>
                                 <div class="group_creater">     <!--组长-->
-                                    <a href="../html/personal_data.html"><img src="../img/jiansheng.jpg"></a>
-                                    <p><?php echo $joined_group_item['creator']['name']; ?></p>
+                                    <a href="../html/personal_data.html"><img src="<?php echo base_url($joined_group_item['leader']['avatar']); ?>"></a>
+                                    <p><?php echo $joined_group_item['leader']['nick_name']; ?></p>
                                 </div>
                                 <div class="group_member">      <!--成员-->
                                     <ul>
