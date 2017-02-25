@@ -83,9 +83,11 @@ class Activity_detail extends CI_Controller
         }
     }
 
+    // 希望是异步？
     private function update_recommend_value($user_id = -1, $second_label_id = -1, $base = -1)
     {
-        $fp = fsockopen("115.159.74.93", $_SERVER["SERVER_PORT"], $errno, $errstr, 30);
+        // @TODO 这里的数据都是固定的，是个问题
+        $fp = fsockopen("115.159.74.93", "80", $errno, $errstr, 30);
         if (!$fp) {
             return null;
         } else {
