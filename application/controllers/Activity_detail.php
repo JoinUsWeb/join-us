@@ -86,12 +86,12 @@ class Activity_detail extends CI_Controller
     // 希望是异步？
     private function update_recommend_value($user_id = -1, $second_label_id = -1, $base = -1)
     {
-        // @TODO 这里的数据都是固定的，是个问题
-        $fp = fsockopen("115.159.74.93", "80", $errno, $errstr, 30);
+        // @TODO 强行兼容服务器
+        $fp = fsockopen($_SERVER["HTTP_HOST"] != "[::1]" ? "115.159.74.93": "localhost", "80", $errno, $errstr, 30);
         if (!$fp) {
             return null;
         } else {
-            $out = "GET /join-us/index.php/recommend/calculate_second_label_value/".$user_id."/".$second_label_id."/".$base."/  / HTTP/1.1\r\n";
+            $out = "GET /join-us/index.php/recommend/calculate_second_label_value/" . $user_id . "/" . $second_label_id . "/" . $base . "/  / HTTP/1.1\r\n";
             $out .= "Host: localhost\r\n";
             $out .= "Connection: Close\r\n\r\n";
 
