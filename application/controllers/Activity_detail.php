@@ -8,6 +8,9 @@
  */
 class Activity_detail extends CI_Controller
 {
+    var $browse_base = 1.2;
+    var $enter_base = 2.2;
+
     public function __construct()
     {
         parent::__construct();
@@ -35,7 +38,11 @@ class Activity_detail extends CI_Controller
         if (isset($_SESSION['user_id'])) {
             $this->load->model('Browser_and_trace_model');
             $this->Browser_and_trace_model->insert_new_relation($_SESSION['user_id'], date("Y-m-d H:i:s"), $activity_id);
+
+            $this->update_recommend_value($_SESSION['user_id'], $data['activity']['second_label_id'], $this->browse_base);
         }
+        error_log("1: ");
+        error_log(microtime());
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
         $this->load->view('activity_related/activity_detail', $data);
@@ -48,6 +55,7 @@ class Activity_detail extends CI_Controller
         $activity = $this->Activity_model->get_activity_by_id($activity_id);
         if (isset($user_id) && ($activity['member_number'] < $activity['amount_max'])) {
             $this->Member_and_activity_model->insert_new_relation($user_id, $activity_id);
+            $this->update_recommend_value($_SESSION['user_id'], $activity['second_label_id'], $this->enter_base);
         }
 
         redirect('activity_detail/index/' . $activity_id);
@@ -74,4 +82,20 @@ class Activity_detail extends CI_Controller
             $this->Activity_comment_model->insert_new_comment($comment);
         }
     }
+
+    private function update_recommend_value($user_id = -1, $second_label_id = -1, $base = -1)
+    {
+        $fp = fsockopen("115.159.74.93", $_SERVER["SERVER_PORT"], $errno, $errstr, 30);
+        if (!$fp) {
+            return null;
+        } else {
+            $out = "GET /join-us/index.php/recommend/calculate_second_label_value/".$user_id."/".$second_label_id."/".$base."/  / HTTP/1.1\r\n";
+            $out .= "Host: localhost\r\n";
+            $out .= "Connection: Close\r\n\r\n";
+
+            fwrite($fp, $out);
+            fclose($fp);
+        }
+    }
+
 }
