@@ -45,7 +45,7 @@ function check_email(sync) {
         return;
     }
     $.ajax({
-        url: root + "separated_info / register_info_check / email",
+        url: root + "separated_info/register_info_check/email",
         type: 'POST',
         async: sync == undefined,
         data: {
@@ -78,7 +78,7 @@ function check_nick_name(sync) {
         document.getElementById("nickname_error").innerHTML = "昵称不能为空或全为空格！";
     }
     $.ajax({
-        url: root + "separated_info / register_info_check / nickname",
+        url: root + "separated_info/register_info_check/nickname",
         type: 'POST',
         async: sync == undefined,
         data: {

@@ -1,309 +1,349 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>searching</title>
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/searching.css">
-  <link rel="stylesheet" href="../css/mainpage.css">
-  <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>searching</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/searching.css">
+    <link rel="stylesheet" href="../css/mainpage.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
 </head>
 
 <body>
- <nav class="navbar navbar-inverse">
-      <div class="container-fluid"> 
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          
-          <a class="navbar-brand" href="../index.html"><img src="../img/logo.png" alt="" width="102" height="27"></a> </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="myInverseNavbar2">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="../index.html">首页</a></li>
-              <li><a href="searching.html">查找活动</a></li>
-              <li><a href="create.html">创建活动</a></li>
-              <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">地区 <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="../index.html">上海</a></li>
-                  <li><a href="../index.html">不限</a></li>
-                </ul>
-              </li> 
-              <li>
-                <a id="login_p" href="login.html">登录</a>
-              </li>
-              <li><p>|</p></li>
-              <li>    
-                <a id="register_p" href="register.html">注册</a>
-              </li>
-            </ul>
-            
-          <!--
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="personal_data.html">个人信息</a></li>
-            <li><a href="personal_joined.html">已参加活动</a></li>
-            <li><a href="personal_applied.html">已报名活动</a></li>
-            <li><a href="personal_comments.html">评价活动</a></li>
-            <li><a href="personal_mymessages.html">我的消息</a></li>
-            <li><a href="personal_group.html">我的小组</a></li>
-            <li class="divider"></li>
-            <li><a href="#">注销</a></li>
-          </ul>
-        </li>
-    -->
 
-</div>
-<!-- /.navbar-collapse --> 
-</div>
-<!-- /.container-fluid --> 
+            <a class="navbar-brand" href="../index.html"><img src="../img/logo.png" alt="" width="102" height="27"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="myInverseNavbar2">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="searching.html">查找活动</a></li>
+                <li><a href="create.html">创建活动</a></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                        aria-expanded="false">地区 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="../index.html">上海</a></li>
+                        <li><a href="../index.html">不限</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a id="login_p" href="login.html">登录</a>
+                </li>
+                <li><p>|</p></li>
+                <li>
+                    <a id="register_p" href="register.html">注册</a>
+                </li>
+            </ul>
+
+            <!--
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="personal_data.html">个人信息</a></li>
+              <li><a href="personal_joined.html">已参加活动</a></li>
+              <li><a href="personal_applied.html">已报名活动</a></li>
+              <li><a href="personal_comments.html">评价活动</a></li>
+              <li><a href="personal_mymessages.html">我的消息</a></li>
+              <li><a href="personal_group.html">我的小组</a></li>
+              <li class="divider"></li>
+              <li><a href="#">注销</a></li>
+            </ul>
+          </li>
+      -->
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
 </nav>
 <div style="height: 72px;"></div>
 
 <!-- /搜索导航栏开始 -->
 <div class="container">
-  <div class="searching">
-   <form id="search_hd" action="#" method="post">
-    <div class="search" id="search">
-     <div class="frame" id="frame1">
-      <div class="title" id="title">兴趣分类：</div>
-      <ul class="style1">
-        <li class="thisbe"><a class="thisover" href="#"><span>运动健身</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>酷玩达人</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>数码影音</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>文娱青春</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>出游旅行</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>教育公益</span></a></li>
-      </ul>
-    </div>
+    <div class="searching">
+        <form id="search_hd" action="#" method="post">
+            <div class="search" id="search">
+                <div class="frame" id="all_labels">
+                    <div class="title" id="title">兴趣分类：</div>
+                    <ul class="style1">
+                        <li class="thisbe" id="1"><a class="thisover" href="#"><span>运动健身</span></a></li>
+                        <li class="thisbe" id="2"><a class="thisover" href="#"><span>酷玩达人</span></a></li>
+                        <li class="thisbe" id="3"><a class="thisover" href="#"><span>数码影音</span></a></li>
+                        <li class="thisbe" id="4"><a class="thisover" href="#"><span>文娱青春</span></a></li>
+                        <li class="thisbe" id="5"><a class="thisover" href="#"><span>出游旅行</span></a></li>
+                        <li class="thisbe" id="6"><a class="thisover" href="#"><span>教育公益</span></a></li>
+                    </ul>
+                </div>
 
 
-    <div class="frame" id="frame1">
-      <div class="title" id="title">兴趣分类：</div>
-      <ul class="style1">
-        <li class="stress"><span>运动健身</span></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>有氧型</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>无氧型</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>竞技型</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>综合型</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-circle-arrow-left icon-large"></i></span></a></li>
-      </ul>
-    </div>
-    <div class="frame" id="frame1">
-      <div class="title" id="title">兴趣分类：</div>
-      <ul class="style1">
-        <li class="stress"><span>酷玩达人</span></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>玩转指尖</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>古武冷兵</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>极限运动</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-double-angle-left icon-large"></i></span></a></li>
-      </ul>
-    </div>
-    <div class="frame" id="frame1">
-      <div class="title" id="title">兴趣分类：</div>
-      <ul class="style1">
-        <li class="stress"><span>数码影音</span></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>摄影生活</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>极客玩家</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>VR</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>AR</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>移动终端</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>周边外设</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-chevron-left"></i></span></a></li>
-      </ul>
-    </div>
-    <div class="frame" id="frame1">
-      <div class="title" id="title">兴趣分类：</div>
-      <ul class="style1">
-        <li class="stress"><span>文娱青春</span></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>派对轰趴</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>音乐</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>书籍</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>影视</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>综艺</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>手工</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>绘画</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-arrow-left"></i></span></a></li>
-      </ul>
-    </div>
-    <div class="frame" id="frame1">
-      <div class="title" id="title">兴趣分类：</div>
-      <ul class="style1">
-        <li class="stress"><span>出游旅行</span></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>游山玩水</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>人文情怀</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>自然奇观</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>现代奇迹</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>游乐场</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-reply"></i></span></a></li>icon-reply
-      </ul>
-    </div><div class="frame" id="frame1">
-      <div class="title" id="title">兴趣分类：</div>
-      <ul class="style1">
-        <li class="stress"><span>教育公益</span></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>名人讲座</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>公益慈善</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>进修培训</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>传播理念</span></a></li>
-        <li class="thisbe"><a class="thisover" href="#"><span>返回</span></a></li>
-      </ul>
-    </div>
+                <div class="frame detail" id="label_1" style="display: none">
+                    <div class="title" id="title">兴趣分类：</div>
+                    <ul class="style1">
+                        <li class="stress"><span>运动健身</span></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>有氧型</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>无氧型</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>竞技型</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>综合型</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-circle-arrow-left icon-large"></i></span></a></li>
+                    </ul>
+                </div>
+                <div class="frame detail" id="label_2" style="display: none">
+                    <div class="title" id="title">兴趣分类：</div>
+                    <ul class="style1">
+                        <li class="stress"><span>酷玩达人</span></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>玩转指尖</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>古武冷兵</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>极限运动</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-double-angle-left icon-large"></i></span></a></li>
+                    </ul>
+                </div>
+                <div class="frame detail" id="label_3" style="display: none">
+                    <div class="title" id="title">兴趣分类：</div>
+                    <ul class="style1">
+                        <li class="stress"><span>数码影音</span></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>摄影生活</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>极客玩家</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>VR</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>AR</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>移动终端</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>周边外设</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-chevron-left"></i></span></a></li>
+                    </ul>
+                </div>
+                <div class="frame detail" id="label_4" style="display: none">
+                    <div class="title" id="title">兴趣分类：</div>
+                    <ul class="style1">
+                        <li class="stress"><span>文娱青春</span></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>派对轰趴</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>音乐</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>书籍</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>影视</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>综艺</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>手工</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>绘画</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-arrow-left"></i></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="frame detail" id="label_5" style="display: none">
+                    <div class="title" id="title">兴趣分类：</div>
+                    <ul class="style1">
+                        <li class="stress"><span>出游旅行</span></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>游山玩水</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>人文情怀</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>自然奇观</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>现代奇迹</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>游乐场</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span><i class="icon-reply"></i></span></a></li>
+                        icon-reply
+                    </ul>
+                </div>
+                <div class="frame detail" id="label_6" style="display: none">
+                    <div class="title" id="title">兴趣分类：</div>
+                    <ul class="style1">
+                        <li class="stress"><span>教育公益</span></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>名人讲座</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>公益慈善</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>进修培训</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>传播理念</span></a></li>
+                        <li class="thisbe"><a class="thisover" href="#"><span>返回</span></a></li>
+                    </ul>
+                </div>
 
-    <div class="frame" id="frame2">
-     <div class="title" id="title">时间：</div>
-     <ul class="style1">
-      <li><a class="thisover" href="#"><span>一天内</span></a></li>
-      <li><a class="thisover" href="#"><span>三天内</span></a></li>
-      <li><a class="thisover" href="#"><span>一周内</span></a></li>
-    </ul>   
-  </div>
-  <div class="frame" id="frame3">
-    <div class="title" id="title">地区：</div>
-    <ul class="style1">
-      <li><a class="thisover" href="#"><span>上海</span></a></li>
-      <li><a class="thisover" href="#"><span>其他</span></a></li>
-    </ul>
-  </div>    
-</div>  
-</form>
-</div>
+                <div class="frame" id="frame2">
+                    <div class="title" id="title">时间：</div>
+                    <ul class="style1">
+                        <li><a class="thisover" href="#"><span>一天内</span></a></li>
+                        <li><a class="thisover" href="#"><span>三天内</span></a></li>
+                        <li><a class="thisover" href="#"><span>一周内</span></a></li>
+                    </ul>
+                </div>
+                <div class="frame" id="frame3">
+                    <div class="title" id="title">地区：</div>
+                    <ul class="style1">
+                        <li><a class="thisover" href="#"><span>上海</span></a></li>
+                        <li><a class="thisover" href="#"><span>其他</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 <!-- ／搜索导航栏结束 -->
 
 <!-- /搜索主页开始 -->
 <div class="container">
-  <div class="row">
-    <div class="col-lg-9 col-md-12">
-      <div class="search_out" id="search_out">
-        <div class="search_main">
-          <div class="search_main_img"><a href="details_page.html"><img width="250" height="125" src="../img/400X200.gif"  alt="活动名称" ></a></div>
-          <div class="search_main_div">
-            <div class="hd_name"><a href="details_page.html">2333</a>
-            </div>
-            <div class="hd_creat"><a href="personal.html">活动发布者：<span>华东师范大学</span></a>
-            </div>
-            <div class="hd_label"><i class="icon-tag"></i> <span>兴趣标签：学习</span>
-            </div>
-            <div class="hd_time"><i class="icon-calendar "></i><span> 活动时间：2016/11/11</span>
-            </div>
-            <div class="people_num"><i class=" icon-group"></i> <span>参与人数/计划人数：1/200</span>
-            </div>
-          </div>
-        </div>
-        <div class="search_main">
-          <div class="search_main_img"><a href="details_page.html"><img width="250" height="125" src="../img/400X200.gif"  alt="活动名称" ></a></div>
-          <div class="search_main_div">
-            <div class="hd_name"><a href="details_page.html">2333</a>
-            </div>
-            <div class="hd_creat"><a href="personal.html">活动发布者：<span>华东师范大学</span></a>
-            </div>
-            <div class="hd_label"><i class="icon-tag"></i> <span>兴趣标签：学习</span>
-            </div>
-            <div class="hd_time"><i class="icon-calendar "></i><span> 活动时间：2016/11/11</span>
-            </div>
-            <div class="people_num"><i class=" icon-group"></i> <span>参与人数/计划人数：1/200</span>
-            </div>
-          </div>
-        </div>
-          <div class="search_main">
-          <div class="search_main_img"><a href="details_page.html"><img width="250" height="125" src="../img/400X200.gif"  alt="活动名称" ></a></div>
-          <div class="search_main_div">
-            <div class="hd_name"><a href="details_page.html">2333</a>
-            </div>
-            <div class="hd_creat"><a href="personal.html">发布者：<span>华东师范大学</span></a>
-            </div>
-            <div class="hd_label"><i class="icon-tag"></i> <span>兴趣标签：学习</span>
-            </div>
-            <div class="hd_time"><i class="icon-calendar "></i><span> 活动时间：2016/11/11</span>
-            </div>
-            <div class="people_num"><i class=" icon-group"></i> <span>参与人数/计划人数：1/200</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-
-    <!-- /搜索主页结束 -->
-    
-    
-
-    <!--<div class="sidebar">-->
-    <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
-      <div class="changeheight"></div>
-      <div class="sidebar_hot">
-       <div class="well">
-          <div class="hot_hd">
-            <p>热门活动</p>
-          </div>
-          
-          <div class="hot_hd_content">
-            
-            <div class="content_li">
-              <div class="li_left">
-                <a href="details_page.html" ><img src="../img/adobe.png" alt="" width="60px" height="60px"></a>
-              </div>
-              <div class="li_right">
-                <a class="li_right_title" href="details_page.html"><h5>校运会</h5></a>
-                <p>2016-11-2 9:00</p>
-              </div>
-            </div>
-            
-
-
-            <div class="content_li">
-              <div class="li_left">
-                <a href="details_page.html" ><img src="../img/adobe.png" alt="" width="60px" height="60px"></a>
-              </div>
-              <div class="li_right">
-                <a class="li_right_title" href="details_page.html"><h5>华东师范大学第二届创新创业大赛</h5></a>
-                <p>2016-11-23 13:00</p>
-              </div>
-            </div>
-
-
-            <div class="content_li">
-              <div class="li_left">
-                <a href="details_page.html" ><img src="../img/转笔.jpg" alt="" width="60px" height="60px"></a>
-              </div>
-              <div class="li_right">
-                <a class="li_right_title" href="details_page.html"><h5>可怕的辅修</h5></a>
-                <p>2016-10-28 18:00</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-  </div>
-</div>
-</div>
-
-<hr>
-
-<footer class="text-center">
-  <div class="container">
     <div class="row">
-      <div class="col-xs-12">
-       <p>Copyright © JoinUs Web. All rights reserved.</p>
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
-<script src="../js/jquery-1.11.2.min.js"></script> 
-<!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/stickUp.min.js"></script>
-<script type="text/javascript">
-              //initiating jQuery
-              jQuery(function($) {
-                $(document).ready( function() {
-                  //enabling stickUp on the '.navbar-wrapper' class
-                  $('.sidebar_hot').stickUp();
-                });
-              });
+        <div class="col-lg-9 col-md-12">
+            <div class="search_out" id="search_out">
+                <div class="search_main">
+                    <div class="search_main_img"><a href="details_page.html"><img width="250" height="125"
+                                                                                  src="../img/400X200.gif"
+                                                                                  alt="活动名称"></a></div>
+                    <div class="search_main_div">
+                        <div class="hd_name"><a href="details_page.html">2333</a>
+                        </div>
+                        <div class="hd_creat"><a href="personal.html">活动发布者：<span>华东师范大学</span></a>
+                        </div>
+                        <div class="hd_label"><i class="icon-tag"></i> <span>兴趣标签：学习</span>
+                        </div>
+                        <div class="hd_time"><i class="icon-calendar "></i><span> 活动时间：2016/11/11</span>
+                        </div>
+                        <div class="people_num"><i class=" icon-group"></i> <span>参与人数/计划人数：1/200</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="search_main">
+                    <div class="search_main_img"><a href="details_page.html"><img width="250" height="125"
+                                                                                  src="../img/400X200.gif"
+                                                                                  alt="活动名称"></a></div>
+                    <div class="search_main_div">
+                        <div class="hd_name"><a href="details_page.html">2333</a>
+                        </div>
+                        <div class="hd_creat"><a href="personal.html">活动发布者：<span>华东师范大学</span></a>
+                        </div>
+                        <div class="hd_label"><i class="icon-tag"></i> <span>兴趣标签：学习</span>
+                        </div>
+                        <div class="hd_time"><i class="icon-calendar "></i><span> 活动时间：2016/11/11</span>
+                        </div>
+                        <div class="people_num"><i class=" icon-group"></i> <span>参与人数/计划人数：1/200</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="search_main">
+                    <div class="search_main_img"><a href="details_page.html"><img width="250" height="125"
+                                                                                  src="../img/400X200.gif"
+                                                                                  alt="活动名称"></a></div>
+                    <div class="search_main_div">
+                        <div class="hd_name"><a href="details_page.html">2333</a>
+                        </div>
+                        <div class="hd_creat"><a href="personal.html">发布者：<span>华东师范大学</span></a>
+                        </div>
+                        <div class="hd_label"><i class="icon-tag"></i> <span>兴趣标签：学习</span>
+                        </div>
+                        <div class="hd_time"><i class="icon-calendar "></i><span> 活动时间：2016/11/11</span>
+                        </div>
+                        <div class="people_num"><i class=" icon-group"></i> <span>参与人数/计划人数：1/200</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            </script>
-          </body>
-          </html>
+
+        <!-- /搜索主页结束 -->
+
+
+        <!--<div class="sidebar">-->
+        <div class="col-lg-3 col-md-6 col-md-offset-3 col-lg-offset-0">
+            <div class="changeheight"></div>
+            <div class="sidebar_hot">
+                <div class="well">
+                    <div class="hot_hd">
+                        <p>热门活动</p>
+                    </div>
+
+                    <div class="hot_hd_content">
+
+                        <div class="content_li">
+                            <div class="li_left">
+                                <a href="details_page.html"><img src="../img/adobe.png" alt="" width="60px"
+                                                                 height="60px"></a>
+                            </div>
+                            <div class="li_right">
+                                <a class="li_right_title" href="details_page.html"><h5>校运会</h5></a>
+                                <p>2016-11-2 9:00</p>
+                            </div>
+                        </div>
+
+
+                        <div class="content_li">
+                            <div class="li_left">
+                                <a href="details_page.html"><img src="../img/adobe.png" alt="" width="60px"
+                                                                 height="60px"></a>
+                            </div>
+                            <div class="li_right">
+                                <a class="li_right_title" href="details_page.html"><h5>华东师范大学第二届创新创业大赛</h5></a>
+                                <p>2016-11-23 13:00</p>
+                            </div>
+                        </div>
+
+
+                        <div class="content_li">
+                            <div class="li_left">
+                                <a href="details_page.html"><img src="../img/转笔.jpg" alt="" width="60px" height="60px"></a>
+                            </div>
+                            <div class="li_right">
+                                <a class="li_right_title" href="details_page.html"><h5>可怕的辅修</h5></a>
+                                <p>2016-10-28 18:00</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Copyright © JoinUs Web. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/stickUp.min.js"></script>
+    <script type="text/javascript">
+        //initiating jQuery
+        jQuery(function ($) {
+            $(document).ready(function () {
+                //enabling stickUp on the '.navbar-wrapper' class
+                $('.sidebar_hot').stickUp();
+
+                var lis = document.getElementById("all_labels").getElementsByClassName("thisbe");
+                var length = lis.length;
+                var i;
+                for (i = 0; i < length; i++) {
+                    lis[i].onclick = function () {
+                        document.getElementById("all_labels").style.display = "none";
+                        var divs = document.getElementsByClassName("detail");
+                        var length = divs.length;
+                        for (var j = 0; j < length; j++) {
+                            divs[j].style.djsplay = "none";
+                        }
+                        document.getElementById("label_" + this.id).removeAttribute("style");
+                    }
+                }
+
+                // 我这里随便选了一个 icon-circle-arrow-left 做个样例，你确定图标之后把这个改了就可以了
+                var back = document.getElementsByClassName("icon-circle-arrow-left"/*这里放图标的class*/);
+                length = back.length;
+                for (i = 0; i < length; i++) {
+                    back[i].onclick = function () {
+                        document.getElementById("all_labels").removeAttribute("style");
+                        var divs = document.getElementsByClassName("detail");
+                        var length = divs.length;
+                        for (var j = 0; j < length; j++) {
+                            divs[j].style.display = "none";
+                        }
+                    }
+                }
+
+            });
+        });
+
+    </script>
+</body>
+</html>
