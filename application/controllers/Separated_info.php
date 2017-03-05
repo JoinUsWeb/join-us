@@ -14,7 +14,7 @@ class Separated_info extends CI_Controller
         $this->load->model("Second_label_model");
         if ($first_label_id == -1)
             return json_encode('');
-        $return_info = $this->Second_label_model->get_second_label_by_first_id($first_label_id);
+        $return_info = $this->Second_label_model->get_second_label_by_first_label_id($first_label_id);
         if ($return_info == null)
             return json_encode('');
         echo json_encode($return_info);

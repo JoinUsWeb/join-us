@@ -14,7 +14,7 @@
  * 根据提供的活动 id 查找对应的二级标签  返回而级标签信息的单行数组
  * public function get_second_label_by_activity_id($activity_id = -1)
  *
- * 根据提供的一级标签 id 查找对应的二级标签  返回二级标签信息的单行数组
+ * 根据提供的一级标签 id 查找对应的二级标签  返回二级标签信息的数组
  * public function get_second_label_by_first_id($first_label_id = -1)
  *
  * 根据提供的二级标签 id 删除对应的二级标签、用户与二级标签关联表中二级标签id为提供id的条目
@@ -86,7 +86,7 @@ class Second_label_model extends CI_Model
      * @param int $first_label_id
      * @return null OR array $data
      */
-    public function get_second_label_by_first_id($first_label_id = -1)
+    public function get_second_label_by_first_label_id($first_label_id = -1)
     {
         if ($first_label_id < 0)
             return null;
@@ -113,7 +113,7 @@ class Second_label_model extends CI_Model
 
     public function remove_second_label_by_first_id($first_label_id = -1)
     {
-        $second_label_to_be_delete = $this->get_second_label_by_first_id($first_label_id);
+        $second_label_to_be_delete = $this->get_second_label_by_first_label_id($first_label_id);
         foreach ($second_label_to_be_delete as $second_label_item_to_be_delete) {
             $result = $this->remove_by_id($second_label_item_to_be_delete['id']) == false;
             if ($result == null || $result == false)

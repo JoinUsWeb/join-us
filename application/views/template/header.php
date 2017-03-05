@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title ?></title>
     <link rel="stylesheet" href="<?php echo base_url("css/bootstrap.css"); ?>">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url("css/font-awesome.min.css"); ?>">
     <?php switch ($page_name) {
         case "login": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/login&register.css"); ?>">

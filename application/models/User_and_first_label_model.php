@@ -87,7 +87,7 @@ class User_and_first_label_model extends CI_Model
         if ($user_id <= 0 || $first_label_id <= 0)
             return null;
         else {
-            $second_label = $this->Second_label_model->get_second_label_by_first_id($first_label_id);
+            $second_label = $this->Second_label_model->get_second_label_by_first_label_id($first_label_id);
             if ($second_label == null)
                 return null;
             foreach ($second_label as $second_label_item)
