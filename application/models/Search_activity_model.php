@@ -13,10 +13,12 @@ class Search_activity_model extends CI_Model
         $this->load->model('Activity_model');
     }
 
-    public function search_activity($second_label_id, $city, $time)
+    public function search_activity($second_label_id, $city, $time, $order)
     {
+        $order_name = array("","activity_start","");
         $query = array();
         $earlier_than = null;
+        $activity = null;
         if ($second_label_id != 0)
             $query['first_label_id'] = $second_label_id;
         if ($city != 0)
@@ -30,14 +32,20 @@ class Search_activity_model extends CI_Model
                 $earlier_than = date('Y-m-d H:i:s', strtotime('+3 month'));
             $query['activity_start < '] = $earlier_than;
         }
-        if (empty($query))
+        if (empty($query) && $order == 0)
             $activity = $this->Activity_model->get_activity();
         else {
             $query['isVerified'] = 1;
-            $activity = $this->Activity_model->get_activity_by_where_string($query);
+            if ($order != 0)
+                $activity = $this->db
+                    ->where($query)
+                    ->order_by($order_name[$order - 1],"DESC")
+                    ->get('activity')
+                    ->result_array();
+            else
+                $activity = $this->Activity_model->get_activity_by_where_string($query);
         }
 
         return $activity;
-
     }
 }

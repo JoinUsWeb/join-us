@@ -59,9 +59,9 @@ $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3',
                 <div class="frame" id="frame3">
                     <div class="title">排序：</div>
                     <ul class="style1">
-                        <li><a class="thisover" href="#"><span>综合</span></a></li>
-                        <li><a class="thisover" href="#"><span>最新</span></a></li>
-                        <li><a class="thisover" href="#"><span>最热</span></a></li>
+                        <li><a class="thisover" href="<?php echo site_url("search_activity/index?second_label_id=" . $select['second_label_id']) . "&time=0" . '&order=1'; ?>"><span>综合</span></a></li>
+                        <li><a class="thisover" href="<?php echo site_url("search_activity/index?second_label_id=" . $select['second_label_id']) . "&time=0" . '&order=2'; ?>"><span>最新</span></a></li>
+                        <li><a class="thisover" href="<?php echo site_url("search_activity/index?second_label_id=" . $select['second_label_id']) . "&time=0" . '&order=3'; ?>"><span>最热</span></a></li>
                     </ul>
                 </div>
             </div>
