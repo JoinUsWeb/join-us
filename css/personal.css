@@ -127,7 +127,7 @@ body{
 .p_show{
     margin-top: 50px;
     margin-left: 100px;
-    width: 400px;
+    width: 300px;
     height: 100px;
     color: cadetblue;
 }
@@ -136,6 +136,46 @@ body{
     padding: 3px;
 }
 
+.p_shows{
+    margin-left: 520px;
+    width: 200px;
+    float: left;
+}
+.p_score{
+    width: 40px;
+    height: 40px;
+    float: left;
+    font-size: 20px;
+}
+.p_star{
+    width: 80px;
+    height: 20px;
+    float: left;
+}
+.p_rating{
+    height: 60px;
+}
+.p_rate_choice{
+    width: 200px;
+    height: 30px;
+    font-size: 10px;
+}
+.p_rate_choice li{
+    width: 60px;
+    float: left;
+}
+.personal_credit{
+    padding: 0px 40px;
+}
+.rate_show{
+    display: inline-block;
+    content: "\2605";
+    color:  #FF9224;
+}
+a:hover.special{
+    text-decoration: none;
+    color: cornflowerblue;
+}
 .p_present{
     color: dimgray;
     padding-left: 25px;
@@ -194,6 +234,8 @@ body{
 }
 
 .personal_portrait{
+    margin-right: 0px;
+    padding-right: 0px;
     width: 120px;
     height: 125px;
     background-color: white;
@@ -204,12 +246,15 @@ body{
     left: 20px;
     box-shadow: 0px 0px 13px #666;
     padding-bottom: 10px;
+    float: left;
 }
 
 .personal_portrait img{
     width: 110px;
     height: 110px;
     border-radius:50px;
+    margin-right: 0px;
+    padding-right: 0px;
     float: left;
 }
 
@@ -222,7 +267,6 @@ body{
 }
 
 .p_data li{
-    width: 330px;
     float: left;
     padding: 10px;
     margin: none;
@@ -231,6 +275,10 @@ body{
     font-family: "华为仿宋";
     font-style:normal;
     color:dimgray;
+}
+
+.p_data_width li{
+    width: 330px;
 }
 
 .p_details_present{
@@ -273,12 +321,6 @@ body{
 .p_nav p{
     border-bottom: 2.3px solid crimson;
     margin-bottom: 0px;
-}
-
-p_nav li{
-    text-indent: -9999px;
-    margin-bottom: 0px;
-    padding: 0px;
 }
 
 /*重写结束*/
@@ -389,20 +431,19 @@ a:hover.hd_a{
     color: #aaa;
 }
 .p_hd_comment{
-    margin-top: 17px;
+    margin-top: 10px;
     padding-top: 5px;
-    width: 200px;
-    float: right;
-    text-align: right;
+    width: 120px;
+    float: left;
     color: #5B5B5B;
     font-family: "华文宋体";
     font-weight: 100;
 }
 
 .rating {
-    margin-top: 17px;
+    margin-top: 10px;
     width: 130px;
-    float: right;
+    float: left;
     unicode-bidi: bidi-override;
     direction: rtl;
     color: darkslategrey;
@@ -643,8 +684,10 @@ a:hover.hd_a{
     font-size: 22px;
 }
 .g_recent_hd hr{
+    height: 2px;
     padding: 2px;
     margin: 1px;
+    color: black;
 }
 .g_recent_hdshow{
     padding: 10px 7px;

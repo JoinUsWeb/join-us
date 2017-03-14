@@ -47,6 +47,57 @@
         });
     </script>
     <script src="js/modernizr.custom.js"></script>
+    		    <script>
+         /*把相应section的id和用户点击的导航栏href值比较，改变各个section的display属性*/
+            function showSection(id) {
+                var sections = document.getElementsByTagName("section");
+                for(var i=0;i<sections.length;i++) {
+                    if(sections[i].getAttribute("id") != id) {
+                        sections[i].style.display = "none";
+                    }else {
+                        sections[i].style.display = "block";
+                    }
+                }
+            }
+          /*把导航栏href和用户点击href比较，改变相应元素的父元素的className*/
+            function changeColor(id) {
+                var navs = document.getElementsByTagName("nav");
+                var links = navs[1].getElementsByTagName("a");
+                for (var i = 0; i <links.length; i++) {
+                    var sectionId = links[i].getAttribute("href").split("#")[1];
+                    if(sectionId == id){
+                        links[i].parentNode.className = "special";
+                    }else {
+                        links[i].parentNode.className = "";
+                    }
+                }
+            }
+            function getId() {
+                var navs = document.getElementsByTagName("nav");
+                var links = navs[1].getElementsByTagName("a");
+                for (var i = 0; i <links.length; i++) {
+                    //获取导航栏的href值
+                    var secId = links[i].getAttribute("href").split("#")[1];
+                    if (!document.getElementById(secId)) continue;
+                    //设置最初的演示
+                    document.getElementById(secId).style.display = "none";
+                    document.getElementById("personal_xinyong").style.display = "block";
+                    /*这里存在作用域问题，secId是个局部变量，它在getId函数执行期间存在，
+                    到时间处理函数执行的时候就不存在了，故在这里为每个链接创建了一个自定义的属性destination*/
+                    links[i].destination = secId;
+                    links[i].onclick = function() {
+                        showSection(this.destination);
+                        changeColor(this.destination);
+                        return false;
+                    }
+
+                };
+            }
+            
+        window.onload = function(){
+            getId();
+        }
+		</script>
 </head>
 
 <body>
@@ -83,11 +134,9 @@
           <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="personal_data.html">个人信息</a></li>
-              <li><a href="personal_joined.html">已参加活动</a></li>
-              <li><a href="personal_applied.html">已报名活动</a></li>
-              <li><a href="personal_comments.html">评价活动</a></li>
-              <li><a href="personal_mymessages.html">我的消息</a></li>
+              <li><a href="personal_joined.html">我的活动</a></li>
               <li><a href="personal_group.html">我的小组</a></li>
+              <li><a href="personal_mymessages.html">我的消息</a></li>
               <li class="divider"></li>
               <li><a href="#">注销</a></li>
             </ul>
@@ -108,7 +157,7 @@
     <div class="col-xs-10 col-sm-10 col-md-10 col-lg-9 hidden-xs">
     <div class="personal_nav">
         <div class="personal_portrait">
-            <img alt="头像" src="../img/jiansheng1.jpg">
+            <img alt="头像" src="../img/jiansheng.jpg">
             <div class="p_show">
             <ul>
                 <li><i class=" icon-user-md"></i>账号:
@@ -117,8 +166,34 @@
                     <ul class="p_present"><li>JoinUS</li></ul></li>
             </ul>
             </div>
-            
         </div>
+        <div class="p_shows">
+            <nav class="p_rate_choice">
+                <ul>
+                    <li><a class="special" href="#personal_xinyong">用户信用<span class="pipe">|</span></a></li>
+                    <li><a class="special" href="#personal_pingfen">组织评分</a></li>
+                </ul>
+            </nav>
+            <div>
+            <section id="personal_xinyong" class="personal_credit">
+                <div class="p_rating">
+                <div class="p_score">5.0</div>
+                <div class="p_star">
+                        <span class="rate_show">☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                </div>
+            </div>
+            </section>
+            <section id="personal_pingfen" class="personal_credit">
+                <div class="p_rating">
+                <div class="p_score">6.0</div>
+                <div class="p_star">
+                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                </div>
+            </div>
+            </section>
+                </div>
+        </div>
+            
         <div class="p_nav">
             <ul>
                 <li><a class="thisover" href="../html/personal_data.html"><p>个人信息</p></a></li>
@@ -134,7 +209,7 @@
         
     
     <div class="personal_data">
-          <div class="p_data">
+          <div class="p_data p_data_width">
             <ul>
               <li><i class=" icon-map-marker"></i>所在地区:<div class="p_present">上海</div></li>
                     <li><i class=" icon-tags"></i>兴趣标签:
