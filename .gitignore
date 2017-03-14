@@ -40,3 +40,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+html/my_html.html

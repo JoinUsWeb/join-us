@@ -22,7 +22,7 @@
                     </ul>
                 </div>
                 <div class="p_data">
-                    <a class="p_button" href="../html/personal_edit.html">
+                    <a class="p_button" href="<?php echo site_url("user/edit");?>">
                         <div class="p_data_button">
                             点击修改个人信息
                         </div>
@@ -30,5 +30,3 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
