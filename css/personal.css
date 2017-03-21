@@ -348,7 +348,7 @@ a:hover.special{
 }
 
 .personal_hd_nav li.special{
-    color: #333；
+    color: #333;
 }
 
 .personal_hd_nav a.hd_a{
@@ -440,7 +440,7 @@ a:hover.hd_a{
     font-weight: 100;
 }
 
-.rating {
+.rating, .rated {
     margin-top: 10px;
     width: 130px;
     float: left;
@@ -449,7 +449,7 @@ a:hover.hd_a{
     color: darkslategrey;
     font-weight: 100;
 }
-.rating > span {
+.rating > span,.rated > span {
     display: inline-block;
     position: relative;
     width: 23px;
@@ -459,6 +459,11 @@ a:hover.hd_a{
 .rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
+    color:#FF9224;
+}
+.selected:before{
+    content: "\2605";
+    position: absolute;
     color:#FF9224;
 }
 /*重写结束*/
