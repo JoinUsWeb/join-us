@@ -1,9 +1,6 @@
 body{
-    background-repeat: no-repeat;
-    background-attachment: scroll;
     background-size: cover;
-    
-
+    background: rgb(240, 240, 240) no-repeat scroll;
 }
 
 
