@@ -46,6 +46,28 @@ class User extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    public function edit()
+    {
+        $this->load_header_view('info');
+        $this->load->model('Member_and_activity_model');
+        $data['title'] = "个人中心";
+        $data['page_name'] = 'edit';
+        $data['user_info'] = $this->User_model->get_user_by_id($this->user_id);
+
+        $this->load->model('User_model');
+        $this->load->library('form_validation');
+        $this->load->helper(array('form', 'url'));
+
+        if (isset($_POST))
+            $this->update_user_info();
+
+        $this->load->view('person_related/personal_edit', $data);
+        $this->load->view('template/personal_sidebar');
+        $this->load->view('template/footer');
+
+    }
+
     //参数model表示显示的活动类型是什么，创建的:0, 参加的:1，评价的：2
     public function activities($model=1)
     {
@@ -115,7 +137,6 @@ class User extends CI_Controller
         $this->load->view('template/personal_sidebar');
         $this->load->view('template/footer');
     }
-
 
 
     /* 功能被撤销
@@ -220,26 +241,6 @@ class User extends CI_Controller
     }
 
     public function create_group(){
-
-    }
-
-    public function edit()
-    {
-        $data['title'] = "个人中心";
-        $this->load->model('User_model');
-        $this->load->library('form_validation');
-        $this->load->helper(array('form', 'url'));
-        $data['page_name'] = 'edit';
-        $data['user_info'] = $this->User_model->get_user_by_id($this->user_id);
-
-
-        if (isset($_POST))
-            $this->update_user_info();
-
-        $this->load->view('template/header', $data);
-        $this->load->view('template/nav');
-        $this->load->view('person_related/personal_edit', $data);
-        $this->load->view('template/footer');
 
     }
 

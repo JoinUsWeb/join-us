@@ -1,54 +1,3 @@
-<div class="container">
-    <?php echo form_open('user/edit', array('id' => "create_hd")); ?>
-    <ul>
-        <li>
-            <label for="email" class="label_style">账号：</label>
-            <input type="text" value="<?php echo $user_info['email']; ?>" disabled="disabled" id="email"
-                   style="background-color:transparent;border: 0;color:white">
-        </li>
-        <li>
-            <label for="nickname" class="label_style">昵称：</label>
-            <input type="text" id="nickname" name="nick_name" value="<?php echo $user_info['nick_name']; ?>">
-            <?php echo form_error('nick_name', '<span>', '</span>'); ?>
-        </li>
-        <li>
-            <label for="password" class="title">密码：</label>
-            <input type="password" id="password" name="password" placeholder="请输入密码"><br>
-            <?php echo form_error('password2', '<span>', '</span>'); ?>
-        </li>
-        <li>
-            <label for="password2" class="title">确认密码：</label>
-            <input type="password" id="password2" name="password2" placeholder="请再次输入密码"
-                   onchange="confirm_password()">
-            <br>
-            <span id="confirm_error"></span>
-        </li>
-        <li>
-            <label for="phone_number" class="title">手机号：</label>
-            <input type="tel" id="phone_number" name="phone_number"
-                   value="<?php echo $user_info['phone_number']; ?>">
-            <?php echo form_error('phone_number', '<span>', '</span>'); ?>
-        </li>
-        <li>
-            <label for="personal_img" class="label_style">个人头像：</label>
-            <div id="personal_img">
-                <img src="<?php echo base_url($user_info['avatar']); ?>" alt="这是一张海报">
-            </div>
-            <div id="create_button">
-                <input type="file" id="personal_img" name="personal_img">
-            </div>
-        </li>
-        <li>
-            <label for="personal_jj" class="label_style">个人简介：</label>
-            <textarea name="personal_jj" id="personal_jj" style="resize:none" placeholder="（不超过50字）"></textarea>
-        </li>
-    </ul>
-    <p id="publish">
-        <input type="submit" value="确认修改">
-    </p>
-
-    </form>
-</div>
 <script type="text/javascript">
     var nick_name_check = false, password_check = false,
         password_confirm_check = false, phone_check = false;
@@ -157,3 +106,135 @@
         brief_check = true;
     }
 </script>
+
+
+
+            <div class="personal_data personal_hd">
+                <nav class="personal_hd_nav">
+                    <ul>
+                        <li class="special"><a href="#edit">基本信息<span class="pipe">|</span></a></li>
+                        <li><a  href="#password">密码安全<span class="pipe">|</span></a></li>
+                        <li><a  href="#personal_img">修改头像</a></li>
+                    </ul>
+                </nav>
+                <div class="">
+                    <section id="edit">
+                        <form id="personal_edit" action="#" method="post">
+                            <ul>
+                                <li>
+                                    <label for="nickname" class="label_style">昵称：</label>
+                                    <input type="text" id="nickname" name="nickname" placeholder="请输入昵称">
+                                </li>
+                                <li>
+                                    <label for="phone_number" class="label_style">手机号：</label>
+                                    <input type="tel" id="phone_number" name="phone_number" placeholder="请输入手机号码"><br>
+                                </li>
+                                <li>
+                                    <label for="personal_jj" class="label_style">个人简介：</label>
+                                    <textarea name="personal_jj" id="personal_jj" style="resize:none" placeholder="（不超过50字）"></textarea>
+                                </li>
+                            </ul>
+                            <p id="p_publish">
+                                <input type="submit"  value="确认修改">
+                            </p>
+
+                        </form>
+                    </section>
+                    <section id="password">
+                        <form id="personal_edit" action="#" method="post">
+                            <ul>
+                                <li>
+                                    <label for="password" class="title">密码：</label>
+                                    <input type="password" id="password" name="password" placeholder="请输入密码" value=""><br>
+                                </li>
+                                <li>
+                                    <label for="password2" class="title">确认密码：</label>
+                                    <input type="password" id="password2" name="password2" placeholder="请再次输入密码" value="" onchange="confirm_password()">
+                                    <br>
+                                    <span id="confirm_error"></span>
+                                </li>
+                            </ul>
+                            <p id="p_publish">
+                                <input type="submit"  value="确认修改">
+                            </p>
+
+                        </form>
+                    </section>
+                    <section id="personal_img">
+                        <form id="personal_edit" action="#" method="post">
+                            <ul>
+                                <li>
+                                    <label for="personal_img" class="label_style">个人头像：</label>
+                                    <div id="personal_img">
+                                        <img src="<?php echo base_url($user_info['avatar']); ?>" alt="这是一张海报">
+                                    </div>
+                                    <div id="create_button">
+                                        <input type="file" id="personal_img" name="personal_img">
+                                    </div>
+                                </li>
+                            </ul>
+                            <p id="p_publish">
+                                <input type="submit"  value="确认修改">
+                            </p>
+
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+
+
+<script type="text/javascript">
+    /*把相应section的id和用户点击的导航栏href值比较，改变各个section的display属性*/
+    function showSection(id) {
+        var sections = document.getElementsByTagName("section");
+        for(var i=0;i<sections.length;i++) {
+            if(sections[i].getAttribute("id") != id) {
+                sections[i].style.display = "none";
+            }else {
+                sections[i].style.display = "block";
+            }
+        }
+    }
+    /*把导航栏href和用户点击href比较，改变相应元素的父元素的className*/
+    function changeColor(id) {
+        var navs = document.getElementsByTagName("nav");
+        var links = navs[1].getElementsByTagName("a");
+        for (var i = 0; i <links.length; i++) {
+            var sectionId = links[i].getAttribute("href").split("#")[1];
+            if(sectionId == id){
+                links[i].parentNode.className = "special";
+            }else {
+                links[i].parentNode.className = "";
+            }
+        }
+    }
+    function getId() {
+        var navs = document.getElementsByTagName("nav");
+        var links = navs[1].getElementsByTagName("a");
+        for (var i = 0; i <links.length; i++) {
+            //获取导航栏的href值
+            var secId = links[i].getAttribute("href").split("#")[1];
+            if (!document.getElementById(secId)) continue;
+            //设置最初的演示
+            document.getElementById(secId).style.display = "none";
+            document.getElementById("edit").style.display = "block";
+            /*这里存在作用域问题，secId是个局部变量，它在getId函数执行期间存在，
+             到时间处理函数执行的时候就不存在了，故在这里为每个链接创建了一个自定义的属性destination*/
+            links[i].destination = secId;
+            links[i].onclick = function() {
+                showSection(this.destination);
+                changeColor(this.destination);
+                return false;
+            }
+
+        };
+    }
+
+    window.onload = function(){
+        getId();
+    }
+</script>
+
