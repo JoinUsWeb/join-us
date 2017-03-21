@@ -53,10 +53,10 @@ class Group_model extends CI_Model
             $data['member_number']=0;
             $data['activity_id']=$group_info['activity_id'];
             $data['created_time']=date("Y-m-d h:i:sa");
-            return $this->db->insert('group',$data)==false;
+            return $this->db->insert('group',$data);
         }
         else
-            return false;
+            return -1;
     }
 
     /**
@@ -74,7 +74,7 @@ class Group_model extends CI_Model
             $new_data['activity_id']=$data['activity_id'];
             $new_data['announcement']=$data['announcement'];
             $new_data['member_number']=$data['member_number'];
-            return $this->db->updata('group',$new_data);
+            return $this->db->replace('group',$new_data);
         }
         else
             return false;
@@ -85,7 +85,7 @@ class Group_model extends CI_Model
         if(empty($data))
             return false;
         $data['announcement']=$announcement;
-        return $this->db->update('group',$data);
+        return $this->db->replace('group',$data);
     }
 
 }

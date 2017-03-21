@@ -1,5 +1,5 @@
             <div class="personal_data">
-                <div class="p_data">
+                <div class="p_data p_data_width">
                     <ul>
                         <li><i class=" icon-map-marker"></i>所在地区:
                             <div class="p_present">上海</div>
@@ -17,7 +17,7 @@
                 <div class="p_data">
                     <ul>
                         <li><i class=" icon-bookmark"></i>个人介绍:
-                            <div class="p_present">他静悄悄的来过，但没有留下任何消息。</div>
+                            <div class="p_details_present">他静悄悄的来过，但没有留下任何消息。</div>
                         </li>
                     </ul>
                 </div>

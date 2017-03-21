@@ -331,7 +331,7 @@
         $.ajax({
             type: "post",
             url: '<?php echo site_url("activity_detail/comment_check"); ?>',
-            data: {'comment': comment, 'activity_id' : <?php echo $activity['id']; ?>},
+            data: {'comment': comment, 'activity_id': <?php echo $activity['id']; ?>},
             success: function () {
                 location.reload(true);
             }

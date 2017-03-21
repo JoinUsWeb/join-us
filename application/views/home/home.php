@@ -44,8 +44,7 @@
                         <div class="<?php echo $count == 1 ? "item active" : "item"; ?>">
                             <a href="<?php echo site_url("activity_detail/index/" . $hot_activity[$count]["id"]); ?>">
                                 <img class="img-responsive"
-                                     src="<?php
-                                     echo base_url($hot_activity[$count]['poster']); ?>"
+                                     src="<?php echo base_url($hot_activity[$count]['poster']); ?>"
                                      alt="thumb">
                                 <div class="carousel-caption"><?php echo $hot_activity[$count]['name']; ?></div>
                             </a>
