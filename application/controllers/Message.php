@@ -46,20 +46,26 @@ class Message extends CI_Controller
         }
     }
 
-    /**
-     *load view(person_related/personal_mymessages);
-     */
-    public function personal_mymessages(){
-        $data=$this->get_message_by_user_id($this->session->user_id);
-        $data['title'] = "个人中心";
-        $data['page_name'] = 'message';
-
-        $this->load->view('template/header', $data);
+    function load_header_view($tag_selected='info'){
+        $header['title'] = "个人中心";
+        $header['page_name'] = 'personal';
+        $this->load->view('template/header', $header);
         $this->load->view('template/nav');
 
         $this->load->model('User_model');
         $user_data=$this->User_model->get_user_by_id($this->user_id);
+        $user_data['tag']=$tag_selected;
         $this->load->view('template/personal_nav',$user_data);
+    }
+
+    /**
+     *load view(person_related/personal_mymessages);
+     */
+    public function personal_mymessages(){
+        $this->load_header_view('message');
+        $data=$this->get_message_by_user_id($this->session->user_id);
+        $data['title'] = "个人中心";
+        $data['page_name'] = 'message';
 
         $this->load->view('person_related/personal_mymessages',$data);
         $this->load->view('template/footer');

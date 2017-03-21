@@ -65,7 +65,7 @@ class User extends CI_Controller
         $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['date_time_start']));
+            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
             if (strtotime($current_date_time) <= strtotime($activity_date_time)) {
                 $data['activities_info'][] = $single_activity_info;
             }
@@ -159,6 +159,7 @@ class User extends CI_Controller
         if($created_groups!=null)
             $joined_groups=array_merge($joined_groups,$created_groups);
         foreach ($joined_groups as $joined_groups_item){
+            if ($joined_groups_item == null) continue;
             $joined_groups_item['members']=$this->Member_and_group_model->get_members_by_group_id($joined_groups_item['id']);
             $joined_groups_item['leader']=$this->User_model->get_user_by_id($joined_groups_item['leader_id']);
             $joined_groups_item['first_label']=$this->First_label_model->get_first_label_by_id($joined_groups_item['first_label_id']);
