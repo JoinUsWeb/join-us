@@ -79,8 +79,8 @@ class User extends CI_Controller
 
     public function created()
     {
-        $this->load->model('Group_model');
-        $row_activities_info = $this->Group_model->get_groups_by_leader_id($this->user_id);
+        $this->load->model('Activity_model');
+        $row_activities_info = $this->Activity_model->get_activity_by_creator_id($this->user_id);
         $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
