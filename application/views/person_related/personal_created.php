@@ -22,7 +22,7 @@
                                     if($activity_item['isVerified']):
                                         if($activity_item['status']):?>
                                             <div class="p_hd_condition">
-                                                <button onclick="create_group()" value="已结束 是否创建小组" class="creat_button">
+                                                <button onclick="create_group(<?php echo $activity_item['id']?>)" value="已结束 是否创建小组" class="creat_button">
                                             </div>
                                         <?php else:?>
                                             <div class="p_hd_condition">活动还未开始...</div>
@@ -40,7 +40,7 @@
         </div>
 
                 <script>
-                    function create_group() {
+                    function create_group($activity_id) {
 
                     }
                 </script>

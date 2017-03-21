@@ -219,8 +219,16 @@ class User extends CI_Controller
         $this->group();
     }
 
-    public function create_group(){
-
+    public function create_group($activity_id=-1){
+        if($activity_id<=0)
+            show_404('无法创建小组');
+        $this->load->model('Group_model');
+        $this->load->model('Activity_model');
+        $activity=$this->Activity_model->get_activity_by_id($activity_id);
+        $data['leader_id']=$this->user_id;
+        $data['name']=$activity['name'];
+        $data['activity_id']=$activity_id;
+        $this->Group_model->insert_new_group($data);
     }
 
     public function edit()
