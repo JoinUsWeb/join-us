@@ -46,10 +46,11 @@ class User extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    //参数model表示显示的活动类型是什么，参加过的:0, 正参加的:1，评价的：2；收藏的：3
+    //参数model表示显示的活动类型是什么，创建的:0, 参加的:1，评价的：2；收藏的：3
     public function activities($model=1)
     {
         $this->load_header_view('activities');
+        $this->load->view('person_related/personal_activities_nav',array('model'=>$model));
         switch ($model){
             case 1:$this->applied();break;
             case 2:$this->comments();break;
@@ -67,6 +68,7 @@ class User extends CI_Controller
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
             if (strtotime($current_date_time) <= strtotime($activity_date_time)) {
+
                 $data['activities_info'][] = $single_activity_info;
             }
         }
@@ -82,7 +84,7 @@ class User extends CI_Controller
         $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['date_time_start']));
+            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
             if (strtotime($current_date_time) > strtotime($activity_date_time)) {
                 $data['activities_info'][] = $single_activity_info;
             }
@@ -104,19 +106,14 @@ class User extends CI_Controller
         $current_date = date("Y-m-d");
         $data['activities_info'] = array();
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date = substr($single_activity_info['date_time_start'],0,10);
+            $activity_date = substr($single_activity_info['activity_start'],0,10);
             // 查看活动是否已经结束 结束代表已经参加过
             if (strtotime($current_date) > strtotime($activity_date)) {
                 $data['activities_info'][] = $single_activity_info;
             }
         }
-
-        //$this->load->view('template/header', $data);
-        //$this->load->view('template/nav');
-        $this->load->model('User_model');
-        //$user_data=$this->User_model->get_user_by_id($this->user_id);
-        //$this->load->view('template/personal_nav',$user_data);
         $this->load->view('person_related/personal_comments', $data);
+        $this->load->view('template/personal_sidebar');
         $this->load->view('template/footer');
     }
 
@@ -215,6 +212,12 @@ class User extends CI_Controller
             $this->Member_and_group_model->insert_new_member_to_group($invited_user_item,$group_id);
         }
         echo json_encode('success');
+    }
+
+    public function quit_group($group_id=0){
+        $this->load->model('Member_and_group_model');
+        $this->Member_and_group_model->remove_member_from_group_by_id($group_id,$this->user_id);
+        $this->group();
     }
 
     public function edit()

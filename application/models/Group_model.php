@@ -52,6 +52,7 @@ class Group_model extends CI_Model
             $data['announcement']='';
             $data['member_number']=0;
             $data['activity_id']=$group_info['activity_id'];
+            $data['created_time']=date("Y-m-d h:i:sa");
             return $this->db->insert('group',$data)==false;
         }
         else

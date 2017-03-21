@@ -62,7 +62,7 @@ class Member_and_group_model extends CI_Model
         if($group_id<=0|$member_id<=0)
             return false;
         else{
-            return $this->db->delete('group',array('group_id'=>$group_id,'member_id'=>$member_id));
+            return $this->db->delete('relation_group_members',array('group_id'=>$group_id,'member_id'=>$member_id));
         }
     }
 
