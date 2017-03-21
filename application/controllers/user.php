@@ -46,36 +46,19 @@ class User extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    //参数model表示显示的活动类型是什么，创建的:0, 参加的:1，评价的：2；收藏的：3
+    //参数model表示显示的活动类型是什么，创建的:0, 参加的:1，评价的：2
     public function activities($model=1)
     {
         $this->load_header_view('activities');
         $this->load->view('person_related/personal_activities_nav',array('model'=>$model));
         switch ($model){
-            case 1:$this->applied();break;
+            case 0:$this->created();break;
+            case 1:$this->joined();break;
             case 2:$this->comments();break;
-            case 3:$this->applied();break;
-            default:$this->applied();
+            default:$this->joined();
         }
     }
 
-    public function applied()
-    {
-        $this->load->model('Member_and_activity_model');
-        $row_activities_info = $this->Member_and_activity_model->get_activity_by_member_id($this->user_id);
-        $current_date_time = date("Y-m-d h:i:sa");
-        $data['activities_info']=array();
-        foreach ($row_activities_info as $single_activity_info) {
-            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
-            if (strtotime($current_date_time) <= strtotime($activity_date_time)) {
-
-                $data['activities_info'][] = $single_activity_info;
-            }
-        }
-        $this->load->view('person_related/personal_applied', $data);
-        $this->load->view('template/personal_sidebar');
-        $this->load->view('template/footer');
-    }
 
     public function joined()
     {
@@ -85,11 +68,27 @@ class User extends CI_Controller
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
-            if (strtotime($current_date_time) > strtotime($activity_date_time)) {
-                $data['activities_info'][] = $single_activity_info;
-            }
+            //status:活动状态，1为结束，0为未开始
+            $single_activity_info['status']=strtotime($current_date_time) > strtotime($activity_date_time)?1:0;
+            $data['activities_info'][] = $single_activity_info;
         }
         $this->load->view('person_related/personal_joined', $data);
+        $this->load->view('template/personal_sidebar');
+        $this->load->view('template/footer');
+    }
+
+    public function created()
+    {
+        $this->load->model('Group_model');
+        $row_activities_info = $this->Group_model->get_groups_by_leader_id($this->user_id);
+        $current_date_time = date("Y-m-d h:i:sa");
+        $data['activities_info']=array();
+        foreach ($row_activities_info as $single_activity_info) {
+            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
+            $single_activity_info['status']=strtotime($current_date_time) > strtotime($activity_date_time)?1:0;
+            $data['activities_info'][] = $single_activity_info;
+        }
+        $this->load->view('person_related/personal_created', $data);
         $this->load->view('template/personal_sidebar');
         $this->load->view('template/footer');
     }
@@ -218,6 +217,10 @@ class User extends CI_Controller
         $this->load->model('Member_and_group_model');
         $this->Member_and_group_model->remove_member_from_group_by_id($group_id,$this->user_id);
         $this->group();
+    }
+
+    public function create_group(){
+
     }
 
     public function edit()

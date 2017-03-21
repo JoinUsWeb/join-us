@@ -18,16 +18,29 @@
                                 <div class="p_hd_bd">
                                     <?php echo $activity_item['brief']; ?>
                                 </div>
-                                <?php if($activity_item['status']):?>
-                                    <div class="p_hd_condition">活动正在进行...</div>
-                                <?php else:?>
-                                    <div class="p_hd_condition">活动还未开始...</div>
-                                <?php endif;?>
+                                    <?php
+                                    if($activity_item['isVerified']):
+                                        if($activity_item['status']):?>
+                                            <div class="p_hd_condition">
+                                                <button onclick="create_group()" value="已结束 是否创建小组" class="creat_button">
+                                            </div>
+                                        <?php else:?>
+                                            <div class="p_hd_condition">活动还未开始...</div>
+                                        <?php endif;?>
+                                        <?php else:?>
+                                        <div class="p_hd_condition">活动还在审核中...</div>
+                                    <?php endif;?>
                             </div>
                         <?php endforeach;
                     else : ?>
-                        <div class="hd_null"><span>近期没有参与活动，快去寻找你的专属活动</span></div>
+                        <div class="hd_null"><span>还没有创建过活动</span></div>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
+
+                <script>
+                    function create_group() {
+
+                    }
+                </script>
