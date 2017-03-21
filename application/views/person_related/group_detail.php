@@ -82,7 +82,7 @@
                                     </ul>
                                 </div>
                                 <div class="group_quit">
-                                    <input type="button" value="退出小组" class="quit_button">
+                                    <input type="button" onclick="quit()" value="退出小组" class="quit_button">
                                 </div>
                             </div>
                         </div>
@@ -136,6 +136,10 @@
                             location.reload();
                         }
                     });
+                }
+
+                function quit() {
+                    location.href="<?php echo site_url('user/quit_group/'.$group['id']);?>";
                 }
             </script>
         </div>

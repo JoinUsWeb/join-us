@@ -1,6 +1,8 @@
 # Ignore following files
 *.DS_Store
 
+CodeIgniter/*
+
 application/controllers/Test.php
 application/views/test
 application/session
