@@ -23,13 +23,16 @@
                                     </div>
                                     <?php
                                     if ($activity_item['isVerified']):
-                                        if ($activity_item['status']):?>
+                                        if ($activity_item['status']==1):?>
                                             <div class="p_hd_condition">
                                                 <input type="button" onclick="create_group(<?php echo $activity_item['id'] ?>)"
                                                        value="已结束 是否创建小组" class="creat_button">
                                             </div>
-                                        <?php else: ?>
+                                        <?php elseif($activity_item['status']==0): ?>
                                             <div class="p_hd_condition">活动还未开始...</div>
+                                        <?php elseif($activity_item['status']==2): ?>
+                                        <div class="p_hd_condition"><a href="
+                                            <?php echo site_url('user/group_detail/'.$activity_item['id']);?>">查看此活动的小组</a></div>
                                         <?php endif; ?>
                                     <?php else: ?>
                                         <div class="p_hd_condition">活动还在审核中...</div>

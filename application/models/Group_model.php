@@ -49,7 +49,7 @@ class Group_model extends CI_Model
             $data=array();
             $data['leader_id']=$group_info['leader_id'];
             $data['name']=$group_info['name'];
-            $data['announcement']='';
+            $data['announcement']='小组公告可以方便的对组员发布通知哦，快来设置吧';
             $data['member_number']=0;
             $data['activity_id']=$group_info['activity_id'];
             $data['created_time']=date("Y-m-d h:i:sa");

@@ -28,6 +28,7 @@
                                 case 'activities':
                                     $tag_index=1;break;
                                 case 'group':
+                                case 'group_detail':
                                     $tag_index=2;break;
                                 case 'message':
                                     $tag_index=3;break;

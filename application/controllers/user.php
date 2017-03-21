@@ -90,7 +90,7 @@ class User extends CI_Controller
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
-            //status:活动状态，1为结束，0为未开始
+            //status:活动状态，1为结束，0为未开始,2为已经创建小组了
             $single_activity_info['status']=strtotime($current_date_time) > strtotime($activity_date_time)?1:0;
             $data['activities_info'][] = $single_activity_info;
         }
@@ -105,9 +105,14 @@ class User extends CI_Controller
         $row_activities_info = $this->Activity_model->get_activity_by_creator_id($this->user_id);
         $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
+        $this->load->model("Group_model");
         foreach ($row_activities_info as $single_activity_info) {
             $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
-            $single_activity_info['status']=strtotime($current_date_time) > strtotime($activity_date_time)?1:0;
+            //status:活动状态，1为结束，0为未开始,2为已经创建小组了
+            if(!empty($this->Group_model->get_group_by_activity_id($single_activity_info['id'])))
+                $single_activity_info['status']=2;
+            else
+                $single_activity_info['status']=strtotime($current_date_time) > strtotime($activity_date_time)?1:0;
             $data['activities_info'][] = $single_activity_info;
         }
         $this->load->view('person_related/personal_created', $data);
@@ -189,7 +194,7 @@ class User extends CI_Controller
 
     public function group_detail($group_id)
     {
-        $this->load_header_view('grout_detail');
+        $this->load_header_view('group_detail');
 
         $this->load->model('Group_model');
         $this->load->model('Member_and_group_model');

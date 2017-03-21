@@ -22,7 +22,7 @@
                                 <div class="group_creater">     <!--组长-->
                                     <a href="../html/personal_data.html">
                                         <img src="<?php echo base_url($group['leader']['avatar']);?>"></a>
-                                    <p><?php echo $group['leader']['nick_name'];?></p>
+                                    <p><?php echo $group['leader']['nick_name'];?>(组长)</p>
                                 </div>
                                 <div class="group_member min-width-lg">      <!--成员-->
                                     <ul>
@@ -81,9 +81,11 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="group_quit">
-                                    <input type="button" onclick="quit()" value="退出小组" class="quit_button">
-                                </div>
+                                <?php if($this->session->user_id!=$group['leader_id']):?>
+                                    <div class="group_quit">
+                                        <input type="button" onclick="quit()" value="退出小组" class="quit_button">
+                                    </div>
+                                <?php endif;?>
                             </div>
                         </div>
                         <div class="g_recent_hd">
