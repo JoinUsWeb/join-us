@@ -49,6 +49,7 @@ class Admin_model extends CI_Model
         $info = $this->db
             ->join('relation_admin_firstlabel', 'relation_admin_firstlabel.admin_id = ' . $id)
             ->where('activity.first_label_id = relation_admin_firstlabel.first_label_id')
+            ->order_by('activity.id','DESC')
             ->get('activity')
             ->result_array();
         $length = count($info);

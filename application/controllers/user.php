@@ -89,6 +89,7 @@ class User extends CI_Controller
         $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
+            if ($single_activity_info == null) continue;
             $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
             //status:活动状态，1为结束，0为未开始,2为已经创建小组了
             $single_activity_info['status']=strtotime($current_date_time) > strtotime($activity_date_time)?1:0;

@@ -5,13 +5,13 @@
                             ?>
                             <div class="p_hd_main">
                                 <div class="hd_img">
-                                    <a href="<?php echo site_url('activity_detail/' . $activity_item['id']); ?>">
+                                    <a href="<?php echo site_url('activity_detail/index/' . $activity_item['id']); ?>">
                                         <img alt="活动海报" src="<?php echo base_url($activity_item['poster']); ?>"></a>
                                 </div>
 
                                 <div class="p_hd_present">
                                     <div class="p_hd_title"><a class="thisover"
-                                                               href="<?php echo site_url('activity_detail/' . $activity_item['id']); ?>">
+                                                               href="<?php echo site_url('activity_detail/index/' . $activity_item['id']); ?>">
                                             <span><?php echo $activity_item['name']; ?></span></a></div>
                                     <div class="p_hd_details"><i class="icon-time"></i>
                                         <?php echo $activity_item['activity_start']; ?></div>

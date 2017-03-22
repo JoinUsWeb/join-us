@@ -72,7 +72,7 @@ class Admin extends CI_Controller
             return;
         }
         $data['activity_info'] = $this->Admin_model->get_activity_detail_by_activity_id($activity_id);
-        $data['activity_info']['first_label_id'] = $this->First_label_model->get_first_label_by_activity_id($activity_id)['name'];
+        $data['activity_info']['first_label_id'] = $this->First_label_model->get_first_label_by_id($data['activity_info']['first_label_id'])['name'];
         $this->load->view('admin/check_page',$data);
     }
 
