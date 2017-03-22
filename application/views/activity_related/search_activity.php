@@ -154,7 +154,9 @@ $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3',
     jQuery(function ($) {
         $(document).ready(function () {
             //enabling stickUp on the '.navbar-wrapper' class
-            $('.sidebar_hot').stickUp();
+            $('.sidebar_hot').stickUp({
+                topMargin: '70px'
+            });
 
             var lis = document.getElementById("all_labels").getElementsByClassName("thisbe");
             var length = lis.length;

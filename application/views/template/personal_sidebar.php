@@ -71,7 +71,9 @@
     jQuery(function ($) {
         $(document).ready(function () {
             //enabling stickUp on the '.navbar-wrapper' class
-            $('.personalbar').stickUp();
+            $('.personalbar').stickUp({
+                topMargin: '70px'
+            });
         });
     });
 </script>

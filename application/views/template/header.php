@@ -70,6 +70,7 @@
             <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/detail.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/common.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/mainpage.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
             <?php break;
@@ -82,37 +83,38 @@
             <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
             <?php break;
         case 'personal':?>
-        <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
-        <link rel="stylesheet" href="<?php echo base_url("css/detail.css"); ?>">
-        <link rel="stylesheet" href="<?php echo base_url("css/common.css"); ?>">
-        <script type="text/javascript" src="<?php echo base_url("js/jquery-3.1.1.min.js");?>"></script>
-        <script type="text/javascript">
-                var w,h,className;
-                function getSrceenWH(){
-                        w = $(window).width();
-                        h = $(window).height();
-                        $('#dialogBg').width(w).height(h);
-                }
-                window.onresize = function(){
-                        getSrceenWH();
-                }
-                $(window).resize();
-                $(function(){
-                        getSrceenWH();
-                        $('.box a').click(function(){
-                                className = $(this).attr('class');
-                                $('#dialogBg').fadeIn(300);
-                                $('#dialog_add').removeAttr('class').addClass('animated '+className+'').fadeIn();
-                        });
-                        $('.claseDialogBtn').click(function(){
-                                $('#dialogBg').fadeOut(300,function(){
-                                        $('#dialog_add').addClass('bounceOutUp').fadeOut();
-                                });
-                        });
-                });
-        </script>
+            <link rel="stylesheet" href="<?php echo base_url("css/personal.css"); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/default.css"); ?>">
+            <link rel="stylesheet" type="text/css" href="<?php echo base_url("css/component.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/detail.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/common.css"); ?>">
+            <link rel="stylesheet" href="<?php echo base_url("css/mainpage.css"); ?>">
+            <script type="text/javascript" src="<?php echo base_url("js/jquery-3.1.1.min.js");?>"></script>
+            <script type="text/javascript">
+                    var w,h,className;
+                    function getSrceenWH(){
+                            w = $(window).width();
+                            h = $(window).height();
+                            $('#dialogBg').width(w).height(h);
+                    }
+                    window.onresize = function(){
+                            getSrceenWH();
+                    }
+                    $(window).resize();
+                    $(function(){
+                            getSrceenWH();
+                            $('.box a').click(function(){
+                                    className = $(this).attr('class');
+                                    $('#dialogBg').fadeIn(300);
+                                    $('#dialog_add').removeAttr('class').addClass('animated '+className+'').fadeIn();
+                            });
+                            $('.claseDialogBtn').click(function(){
+                                    $('#dialogBg').fadeOut(300,function(){
+                                            $('#dialog_add').addClass('bounceOutUp').fadeOut();
+                                    });
+                            });
+                    });
+            </script>
         <?php break;
     } ?>
 

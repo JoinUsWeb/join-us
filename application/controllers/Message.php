@@ -68,6 +68,7 @@ class Message extends CI_Controller
         $data['page_name'] = 'message';
 
         $this->load->view('person_related/personal_mymessages',$data);
+        $this->load->view('template/personal_sidebar');
         $this->load->view('template/footer');
     }
 
