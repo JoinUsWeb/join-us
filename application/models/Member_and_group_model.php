@@ -44,12 +44,12 @@ class Member_and_group_model extends CI_Model
         return $data;
     }
 
-    public function get_groups_by_user_id($use_id=-1){
-        if($use_id<=0)
+    public function get_groups_by_user_id($user_id=-1){
+        if($user_id<=0)
             return null;
         else{
             $data = array();
-            $relation = $this->db->get_where('relation_group_members', array('user_id' => $use_id))->result_array();
+            $relation = $this->db->get_where('relation_group_members', array('user_id' => $user_id))->result_array();
             foreach ($relation as $relation_item) {
                 $data[] = $this->Group_model->get_group_by_id($relation_item['group_id']);
             }

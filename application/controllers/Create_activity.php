@@ -92,7 +92,7 @@ class Create_activity extends CI_Controller
         unset($data['date_start'], $data['time_start'], $data['date_expire'], $data['time_expire'], $data['end_date'], $data['end_hour']);
         $data['poster'] = $poster_path;
         $this->Activity_model->insert_new_activity($data);
-        redirect('activity_detail/index/' . $this->db->insert_id());
+        redirect('activity_detail/verifying/' . $this->db->insert_id());
     }
 
     public function create_activity_no_poster($data)

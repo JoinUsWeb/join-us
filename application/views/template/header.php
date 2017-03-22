@@ -24,6 +24,9 @@
             <link rel="stylesheet" href="<?php echo base_url("css/common.css"); ?>">
             <link rel="stylesheet" href="<?php echo base_url("css/mainpage.css"); ?>">
             <?php break;
+        case "verify": ?>
+            <link rel="stylesheet" href="<?php echo base_url("css/create.css"); ?>">
+            <?php break;
         case "create": ?>
             <link rel="stylesheet" href="<?php echo base_url("css/create.css"); ?>">
             <link rel="stylesheet"

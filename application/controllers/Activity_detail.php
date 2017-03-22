@@ -41,8 +41,6 @@ class Activity_detail extends CI_Controller
 
             $this->update_recommend_value($_SESSION['user_id'], $data['activity']['second_label_id'], $this->browse_base);
         }
-        error_log("1: ");
-        error_log(microtime());
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
         $this->load->view('activity_related/activity_detail', $data);
@@ -100,4 +98,14 @@ class Activity_detail extends CI_Controller
         }
     }
 
+
+    public function verifying($activity_id = -1)
+    {
+        $data['title'] = 'Verifying';
+        $data['page_name'] = "verify";
+        $this->load->view('template/header', $data);
+        $this->load->view('template/nav');
+        $this->load->view('activity_related/verify_page');
+        $this->load->view('template/footer');
+    }
 }
