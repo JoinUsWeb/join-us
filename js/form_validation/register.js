@@ -71,6 +71,7 @@ function check_nick_name(sync) {
     if (nickname_text.length <= 0 || nickname_text.trim() == 0) {
         //显示错误信息
         document.getElementById("nickname_error").innerHTML = "昵称不能为空或全为空格！";
+        return;
     }
     $.ajax({
         url: root + "/separated_info/register_info_check/nickname",
@@ -97,12 +98,14 @@ function check_password() {
     if (password.length <= 0) {
         // 显示错误信息
         document.getElementById("psd_error").innerHTML = "密码不能为空！";
+        return;
     } else if (password.length < 6) {
         // 显示错误信息
         document.getElementById("psd_error").innerHTML = "密码长度至少6位！";
         return;
     }
-    else document.getElementById("psd_error").innerHTML = "";
+    else
+        document.getElementById("psd_error").innerHTML = "";
     password_check = true;
 }
 
