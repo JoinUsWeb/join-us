@@ -4,8 +4,7 @@
 
 function getRoot() {
     var url = window.document.location.href;
-    var pathname = window.document.location.pathname;
-    return url.substr(0, url.indexOf(pathname));
+    return url.substr(0, url.indexOf("index.php") + 9);
 }
 
 var root = getRoot();
@@ -30,6 +29,7 @@ function check() {
 }
 
 function check_email(sync) {
+    document.getElementById("email_error").innerHTML = "";
     email_check = false;
     var unique_check = false;
     var email_text = document.getElementById("email").value;
@@ -45,7 +45,7 @@ function check_email(sync) {
         return;
     }
     $.ajax({
-        url: root + "separated_info/register_info_check/email",
+        url: root + "/separated_info/register_info_check/email",
         type: 'POST',
         async: sync == undefined,
         data: {
@@ -54,22 +54,17 @@ function check_email(sync) {
         ,
         success: function (info) {
             if (info == "true")
-                unique_check = true;
+                email_check = true;
             else {
                 // 显示错误提示
                 document.getElementById("email_error").innerHTML = "该邮箱已注册，请登录！";
             }
         }
-    })
-    ;
-    if (unique_check) {
-        // 错误信息置为空
-        email_check = true;
-        document.getElementById("email_error").innerHTML = "";
-    }
+    });
 }
 
 function check_nick_name(sync) {
+    document.getElementById("nickname_error").innerHTML = "";
     nick_name_check = false;
     var unique_check = false;
     var nickname_text = document.getElementById("nickname").value;
@@ -78,7 +73,7 @@ function check_nick_name(sync) {
         document.getElementById("nickname_error").innerHTML = "昵称不能为空或全为空格！";
     }
     $.ajax({
-        url: root + "separated_info/register_info_check/nickname",
+        url: root + "/separated_info/register_info_check/nickname",
         type: 'POST',
         async: sync == undefined,
         data: {
@@ -87,19 +82,13 @@ function check_nick_name(sync) {
         ,
         success: function (info) {
             if (info == "true")
-                unique_check = true;
+                nick_name_check = true;
             else {
                 // 显示错误提示
                 document.getElementById("nickname_error").innerHTML = "昵称已被使用！";
             }
         }
-    })
-    ;
-    if (unique_check) {
-        // 错误信息置为空
-        nick_name_check = true;
-        document.getElementById("nickname_error").innerHTML = "";
-    }
+    });
 }
 
 function check_password() {
