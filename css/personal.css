@@ -456,7 +456,7 @@ a:hover.hd_a{
     font-size: 22px;
 }
 .rating > span:hover:before,
-.rating > span:hover ~ span:before{
+.rating > span:hover ~ span:before {
    content: "\2605";
    position: absolute;
     color:#FF9224;
