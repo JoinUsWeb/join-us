@@ -76,12 +76,12 @@ class Member_and_activity_model extends CI_Model
         }
     }
 
-    public function is_exist($member_id,$activity_id)
+    public function is_exist($member_id, $activity_id)
     {
-        if($member_id<=0||$activity_id<=0)
+        if ($member_id <= 0 || $activity_id <= 0)
             return null;
-        else{
-            if(empty($this->db->get_where('relation_activity_members',array('member_id' => $member_id,'activity_id'=>$activity_id))->result_array()))
+        else {
+            if (empty($this->db->get_where('relation_activity_members', array('member_id' => $member_id, 'activity_id' => $activity_id))->result_array()))
                 return false;
             else
                 return true;
@@ -94,13 +94,13 @@ class Member_and_activity_model extends CI_Model
     {
         if ($activity_id <= 0 || $member_id <= 0)
             return null;
-        else if($this->is_exist($member_id,$activity_id)){
-            $activity=$this->Activity_model->get_activity_by_id($activity_id);
+        else if ($this->is_exist($member_id, $activity_id)) {
+            $activity = $this->Activity_model->get_activity_by_id($activity_id);
             $activity['member_number']--;
-            if($activity['member_number']<0)
+            if ($activity['member_number'] < 0)
                 return false;
             unset($activity['id']);
-            if($this->Activity_model->update_activity_by_id($activity_id,$activity)==false)
+            if ($this->Activity_model->update_activity_by_id($activity_id, $activity) == false)
                 return false;
 
             if ($this->db->delete('relation_activity_members', array('activity_id' => $activity_id, 'member_id' => $member_id)) == false)
@@ -123,14 +123,14 @@ class Member_and_activity_model extends CI_Model
 
     public function remove_by_user_id($user_id)
     {
-        $activity=$this->get_activity_by_member_id($user_id);
+        $activity = $this->get_activity_by_member_id($user_id);
         foreach ($activity as $activity_item) {
-            $activity_to_delete=$this->Activity_model->get_activity_by_id($activity_item['id']);
+            $activity_to_delete = $this->Activity_model->get_activity_by_id($activity_item['id']);
             $activity_to_delete['member_number']--;
-            if($activity_to_delete['member_number']<0)
+            if ($activity_to_delete['member_number'] < 0)
                 return false;
             unset($activity_to_delete['id']);
-            if($this->Activity_model->update_activity_by_id($activity_item['id'],$activity_to_delete)==false)
+            if ($this->Activity_model->update_activity_by_id($activity_item['id'], $activity_to_delete) == false)
                 return false;
         }
         if ($user_id <= 0)
@@ -156,27 +156,27 @@ class Member_and_activity_model extends CI_Model
      */
     public function insert_new_relation($user_id = -1, $activity_id = -1)
     {
-        if(empty($this->db->get_where('relation_activity_members',array('member_id'=>$user_id,'activity_id'=>$activity_id))->result_array())) {
-            if ($user_id <= 0 || $activity_id <= 0)
-                return null;
-            else {
-                if($this->is_exist($user_id,$activity_id))
-                    return false;
+        if ($user_id <= 0 || $activity_id <= 0)
+            return null;
+        if (empty($this->db->get_where('relation_activity_members', array('member_id' => $user_id, 'activity_id' => $activity_id))->result_array())) {
+            if ($this->is_exist($user_id, $activity_id))
+                return false;
 
-                $activity=$this->Activity_model->get_activity_by_id($activity_id);
-                $activity['member_number']++;
-                unset($activity['id']);
-                if($this->Activity_model->update_activity_by_id($activity_id,$activity)==false)
-                    return false;
+            $activity = $this->Activity_model->get_activity_by_id($activity_id);
+            $activity['member_number']++;
+            unset($activity['id']);
+            if ($this->Activity_model->update_activity_by_id($activity_id, $activity) == false)
+                return false;
 
-                $data = array(
-                    'member_id' => $user_id,
-                    'activity_id' => $activity_id
-                );
-                if ($this->db->insert('relation_activity_members', $data) == false)
-                    return false;
-                return true;
-            }
+            $data = array(
+                'member_id' => $user_id,
+                'activity_id' => $activity_id
+            );
+            if ($this->db->insert('relation_activity_members', $data) == false)
+                return false;
+            return true;
         }
+        else
+            return false;
     }
 }

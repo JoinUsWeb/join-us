@@ -58,6 +58,4 @@ class Separated_info extends CI_Controller
                 break;
         }
     }
-
-
 }

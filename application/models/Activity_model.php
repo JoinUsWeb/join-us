@@ -230,6 +230,12 @@ class Activity_model extends CI_Model
         if ($activity_info == null)
             return null;
         $activity_info['member_number'] = 0;
+
+        // @TODO 这里在Model中完成活动评分的初始评定
+        $this->load->model('User_model');
+        $creator_info = $this->User_model->get_user_by_id($activity_info['creator_id']);
+        $activity_info['score'] = $creator_info['leadership'];
+
         if ($this->db->insert('activity', $activity_info) == false)
             return false;
         return true;
@@ -251,6 +257,21 @@ class Activity_model extends CI_Model
             return null;
         $this->db->where('id', $activity_id);
         if ($this->db->update('activity', $array_for_update) == false)
+            return false;
+        return true;
+    }
+
+    public function update_activity_score($activity_id = -1, $applier_id = -1){
+        if ($activity_id == -1 || $applier_id == -1)
+            return null;
+
+        // @todo 在model中完成对活动评分的修改
+        $this->load->model('User_model');
+        $applier_info = $this->User_model->get_user_by_id($applier_id);
+        $activity_info = $this->get_activity_by_id($activity_id);
+        // @todo 初步使用加法计算新的score
+        $new_score = $applier_info['brownie_point'] + $activity_info['score'];
+        if ($this->db->update('activity',array('score'=>$new_score),'id='.$activity_id) == false)
             return false;
         return true;
     }
