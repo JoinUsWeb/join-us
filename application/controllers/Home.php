@@ -16,6 +16,7 @@ class Home extends CI_Controller
         $this->load->model('Activity_model');
         $this->load->model('First_label_model');
         $this->load->model("User_and_first_label_model");
+        $this->load->model('Recommend_activity_model');
         $this->load->helper(array('url', 'form'));
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
@@ -44,14 +45,7 @@ class Home extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function get_recommended_activity()
-    {
-        $activity = array();
-        $first_label = $this->User_and_first_label_model->get_first_label_by_user_id($this->user_id);
-        foreach ($first_label as $first_label_item) {
-            $activity_part = $this->Activity_model->get_activity_by_first_label_id($first_label_item['id']);
-            $activity = array_merge($activity, $activity_part);
-        }
-        return $activity;
+    public function get_recommended_activity(){
+        return $this->Recommend_activity_model->get_recommend_activity($this->user_id);
     }
 }
