@@ -59,8 +59,8 @@ class User extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url'));
 
-        if (isset($_POST))
-            $this->update_user_info();
+        /*if (isset($_POST))
+            $this->update_user_info();*/
 
         $this->load->view('person_related/personal_edit', $data);
         $this->load->view('template/personal_sidebar');
