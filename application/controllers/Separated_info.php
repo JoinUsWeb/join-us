@@ -58,4 +58,9 @@ class Separated_info extends CI_Controller
                 break;
         }
     }
+
+    function comment_activity($activity_id, $rate){
+        $this->load->model("Member_and_activity_model");
+        $this->Member_and_activity_model->update_rate($_SESSION['user_id'],$activity_id,$rate);
+    }
 }

@@ -16,9 +16,31 @@
                         <div class="p_hd_details"><i
                                     class="icon-map-marker"></i><?php echo $single_activity['place']; ?></div>
                         <div class="p_hd_comment">请为组织者评分:</div>
-                        <div class="rating">
+                        <?php if (-1 == $single_activity['rate']) : ?>
+                        <div class="rating" data-activity-id="<?php echo $single_activity['id']?>">
                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                         </div>
+                        <?php elseif (1 == $single_activity['rate']): ?>
+                            <div class="rated">
+                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span class="selected">☆</span>
+                            </div>
+                        <?php elseif (2 == $single_activity['rate']): ?>
+                            <div class="rated">
+                                <span>☆</span><span>☆</span><span>☆</span><span class="selected">☆</span><span class="selected">☆</span>
+                            </div>
+                        <?php elseif (3 == $single_activity['rate']): ?>
+                            <div class="rated">
+                                <span>☆</span><span>☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
+                            </div>
+                        <?php elseif (4 == $single_activity['rate']): ?>
+                            <div class="rated">
+                                <span>☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
+                            </div>
+                        <?php else: ?>
+                            <div class="rated">
+                                <span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
+                            </div>
+                        <?php endif;?>
                     </div>
                 </div>
             <?php endforeach;
@@ -34,7 +56,8 @@
 <script type="text/javascript">
     //initiating jQuery
     jQuery(function ($) {
-        init_rating();
+        var arg = "<?php echo site_url();?>";
+        init_rating(arg);
     });
 
 </script>

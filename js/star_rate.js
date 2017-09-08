@@ -2,11 +2,12 @@
  * Created by zhang on 2017/3/21.
  */
 
-function init_rating() {
+function init_rating(site_url) {
     // 找到所有 rating
     var rating = Array.prototype.slice.call(document.getElementsByClassName('rating'));
     rating.forEach(function (element) {
         // 遍历每个 rating ，选择每个 rating 下的 span
+        var activityId = element.dataset.activityId;
         var spans = Array.prototype.slice.call(element.childNodes);
         spans.forEach(function (star, index) {
             // text 的 nodeType 是 3，去掉这些子节点
@@ -24,6 +25,11 @@ function init_rating() {
                     // 改变当前星星所对应的 rating 的 class，去掉变化效果
                     this.parentNode.classList.remove('rating');
                     this.parentNode.classList.add('rated');
+
+                    $.post(
+                        //url
+                        site_url + "/separated_info/comment_activity/" + activityId + "/" + (6 - index)
+                    );
                     // 删除当前星星所对应的 rating 的 onclick
                     delete_onclick(this);
                 }
@@ -35,7 +41,7 @@ function init_rating() {
 function delete_onclick(element) {
     var children = Array.prototype.slice.call(element.parentNode.childNodes);
     children.forEach(function (element) {
-        if (element.prototype != 3){
+        if (element.prototype != 3) {
             element.onclick = null;
         }
     })

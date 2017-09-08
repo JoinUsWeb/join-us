@@ -70,7 +70,9 @@ class Member_and_activity_model extends CI_Model
             $data = array();
             $activity = $this->db->get_where('relation_activity_members', array('member_id' => $member_id))->result_array();
             foreach ($activity as $activity_item) {
-                $data[] = $this->Activity_model->get_activity_by_id($activity_item['activity_id']);
+                $temp = $this->Activity_model->get_activity_by_id($activity_item['activity_id']);
+                $temp['rate'] = $activity_item['rate'];
+                $data[] = $temp;
             }
             return $data;
         }
@@ -87,6 +89,15 @@ class Member_and_activity_model extends CI_Model
                 return true;
         }
     }
+
+/*    public function get_activity_rate_by_member_id($member_id){
+        if ($member_id <= 0)
+            return null;
+        else {
+            $data = $this->db->get_where('relation_activity_members', array('member_id' => $member_id))->select("rate")->result_array();
+            return $data;
+        }
+    }*/
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -177,6 +188,18 @@ class Member_and_activity_model extends CI_Model
             return true;
         }
         else
+            return false;
+    }
+
+    public function update_rate($user_id, $activity_id, $rate)
+    {
+        if ($user_id <= 0 || $activity_id <= 0 || $rate <= 0)
+            return null;
+        if ($this->is_exist($user_id, $activity_id)) {
+            if ($this->db->update("relation_activity_members", array('rate' => $rate), array('member_id' => $user_id, 'activity_id' => $activity_id)) == false)
+                return false;
+            return true;
+        } else
             return false;
     }
 }
