@@ -1,16 +1,18 @@
 <?php
 $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3', '三个月内'));
+$order = array(array('1', '综合'), array('2', '最新'), array('3', '最热'));
 ?>
 <div class="container">
     <div class="searching">
         <form id="search_hd" action="#" method="post">
             <div class="search" id="search">
-                <div class="frame" id="all_labels" <?php echo $select['second_label_id'] == 0 ? : 'style="display: none;";'?>>
+                <div class="frame"
+                     id="all_labels" <?php echo $select['first_label_id'] == 0 ?: 'style="display: none;"' ?>>
                     <div class="title" id="title">分类：</div>
                     <ul class="style1">
                         <?php foreach ($first_label as $first_label_item) : ?>
                             <li class="thisbe" id="<?php echo $first_label_item['id']; ?>">
-                                <a class="thisover" href="javascript:;">
+                                <a class="thisover" onclick="setURL('first_label_id','<?php echo $first_label_item['id']; ?>')">
                                     <span><?php echo $first_label_item['name']; ?></span>
                                 </a>
                             </li>
@@ -19,7 +21,7 @@ $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3',
                 </div>
                 <?php foreach ($second_label as $second_label_set) : ?>
                     <div class="frame detail" id="<?php echo "label_" . $second_label_set['id']; ?>"
-                         <?php echo $second_label_set['id'] == $select['first_label_id'] ? : 'style="display: none"' ?> >
+                        <?php echo $second_label_set['id'] == $select['first_label_id'] ?: 'style="display: none"' ?> >
                         <div class="title">分类：</div>
                         <ul class="style1">
                             <li class="stress">
@@ -28,8 +30,7 @@ $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3',
                             <?php foreach ($second_label_set as $single_item) :
                                 if (is_array($single_item)) : ?>
                                     <li class="thisbe">
-                                        <a class="thisover"
-                                           href="<?php echo site_url("search_activity/index") . "?second_label_id=" . $single_item['id'] . "&time=0"; ?>">
+                                        <a class="thisover" onclick="setURL('second_label_id','<?php echo $single_item['id']; ?>')">
                                             <span><?php echo $single_item['name']; ?></span>
                                         </a>
                                     </li>
@@ -50,18 +51,24 @@ $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3',
                     <ul class="style1">
                         <?php
                         foreach ($time as $time_item) : ?>
-                            <li>
-                                <a class="thisover" href="<?php echo site_url("search_activity/index?second_label_id=" . $select['second_label_id']) . '&time='.$time_item[0]; ?>"><?php echo $time_item[1]?></a>
+                            <li class="<?php echo $select['time'] == $time_item[0] ? "stress " : ""; ?>">
+                                <a class="thisover" onclick="setURL('time','<?php echo $time_item[0]; ?>')">
+                                    <span><?php echo $time_item[1] ?></span>
+                                </a>
                             </li>
-                        <?php endforeach;?>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="frame" id="frame3">
                     <div class="title">排序：</div>
                     <ul class="style1">
-                        <li><a class="thisover" href="<?php echo site_url("search_activity/index?second_label_id=" . $select['second_label_id']) . "&time=0" . '&order=1'; ?>"><span>综合</span></a></li>
-                        <li><a class="thisover" href="<?php echo site_url("search_activity/index?second_label_id=" . $select['second_label_id']) . "&time=0" . '&order=2'; ?>"><span>最新</span></a></li>
-                        <li><a class="thisover" href="<?php echo site_url("search_activity/index?second_label_id=" . $select['second_label_id']) . "&time=0" . '&order=3'; ?>"><span>最热</span></a></li>
+                        <?php foreach ($order as $order_item): ?>
+                            <li class="<?php echo $select['order'] == $order_item[0] ? "stress " : ""; ?>">
+                                <a class="thisover" onclick="setURL('order','<?php echo $order_item[0]; ?>')">
+                                    <span><?php echo $order_item[1]; ?></span>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -158,7 +165,7 @@ $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3',
                 topMargin: '70px'
             });
 
-            var lis = document.getElementById("all_labels").getElementsByClassName("thisbe");
+            /*var lis = document.getElementById("all_labels").getElementsByClassName("thisbe");
             var length = lis.length;
             var i;
             for (i = 0; i < length; i++) {
@@ -171,7 +178,7 @@ $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3',
                     }
                     document.getElementById("label_" + this.id).removeAttribute("style");
                 }
-            }
+            }*/
 
             // 我这里随便选了一个 icon-circle-arrow-left 做个样例，你确定图标之后把这个改了就可以了
             var back = document.getElementsByClassName("icon-circle-arrow-left"/*这里放图标的class*/);
@@ -184,10 +191,28 @@ $time = array(array('1', '一个月内'), array('2', '两个月内'), array('3',
                     for (var j = 0; j < length; j++) {
                         divs[j].style.display = "none";
                     }
+                    origin_url_args['first_label_id'] = 0;
+                    origin_url_args['second_label_id'] = 0;
                 }
             }
 
         });
     });
+
+
+    var origin_url_args = <?php echo json_encode($select);?>;
+
+    function setURL(key, value) {
+        // Object
+        origin_url_args[key] = value;
+        var args = "";
+        Object.keys(origin_url_args).forEach(function (key, index) {
+            if (0 === index)
+                args += key + "=" + origin_url_args[key];
+            else
+                args += "&" + key + "=" + origin_url_args[key];
+        });
+        location.href = window.location.origin + window.location.pathname + "?" + encodeURI(args);
+    }
 
 </script>

@@ -13,14 +13,18 @@ class Search_activity_model extends CI_Model
         $this->load->model('Activity_model');
     }
 
-    public function search_activity($second_label_id, $city, $time, $order)
+    public function search_activity($first_label_id, $second_label_id, $city, $time, $order)
     {
         $order_name = array("","activity_start","");
         $query = array();
         $earlier_than = null;
         $activity = null;
+        if ($first_label_id != 0)
+            $query['first_label_id'] = $first_label_id;
         if ($second_label_id != 0)
-            $query['first_label_id'] = $second_label_id;
+            // why the origin is query first label id ?
+//            $query['first_label_id'] = $second_label_id;
+            $query['second_label_id'] = $second_label_id;
         if ($city != 0)
             $query['city'] = $city;
         if ($time != 0) {
