@@ -46,7 +46,7 @@
     text-align: center;
 }
 
-a:link.thisover{
+a.thisover{
     color:aliceblue;
     text-decoration:none;
 }
