@@ -18,7 +18,10 @@
                                 <div class="p_hd_details"><i class="icon-map-marker"></i><?php echo $activity_item['place']; ?>
                                 </div>
                                 <div class="p_hd_bd">
-                                    <?php echo mb_strlen($activity_item['brief'], "utf-8") > 220 ? mb_substr($activity_item['brief'], 0, 210, "utf-8") . '...' : $activity_item['brief']; ?>
+                                    <p class="p_hd_text">
+                                        <!-- 初步的字符截断 -->
+                                        <?php echo $activity_item['brief'];/*mb_strlen($activity_item['brief'], "utf-8") > 220 ? mb_substr($activity_item['brief'], 0, 210, "utf-8") . '...' : $activity_item['brief'];*/ ?>
+                                    </p>
                                 </div>
                                 <?php if ($activity_item['status']): ?>
                                     <div class="p_hd_condition">活动正在进行...</div>
