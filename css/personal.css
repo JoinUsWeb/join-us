@@ -375,13 +375,12 @@ a:hover.hd_a{
 }
 
 .p_hd_main{
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 14px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     float: left;
-    padding-left: 20px;
+    padding-left: 30px;
     width: 850px;
-    height: 180px;
+    height: 200px;
     border-width: 0 0 1px 0;
     border-style: solid;
     border-color: cadetblue;
@@ -389,19 +388,21 @@ a:hover.hd_a{
 
 .hd_img{
     float: left;
-    margin-right: 20px;
-    margin-bottom: 30px;
+    width: 250px;
+    
+   
 }
 
 .hd_img img{
-    width: 248.8px;
-    height: 140px;
+    width: 250px;
+    height: 150px;
 }
 
 .p_hd_present{
-    margin-left: 10px;
-    margin-top: 0px;
-    padding-top: 0px;
+    float: left;
+    width: 570px;
+    padding-left: 20px;
+   
 }
 
 .p_hd_title{
@@ -421,9 +422,17 @@ a:hover.hd_a{
 .p_hd_bd{
     margin-top: 10px;
     padding-top: 16px;
-    font-size: 13px;
 }
 
+.p_hd_text{
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;
+}
 .p_hd_condition{
     float: left;
     width: 100%;
@@ -921,8 +930,7 @@ a:-webkit-any-link.show {
 }
 
 .hd_img{
-    width: 240px;
-    height: 120px;
+    
 }
 
 .hd_title{

@@ -6603,8 +6603,12 @@ button.close {
 
 .hd_title{
   line-height: 30px;
-  height: 68px;
+  height: 60px;
   overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
 }
 
 a.hd_title_block {
