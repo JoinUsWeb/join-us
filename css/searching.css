@@ -148,8 +148,7 @@ a:active.thisover{
  }
 .hd_name a:active {
  text-decoration: none;
- font-size: 14px;
- font-weight: bold;
+ 
  }
 .stress{
     background-color:#EEAD0E;

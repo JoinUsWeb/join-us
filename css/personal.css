@@ -374,13 +374,20 @@ a:hover.hd_a{
     color: #999;
 }
 
+.creat_button{ 
+    font-size: 15px;
+    color:#fff;
+    background-color: cadetblue;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+}
 .p_hd_main{
     padding-top: 25px;
-    padding-bottom: 25px;
+    padding-bottom: 5px;
     float: left;
     padding-left: 30px;
     width: 850px;
-    height: 200px;
+    height: 215px;
     border-width: 0 0 1px 0;
     border-style: solid;
     border-color: cadetblue;
@@ -421,12 +428,13 @@ a:hover.hd_a{
 
 .p_hd_bd{
     margin-top: 10px;
-    padding-top: 16px;
+    padding-top: 20px;
+    height: 110px;
 }
 
 .p_hd_text{
     font-size: 14px;
-    line-height: 20px;
+    line-height: 22px;
     overflow: hidden;
 text-overflow: ellipsis;
 display: -webkit-box;
@@ -437,7 +445,8 @@ display: -webkit-box;
     float: left;
     width: 100%;
     text-align: right;
-    color: #aaa;
+    color: cadetblue;
+    margin-top: 7px;
 }
 .p_hd_comment{
     margin-top: 10px;
