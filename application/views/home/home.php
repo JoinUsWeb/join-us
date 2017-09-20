@@ -105,12 +105,12 @@
                             <!-- <img src="img/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">These are our grid blocks -->
                             <?php foreach ($recommended_activity as $single_activity) : ?>
                                 <li>
-                                    <a href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]); ?>">
+                                    <a href="<?php echo site_url("activity_detail/index/" . $single_activity["id"] . '/1'); ?>">
                                         <img src="<?php echo base_url($single_activity['poster']); ?>" width="200"
                                              height="200"></a>
                                     <div class="caption">
                                         <a class="hd_title_block"
-                                           href="<?php echo site_url("activity_detail/index/" . $single_activity["id"]); ?>">
+                                           href="<?php echo site_url("activity_detail/index/" . $single_activity["id"] . '/1'); ?>">
                                             <h3 class="hd_title"><?php echo $single_activity["name"]; ?></h3>
                                         </a>
                                         <hr>

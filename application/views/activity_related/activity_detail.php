@@ -103,7 +103,7 @@
                         <?php } else if ($is_joined) { ?>
                             <form action="
                             <?php
-                            echo site_url('activity_detail/quit/' . $activity['id']);
+                            echo site_url('activity_detail/quit/' . $activity['id'] . '/' . $isRecommended);
                             ?>" method="post">
                                 <p class="center">
                                     <input type="submit" id="apply" value="退出活动">
@@ -115,7 +115,7 @@
                             <form action="
                             <?php
                             if (isset($this->session->user_id))
-                                echo site_url('activity_detail/enter/' . $activity['id']);
+                                echo site_url('activity_detail/enter/' . $activity['id'] . '/' . $isRecommended);
                             else
                                 echo site_url('login/index');
                             ?>" method="post">

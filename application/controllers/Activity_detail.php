@@ -21,7 +21,7 @@ class Activity_detail extends CI_Controller
         $this->load->model('Activity_comment_model');
     }
 
-    public function index($activity_id)
+    public function index($activity_id, $isRecommended = 0)
     {
         $data['title'] = '活动详情';
         $data['page_name'] = "detail";
@@ -30,6 +30,7 @@ class Activity_detail extends CI_Controller
             show_error('活动不存在，可能已经被取消');
         if (empty($data['activity']))
             show_error('活动不存在，可能已经被取消');
+        $data['isRecommended'] = $isRecommended;
         $data['member'] = $this->Member_and_activity_model->get_member_by_activity_id($activity_id);
         $data['hot_activity'] = $this->Activity_model->get_activity_order_by_score(3);
         $data['is_joined'] = $this->Member_and_activity_model->is_exist($this->session->user_id, $activity_id);
@@ -47,29 +48,29 @@ class Activity_detail extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function enter($activity_id)
+    public function enter($activity_id, $isRecommended = 0)
     {
         $user_id = $this->session->user_id;
         $activity = $this->Activity_model->get_activity_by_id($activity_id);
         if (isset($user_id) && ($activity['member_number'] < $activity['amount_max'])) {
-            if ($this->Member_and_activity_model->insert_new_relation($user_id, $activity_id) != true)
+            if ($this->Member_and_activity_model->insert_new_relation($user_id, $activity_id,$isRecommended) != true)
                 // @todo 这里应该显示报名失败
                 return;
             $this->update_recommend_value($_SESSION['user_id'], $activity['second_label_id'], $this->enter_base);
-            $this->Activity_model->update_activity_score($activity_id,$user_id);
+            $this->Activity_model->update_activity_score($activity_id, $user_id);
         }
 
-        redirect('activity_detail/index/' . $activity_id);
+        redirect('activity_detail/index/' . $activity_id . '/' . $isRecommended);
     }
 
-    public function quit($activity_id)
+    public function quit($activity_id, $isRecommended = 0)
     {
         $user_id = $this->session->user_id;
         if (isset($user_id)) {
             $this->Member_and_activity_model->remove_member_from_activity_by_id($activity_id, $user_id);
         }
 
-        redirect('activity_detail/index/' . $activity_id);
+        redirect('activity_detail/index/' . $activity_id . '/' . $isRecommended);
     }
 
     function comment_check()
@@ -88,19 +89,17 @@ class Activity_detail extends CI_Controller
     private function update_recommend_value($user_id = -1, $second_label_id = -1, $base = -1)
     {
         // @TODO 强行兼容服务器
-        $fp = fsockopen($_SERVER["HTTP_HOST"] != "[::1]" ? "115.159.74.93": "localhost", "80", $errno, $errstr, 30);
+        $fp = fsockopen($_SERVER["HTTP_HOST"] != "[::1]" ? "115.159.74.93" : "localhost", "80", $errno, $errstr, 30);
         if (!$fp) {
             return null;
         } else {
-            $out = "GET /join-us/index.php/recommend/calculate_second_label_value/" . $user_id . "/" . $second_label_id . "/" . $base . "/  / HTTP/1.1\r\n";
-            $out .= "Host: localhost\r\n";
-            $out .= "Connection: Close\r\n\r\n";
-
+            $out = "GET /join-us/index.php/recommend/calculate_second_label_value/" . $user_id . "/" . $second_label_id . "/" . $base . "/  / HTTP/1.1\r\n"
+                . "Host: localhost\r\n"
+                . "Connection: Close\r\n\r\n";
             fwrite($fp, $out);
             fclose($fp);
         }
     }
-
 
     public function verifying($activity_id = -1)
     {

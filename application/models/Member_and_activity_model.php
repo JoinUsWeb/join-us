@@ -21,7 +21,7 @@
  * public function remove_by_user_id($user_id)
  *
  * 根据提供的用户 id 和 活动 id   创建新的条目并插入数据库
- * public function insert_new_relation($user_id = -1, $activity_id = -1)
+ * public function insert_new_relation($user_id = -1, $activity_id = -1, $isRecommended = 0)
  *
  */
 class Member_and_activity_model extends CI_Model
@@ -161,11 +161,12 @@ class Member_and_activity_model extends CI_Model
      *
      * 如果合法插入 （user_id，activity_id） 关系，失败返回false     *
      *
-     * @param $user_id
-     * @param $activity_id
+     * @param int $user_id
+     * @param int $activity_id
+     * @param int $isRecommended
      * @return bool|null
      */
-    public function insert_new_relation($user_id = -1, $activity_id = -1)
+    public function insert_new_relation($user_id = -1, $activity_id = -1, $isRecommended = 0)
     {
         if ($user_id <= 0 || $activity_id <= 0)
             return null;
@@ -181,7 +182,8 @@ class Member_and_activity_model extends CI_Model
 
             $data = array(
                 'member_id' => $user_id,
-                'activity_id' => $activity_id
+                'activity_id' => $activity_id,
+                'isRecommended' => $isRecommended
             );
             if ($this->db->insert('relation_activity_members', $data) == false)
                 return false;
