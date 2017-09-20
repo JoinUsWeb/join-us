@@ -38,7 +38,7 @@ class Activity_detail extends CI_Controller
         $data['comment'] = $this->Activity_comment_model->get_completed_comment_by_activity_id($activity_id);
         if (isset($_SESSION['user_id'])) {
             $this->load->model('Browser_and_trace_model');
-            $this->Browser_and_trace_model->insert_new_relation($_SESSION['user_id'], date("Y-m-d H:i:s"), $activity_id);
+            $this->Browser_and_trace_model->insert_new_relation($_SESSION['user_id'], date("Y-m-d H:i:s"), $activity_id, $isRecommended);
 
             $this->update_recommend_value($_SESSION['user_id'], $data['activity']['second_label_id'], $this->browse_base);
         }

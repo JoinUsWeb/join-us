@@ -179,7 +179,7 @@ class Browser_and_trace_model extends CI_Model
      * @param int $activity_id
      * @return bool|null
      */
-    public function insert_new_relation($browser_id = -1, $browsed_date_time = null, $activity_id = -1)
+    public function insert_new_relation($browser_id = -1, $browsed_date_time = null, $activity_id = -1, $isRecommended = 0)
     {
         if ($browser_id <= 0 || $browsed_date_time == null || $activity_id <= 0)
             return null;
@@ -187,7 +187,8 @@ class Browser_and_trace_model extends CI_Model
             $data = array(
                 'browser_id' => $browser_id,
                 'browsed_activity_id' => $activity_id,
-                'browsed_date_time' => $browsed_date_time);
+                'browsed_date_time' => $browsed_date_time,
+                'isRecommended' => $isRecommended);
             if ($this->db->insert('relation_trace', $data) == false)
                 return false;
             return true;
