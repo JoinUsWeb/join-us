@@ -61,9 +61,17 @@ class Recommend_activity_model extends CI_Model
         //根据id获取活动
         $activities = array();
         foreach ($activity_ids as $activity_id) {
-            $activities[] = $this->Activity_model->get_activity_by_id($activity_id);
+            if(!$this->is_activity_joined($user_id,$activity_id))
+                $activities[] = $this->Activity_model->get_activity_by_id($activity_id);
         }
         return $activities;
+    }
+
+    //如果用户没有参加（并且不是他创建）这个活动，则返回false
+    private function is_activity_joined($user_id,$activity_id){
+        $record1=$this->db->get_where('relation_activity_members',['member_id'=>$user_id,'activity_id'=>$activity_id])->row_array();
+        $record2=$this->db->get_where('activity',['creator_id'=>$user_id,'id'=>$activity_id])->row_array();
+        return !(empty($record1)&&empty($record2));//全为空返回false
     }
 
     //获取用户的推荐组id，如果用户第一次使用推荐则更新推荐组id
