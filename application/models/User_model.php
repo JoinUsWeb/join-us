@@ -84,6 +84,25 @@ class User_model extends CI_Model
     }
 
     /**
+     * 随机获得对应推荐组成员，数量由limit确定
+     * @param $recommend_group_id
+     * @param int $limit
+     * @return array $data
+     */
+    public function get_random_users_by_recommend_group_id($recommend_group_id,$limit=10){
+        $data=array();
+        $sql='SELECT count(*) as user_count FROM user WHERE recommend_group_id='.$recommend_group_id;
+        $user_count=$this->db->query($sql)->row_array()['user_count']-1;
+        for($i=0;$i<$limit;$i++){
+            $rand=rand(0,$user_count);
+            $data[]=$this->db ->limit(1,$rand)
+                ->get_where('user',['recommend_group_id'=>$recommend_group_id])->row_array();
+
+        }
+        return $data;
+    }
+
+    /**
      * 获得活动的创建者
      *
      * 通过活动ID查找它的创建者。函数接受一个参数活动ID，如果合法（id>0），返回它的创建者；
@@ -177,6 +196,14 @@ class User_model extends CI_Model
             return null;
         $this->db->where('id', $user_id);
         if ($this->db->update('user', $array_for_user_info) == false)
+            return false;
+        return true;
+    }
+
+    public function update_user_recommend_group_id($user_id,$recommend_group_id){
+        if ($this->db->where('id',$user_id)
+                ->set('recommend_group_id',$recommend_group_id)
+                ->update('user') == false)
             return false;
         return true;
     }

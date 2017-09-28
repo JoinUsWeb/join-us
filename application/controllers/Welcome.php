@@ -21,6 +21,13 @@ class Welcome extends CI_Controller
      */
     public function index()
     {
-        $this->load->view('welcome_message');
+        $this->load->model('Recommend_activity_model');
+        $activities=$this->Recommend_activity_model->get_recommend_activity(1);
+        if(empty($activities)){
+            echo ' EEEEempty';
+        }else
+            foreach ($activities as $activity){
+                echo $activity['name'].$activity['id'].'</br>';
+            }
     }
 }

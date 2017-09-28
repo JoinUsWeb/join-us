@@ -78,6 +78,46 @@ class Member_and_activity_model extends CI_Model
         }
     }
 
+    /**
+     * 获得用户参与的随机的活动,数量由number控制
+     *
+     * 通过用户ID查找其参与的活动。函数接受一个参数活用户ID，如果合法（id>0），返回其参与活动的一个数组
+     *
+     * @param int $member_id
+     * @return array
+     */
+    public function get_random_activity_id_by_member_id($member_id)
+    {
+        $sql='SELECT count(*) as activity_count 
+          FROM relation_activity_members as ram JOIN activity as a
+          WHERE a.isVerified=1 
+          && ram.activity_id=a.id 
+          && ram.member_id='.$member_id;
+        $activity_count = $this->db->query($sql)
+                ->row_array()['activity_count']-1;
+        srand(time());
+        $rand=rand(0,$activity_count);
+        return $this->db->select('activity_id')
+            ->limit(1,$rand)
+            ->get_where('relation_activity_members', array('member_id' => $member_id))->row_array();
+    }
+
+    /**
+     * 获得用户参与的随机的活动,数量由number控制
+     *
+     * 通过用户ID查找其参与的活动。函数接受一个参数活用户ID，如果合法（id>0），返回其参与活动的一个数组
+     *
+     * @param int $number
+     * @return array
+     */
+    public function get_random_activity_id($number=1)
+    {
+        return $this->db->select('activity_id')
+            ->order_by(time(),'RANDOM')
+            ->limit($number)
+            ->get('relation_activity_members')->result_array();
+    }
+
     public function is_exist($member_id, $activity_id)
     {
         if ($member_id <= 0 || $activity_id <= 0)
