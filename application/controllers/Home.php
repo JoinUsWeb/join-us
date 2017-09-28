@@ -48,4 +48,9 @@ class Home extends CI_Controller
     public function get_recommended_activity(){
         return $this->Recommend_activity_model->get_recommend_activity($this->user_id);
     }
+
+    public function refresh_recommend_activity(){
+        $this->Recommend_activity_model->refresh_recommend_activity_for_test($this->user_id);
+        $this->index();
+    }
 }

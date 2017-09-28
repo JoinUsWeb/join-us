@@ -67,6 +67,22 @@ class Recommend_activity_model extends CI_Model
         return $activities;
     }
 
+    public function refresh_recommend_activity_for_test($user_id){
+        $recommend_group_id = $this->get_recommend_group_id($user_id);
+        if($recommend_group_id==0)
+            return;
+        //确定推荐组状态可用
+        $this->db->trans_begin();
+        //组是否存在
+        $recommend_group = $this->db->get_where('recommend_group', ['id' => $recommend_group_id])->row_array();
+        if (empty($recommend_group)) {//如果组不存在
+            $this->create_recommend_group($recommend_group_id);
+        }
+        $this->db->where('group_id',$recommend_group_id)->delete('recommend_group_activity');
+        $this->update_recommend_group($recommend_group_id);
+        $this->db->trans_complete();
+    }
+
     //如果用户没有参加（并且不是他创建）这个活动，则返回false
     private function is_activity_joined($user_id,$activity_id){
         $record1=$this->db->get_where('relation_activity_members',['member_id'=>$user_id,'activity_id'=>$activity_id])->row_array();
@@ -167,6 +183,7 @@ class Recommend_activity_model extends CI_Model
 
         //获取随机推荐
         //随机获取有一个蛋疼的问题，如果运气不好，一直随机不到想要的没重复的活动，会卡住；不过讲道理应该活动多了以后就不会这样了
+        //现在通过限制随即推荐的次数保证了不会卡死，但是数量不能保证
         $activity_count = $this->db->query('SELECT count(*) as activity_count FROM activity WHERE isVerified=1')
             ->row_array()['activity_count']-1;
         for ($i = 0; $i < $this->activities_num_random; $i++) {
@@ -183,6 +200,7 @@ class Recommend_activity_model extends CI_Model
         }
 
         //剩余部分用热门活动顺序补足
+        //这里要考虑推荐多了以后，热门活动被全部推荐的坑爹情况
         $hot_activities = $this->db->select('id')->where('isVerified', 1)
             ->limit($this->activities_num_total)->order_by('score')->get('activity')->result_array();
         for ($key = 0;$key<$this->activities_num_total && count($activity_ids) < $this->activities_num_total; $key++) {

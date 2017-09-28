@@ -66,6 +66,7 @@
                 <div class="box home_block">
                     <div class="demo">
                         <h3 style="float: left;">推荐活动</h3>
+                        <a href="<?php echo site_url("home/refresh_recommend_activity"); ?>">点击刷新推荐组</a>
                         <?php if ($need_first_label) : ?>
                         <a class="bounceIn" href="javascript:;">请选择兴趣爱好</a>
                     </div>
