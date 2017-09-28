@@ -92,12 +92,11 @@ class User_model extends CI_Model
     public function get_random_users_by_recommend_group_id($recommend_group_id,$limit=10){
         $data=array();
         $sql='SELECT count(*) as user_count FROM user WHERE recommend_group_id='.$recommend_group_id;
-        $user_count=$this->db->query($sql)->row_array()['user_count']-1;
+        $user_count=$this->db->query($sql)->row_array()['user_count']-2;
         for($i=0;$i<$limit;$i++){
             $rand=rand(0,$user_count);
             $data[]=$this->db ->limit(1,$rand)
                 ->get_where('user',['recommend_group_id'=>$recommend_group_id])->row_array();
-
         }
         return $data;
     }

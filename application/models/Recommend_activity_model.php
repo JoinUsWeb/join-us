@@ -13,12 +13,13 @@ class Recommend_activity_model extends CI_Model
         $this->load->model('User_model');
         $this->load->model("Activity_model");
         $this->load->model("Member_and_activity_model");
+        $this->load->model("Second_label_recommend_value_model");
     }
 
+    var $activities_num_total = 9;//推荐活动数量
     var $activities_num_label=3;//标签推荐活动数量
-    var $activities_num_total = 6;//其余推荐活动数量(扣除标签推荐）
-    var $activities_num_group = 3;//推荐组推荐活动数量
-    var $activities_num_random = 2;//随机推荐活动数量，还剩下的
+    var $activities_num_group = 5;//推荐组推荐活动数量
+    var $activities_num_random = 3;//随机推荐活动数量，还剩下的
 
     /**
      * @param $user_id(用户id)
@@ -36,15 +37,33 @@ class Recommend_activity_model extends CI_Model
         $this->confirm_recommend_group($recommend_group_id);
         $this->db->trans_complete();
 
-        //获取推荐
-        $activity_ids = $this->db->get_where('recommend_group_activity',
+        //获取标签推荐
+        $activity_ids=[];
+        $labels=$this->Second_label_recommend_value_model->get_value_desc_by_user_id($user_id);
+        $count=count($labels)<$this->activities_num_label?count($labels):$this->activities_num_label;
+        for ($i=0;$i<$count;$i++) {
+            $sql='SELECT count(*) as activity_count FROM activity WHERE second_label_id='.$labels[$i]['second_label_id'];
+            $activity_count=$this->db->query($sql)->row_array()['activity_count']-2;
+            $rand=rand(0,$activity_count);
+            $activity_id=$this->db ->limit(1,$rand)
+                ->get_where('activity',['second_label_id'=>$labels[$i]['second_label_id'],'isVerified'=>1])->row_array();
+            if(!empty($activity_id))
+                $activity_ids[]=$activity_id['id'];
+        }
+        //获取推荐组推荐
+        $activity_ids_group = $this->db->get_where('recommend_group_activity',
             ['group_id' => $recommend_group_id, 'update_date'=>date('Y-m-d')])->result_array();
+        foreach ($activity_ids_group as $activity_id){
+            $id=$activity_id['activity_id'];
+            if(!in_array($id,$activity_ids))
+                $activity_ids[]=$id;
+        }
+        //根据id获取活动
         $activities = array();
         foreach ($activity_ids as $activity_id) {
-            $activities[] = $this->Activity_model->get_activity_by_id($activity_id['activity_id']);
+            $activities[] = $this->Activity_model->get_activity_by_id($activity_id);
         }
         return $activities;
-
     }
 
     //获取用户的推荐组id，如果用户第一次使用推荐则更新推荐组id

@@ -42,8 +42,9 @@ class Second_label_recommend_value_model extends CI_Model
     {
         if ($user_id == -1)
             return null;
-        return $this->db->get_where("second_label_recommend_value", array("user_id" => $user_id))
-            ->order_by("value", "DESC")->result_array();
+        return $this->db->order_by("value", "DESC")
+            ->get_where("second_label_recommend_value", array("user_id" => $user_id))
+            ->result_array();
     }
 
     public function update_value($user_id = -1, $second_label_id = -1, $value = -1)
