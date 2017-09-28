@@ -108,8 +108,6 @@ class Recommend_activity_model extends CI_Model
     //如果已经被推荐，则返回true,否则返回false
     private function is_activity_recommended($group_id=-1,$activity_id=-1){
         $activity=$this->db->get_where('recommend_group_activity',['group_id'=>$group_id,'activity_id'=>$activity_id])->row_array();
-        if(!empty($activity))
-            echo "不为空   ";
         return !empty($activity);
     }
 
@@ -127,7 +125,6 @@ class Recommend_activity_model extends CI_Model
                 if(!empty($activity_id_to_insert)) {
                     $id = $activity_id_to_insert['activity_id'];
                     if (!in_array($id, $activity_ids) && !$this->is_activity_recommended($recommend_group_id, $id)) {
-                        echo 'id_to_insert:'.$id.'</br>';
                         $activity_ids[] = $id;//如果未被推荐则加入推荐列表
                         $activity_number++;
                     }
@@ -191,7 +188,6 @@ class Recommend_activity_model extends CI_Model
         //插入新数据
         $current_date = date('Y-m-d');
         foreach ($activity_ids as $activity_id) {
-            echo 'activity_id:'.$activity_id.'</br>';
             $this->db->insert('recommend_group_activity',
                 ['group_id' => $recommend_group_id, 'activity_id' => $activity_id,'update_date'=>$current_date]);
         }
