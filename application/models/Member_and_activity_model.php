@@ -88,17 +88,17 @@ class Member_and_activity_model extends CI_Model
      */
     public function get_random_activity_id_by_member_id($member_id)
     {
-        $sql='SELECT count(*) as activity_count 
-          FROM relation_activity_members as ram JOIN activity as a
+        $sql = 'SELECT count(*) AS activity_count 
+          FROM relation_activity_members AS ram JOIN activity AS a
           WHERE a.isVerified=1 
           && ram.activity_id=a.id 
-          && ram.member_id='.$member_id;
+          && ram.member_id=' . $member_id;
         $activity_count = $this->db->query($sql)
-                ->row_array()['activity_count']-1;
+                ->row_array()['activity_count'] - 1;
         srand(time());
-        $rand=rand(0,$activity_count);
+        $rand = rand(0, $activity_count);
         return $this->db->select('activity_id')
-            ->limit(1,$rand)
+            ->limit(1, $rand)
             ->get_where('relation_activity_members', array('member_id' => $member_id))->row_array();
     }
 
@@ -110,10 +110,10 @@ class Member_and_activity_model extends CI_Model
      * @param int $number
      * @return array
      */
-    public function get_random_activity_id($number=1)
+    public function get_random_activity_id($number = 1)
     {
         return $this->db->select('activity_id')
-            ->order_by(time(),'RANDOM')
+            ->order_by(time(), 'RANDOM')
             ->limit($number)
             ->get('relation_activity_members')->result_array();
     }
@@ -130,14 +130,35 @@ class Member_and_activity_model extends CI_Model
         }
     }
 
-/*    public function get_activity_rate_by_member_id($member_id){
-        if ($member_id <= 0)
+
+    public function get_recommended_activity_amount_by_user_id($member_id = -1)
+    {
+        if ($member_id < 0)
             return null;
-        else {
-            $data = $this->db->get_where('relation_activity_members', array('member_id' => $member_id))->select("rate")->result_array();
-            return $data;
-        }
-    }*/
+        return $this->db
+            ->select('count(*)')
+            ->get_where('relation_activity_members', array('member_id' => $member_id, 'isRecommended' => 1))
+            ->row_array()['count(*)'];
+    }
+
+    public function get_joined_activity_amount_by_user_id($member_id = -1)
+    {
+        if ($member_id < 0)
+            return null;
+        return $this->db
+            ->select('count(*)')
+            ->get_where('relation_activity_members', array('member_id' => $member_id))
+            ->row_array()['count(*)'];
+    }
+
+    /*    public function get_activity_rate_by_member_id($member_id){
+            if ($member_id <= 0)
+                return null;
+            else {
+                $data = $this->db->get_where('relation_activity_members', array('member_id' => $member_id))->select("rate")->result_array();
+                return $data;
+            }
+        }*/
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -228,8 +249,7 @@ class Member_and_activity_model extends CI_Model
             if ($this->db->insert('relation_activity_members', $data) == false)
                 return false;
             return true;
-        }
-        else
+        } else
             return false;
     }
 

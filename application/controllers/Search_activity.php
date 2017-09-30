@@ -22,7 +22,7 @@ class Search_activity extends CI_Controller
     public function index()
     {
         $select = $this->input->get();
-        $data['title'] = "search activity";
+        $data['title'] = "查找活动";
         $data['page_name'] = "search";
 
         $data['first_label'] = $this->First_label_model->get_first_label();

@@ -43,7 +43,7 @@ class Create_activity extends CI_Controller
 
 
         if (!$this->form_validation->run()) {
-            $data = array('error' => '', 'title' => 'create activity');
+            $data = array('error' => '', 'title' => '创建活动');
             $data['first_label'] = $this->First_label_model->get_first_label();
             $data['page_name'] = "create";
             $this->load->view('template/header', $data);

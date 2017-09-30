@@ -33,7 +33,7 @@ class Home extends CI_Controller
         $recommended_activity = $this->get_recommended_activity();
 
         $data['all_first_label'] = $this->First_label_model->get_first_label();
-        $data['title'] = 'Home';
+        $data['title'] = '主页';
         $data['page_name'] = "home";
         $data['hot_activity'] = $hot_activity;
         $data['recommended_activity'] = $recommended_activity;

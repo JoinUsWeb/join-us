@@ -123,6 +123,22 @@ class Browser_and_trace_model extends CI_Model
         }
     }
 
+    public function get_trace_amount_by_user_id($user_id = -1){
+        if ($user_id < 0) return null;
+        return $this->db
+            ->select('count(*)')
+            ->get_where('relation_trace',array('browser_id'=>$user_id))
+            ->row_array()['count(*)'];
+    }
+
+    public function get_recommended_trace_amount_by_user_id($user_id = -1){
+        if ($user_id < 0) return null;
+        return $this->db
+            ->select('count(*)')
+            ->get_where('relation_trace',array('browser_id'=>$user_id, 'isRecommended'=>1))
+            ->row_array()['count(*)'];
+    }
+
     public function remove_trace_by_id($browser_id = -1, $activity_id = -1)
     {
         if ($browser_id <= 0 || $activity_id <= 0)
