@@ -8,10 +8,10 @@
  */
 class Recommend_activity_model extends CI_Model
 {
-var $activities_num_total = 9;
-var $activities_num_label = 3;//推荐活动数量
-    var $activities_num_group = 5;//标签推荐活动数量
-    var $activities_num_random = 3;//推荐组推荐活动数量
+    var $activities_num_total = 9;//推荐活动数量
+    var $activities_num_label = 3;//标签推荐活动数量
+    var $activities_num_group = 5;//推荐组推荐活动数量
+    var $activities_num_random = 3;//随机推荐活动数量，还剩下的用热门活动填充
 
     public function __construct()
     {
@@ -19,7 +19,8 @@ var $activities_num_label = 3;//推荐活动数量
         $this->load->model("Activity_model");
         $this->load->model("Member_and_activity_model");
         $this->load->model("Second_label_recommend_value_model");
-    }//随机推荐活动数量，还剩下的
+        $this->load->model("Evaluate_model");
+    }
 
     /**
      * @param $user_id (用户id)
@@ -85,7 +86,6 @@ var $activities_num_label = 3;//推荐活动数量
     }
 
     //如果用户没有参加（并且不是他创建）这个活动，则返回false
-
     private function confirm_recommend_group($recommend_group_id)
     {
         //组是否存在
@@ -103,12 +103,13 @@ var $activities_num_label = 3;//推荐活动数量
     }
 
     //获取用户的推荐组id，如果用户第一次使用推荐则更新推荐组id
-
     private function create_recommend_group($recommend_group_id)
     {
         $this->db->insert('recommend_group', ['id' => $recommend_group_id, 'update_date' => '0000-00-00']);
     }
 
+
+    //核心算法部分，根据推荐组，推荐活动，包括组内成员推荐，随机推荐，热门活动推荐
     private function update_recommend_group($recommend_group_id)
     {
         //获取推荐组推荐活动：
@@ -176,7 +177,8 @@ var $activities_num_label = 3;//推荐活动数量
         //这里要考虑推荐多了以后，热门活动被全部推荐的坑爹情况
         $hot_activities = $this->db->select('id')->where('isVerified', 1)
             ->limit($this->activities_num_total)->order_by('score')->get('activity')->result_array();
-        for ($key = 0; $key < $this->activities_num_total && count($activity_ids) < $this->activities_num_total; $key++) {
+        $hot_activity_num=count($hot_activities);
+        for ($key = 0; $key < $hot_activity_num && count($activity_ids) < $this->activities_num_total; $key++) {
             $id = $hot_activities[$key]['id'];
             if (!in_array($id, $activity_ids) && !$this->is_activity_recommended($recommend_group_id, $id)) {
                 $activity_ids[] = $id;//如果未被推荐则加入推荐列表
@@ -194,14 +196,15 @@ var $activities_num_label = 3;//推荐活动数量
         $this->db->set('update_date', $current_date)->update('recommend_group');
     }
 
+
     private function is_activity_recommended($group_id = -1, $activity_id = -1)
     {
         $activity = $this->db->get_where('recommend_group_activity', ['group_id' => $group_id, 'activity_id' => $activity_id])->row_array();
         return !empty($activity);
     }
 
-    //如果已经被推荐，则返回true,否则返回false
 
+    //如果已经被推荐，则返回true,否则返回false
     private function is_activity_joined($user_id, $activity_id)
     {
         $record1 = $this->db->get_where('relation_activity_members', ['member_id' => $user_id, 'activity_id' => $activity_id])->row_array();
@@ -209,10 +212,12 @@ var $activities_num_label = 3;//推荐活动数量
         return !(empty($record1) && empty($record2));//全为空返回false
     }
 
-    //核心算法部分：测试为10个活动（因为目前活动数量不足）,6个为根据推荐组推荐，3个为热门推荐，2个为随机推荐。
 
+    //为了测试阶段方便刷新,调用后模拟刷新一次小组推荐
     public function refresh_recommend_activity_for_test($user_id)
     {
+        //测试阶段，需要记录每次更新小组推荐时推荐的效率
+        $this->Evaluate_model->save_evaluate_record($user_id);
         $recommend_group_id = $this->get_recommend_group_id($user_id);
         if ($recommend_group_id == 0)
             return;
@@ -227,6 +232,7 @@ var $activities_num_label = 3;//推荐活动数量
         $this->update_recommend_group($recommend_group_id);
         $this->db->trans_complete();
     }
+
 
     public function get_recommended_activity_amount_by_user_id($user_id = -1)
     {
