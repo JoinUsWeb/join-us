@@ -85,7 +85,6 @@ var $activities_num_label = 3;//推荐活动数量
     }
 
     //如果用户没有参加（并且不是他创建）这个活动，则返回false
-
     private function confirm_recommend_group($recommend_group_id)
     {
         //组是否存在
@@ -103,7 +102,6 @@ var $activities_num_label = 3;//推荐活动数量
     }
 
     //获取用户的推荐组id，如果用户第一次使用推荐则更新推荐组id
-
     private function create_recommend_group($recommend_group_id)
     {
         $this->db->insert('recommend_group', ['id' => $recommend_group_id, 'update_date' => '0000-00-00']);
@@ -201,7 +199,6 @@ var $activities_num_label = 3;//推荐活动数量
     }
 
     //如果已经被推荐，则返回true,否则返回false
-
     private function is_activity_joined($user_id, $activity_id)
     {
         $record1 = $this->db->get_where('relation_activity_members', ['member_id' => $user_id, 'activity_id' => $activity_id])->row_array();
@@ -210,7 +207,6 @@ var $activities_num_label = 3;//推荐活动数量
     }
 
     //核心算法部分：测试为10个活动（因为目前活动数量不足）,6个为根据推荐组推荐，3个为热门推荐，2个为随机推荐。
-
     public function refresh_recommend_activity_for_test($user_id)
     {
         $recommend_group_id = $this->get_recommend_group_id($user_id);
