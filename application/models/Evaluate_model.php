@@ -37,7 +37,7 @@ class Evaluate_model extends CI_Model
         $join_activities_amount = $this->Member_and_activity_model->get_joined_activity_amount_by_user_id($user_id);
         $browse_recommended_activities = $this->Browser_and_trace_model->get_recommended_trace_amount_by_user_id($user_id);
         $browse_activities_amount = $this->Browser_and_trace_model->get_trace_amount_by_user_id($user_id);
-        if($join_activities_amount==0&&$browse_recommended_activities==0&&$browse_activities_amount==0)
+        if($join_activities_amount==0||$browse_recommended_activities==0||$browse_activities_amount==0)
             return 0;
         return ($join_recommended_activities / $join_activities_amount) / ($browse_recommended_activities / $browse_activities_amount);
     }
