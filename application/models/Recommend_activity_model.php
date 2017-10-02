@@ -229,7 +229,10 @@ class Recommend_activity_model extends CI_Model
         if (empty($recommend_group)) {//如果组不存在
             $this->create_recommend_group($recommend_group_id);
         }
-        $this->db->where('group_id', $recommend_group_id)->delete('recommend_group_activity');
+        $current_date = date('Y-m-d');
+        $this->db->where(['group_id'=>$recommend_group_id,'update_date'=>$current_date])
+            ->set('update_date','0000-00-00')
+            ->update('recommend_group_activity');
         $this->update_recommend_group($recommend_group_id);
         $this->db->trans_complete();
     }
