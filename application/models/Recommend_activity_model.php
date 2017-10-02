@@ -203,7 +203,6 @@ class Recommend_activity_model extends CI_Model
         return !empty($activity);
     }
 
-
     //如果已经被推荐，则返回true,否则返回false
     private function is_activity_joined($user_id, $activity_id)
     {
@@ -211,7 +210,6 @@ class Recommend_activity_model extends CI_Model
         $record2 = $this->db->get_where('activity', ['creator_id' => $user_id, 'id' => $activity_id])->row_array();
         return !(empty($record1) && empty($record2));//全为空返回false
     }
-
 
     //为了测试阶段方便刷新,调用后模拟刷新一次小组推荐
     public function refresh_recommend_activity_for_test($user_id)
