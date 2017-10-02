@@ -77,8 +77,8 @@ a:active.thisover{
 }
 
 .search_main{
-    width: 500px
-    height:180px;
+    width: 100%;
+    
     background-color: #FFF;
     position: relative;
     overflow: hidden;
@@ -153,4 +153,11 @@ a:active.thisover{
 .stress{
     background-color:#EEAD0E;
     
+}
+.hd_name_title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 550px;
+    margin:0;
 }

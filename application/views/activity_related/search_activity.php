@@ -92,8 +92,8 @@ $order = array(array('1', '综合'), array('2', '最新'), array('3', '最热'))
                                          alt="活动海报"></a></div>
                             <div class="search_main_div">
                                 <div class="hd_name"><a
-                                            href="<?php echo site_url('activity_detail/index/' . $activity_item['id']) ?>">
-                                        <?php echo $activity_item['name'] ?></a>
+                                            href="<?php echo site_url('activity_detail/index/' . $activity_item['id']) ?>"><p class="hd_name_title">
+                                        <?php echo $activity_item['name'] ?></p></a>
                                 </div>
                                 <div class="hd_creat"><a
                                             href="personal.html">活动发布者：<span><?php echo $activity_item['creator_name'] ?></span></a>
@@ -102,7 +102,8 @@ $order = array(array('1', '综合'), array('2', '最新'), array('3', '最热'))
                                     <span><?php echo $activity_item['first_label_name'] ?></span>
                                 </div>
                                 <div class="hd_time"><i
-                                            class="icon-calendar "></i><span><?php echo $activity_item['activity_start'] ?></span>
+                                            class="icon-calendar "></i>
+                                    <span><?php echo $activity_item['activity_start'] ?></span>
                                 </div>
                                 <div class="people_num"><i class=" icon-group"></i>
                                     <span><?php echo $activity_item['member_number'] . '/' . $activity_item['amount_max'] ?></span>
