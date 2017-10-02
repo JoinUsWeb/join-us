@@ -62,8 +62,11 @@ class Recommend_activity_model extends CI_Model
         //根据id获取活动
         $activities = array();
         foreach ($activity_ids as $activity_id) {
-            if (!$this->is_activity_joined($user_id, $activity_id))
-                $activities[] = $this->Activity_model->get_activity_by_id($activity_id);
+            if (!$this->is_activity_joined($user_id, $activity_id)){
+                $activity=$this->Activity_model->get_activity_by_id($activity_id);
+                if(!empty($activity))
+                    $activities[] = $activity;
+            }
         }
         return $activities;
     }
