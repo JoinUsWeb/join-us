@@ -39,14 +39,14 @@
                     <li data-target="#carousel-299058" data-slide-to="2" class=""></li>
                 </ol>
                 <div class="carousel-inner">
-                    <?php $num = count($hot_activity);
+                    <?php $num = count($rolling_activity);
                     for ($count = 0; $count < $num; $count++) : ?>
                         <div class="<?php echo $count == 1 ? "item active" : "item"; ?>">
-                            <a href="<?php echo site_url("activity_detail/index/" . $hot_activity[$count]["id"]); ?>">
+                            <a href="<?php echo site_url("activity_detail/index/" . $rolling_activity[$count]["id"]); ?>">
                                 <img class="img-responsive"
-                                     src="<?php echo base_url($hot_activity[$count]['poster']); ?>"
+                                     src="<?php echo base_url($rolling_activity[$count]['poster']); ?>"
                                      alt="thumb">
-                                <div class="carousel-caption"><?php echo $hot_activity[$count]['name']; ?></div>
+                                <div class="carousel-caption"><?php echo $rolling_activity[$count]['name']; ?></div>
                             </a>
                         </div>
                     <?php endfor; ?>

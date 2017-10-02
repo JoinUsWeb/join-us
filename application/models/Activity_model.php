@@ -51,7 +51,7 @@ class Activity_model extends CI_Model
      */
     public function get_activity()
     {
-        return $this->db->where('isVerified = 1')->get('activity')->result_array();
+        return $this->db->where('isVerified = 1 and isBigPicture = 0')->get('activity')->result_array();
     }
 
     /**
@@ -67,17 +67,25 @@ class Activity_model extends CI_Model
     {
         if ($limit <= 0)
             return $this->db
-                ->where("isVerified =1")
+                ->where("isVerified =1 and isBigPicture = 0")
                 ->order_by('score', 'DESC')
                 ->get('activity')
                 ->result_array();
         else
             return $this->db
-                ->where("isVerified =1")
+                ->where("isVerified =1 and isBigPicture = 0")
                 ->limit($limit)
                 ->order_by('score', 'DESC')
                 ->get('activity')
                 ->result_array();
+    }
+
+    public function get_rolling_activity()
+    {
+        return $this->db
+            ->limit(3)
+            ->get_where('activity', array('isVerified' => 1, 'isBigPicture' => 1))
+            ->result_array();
     }
 
     /**
@@ -93,11 +101,13 @@ class Activity_model extends CI_Model
             return null;
         if (is_string($where_string))
             return $this->db
-                ->where($where_string)
+                ->where($where_string . ' and isBigPicture = 0')
                 ->get("activity")
                 ->result_array();
-        if (is_array($where_string))
+        if (is_array($where_string)){
+            $where_string['isBigPicture'] = 0;
             return $this->db->get_where('activity', $where_string)->result_array();
+        }
         return null;
     }
 
@@ -114,7 +124,7 @@ class Activity_model extends CI_Model
         if ($id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('id' => $id, 'isVerified' => 1))->row_array();
+            return $this->db->get_where('activity', array('id' => $id, 'isVerified' => 1, 'isBigPicture' => 0))->row_array();
     }
 
     /**
@@ -130,7 +140,7 @@ class Activity_model extends CI_Model
         if ($creator_id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('creator_id' => $creator_id, 'isVerified' => 1))->result_array();
+            return $this->db->get_where('activity', array('creator_id' => $creator_id, 'isVerified' => 1, 'isBigPicture' => 0))->result_array();
     }
 
     /**
@@ -146,7 +156,7 @@ class Activity_model extends CI_Model
         if ($first_label_id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('first_label_id' => $first_label_id, 'isVerified' => 1))->result_array();
+            return $this->db->get_where('activity', array('first_label_id' => $first_label_id, 'isVerified' => 1, 'isBigPicture' => 0))->result_array();
     }
 
     /**
@@ -162,7 +172,7 @@ class Activity_model extends CI_Model
         if ($second_label_id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('second_label_id' => $second_label_id, 'isVerified' => 1))->result_array();
+            return $this->db->get_where('activity', array('second_label_id' => $second_label_id, 'isVerified' => 1, 'isBigPicture' => 0))->result_array();
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -261,7 +271,8 @@ class Activity_model extends CI_Model
         return true;
     }
 
-    public function update_activity_score($activity_id = -1, $applier_id = -1){
+    public function update_activity_score($activity_id = -1, $applier_id = -1)
+    {
         if ($activity_id == -1 || $applier_id == -1)
             return null;
 
@@ -271,7 +282,7 @@ class Activity_model extends CI_Model
         $activity_info = $this->get_activity_by_id($activity_id);
         // @todo 初步使用加法计算新的score
         $new_score = $applier_info['brownie_point'] + $activity_info['score'];
-        if ($this->db->update('activity',array('score'=>$new_score),'id='.$activity_id) == false)
+        if ($this->db->update('activity', array('score' => $new_score), 'id=' . $activity_id) == false)
             return false;
         return true;
     }

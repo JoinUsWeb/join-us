@@ -29,12 +29,14 @@ class Home extends CI_Controller
     {
         $data['title'] = "个人主页";
         $hot_activity = $this->Activity_model->get_activity_order_by_score(3);
+        $rolling_activity = $this->Activity_model->get_rolling_activity();
 
         $recommended_activity = $this->get_recommended_activity();
 
         $data['all_first_label'] = $this->First_label_model->get_first_label();
         $data['title'] = '主页';
         $data['page_name'] = "home";
+        $data['rolling_activity'] = $rolling_activity;
         $data['hot_activity'] = $hot_activity;
         $data['recommended_activity'] = $recommended_activity;
         $data['need_first_label'] = $this->User_and_first_label_model->get_first_label_by_user_id($this->user_id) == null ? true : false;
