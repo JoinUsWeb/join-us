@@ -18,9 +18,9 @@ class Create_activity extends CI_Controller
 
         $config['upload_path'] = FCPATH . '/img/';
         $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2048;
-        $config['max_width'] = 1920;
-        $config['max_height'] = 1360;
+        $config['max_size'] = 4096;
+        $config['max_width'] = 3000;
+        $config['max_height'] = 3000;
         $this->load->library('upload', $config);
     }
 
