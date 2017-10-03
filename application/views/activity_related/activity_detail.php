@@ -216,6 +216,7 @@
                                     </div>
                                 </div>
                             </li>
+                            <li style="clear: both"></li>
 
                         </ul>
                     </div>
