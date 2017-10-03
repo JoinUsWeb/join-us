@@ -53,6 +53,6 @@ class Home extends CI_Controller
 
     public function refresh_recommend_activity(){
         $this->Recommend_activity_model->refresh_recommend_activity_for_test($this->user_id);
-        $this->index();
+        redirect('home/index');
     }
 }
