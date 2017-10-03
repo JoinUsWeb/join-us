@@ -109,10 +109,12 @@
 .add_member a{
 	text-decoration: none;
 }
+
+
 .member_review_list{
 	margin:0;
 	padding: 0;
-	height: 200px;
+	
 }
 .member_review_main{
 	float: left;

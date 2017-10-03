@@ -44,3 +44,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 html/my_html.html
 application/config/database.php
+git_pull.cmd
