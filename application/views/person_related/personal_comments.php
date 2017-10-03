@@ -9,7 +9,7 @@
                     </div>
                     <div class="p_hd_present">
                         <div class="p_hd_title"><a class="thisover"
-                                                   href="<?php echo site_url('activity_detail/index/' . $single_activity['id']) ?>"><span><?php echo $single_activity['name']; ?></span></a>
+                                                   href="<?php echo site_url('activity_detail/index/' . $single_activity['id']) ?>"><p><?php echo $single_activity['name']; ?></p></a>
                         </div>
                         <div class="p_hd_details"><i
                                     class="icon-time"></i><?php echo $single_activity['apply_expire']; ?></div>

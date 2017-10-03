@@ -12,10 +12,10 @@
                             <div class="p_hd_present">
                                 <div class="p_hd_title"><a class="thisover"
                                                            href="<?php echo site_url('activity_detail/index/' . $activity_item['id']); ?>">
-                                        <span><?php echo $activity_item['name']; ?></span></a></div>
+                                        <p><?php echo $activity_item['name']; ?></p></a></div>
                                 <div class="p_hd_details"><i class="icon-time"></i>
                                     <?php echo $activity_item['activity_start']; ?></div>
-                                <div class="p_hd_details"><i class="icon-map-marker"></i><?php echo $activity_item['place']; ?>
+                                <div class="p_hd_details"><i class="icon-map-marker"></i><p><?php echo $activity_item['place']; ?></p>
                                 </div>
                                 <div class="p_hd_bd">
                                     <p class="p_hd_text">

@@ -1054,3 +1054,22 @@ font-size: 15px;
     line-height: 40px;
 }
 /*我的消息部分css结束*/
+.p_hd_title p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 550px;
+    margin:0;
+}
+.p_hd_details p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 241px;
+    margin: 0px;
+    float: left;
+}
+.p_hd_details i{
+    margin-top: 2.5px;
+    float: left;
+}
