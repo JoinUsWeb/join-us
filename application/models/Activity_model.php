@@ -114,17 +114,26 @@ class Activity_model extends CI_Model
     /**
      * 获得指定活动
      *
-     * 通过活动ID查找活动。函数接受一个参数活动ID，如果合法（id>0），返回该活动；
+     * 通过活动ID查找活动。函数接受一个参数活动ID，如果合法（id>0），返回该活动；此方法返回的活动是正在进行中的
      *
      * @param int $id
-     * @return null OR $data
+     * @return array
      */
     public function get_activity_by_id($id = -1)
     {
         if ($id < 0)
-            return null;
-        else
-            return $this->db->get_where('activity', array('id' => $id, 'isVerified' => 1))->row_array();
+            return [];
+        else{
+            $activity=$this->db->get_where('activity', array('id' => $id, 'isVerified' => 1))->row_array();
+            if(!empty($activity)){
+                $current_date = date("Y-m-d H:i:s");
+                if($activity['activity_expire']<$current_date){
+                    $this->end_activity($activity['id'],$activity['creator_id']);
+                    return [];
+                }
+            }
+            return $activity;
+        }
     }
 
     /**
@@ -285,5 +294,11 @@ class Activity_model extends CI_Model
         if ($this->db->update('activity', array('score' => $new_score), 'id=' . $activity_id) == false)
             return false;
         return true;
+    }
+
+    public function end_activity($activity_id=-1,$creator_id=-1){
+        $this->db->set('isVerified',3)
+            ->where(['id'=>$activity_id,'creator_id'=>$creator_id])
+            ->update('activity');
     }
 }

@@ -10,6 +10,7 @@ class Activity_detail extends CI_Controller
 {
     var $browse_base = 1.2;
     var $enter_base = 2.2;
+    var $user_id;
 
     public function __construct()
     {
@@ -19,6 +20,11 @@ class Activity_detail extends CI_Controller
         $this->load->model('Activity_model');
         $this->load->model('Member_and_activity_model');
         $this->load->model('Activity_comment_model');
+        if (isset($_SESSION['user_id'])) {
+            $this->user_id = $_SESSION['user_id'];
+        } else {
+            redirect('login');
+        }
     }
 
     public function index($activity_id, $isRecommended = 0)
@@ -26,13 +32,12 @@ class Activity_detail extends CI_Controller
         $data['page_name'] = "detail";
         $data['activity'] = $this->Activity_model->get_activity_by_id($activity_id);
         $data['title'] = $data['activity']['name'];
-        if ($data['activity'] == null)
-            show_error('活动不存在，可能已经被取消');
         if (empty($data['activity']))
             show_error('活动不存在，可能已经被取消');
         $data['isRecommended'] = $isRecommended;
         $data['member'] = $this->Member_and_activity_model->get_member_by_activity_id($activity_id);
         $data['hot_activity'] = $this->Activity_model->get_activity_order_by_score(3);
+        $data['is_creator']=$data['activity']['creator_id'] == $this->user_id;
         $data['is_joined'] = $this->Member_and_activity_model->is_exist($this->session->user_id, $activity_id);
 
         $data['comment'] = $this->Activity_comment_model->get_completed_comment_by_activity_id($activity_id);
@@ -71,6 +76,13 @@ class Activity_detail extends CI_Controller
         }
 
         redirect('activity_detail/index/' . $activity_id . '/' . $isRecommended);
+    }
+
+    public function end($activity_id){
+        $this->Activity_model->end_activity($activity_id,$this->user_id);
+        //这里应该补上提示活动成功结束的提示
+
+        redirect('home/index');
     }
 
     function comment_check()

@@ -91,10 +91,10 @@
                         </div>
 
                         <?php
-                        if ($activity['creator_id'] == $this->session->user_id) { ?>
+                        if ($is_creator) { ?>
                             <form action="
                             <?php
-                            echo site_url('activity_detail/index/' . $activity['id']);
+                            echo site_url('activity_detail/end/' . $activity['id']);
                             ?>" method="post">
                                 <p class="center">
                                     <input type="submit" id="apply" value="结束活动">
