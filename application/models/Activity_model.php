@@ -51,7 +51,7 @@ class Activity_model extends CI_Model
      */
     public function get_activity()
     {
-        return $this->db->where('isVerified = 1 and isBigPicture = 0')->get('activity')->result_array();
+        return $this->db->where('isVerified = 1')->get('activity')->result_array();
     }
 
     /**
@@ -124,7 +124,7 @@ class Activity_model extends CI_Model
         if ($id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('id' => $id, 'isVerified' => 1, 'isBigPicture' => 0))->row_array();
+            return $this->db->get_where('activity', array('id' => $id, 'isVerified' => 1))->row_array();
     }
 
     /**
@@ -140,7 +140,7 @@ class Activity_model extends CI_Model
         if ($creator_id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('creator_id' => $creator_id, 'isVerified' => 1, 'isBigPicture' => 0))->result_array();
+            return $this->db->get_where('activity', array('creator_id' => $creator_id, 'isVerified' => 1))->result_array();
     }
 
     /**
@@ -151,7 +151,7 @@ class Activity_model extends CI_Model
      * @param int $first_label_id
      * @return null OR array $data
      */
-    public function get_activity_by_first_label_id($first_label_id = -1)
+    private function get_activity_by_first_label_id($first_label_id = -1)
     {
         if ($first_label_id < 0)
             return null;
@@ -167,7 +167,7 @@ class Activity_model extends CI_Model
      * @param int $second_label_id
      * @return null OR array $data
      */
-    public function get_activity_by_second_label_id($second_label_id = -1)
+    private function get_activity_by_second_label_id($second_label_id = -1)
     {
         if ($second_label_id < 0)
             return null;
