@@ -198,7 +198,7 @@
 <script type="text/javascript" src="<?php echo base_url("js/form_validation/create_activity.js")?>"></script>
 <script type="text/javascript">
     $(function () {
-        $.fn.my_datetimepicker = function () {
+        /*$.fn.my_datetimepicker = function () {
             offset = this.offset();
             this.datetimepicker({
                 format: 'YYYY-MM-DD',
@@ -212,8 +212,40 @@
                 }
             });
         };
+
         $('#start_date').my_datetimepicker();
         $('#close_date').my_datetimepicker();
-        $('#end_date').my_datetimepicker();
+        $('#end_date').my_datetimepicker();*/
+        // @todo 正式提交代码是删除，仅供测试方便
+        $.fn.my_datetimepicker = function (default_date) {
+            offset = this.offset();
+            this.datetimepicker({
+                defaultDate: default_date.getFullYear() + '/' + (default_date.getMonth() + 1) + '/' + default_date.getDate(),
+                format: 'YYYY-MM-DD',
+                widgetPositioning: {
+                    personal: JSON.stringify({
+                        'position': 'absolute',
+                        'left': offset.left,
+                        'top': offset.top + this.height() + 10
+                    }),
+                    vertical: "bottom"
+                }
+            });
+        };
+
+        var a = Math.floor(Math.random() * 10) + 10,
+            b = Math.floor(Math.random() * 10) + 15,
+            c = Math.floor(Math.random() * 10) + 20;
+
+        var today = new Date();
+        var change = today;
+        change.setDate(change.getDate() + a);
+        $('#close_date').my_datetimepicker(change);
+        change = today;
+        change.setDate(change.getDate() + b);
+        $('#start_date').my_datetimepicker(change);
+        change = today;
+        change.setDate(change.getDate() + c);
+        $('#end_date').my_datetimepicker(change);
     })
 </script>
