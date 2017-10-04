@@ -40,6 +40,7 @@ class Search_activity_model extends CI_Model
             $activity = $this->Activity_model->get_activity();
         else {
             $query['isVerified'] = 1;
+            $query['isBigPicture'] = 0;
             if ($order != 0)
                 $activity = $this->db
                     ->where($query)
