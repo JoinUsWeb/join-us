@@ -49,9 +49,9 @@ class Activity_model extends CI_Model
      *
      * @return null OR array $data
      */
-    public function get_activity($isBigPicture = null)
+    public function get_activity($isBigPicture = -1)
     {
-        if ($isBigPicture == null)
+        if ($isBigPicture == -1)
             return $this->db->where('isVerified = 1')->get('activity')->result_array();
         return $this->db->where('isVerified = 1 and isBigPicture = ' . $isBigPicture)->get('activity')->result_array();
     }
