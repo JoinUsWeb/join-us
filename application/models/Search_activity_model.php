@@ -37,7 +37,7 @@ class Search_activity_model extends CI_Model
             $query['activity_start < '] = $earlier_than;
         }
         if (empty($query) && $order == 0)
-            $activity = $this->Activity_model->get_activity();
+            $activity = $this->Activity_model->get_activity(0);
         else {
             $query['isVerified'] = 1;
             $query['isBigPicture'] = 0;
