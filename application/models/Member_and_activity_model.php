@@ -71,8 +71,10 @@ class Member_and_activity_model extends CI_Model
             $activity = $this->db->get_where('relation_activity_members', array('member_id' => $member_id))->result_array();
             foreach ($activity as $activity_item) {
                 $temp = $this->Activity_model->get_activity_by_id($activity_item['activity_id']);
-                $temp['rate'] = $activity_item['rate'];
-                $data[] = $temp;
+                if ($temp !== null){
+                    $temp['rate'] = $activity_item['rate'];
+                    $data[] = $temp;
+                }
             }
             return $data;
         }

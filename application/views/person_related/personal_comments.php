@@ -1,6 +1,7 @@
     <div class="personal_hd_joined">
         <?php if (count($activities_info) != 0) : ?>
-            <?php foreach ($activities_info as $single_activity): ?>
+            <?php foreach ($activities_info as $single_activity):
+                if (!empty($single_activity)):?>
                 <!-- 应该考虑加入对进行筛选活动，例如根据活动时间，否则数据太多，显示有困难 -->
                 <div class="p_hd_main">
                     <div class="hd_img">
@@ -43,7 +44,8 @@
                         <?php endif;?>
                     </div>
                 </div>
-            <?php endforeach;
+            <?php endif;
+                endforeach;
         else : ?>
             <span>你没有需要评价的活动！</span>
         <?php endif; ?>

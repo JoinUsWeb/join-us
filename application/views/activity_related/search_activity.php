@@ -127,8 +127,8 @@ $order = array(array('1', '综合'), array('2', '最新'), array('3', '最热'))
                     <div class="hot_hd_content">
                         <?php
                         if (!empty($hot_activity))
-                            foreach ($hot_activity as $hot_activity_item) {
-                                ?>
+                            foreach ($hot_activity as $hot_activity_item) :
+                                if (!empty($hot_activity_item)):?>
                                 <div class="content_li">
                                     <div class="li_left">
                                         <a href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
@@ -148,7 +148,8 @@ $order = array(array('1', '综合'), array('2', '最新'), array('3', '最热'))
                                             ?></p>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php endif;
+                            endforeach;?>
                     </div>
                 </div>
             </div>

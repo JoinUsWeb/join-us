@@ -7,14 +7,18 @@
             </div>
             <div class="message_bar">
                 <ul>
-                    <?php foreach ($activity_in_three_days as $row): ?>
+                    <?php foreach ($activity_in_three_days as $row):
+                        if (!empty($row)):?>
                         <li>您报名参加的 <?php echo $row['name'] ?> 将于 <?php echo $row['activity_start']; ?>开始活动
                         </li>
-                    <?php endforeach; ?>
-                    <?php foreach ($activity_in_a_week as $row): ?>
+                    <?php endif;
+                    endforeach; ?>
+                    <?php foreach ($activity_in_a_week as $row):
+                        if (!empty($row)):?>
                         <li>您组织的 <?php echo $row['name']; ?> 将于 <?php echo $row['activity_start']; ?>开始活动
                         </li>
-                    <?php endforeach; ?>
+                    <?php endif;
+                    endforeach; ?>
                 </ul>
             </div>
         </div>
@@ -44,9 +48,11 @@
             </div>
             <div class="message_bar">
                 <ul>
-                    <?php foreach ($invitation as $row): ?>
+                    <?php foreach ($invitation as $row):
+                        if (!empty($row)):?>
                         <li>您收到了一条来自 <?php echo $row['nick_name']; ?> 的活动邀请-<?php echo $row['name']; ?></li>
-                    <?php endforeach; ?>
+                    <?php endif;
+                    endforeach; ?>
                 </ul>
             </div>
         </div>
@@ -61,9 +67,11 @@
                     /**
                      * @todo 需要区分活动状态
                      */
-                    foreach ($verified_activity as $row): ?>
+                    foreach ($verified_activity as $row):
+                        if (!empty($row)):?>
                         <li>您创建的活动 <?php echo $row['name']; ?> 已通过审核!</li>
-                    <?php endforeach; ?>
+                    <?php endif;
+                    endforeach; ?>
                 </ul>
             </div>
         </div>

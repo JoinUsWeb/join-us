@@ -2,6 +2,7 @@
                     <?php
                     if (isset($activities_info) && !empty($activities_info)):
                         foreach ($activities_info as $activity_item):
+                            if (!empty($activity_item)):
                             ?>
                             <div class="p_hd_main">
                                 <div class="hd_img">
@@ -41,7 +42,8 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
-                        <?php endforeach;
+                        <?php endif;
+                            endforeach;
                     else : ?>
                         <div class="hd_null"><span>还没有创建过活动</span></div>
                     <?php endif; ?>

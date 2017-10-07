@@ -40,7 +40,8 @@
                 </ol>
                 <div class="carousel-inner">
                     <?php $num = count($rolling_activity);
-                    for ($count = 0; $count < $num; $count++) : ?>
+                    for ($count = 0; $count < $num; $count++) :
+                        if (!empty($rolling_activity[$count])):?>
                         <div class="<?php echo $count == 1 ? "item active" : "item"; ?>">
                             <a href="<?php echo site_url("activity_detail/index/" . $rolling_activity[$count]["id"]); ?>">
                                 <img class="img-responsive"
@@ -49,7 +50,8 @@
                                 <div class="carousel-caption"><?php echo $rolling_activity[$count]['name']; ?></div>
                             </a>
                         </div>
-                    <?php endfor; ?>
+                    <?php endif;
+                    endfor; ?>
                 </div>
                 <a class="left carousel-control" href="#carousel-299058" data-slide="prev"><span
                             class="icon-prev"></span></a> <a class="right carousel-control" href="#carousel-299058"
@@ -185,8 +187,8 @@
                 <div class="hot_hd_content">
                     <?php
                     if (!empty($hot_activity))
-                        foreach ($hot_activity as $hot_activity_item) {
-                            ?>
+                        foreach ($hot_activity as $hot_activity_item) :
+                            if (!empty($hot_activity_item)):?>
                             <div class="content_li">
                                 <div class="li_left">
                                     <a href="<?php echo site_url("activity_detail/index/" . $hot_activity_item["id"]) ?>">
@@ -206,7 +208,8 @@
                                         ?></p>
                                 </div>
                             </div>
-                        <?php } ?>
+                        <?php endif;
+                        endforeach;?>
                 </div>
             </div>
         </div>

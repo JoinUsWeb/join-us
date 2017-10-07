@@ -2,6 +2,7 @@
                 <?php
                 if (isset($activities_info) && !empty($activities_info)):
                     foreach ($activities_info as $activity_item):
+                        if (!empty($activity_item)):
                         ?>
                         <div class="p_hd_main">
                             <div class="hd_img">
@@ -30,7 +31,8 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                    <?php endforeach;
+                    <?php endif;
+                        endforeach;
                 else : ?>
                     <div class="hd_null"><span>近期没有参与活动，快去寻找你的专属活动</span></div>
                 <?php endif; ?>
