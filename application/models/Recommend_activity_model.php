@@ -89,7 +89,7 @@ class Recommend_activity_model extends CI_Model
             $sql = 'SELECT id AS activity_id
                     FROM activity AS a
                     WHERE a.second_label_id= ?
-                        AND a.isVerified=1
+                        AND a.isVerified=1 AND a.isBigPicture = 0
                         AND a.id NOT IN(
                             SELECT activity_id
                             FROM relation_activity_members AS ram
@@ -131,7 +131,7 @@ class Recommend_activity_model extends CI_Model
 
                 $sql = 'SELECT a.id AS activity_id
                         FROM activity AS a JOIN relation_activity_members AS ram
-                        WHERE a.id=ram.activity_id
+                        WHERE a.id=ram.activity_id AND a.isBigPicture = 0
                             AND ram.member_id= ?
                             AND a.isVerified=1
                             AND a.id NOT IN(
@@ -164,7 +164,7 @@ class Recommend_activity_model extends CI_Model
         //获取所有能参与的活动
         $sql = 'SELECT a.id AS activity_id
                         FROM activity AS a 
-                        WHERE a.isVerified=1
+                        WHERE a.isVerified=1 AND a.isBigPicture = 0
                             AND a.id NOT IN(
                                 SELECT activity_id
                                 FROM relation_activity_members AS ram
