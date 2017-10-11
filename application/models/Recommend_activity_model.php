@@ -49,6 +49,9 @@ class Recommend_activity_model extends CI_Model
         $user = $this->User_model->get_user_by_id($user_id);
         $current_date = date('Y-m-d');
         if ($current_date != $user['recommend_date']) {//如果用户推荐需要更新
+            //测试阶段，需要记录每次更新小组推荐时推荐的效率
+            //@todo 这里测试完毕需要删除
+            $this->Evaluate_model->save_evaluate_record($user_id);
             $this->update_recommend_activities($user_id);
         }
     }
@@ -215,9 +218,6 @@ class Recommend_activity_model extends CI_Model
     //为了测试阶段方便刷新,调用后模拟刷新一次小组推荐
     public function refresh_recommend_activity_for_test($user_id)
     {
-        //测试阶段，需要记录每次更新小组推荐时推荐的效率
-        $this->Evaluate_model->save_evaluate_record($user_id);
-
         //为了测试，将活动推荐时间和用户推荐世界都设置为0000-00-00
         $this->db->set('recommend_date', '0000-00-00')
             ->where(['user_id' => $user_id, 'recommend_date' => date('Y-m-d')])
