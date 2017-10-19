@@ -60,6 +60,7 @@ class Activity_comment_model extends CI_Model
             return false;
         $date_time = date("Y-m-d H:i:s");
         $activity_info['date_time'] = $date_time;
+        $activity_info['content'] = htmlspecialchars($activity_info['content']);
         if ($this->db->insert('activity_comment', $activity_info) == false)
             return false;
         return true;

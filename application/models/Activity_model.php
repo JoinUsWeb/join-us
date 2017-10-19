@@ -256,7 +256,9 @@ class Activity_model extends CI_Model
         $this->load->model('User_model');
         $creator_info = $this->User_model->get_user_by_id($activity_info['creator_id']);
         $activity_info['score'] = $creator_info['leadership'];
-
+        foreach ($activity_info as $key => $value){
+            $activity_info[$key] = htmlspecialchars($value);
+        }
         if ($this->db->insert('activity', $activity_info) == false)
             return false;
         return true;
