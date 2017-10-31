@@ -58,11 +58,13 @@ class Activity_detail extends CI_Controller
         $user_id = $this->session->user_id;
         $activity = $this->Activity_model->get_activity_by_id($activity_id);
         if (isset($user_id) && ($activity['member_number'] < $activity['amount_max'])) {
-            if ($this->Member_and_activity_model->insert_new_relation($user_id, $activity_id,$isRecommended) != true)
-                // @todo 这里应该显示报名失败
+            if ($this->Member_and_activity_model->insert_new_relation($user_id, $activity_id,$isRecommended) != true) {
+                show_error('报名失败！');
                 return;
+            }
             $this->update_recommend_value($_SESSION['user_id'], $activity['second_label_id'], $this->enter_base);
             $this->Activity_model->update_activity_score($activity_id, $user_id);
+            $this->Browser_and_trace_model->insert_new_relation($_SESSION['user_id'], date("Y-m-d H:i:s"), $activity_id, $isRecommended, 1);
         }
 
         redirect('activity_detail/index/' . $activity_id . '/' . $isRecommended);

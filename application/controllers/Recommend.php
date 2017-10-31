@@ -27,12 +27,12 @@ class Recommend extends CI_Controller
         $origin = 60; // 每个二级标签推荐值的初始值
         $value = $this->Second_label_recommend_value_model->query_value($user_id, $second_label_id);
         if ($value == null) {// value is empty or second_label_id is not found
-            $to_insert = $origin * $base * $times;
+            $to_insert = $origin + $base * $times;
             $this->Second_label_recommend_value_model
                 ->insert_new_value($user_id, $second_label_id, $to_insert);
         } else {
             $origin = $value["value"];
-            $to_update = $origin * $base * $times;
+            $to_update = $origin + $base * $times;
             $this->Second_label_recommend_value_model
                 ->update_value($user_id, $second_label_id, $to_update);
         }

@@ -21,17 +21,8 @@ class Welcome extends CI_Controller
      */
     public function index()
     {
-        $sql = 'select * from activity where apply_expire < "2017-11-01 00:00:00" or isVerified = 3';
-        $data = $this->db->query($sql)->result_array();
-        foreach ($data as $datum){
-            $datum['apply_expire'][3] = '8';
-            $datum['activity_start'][3] = '8';
-            $datum['activity_expire'][3] = '8';
-            $this->db
-                ->set(['isVerified'=>1,'apply_expire'=>$datum['apply_expire'],'activity_start'=>$datum['activity_start'],'activity_expire'=>$datum['activity_expire']])
-                ->where('id',$datum['id'])
-                ->update('activity');
-        }
+        $this->load->model('Second_label_recommend_value_model');
+        $this->Second_label_recommend_value_model->get_value_desc_by_user_id('17');
     }
 
 }
