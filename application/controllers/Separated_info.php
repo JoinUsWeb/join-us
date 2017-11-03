@@ -64,7 +64,7 @@ class Separated_info extends CI_Controller
         $this->load->model("Member_and_activity_model");
         $this->load->model("User_model");
         $this->Member_and_activity_model->update_rate($_SESSION['user_id'], $activity_id, $rate);
-        $this->User_model->update_user_brownie_point($_SESSION['user_id'], $rate);
+        $this->User_model->update_user_leadership($_SESSION['user_id'], $rate);
     }
 
     function change_user_info($type)

@@ -199,7 +199,7 @@ class User_model extends CI_Model
         return true;
     }
 
-    public function update_user_brownie_point($user_id = -1, $rate = -1){
+    public function update_user_leadership($user_id = -1, $rate = -1){
         if ($user_id < 0 || $rate < 0)
             return null;
         $rate = $this->get_user_by_id($user_id)['leadership'] + $rate * 0.1;

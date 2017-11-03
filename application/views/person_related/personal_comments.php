@@ -17,32 +17,31 @@
                         <div class="p_hd_details"><i
                                     class="icon-map-marker"></i><?php echo $single_activity['place']; ?></div>
                         <div class="p_hd_comment">请为组织者评分:</div>
-                        <?php switch ($single_activity['rate']) :
-                            case -1:?>
+                        <?php if (-1 == $single_activity['rate']) : ?>
                         <div class="rating" data-activity-id="<?php echo $single_activity['id']?>">
                             <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                         </div>
-                        <?php case 1: ?>
+                        <?php elseif (1 == $single_activity['rate']): ?>
                             <div class="rated">
                                 <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span class="selected">☆</span>
                             </div>
-                        <?php case 2: ?>
+                        <?php elseif (2 == $single_activity['rate']): ?>
                             <div class="rated">
                                 <span>☆</span><span>☆</span><span>☆</span><span class="selected">☆</span><span class="selected">☆</span>
                             </div>
-                        <?php case 3: ?>
+                        <?php elseif (3 == $single_activity['rate']): ?>
                             <div class="rated">
                                 <span>☆</span><span>☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
                             </div>
-                        <?php case 4: ?>
+                        <?php elseif (4 == $single_activity['rate']): ?>
                             <div class="rated">
                                 <span>☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
                             </div>
-                        <?php case 5: ?>
+                        <?php else: ?>
                             <div class="rated">
                                 <span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
                             </div>
-                        <?php endswitch;?>
+                        <?php endif;?>
                     </div>
                 </div>
             <?php endif;

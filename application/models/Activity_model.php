@@ -124,14 +124,14 @@ class Activity_model extends CI_Model
     public function get_activity_by_id($id = -1)
     {
         if ($id < 0)
-            return [];
+            return null;
         else{
             $activity=$this->db->get_where('activity', array('id' => $id, 'isVerified' => 1))->row_array();
             if(!empty($activity)){
                 $current_date = date("Y-m-d H:i:s");
                 if($activity['activity_expire']<$current_date){
                     $this->end_activity($activity['id'],$activity['creator_id']);
-                    return [];
+                    return null;
                 }
             }
             return $activity;
