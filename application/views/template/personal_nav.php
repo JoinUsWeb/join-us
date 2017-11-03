@@ -18,47 +18,17 @@
 
                 </div>
                 <div class="p_shows">
-                    <nav class="p_rate_choice">
-                        <ul>
-                            <li><a class="special" href="#personal_xinyong">用户信用<span class="pipe">|</span></a></li>
-                            <li><a class="special" href="#personal_pingfen">组织评分</a></li>
-                        </ul>
-                    </nav>
-                    <div>
-                        <section id="personal_xinyong" class="personal_credit">
-                            <div class="p_rating">
-                                <div class="p_score"><?php echo $leadership; ?></div>
-                                <div class="p_star">
-                                    <?php
-                                    $star_string = '';
-                                    for ($i = 0; $i < 5; $i++):
-                                        if ($i < $leadership):
-                                             $star_string .= '<span class="rate_show">☆</span>';
-                                        else:
-                                            $star_string .= '<span>☆</span>';
-                                        endif;
-                                    endfor;
-                                    echo $star_string; ?>
-                                </div>
-                            </div>
-                        </section>
-                        <section id="personal_pingfen" class="personal_credit">
-                            <div class="p_rating">
-                                <div class="p_score"><?php echo $brownie_point;?></div>
-                                <div class="p_star">
-                                    <?php
-                                    $star_string = '';
-                                    for ($i = 0; $i < 5; $i++):
-                                        if ($i < $leadership):
-                                            $star_string .= '<span class="rate_show">☆</span>';
-                                        else:
-                                            $star_string .= '<span>☆</span>';
-                                        endif;
-                                    endfor;
-                                    echo $star_string; ?>
-                                </div>
-                            </div>
-                        </section>
+                    <div class="p_score_title" style="border-right:solid 1px gray">
+                        用户信用
+                    </div>
+                    <div class="p_score_title">
+                        组织评分
+                    </div>
+                    <div class="p_score">
+                        <?php echo $brownie_point;?>
+                    </div>
+                    <div class="p_score">
+                        <?php echo $leadership; ?>
                     </div>
                 </div>
 
