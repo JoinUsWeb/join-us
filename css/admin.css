@@ -98,6 +98,6 @@ td>a:hover,.back a:hover{
 	margin-top: 20px;
 }
 .check_button{
-	margin-left: 550px;
+	float: right;
 	height: 150px;
 }

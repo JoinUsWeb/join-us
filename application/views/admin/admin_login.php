@@ -48,10 +48,12 @@
             <li>
                 <label for="user_name" class="title">用户名：</label>
                 <input type="text" id="user_name" name="_user_name" placeholder="请输入用户名" value="">
+                <div style="margin:3px 0 0 135px; height: 30px" id="username_error"></div>
             </li>
             <li>
                 <label for="password" class="title">密码：</label>
                 <input type="password" id="password" name="_password" placeholder="请输入密码" value="">
+                <div style="margin:3px 0 0 135px; height: 30px"  id="pwd_error"></div>
             </li>
         </ul>
 
@@ -76,12 +78,13 @@
         var user_name = this.value;
         if (user_name.length <= 0) {
             // 显示错误信息
-            alert("请输入用户名！");
+            document.getElementById('username_error').innerHTML = "请输入用户名！";
             return;
         }
         required_check = true;
         if (required_check) {
             // 错误信息置为空
+            document.getElementById('pwd_error').innerHTML = "";
         }
     };
     document.getElementById("password").onblur = function () {
@@ -89,12 +92,13 @@
         var password = this.value;
         if (password.length <= 0) {
             // 显示错误信息
-            alert("请输入密码！");
+            document.getElementById('pwd_error').innerHTML = "请输入用户名！";
             return;
         }
         required_check = true;
         if (required_check) {
             // 错误信息置为空
+            document.getElementById('pwd_error').innerHTML = "";
         }
     };
 </script>

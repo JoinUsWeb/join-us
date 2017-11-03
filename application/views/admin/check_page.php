@@ -148,9 +148,14 @@
 
         </div>
         <div class="check_button">
-            <?php echo form_open('admin/is_approved/' . $activity_info['id']);
+            <?php echo form_open('admin/is_approved/' . $activity_info['id'] . '/' . $activity_info['creator_id'], array('class' => 'form-inline'));?>
+            <?php
             switch ($activity_info['isVerified']) {
                 case 0: ?>
+                    <span class="center">
+                <label for="score" style="font-size: 18px">活动综合评分：</label>
+                    <input class="form-control" type="text" id="score" placeholder="该评分最高为 10"  name="origin_score" required>
+                </span>
                     <span class="center">
                     <input type="submit" id="check_yes" name="approve" value="审核通过">
                 </span>
@@ -160,13 +165,17 @@
                     <?php break;
                 case 1: ?>
                     <span class="center">
-                    <input type="submit" id="check_yes" name="approve" value="审核通过" disabled>
+                    <input class="form-control" type="submit" id="check_yes" name="approve" value="审核通过" disabled>
                 </span>
                     <span class="center">
                     <input type="submit" id="check_no" name="disapprove" value="审核不通过">
                 </span>
                     <?php break;
                 case 2: ?>
+                    <span class="center">
+                <label for="score" style="font-size: 18px">活动综合评分：</label>
+                    <input class="form-control" type="text" id="score" name="origin_score" placeholder="该评分最高为 10" required>
+                </span>
                     <span class="center">
                     <input type="submit" id="check_yes" name="approve" value="审核通过">
                 </span>
@@ -184,6 +193,17 @@
     </div>
 
 </div>
+<script type="text/javascript">
+    document.getElementById('check_no').onclick = function () {
+        document.getElementById('score').removeAttribute('required');
+    };
+    document.getElementById('check_yes').onclick = function () {
+        if (document.getElementById('score').value >= 10){
+            alert("活动综合评分不得超过 10 ！");
+            return false;
+        }
+    }
+</script>
 
 <footer class="text-center">
     <div class="container">
