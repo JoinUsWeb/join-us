@@ -17,6 +17,7 @@ class Admin extends CI_Controller
         $this->load->helper(array('url', 'form'));
         $this->load->model('Admin_model');
         $this->load->model('Admin_first_label_model');
+        $this->load->model('User_model');
     }
 
     private function check_status()
@@ -91,14 +92,15 @@ class Admin extends CI_Controller
             return null;
     }
 
-    public function is_approved($id = -1)
+    public function is_approved($id = -1, $creator_id = -1)
     {
         $this->load->model('Activity_model');
         $this->load->model('Message_model');
-        if ($id == -1)
+        if ($id == -1 || $creator_id == -1)
             return;
         if (isset($_POST['approve'])){
-            $this->Activity_model->update_activity_by_id($id,array('isVerified' => 1));
+            $creator_leadership = $this->User_model->get_user_by_id($creator_id)['leadership'];
+            $this->Activity_model->update_activity_by_id($id,array('isVerified' => 1, 'score' => $_POST['origin_score'] + $creator_leadership));
             header('location: '.$_SERVER['HTTP_REFERER']);
         }elseif (isset($_POST['disapprove'])){
             $this->Activity_model->update_activity_by_id($id,array('isVerified' => 2));
