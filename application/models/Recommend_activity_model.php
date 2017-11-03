@@ -97,13 +97,19 @@ class Recommend_activity_model extends CI_Model
                         AND a.id NOT IN(
                             SELECT activity_id
                             FROM recommend_user_activity AS rua
-                            WHERE user_id= ?)';
+                            WHERE user_id= ?)
+                    ORDER BY a.score DESC ';
             $raw_activity_ids = $this->db->query($sql,
                 array($labels[$i]['second_label_id'], $user_id, $user_id))->result_array();
+            /*标签下随机获取
             $label_activity_count = count($raw_activity_ids);
             if ($label_activity_count > 0) {
                 $rand_index = rand(0, $label_activity_count - 1);
                 $activity_ids[] = $raw_activity_ids[$rand_index]['activity_id'];
+            }*/
+            //获取最热活动
+            if(!empty($raw_activity_ids)){
+                $activity_ids[] = $raw_activity_ids[0]['activity_id'];
             }
         }
     }
