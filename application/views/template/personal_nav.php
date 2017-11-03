@@ -20,7 +20,7 @@
                 <div class="p_shows">
                     <nav class="p_rate_choice">
                         <ul>
-                            <li class="special"><a class="special" href="#personal_xinyong">用户信用<span class="pipe">|</span></a></li>
+                            <li><a class="special" href="#personal_xinyong">用户信用<span class="pipe">|</span></a></li>
                             <li><a class="special" href="#personal_pingfen">组织评分</a></li>
                         </ul>
                     </nav>

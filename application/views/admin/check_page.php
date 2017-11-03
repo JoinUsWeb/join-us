@@ -154,7 +154,7 @@
                 case 0: ?>
                     <span class="center">
                 <label for="score" style="font-size: 18px">活动综合评分：</label>
-                    <input class="form-control" type="text" id="score" placeholder="该评分最高为 10"  name="origin_score" required>
+                    <input class="form-control" type="text" id="score" placeholder="请输入60 - 100的整数"  name="origin_score" required>
                 </span>
                     <span class="center">
                     <input type="submit" id="check_yes" name="approve" value="审核通过">
@@ -174,7 +174,7 @@
                 case 2: ?>
                     <span class="center">
                 <label for="score" style="font-size: 18px">活动综合评分：</label>
-                    <input class="form-control" type="text" id="score" name="origin_score" placeholder="该评分最高为 10" required>
+                    <input class="form-control" type="text" id="score" name="origin_score" placeholder="请输入60 - 100的整数" required>
                 </span>
                     <span class="center">
                     <input type="submit" id="check_yes" name="approve" value="审核通过">
@@ -198,8 +198,8 @@
         document.getElementById('score').removeAttribute('required');
     };
     document.getElementById('check_yes').onclick = function () {
-        if (document.getElementById('score').value >= 10){
-            alert("活动综合评分不得超过 10 ！");
+        if (document.getElementById('score').value < 60 || document.getElementById('score').value > 100){
+            alert("请输入60 - 100的整数！");
             return false;
         }
     }

@@ -21,8 +21,8 @@ class Welcome extends CI_Controller
      */
     public function index()
     {
-        $this->load->model('Second_label_recommend_value_model');
-        $this->Second_label_recommend_value_model->get_value_desc_by_user_id('17');
+        $this->load->model('User_model');
+        $this->User_model->update_user_brownie_point(17,6);
     }
 
 }
