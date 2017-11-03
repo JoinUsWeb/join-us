@@ -140,20 +140,29 @@ body{
     margin-left: 520px;
     width: 200px;
     float: left;
+    text-align: center;
 }
+.p_score_title{
+    float:left;
+    width: 100px;
+    height: 23px;
+    color: cadetblue;
+}
+
 .p_score{
-    width: 40px;
-    height: 40px;
     float: left;
-    font-size: 20px;
+    width: 100px;
+    margin-top: 13px;
+    color: dimgray;
 }
 .p_star{
-    width: 80px;
-    height: 20px;
     float: left;
+    text-align: center;
+    margin: 0 auto;
 }
 .p_rating{
     height: 60px;
+    text-align: center;
 }
 .p_rate_choice{
     width: 200px;

@@ -1,0 +1,287 @@
+<html lang="en">
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>personal_test</title>
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/personal.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/default.css">
+  <link rel="stylesheet" type="text/css" href="../css/component.css">
+  <link rel="stylesheet" href="../css/detail.css">
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/mainpage.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript">
+    var w,h,className;
+    function getSrceenWH(){
+      w = $(window).width();
+      h = $(window).height();
+      $('#dialogBg').width(w).height(h);
+    }
+
+    window.onresize = function(){  
+      getSrceenWH();
+    }  
+    $(window).resize();  
+
+    $(function(){
+      getSrceenWH();
+
+
+      $('.box a').click(function(){
+        className = $(this).attr('class');
+        $('#dialogBg').fadeIn(300);
+        $('#dialog_add').removeAttr('class').addClass('animated '+className+'').fadeIn();
+      });
+
+
+      $('.claseDialogBtn').click(function(){
+        $('#dialogBg').fadeOut(300,function(){
+          $('#dialog_add').addClass('bounceOutUp').fadeOut();
+        });
+      });
+    });
+  </script>
+  <script src="js/modernizr.custom.js"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+      <div class="container-fluid"> 
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          
+          <a class="navbar-brand" href="../index.html"><img src="../img/logo.png" alt="" width="102" height="27"></a> </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="myInverseNavbar2">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../index.html">首页</a></li>
+              <li><a href="searching.html">查找活动</a></li>
+              <li><a href="create.html">创建活动</a></li>
+              <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">地区 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="../index.html">上海</a></li>
+                  <li><a href="../index.html">不限</a></li>
+                </ul>
+              </li> 
+              <li>
+                <a id="login_p" href="login.html">登录</a>
+              </li>
+              <li><p>|</p></li>
+              <li>    
+                <a id="register_p" href="register.html">注册</a>
+              </li>
+            </ul>
+            
+          <!--
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">个人中心 <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="personal_data.html">个人信息</a></li>
+            <li><a href="personal_joined.html">已参加活动</a></li>
+            <li><a href="personal_applied.html">已报名活动</a></li>
+            <li><a href="personal_comments.html">评价活动</a></li>
+            <li><a href="personal_mymessages.html">我的消息</a></li>
+            <li><a href="personal_group.html">我的小组</a></li>
+            <li class="divider"></li>
+            <li><a href="#">注销</a></li>
+          </ul>
+        </li>
+    -->
+
+</div>
+<!-- /.navbar-collapse --> 
+</div>
+<!-- /.container-fluid --> 
+</nav>
+    
+         <div style="height: 72px;"></div>
+      <div class="personal_cover">
+        <img src="../img/back03.JPG" alt="">
+    </div>  
+<div class="container">
+    <div class="row">
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-9 hidden-xs">
+    <div class="personal_nav">
+        <div class="personal_portrait">
+            <img alt="头像" src="../img/jiansheng1.jpg">
+            <div class="p_show">
+            <ul>
+                <li><i class=" icon-user-md"></i>账号:
+                    <ul class="p_present"><li>123456@qq.com</li></ul></li>
+                <li><i class="icon-info-sign"></i>昵称:
+                    <ul class="p_present"><li>JoinUS</li></ul></li>
+            </ul>
+            </div>
+            
+        </div>
+        <div class="p_nav">
+            <ul>
+                <li><a class="thisover" href="../html/personal_data.html">个人信息</a></li>
+                <li><a class="thisover" href="../html/personal_joined.html"><p>我的活动</p></a></li>
+                <li><a class="thisover" href="../html/personal_group.html">我的小组</a></li>
+                <li><a class="thisover" href="../html/personal_mymessages.html">我的消息</a></li>
+                <li><a></a></li>
+            </ul>
+            <h2 class="page_title"></h2>
+        </div>
+        
+    </div>
+        
+    
+    <div class="personal_data personal_hd">
+        <div class="personal_hd_nav">
+          <ul>
+            <li></li>
+            <li><a  href="../html/personal_creat.html">创建活动<span class="pipe">|</span></a></li>
+            <li><a  href="../html/personal_joined.html">参与活动<span class="pipe">|</span></a></li>
+            <li><a class="hd_a" href="../html/personal_comments.html">评价活动</a></li>
+          </ul>
+        </div>
+        <div class="personal_hd_joined">
+            <!--
+            <div class="hd_null">
+                <span>近期没有待评价的活动</span>
+            </div>
+            -->
+            <div class="p_hd_main">
+                <div class="hd_img">
+                    <a href="../html/details_page.html"><img alt="活动名称" src="../img/paobu2.jpg"></a>
+                </div>
+                <div class="p_hd_present">
+                    <div class="p_hd_title"><a class="thisover" href="../html/details_page.html"><span>活动名称</span></a></div>
+                    <div class="p_hd_details"><i class="icon-time"></i>2016-11-23 13:00</div>
+                    <div class="p_hd_details"><i class="icon-map-marker"></i>华东师范大学</div>
+                    <div class="p_hd_comment">请为组织者评分:</div>
+                    <div class="rating">
+                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="p_hd_main">
+                <div class="hd_img">
+                    <a href="../html/details_page.html"><img alt="活动名称" src="../img/paobu2.jpg"></a>
+                </div>
+                <div class="p_hd_present">
+                    <div class="p_hd_title"><a class="thisover" href="../html/details_page.html"><span>活动名称</span></a></div>
+                    <div class="p_hd_details"><i class="icon-time"></i>2016-11-23 13:00</div>
+                    <div class="p_hd_details"><i class="icon-map-marker"></i>华东师范大学</div>
+                    <div class="p_hd_bd">（活动简介大约100字左右）我们在用户注册时提供一级兴趣选择（一级兴趣包括：娱乐、体育、科技、美食、军事、历史、社会、旅游、影视、其他等，一级兴趣下再细化二级兴趣），多级区域选择，及其所处年龄层等信息。根据以上用户数据收集，推荐其喜好的活动。在推荐活动时，优先考虑二级兴趣标签及所在区域......</div>
+                    <div class="rating">
+                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                    </div>
+                    <div class="p_hd_comment">请为组织者评分:</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+            <!--<div class="sidebar">-->
+    <div class="sidebar_col">
+      <div class="personal_height"></div>
+      <div class="personalbar">
+       <div class="personal_wall">
+          <div class="personal_recent_hd">
+            <p>—近期参加活动—</p>
+          </div>
+          
+          <div class="pr_hd_content">
+            <div class="content_li">
+              <div class="li_left">
+                <a href="details_page.html" ><img src="../img/adobe.png" alt="" width="60px" height="60px"></a>
+              </div>
+              <div class="li_right">
+                <a class="li_right_title" href="details_page.html"><h5>校运会</h5></a>
+                <p>2016-11-2 9:00</p>
+              </div>
+            </div>
+          </div>
+           <div class="pr_hd_content">
+            <div class="content_li">
+              <div class="li_left">
+                <a href="details_page.html" ><img src="../img/adobe.png" alt="" width="60px" height="60px"></a>
+              </div>
+              <div class="li_right">
+                <a class="li_right_title" href="details_page.html"><h5>校运会</h5></a>
+                <p>2016-11-2 9:00</p>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+        <div class="personal_wall">
+        
+                  <div class="personal_recent_member">
+            <p>—近期小组成员—</p>
+          </div>
+          
+          <div class="pr_hd_content">
+            <div class="content_li">
+              <div class="li_left">
+                <a href="personal.html" ><img src="../img/huaban.jpg" alt="" width="60px" height="60px"></a>
+              </div>
+              <div class="li_right">
+                <a class="li_right_title" href="details_page.html"><h5>飞翔的企鹅</h5></a>
+                <p>小组名称或活动名称</p>
+              </div>
+            </div>
+          </div>
+           <div class="pr_hd_content">
+            <div class="content_li">
+              <div class="li_left">
+                <a href="personal.html" ><img src="../img/huaban.jpg" alt="" width="60px" height="60px"></a>
+              </div>
+              <div class="li_right">
+                <a class="li_right_title" href="details_page.html"><h5>飞翔的企鹅</h5></a>
+                <p>小组名称或活动名称</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+  </div>
+</div>
+      
+        
+        </div>
+    
+    <div class="Clear"><!-- 清除浮动 --></div>
+    <hr>
+
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright © JoinUs Web. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../js/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/stickUp.min.js"></script>
+<script src="../js/star_rate.js"></script>
+<script type="text/javascript">
+              //initiating jQuery
+              jQuery(function($) {
+                $(document).ready( function() {
+                  //enabling stickUp on the '.navbar-wrapper' class
+                  $('.personalbar').stickUp();
+                });
+
+                init_rating();
+              });
+
+            </script>
+</body>
+</html>
+
