@@ -284,7 +284,7 @@ class Activity_model extends CI_Model
         return true;
     }
 
-    public function update_activity_score($activity_id = -1, $applier_id = -1)
+    public function update_activity_score($activity_id = -1, $applier_id = -1, $is_enter = true)
     {
         if ($activity_id == -1 || $applier_id == -1)
             return null;
@@ -292,12 +292,20 @@ class Activity_model extends CI_Model
         // @todo 在model中完成对活动评分的修改
         $this->load->model('User_model');
         $applier_info = $this->User_model->get_user_by_id($applier_id);
+        $this->db->trans_start();
         $activity_info = $this->get_activity_by_id($activity_id);
         // @todo 初步使用加法计算新的score
-        $new_score = $applier_info['brownie_point'] + $activity_info['score'];
+        $new_score = $activity_info['score'];
+        if($is_enter)
+            $new_score += $applier_info['brownie_point'] ;
+        else
+            $new_score -= $applier_info['brownie_point'];
+        $result = true;
         if ($this->db->update('activity', array('score' => $new_score), 'id=' . $activity_id) == false)
-            return false;
-        return true;
+            $result = false;
+
+        $this->db->trans_complete();
+        return $result;
     }
 
     public function end_activity($activity_id=-1,$creator_id=-1){

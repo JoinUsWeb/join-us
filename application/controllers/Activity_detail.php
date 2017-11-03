@@ -75,6 +75,7 @@ class Activity_detail extends CI_Controller
         $user_id = $this->session->user_id;
         if (isset($user_id)) {
             $this->Member_and_activity_model->remove_member_from_activity_by_id($activity_id, $user_id);
+            $this->Activity_model->update_activity_score($activity_id, $user_id, false);
         }
 
         redirect('activity_detail/index/' . $activity_id . '/' . $isRecommended);
@@ -123,5 +124,30 @@ class Activity_detail extends CI_Controller
         $this->load->view('template/nav');
         $this->load->view('activity_related/verify_page');
         $this->load->view('template/footer');
+    }
+
+    //$data的结构是[$activity_id, $evaluate_list]
+    public function evaluate_participant($data){
+        //保证接口不会被盗用
+        if(!isset($this->user_id)||empty($data)||empty($data['activity_id'])||empty($data['evaluate_list']))
+            return;
+        $activity_id = $data['activity_id'];
+        $creator = $this->User_model->get_creator_by_activity_id($activity_id);
+        if(empty($creator) || $this->user_id != $creator['id'])
+            return;
+        $this->update_brownie_point($data['evaluate_list']);
+    }
+
+    //$evaluate_list的结构是[[$user_id, $is_select],……]
+    private function update_brownie_point($evaluate_list)
+    {
+        $this->load->model('Activity_comment_model');
+        foreach ($evaluate_list as $evaluate_item){
+            $score = 5;
+            if ($evaluate_item['is_select'] == 1){ //如果是被举报的用户
+                $score = -5;
+            }
+            $this->User_model->update_user_brownie_point($evaluate_item['user_id'],$score,true);
+        }
     }
 }

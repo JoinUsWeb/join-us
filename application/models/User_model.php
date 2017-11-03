@@ -215,4 +215,15 @@ class User_model extends CI_Model
             return false;
         return true;
     }
+
+    public function update_user_brownie_point($user_id, $value, $is_add = false){
+        if($is_add){
+            $sql = "update user set brownie_point = brownie_point + $value where id = $user_id";
+        }else{
+            $sql = "update user set brownie_point = $value where id = $user_id";
+        }
+
+        //执行sql
+        $this->db->query($sql);
+    }
 }
