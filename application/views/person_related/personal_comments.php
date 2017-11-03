@@ -47,7 +47,7 @@
             <?php endif;
                 endforeach;
         else : ?>
-            <span>你没有需要评价的活动！</span>
+            <div class="hd_null"><span>你没有需要评价的活动！</span></div>
         <?php endif; ?>
 
     </div>

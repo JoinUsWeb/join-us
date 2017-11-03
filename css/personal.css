@@ -347,8 +347,8 @@ a:hover.special{
     text-decoration: none;
 }
 
-.personal_hd_nav li.special{
-    color: #333;
+li.special{
+    font-weight: bold;
 }
 
 .personal_hd_nav a.hd_a{
