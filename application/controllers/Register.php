@@ -6,6 +6,9 @@
  * Date: 2016/10/23
  * Time: 20:38
  */
+
+include APPPATH . 'third_party/Avatar.php';
+
 class Register extends CI_Controller
 {
     public function index()
@@ -22,6 +25,7 @@ class Register extends CI_Controller
             setcookie('email', set_value('_email'));
             setcookie('password', set_value('_password'));
             $this->session->set_userdata('user_id', $user_id);
+            new Avatar($user_id . $_POST['_nickName']);
             redirect('home');
             return;
         }

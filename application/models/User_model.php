@@ -162,7 +162,7 @@ class User_model extends CI_Model
 
     /**
      *
-     * 提交注册表单时已完成是否重复检验
+     * 提交注册表单时已完成是否重复检验，同时生成默认头像
      *
      * array_for_user_info = array(
      *      email  nick_name  password  phone_number )
@@ -177,6 +177,8 @@ class User_model extends CI_Model
         if ($this->db->insert('user', $array_for_user_info) == false)
             return false;
         $user_id = $this->get_user_id_by_email($array_for_user_info['email']);
+        $info['avatar'] = '/img/avatar/' . md5($user_id . $array_for_user_info['nick_name']) .'.png';
+        $this->User_model->update_user_info_by_id($user_id,$info);
         return true;
     }
 
