@@ -32,6 +32,7 @@ function init_rating(site_url) {
                     );
                     // 删除当前星星所对应的 rating 的 onclick
                     delete_onclick(this);
+                    this.parentNode.setAttribute('data-rank-selected',(6 - index).toString())
                 }
             }
         })

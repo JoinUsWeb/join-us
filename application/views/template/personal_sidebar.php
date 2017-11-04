@@ -5,61 +5,26 @@
                     <div class="personal_recent_hd">
                         <p>—近期参加活动—</p>
                     </div>
+                    <?php if (!empty($recent_activities)):
+                        foreach ($recent_activities as $recent_activity):?>
+                            <div class="pr_hd_content">
+                                <div class="content_li">
+                                    <div class="li_left">
+                                        <a href="<?=site_url('activity_detail/index/'.$recent_activity['id'])?>">
+                                            <img src="<?php echo base_url($recent_activity['poster']);?>" width="60px" height="60px"></a>
+                                    </div>
+                                    <div class="li_right">
+                                        <a class="li_right_title" href="<?=site_url('activity_detail/index/'.$recent_activity['id'])?>">
+                                            <h5><?=$recent_activity['name']?></h5></a>
+                                        <p><?=$recent_activity['activity_start']?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach;
+                    else:?>
+                        <div class="pr_hd_content">近期没有活动</div>
+                    <?php endif;?>
 
-                    <div class="pr_hd_content">
-                        <div class="content_li">
-                            <div class="li_left">
-                                <a href="details_page.html"><img src="<?php echo base_url("img/adobe.png");?>" alt="" width="60px"
-                                                                 height="60px"></a>
-                            </div>
-                            <div class="li_right">
-                                <a class="li_right_title" href="details_page.html"><h5>校运会</h5></a>
-                                <p>2016-11-2 9:00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pr_hd_content">
-                        <div class="content_li">
-                            <div class="li_left">
-                                <a href="details_page.html"><img src="<?php echo base_url("img/adobe.png");?>" alt="" width="60px"
-                                                                 height="60px"></a>
-                            </div>
-                            <div class="li_right">
-                                <a class="li_right_title" href="details_page.html"><h5>校运会</h5></a>
-                                <p>2016-11-2 9:00</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="personal_wall">
-
-                    <div class="personal_recent_member">
-                        <p>—近期小组成员—</p>
-                    </div>
-
-                    <div class="pr_hd_content">
-                        <div class="content_li">
-                            <div class="li_left">
-                                <a href="personal.html"><img src="<?php echo base_url("img/huaban.jpg");?>" alt="" width="60px" height="60px"></a>
-                            </div>
-                            <div class="li_right">
-                                <a class="li_right_title" href="details_page.html"><h5>飞翔的企鹅</h5></a>
-                                <p>小组名称或活动名称</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pr_hd_content">
-                        <div class="content_li">
-                            <div class="li_left">
-                                <a href="personal.html"><img src="<?php echo base_url("img/huaban.jpg");?>" alt="" width="60px" height="60px"></a>
-                            </div>
-                            <div class="li_right">
-                                <a class="li_right_title" href="details_page.html"><h5>飞翔的企鹅</h5></a>
-                                <p>小组名称或活动名称</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

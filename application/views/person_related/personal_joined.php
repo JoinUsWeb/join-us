@@ -36,6 +36,6 @@
                 else : ?>
                     <div class="hd_null"><span>近期没有参与活动，快去寻找你的专属活动</span></div>
                 <?php endif; ?>
-            </div>
+                </div>
             </div>
         </div>
