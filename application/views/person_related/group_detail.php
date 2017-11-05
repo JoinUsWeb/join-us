@@ -57,19 +57,17 @@
 
                                                         <ul class="p_friends_list">
                                                         <?php
-                                                            if(!empty($group['invite_users']))
-                                                                foreach ($group['invite_users'] as $invite_user_item):
-                                                                ?>
-                                                                <li><label for="checkbox<?php echo $invite_user_item['id'];?>">
-                                                                        <img src="<?php echo base_url($invite_user_item['avatar']);?>">
-                                                                        <?php echo $invite_user_item['nick_name'];?></label>
-                                                                    <input type="checkbox" name="invited_users" id="checkbox<?php echo $invite_user_item['id'];?>"
-                                                                        value="<?php echo $invite_user_item['id']?>"></li>
-                                                            <?php
-                                                            endforeach;
-                                                            else{
+                                                            if(!empty($group['invite_users'])):
+                                                                foreach ($group['invite_users'] as $invite_user_item):?>
+                                                                    <li><label for="checkbox<?php echo $invite_user_item['id'];?>">
+                                                                            <img src="<?php echo base_url($invite_user_item['avatar']);?>">
+                                                                            <?php echo $invite_user_item['nick_name'];?></label>
+                                                                        <input type="checkbox" name="invited_users" id="checkbox<?php echo $invite_user_item['id'];?>"
+                                                                            value="<?php echo $invite_user_item['id']?>"></li>
+                                                                <?php endforeach;
+                                                            else:
                                                                 echo '没有可以邀请的对象';
-                                                            }
+                                                            endif;
                                                         ?>
                                                         </ul>
                                                         <p class="p_button_invite">
