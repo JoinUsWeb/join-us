@@ -52,7 +52,6 @@
                         </h2>
 
                     </div>
-                    <hr>
 
                     <div id="detail_block">
                         <div class="detail">
@@ -194,28 +193,21 @@
                                             <a href="javascript:;" class="claseDialogBtn"
                                                style=" text-decoration: none;color: black;">关闭</a>
                                         </div>
-                                        <form action="" method="post" id="editForm">
-
+                                            <div class="over">
                                             <ul class="friends_list">
-                                                <li><label for="checkbox1">用户1</label>
-                                                    <input type="checkbox" name="" id="checkbox1"></li>
-                                                <li><label for="checkbox2">用户2</label>
-                                                    <input type="checkbox" name="" id="checkbox2"></li>
-                                                <li><label for="checkbox2">用户3</label>
-                                                    <input type="checkbox" name="" id="checkbox2"></li>
-                                                <li><label for="checkbox2">用户4</label>
-                                                    <input type="checkbox" name="" id="checkbox2"></li>
-                                                <li><label for="checkbox2">用户5</label>
-                                                    <input type="checkbox" name="" id="checkbox2"></li>
-                                                <li><label for="checkbox2">用户6</label>
-                                                    <input type="checkbox" name="" id="checkbox2"></li>
+                                                <?php $count = 0;
+                                                foreach ($canInvite as $person): ?>
+                                                <li><label for="checkbox1"><?php echo $person['nick_name']; ?></label>
+                                                    <input class="choose_friend" type="checkbox" name="<?php echo $count?>" id="checkbox1" data-id="<?php echo $person['id']; ?>"></li>
+                                                <?php $count++;
+                                                endforeach;?>
                                             </ul>
+                                            </div>
 
 
                                             <p class="button_invite">
-                                                <input type="submit" value="发送邀请" class="submitBtn">
+                                                <input id="submit_friends" type="button" value="发送邀请" class="submitBtn">
                                             </p>
-                                        </form>
                                     </div>
                                 </div>
                             </li>
@@ -342,6 +334,14 @@
                 location.reload(true);
             }
         });
-    })
+    });
+
+    $("#submit_friends").click(function () {
+        var friends_checkbox = document.getElementsByClassName('choose_friend');
+        for (var i = 0; i < friends_checkbox.length; i++){
+            if (friends_checkbox[i].checked)
+                $.get('<?php echo site_url("message/invite/") . $user_id . '/'; ?>' + friends_checkbox[i].dataset['id'] + '/' + '<?php echo $activity['id']; ?>');
+        }
+    });
 
 </script>

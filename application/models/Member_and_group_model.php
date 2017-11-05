@@ -37,7 +37,7 @@ class Member_and_group_model extends CI_Model
         else{
             $this->load->model('Group_model');
             $data=$this->get_members_by_group_id($group_id);
-            $group=$this->Group_model->get_groups_by_id($group_id);
+            $group=$this->Group_model->get_group_by_id($group_id);
             if(!empty($group))
                 $data[]=$this->User_model->get_user_by_id($group['leader_id']);
         }
@@ -57,6 +57,26 @@ class Member_and_group_model extends CI_Model
         }
     }
 
+    public function get_members_of_all_group_joined_by_user_id($user_id = -1)
+    {
+        $groups = $this->get_groups_by_user_id($user_id);
+        if (empty($groups))
+            return null;
+        $all_member = array();
+        foreach ($groups as $group){
+            $all_member = array_merge($all_member,$this->get_all_members_by_group_id($group['id']));
+        }
+        if (empty($all_member))
+            return null;
+        $distinct_member = array();
+        foreach ($all_member as $member){
+            $distinct_member[$member['id']] = $member;
+        }
+        if (empty($distinct_member))
+            return null;
+        unset($distinct_member["$user_id"]);
+        return $distinct_member;
+    }
 
     public function remove_member_from_group_by_id($group_id=-1,$member_id=-1){
         if($group_id<=0|$member_id<=0)

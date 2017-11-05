@@ -21,8 +21,8 @@ class Welcome extends CI_Controller
      */
     public function index()
     {
-        $this->load->model('User_model');
-        $this->User_model->update_user_brownie_point(17,6);
+        $this->load->model('Member_and_group_model');
+        $this->Member_and_group_model->get_members_of_all_group_joined_by_user_id(18);
     }
 
 }

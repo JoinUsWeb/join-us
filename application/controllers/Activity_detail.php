@@ -20,6 +20,7 @@ class Activity_detail extends CI_Controller
         $this->load->model('Activity_model');
         $this->load->model('Member_and_activity_model');
         $this->load->model('Activity_comment_model');
+        $this->load->model('Member_and_group_model');
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
         } else {
@@ -47,6 +48,8 @@ class Activity_detail extends CI_Controller
 
             $this->update_recommend_value($_SESSION['user_id'], $data['activity']['second_label_id'], $this->browse_base);
         }
+        $data['user_id'] = $this->user_id;
+        $data['canInvite'] = $this->Member_and_group_model->get_members_of_all_group_joined_by_user_id($this->user_id);
         $this->load->view('template/header', $data);
         $this->load->view('template/nav');
         $this->load->view('activity_related/activity_detail', $data);
