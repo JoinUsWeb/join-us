@@ -81,11 +81,7 @@ class Group_model extends CI_Model
     }
 
     public function update_announcement_by_group_id($group_id=-1,$announcement=''){
-        $data=$this->get_group_by_id($group_id);
-        if(empty($data))
-            return false;
-        $data['announcement']=$announcement;
-        return $this->db->replace('group',$data);
+        $this->db->set('announcement',$announcement)->where('id',$group_id)->update('group');
     }
 
 }

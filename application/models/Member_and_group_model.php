@@ -82,7 +82,8 @@ class Member_and_group_model extends CI_Model
             $this->db->insert('relation_group_members',array('user_id'=>$user_id,'group_id'=>$group_id));
             $group=$this->Group_model->get_group_by_id($group_id);
             $group['member_number']++;
-            $this->Group_model->update($group);
+            $this->db->set('member_number',$group['member_number']+1)->update('group');
+            return true;
         }
     }
 }
