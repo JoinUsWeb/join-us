@@ -685,7 +685,7 @@ display: -webkit-box;
 .g_title{
     width: 100%;
     float: left;
-    height: 400px;
+    max-height: 430px;
 }
 .p_dialogTop{
   width: 580px;
