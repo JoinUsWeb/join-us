@@ -70,7 +70,7 @@
 	height: 35px;
 }
 #detail_block{
-	margin-top: 20px;
+	margin-top: 0px;
 }
 .center{
 	margin-top: 25px;
@@ -225,4 +225,21 @@ background-color: rgb(0,140,225);
 }
 .detail_title h2{
 	width: 660px;
+}
+
+.quote{
+	float: right;
+	margin-left: 10px;
+	margin-top: 6px;
+	width: 50px;
+	height: 25px;
+	font-size: 18px;
+	color:#fff;
+	background-color: rgb(23,167,88);
+	border: 1px solid rgb(23,167,88);
+	border-radius: 5px;
+}
+.over{
+	height: 290px;
+	overflow-y: auto;
 }
