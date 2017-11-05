@@ -130,6 +130,8 @@ background-color: rgb(0,140,225);
 #start_error,#end_error,#close_error,#topic_error{
 	height: 20px;
 	margin:5px 0 0 162px;
+	color: rgb(20,100,20);
+
 }
 #place_error{
     height:20px;
