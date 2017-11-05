@@ -92,13 +92,16 @@ class User extends CI_Controller
     {
         $this->load->model('Member_and_activity_model');
         $row_activities_info = $this->Member_and_activity_model->get_activity_by_member_id($this->user_id);
-        $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
             if ($single_activity_info == null) continue;
-            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
             //status:活动状态，1为结束，0为未开始,2为已经创建小组了
-            $single_activity_info['status']=strtotime($current_date_time) > strtotime($activity_date_time)?1:0;
+            switch ($single_activity_info['isVerified']){
+                case 1:
+                    $single_activity_info['status'] = 0;break;
+                default:
+                    $single_activity_info['status'] = 1;
+            }
             $data['activities_info'][] = $single_activity_info;
         }
         $this->load->view('person_related/personal_joined', $data);
@@ -108,16 +111,19 @@ class User extends CI_Controller
     {
         $this->load->model('Activity_model');
         $row_activities_info = $this->Activity_model->get_activity_by_creator_id($this->user_id);
-        $current_date_time = date("Y-m-d h:i:sa");
         $data['activities_info']=array();
         $this->load->model("Group_model");
         foreach ($row_activities_info as $single_activity_info) {
-            $activity_date_time = date("Y-m-d h:i:sa",strtotime($single_activity_info['activity_start']));
             //status:活动状态，1为结束，0为未开始,2为已经创建小组了
             if(!empty($this->Group_model->get_group_by_activity_id($single_activity_info['id'])))
                 $single_activity_info['status']=2;
             else
-                $single_activity_info['status']=strtotime($current_date_time) > strtotime($activity_date_time)?1:0;
+                switch ($single_activity_info['isVerified']){
+                    case 1:
+                        $single_activity_info['status'] = 0;break;
+                    default:
+                        $single_activity_info['status'] = 1;
+                }
             $data['activities_info'][] = $single_activity_info;
         }
         $this->load->view('person_related/personal_created', $data);
@@ -126,7 +132,6 @@ class User extends CI_Controller
 
     public function comments()
     {
-        $this->load->model('Member_and_activity_model');
         $data['title'] = "个人中心";
         $data['page_name'] = "comments";
 
@@ -247,7 +252,13 @@ class User extends CI_Controller
         }
         $this->load->view('person_related/group_detail',array('group'=>$group));
         $this->load_footer_view();
+    }
 
+    public function set_group_announcement($group_id){
+        $this->load->model('Group_model');
+        $announcement = $this->input->post('announcement');
+        $this->Group_model->update_announcement_by_group_id($group_id,$announcement);
+        redirect('user/group_detail'.$group_id);
     }
 
     public function invite_users(){

@@ -1,4 +1,4 @@
-            <div class="personal_data personal_hd">
+<div class="personal_data personal_hd" xmlns:resize="http://www.w3.org/1999/xhtml">
                 <div class="personal_hd_joined">
                     <div class="p_group_main">
                         <div class="g_title">
@@ -7,13 +7,14 @@
                                 <hr>
                                 <p class="group_posts_details"><?php echo $group['announcement']; ?></p>
 
-                                <!--小组组长可见（修改公告）
-                                    <form action="#" method="post" class="gg_review_main">
-                                        <textarea name="g_notice" id="g_notice" placeholder="请填写公告" resize: none;></textarea>
+                                <?php if ($_SESSION['user_id']==$group['leader']['id']):?>
+                                    <form action="<?= site_url('user/set_group_announcement/'.$group['id'])?>" method="post" class="gg_review_main">
+                                        <textarea name="announcement" id="g_notice" placeholder="请填写公告" resize: none; required></textarea>
                                     <div class="submit_comment">
                                         <input type="submit" id="submit_comment" value="张贴公告">
                                     </div>
-                                </form>-->
+                                </form>
+                                <?php endif;?>
 
                             </div>
                             <div class="group width_lg">
