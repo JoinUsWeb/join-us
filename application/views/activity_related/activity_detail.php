@@ -47,9 +47,10 @@
                             <?php
                             echo $activity['name'];
                             ?>
+                            <button class="quote" title="可以直接引用活动信息哦~"
+                                      onclick="window.open('<?php echo site_url("create_activity/quote/" . $activity['id']); ?>')">引用</button>
                         </h2>
-                        <button class="quote" title="可以直接引用活动信息哦~"
-                        onclick="window.open('<?php echo site_url("create_activity/quote/" . $activity['id']); ?>')">引用</button>
+
                     </div>
                     <hr>
 
