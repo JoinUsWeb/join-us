@@ -30,7 +30,7 @@ class Activity_detail extends CI_Controller
     public function index($activity_id, $isRecommended = 0)
     {
         $data['page_name'] = "detail";
-        $data['activity'] = $this->Activity_model->get_activity_by_id($activity_id);
+        $data['activity'] = $this->Activity_model->get_active_activity_by_id($activity_id);
         $data['title'] = $data['activity']['name'];
         if (empty($data['activity']))
             show_error('活动不存在，可能已经被取消');
@@ -55,9 +55,9 @@ class Activity_detail extends CI_Controller
 
     public function enter($activity_id, $isRecommended = 0)
     {
-        $user_id = $this->session->user_id;
-        $activity = $this->Activity_model->get_activity_by_id($activity_id);
-        if (isset($user_id) && ($activity['member_number'] < $activity['amount_max'])) {
+        $activity = $this->Activity_model->get_active_activity_by_id($activity_id);
+        if (isset($this->session->user_id) && ($activity['member_number'] < $activity['amount_max'])) {
+            $user_id = $this->session->user_id;
             if ($this->Member_and_activity_model->insert_new_relation($user_id, $activity_id,$isRecommended) != true) {
                 show_error('报名失败！');
                 return;
@@ -127,27 +127,33 @@ class Activity_detail extends CI_Controller
     }
 
     //$data的结构是[$activity_id, $evaluate_list]
-    public function evaluate_participant($data){
+    public function evaluate_participant(){
+        $data = json_decode($this->input->post('data'));
         //保证接口不会被盗用
-        if(!isset($this->user_id)||empty($data)||empty($data['activity_id'])||empty($data['evaluate_list']))
+        if(!isset($this->user_id)||empty($data[0])||empty($data[1]))
             return;
-        $activity_id = $data['activity_id'];
+        $activity_id = $data[0];
         $creator = $this->User_model->get_creator_by_activity_id($activity_id);
         if(empty($creator) || $this->user_id != $creator['id'])
             return;
-        $this->update_brownie_point($data['evaluate_list']);
+        $this->update_brownie_point($data[1]);
+        $this->Activity_model->set_activity_evaluated($activity_id);
     }
 
-    //$evaluate_list的结构是[[$user_id, $is_select],……]
+    //$evaluate_list的结构是[[$user_id, $rank],……]
     private function update_brownie_point($evaluate_list)
     {
         $this->load->model('Activity_comment_model');
         foreach ($evaluate_list as $evaluate_item){
-            $score = 5;
-            if ($evaluate_item['is_select'] == 1){ //如果是被举报的用户
-                $score = -5;
+            $rank = $evaluate_item[1];
+            $score = 0;
+            switch ($rank){
+                case 1:
+                    $score = -10;break;
+                default:
+                    $score = ($rank-2)*5;
             }
-            $this->User_model->update_user_brownie_point($evaluate_item['user_id'],$score,true);
+            $this->User_model->update_user_brownie_point($evaluate_item[0],$score,true);
         }
     }
 }

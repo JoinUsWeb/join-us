@@ -80,6 +80,19 @@ class Member_and_activity_model extends CI_Model
         }
     }
 
+
+    public function get_recent_activity_by_member_id($user_id = -1, $limit = 1){
+        $sql = "select a.*
+            from activity as a, relation_activity_members as ram
+            where a.id = ram.activity_id 
+                  and ram.member_id = $user_id
+                  and a.isVerified = 1
+            order by a.activity_start
+            limit $limit";
+        return $this->db->query($sql)->result_array();
+
+    }
+
     /**
      * 获得用户参与的随机的活动,数量由number控制
      *
