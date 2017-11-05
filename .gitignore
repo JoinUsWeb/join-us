@@ -45,3 +45,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 html/my_html.html
 application/config/database.php
 git_pull.cmd
+img/

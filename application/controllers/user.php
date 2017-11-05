@@ -225,10 +225,11 @@ class User extends CI_Controller
 
         $this->load->model('Group_model');
         $this->load->model('Member_and_group_model');
+        $this->load->model('Member_and_activity_model');
         $group=$this->Group_model->get_group_by_id($group_id);
-        $invite_users=array();
-        $group['invite_users']=array();
+        $group['members'] = [];
         if(!empty($group)){
+            $invite_users =$this->Member_and_activity_model->get_member_by_activity_id($group['activity_id']);
             $group['members']=$this->Member_and_group_model->get_members_by_group_id($group_id);
             $group['leader']=$this->User_model->get_user_by_id($group['leader_id']);
             $joined_groups=$this->Member_and_group_model->get_groups_by_user_id($this->user_id);
@@ -243,8 +244,10 @@ class User extends CI_Controller
                 }
             }
             //删除不可邀请对象
+            //去重
             foreach ($invite_users as $invite_user_item)
                 $group['invite_users'][(string)$invite_user_item['id']]=$invite_user_item;
+            //去除已经进组用户
             foreach ($group['members'] as $repeated_user)
                 unset($group['invite_users'][(string)$repeated_user['id']]);
             unset($group['invite_users'][(string)$group['leader']['id']]);
@@ -258,7 +261,7 @@ class User extends CI_Controller
         $this->load->model('Group_model');
         $announcement = $this->input->post('announcement');
         $this->Group_model->update_announcement_by_group_id($group_id,$announcement);
-        redirect('user/group_detail'.$group_id);
+        redirect('user/group_detail/'.$group_id);
     }
 
     public function invite_users(){
