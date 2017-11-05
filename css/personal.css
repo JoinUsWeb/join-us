@@ -562,7 +562,7 @@ display: -webkit-box;
 
 .group_posts{
     float: left;
-    height: 145px;
+    max-height: 260px;
     padding-left: 8px;
     margin-top: 0px;
 }
@@ -685,7 +685,7 @@ display: -webkit-box;
 .g_title{
     width: 100%;
     float: left;
-    height: 300px;
+    height: 400px;
 }
 .p_dialogTop{
   width: 580px;
@@ -1028,10 +1028,8 @@ a:active.thisover{
 }
 
 .gg_review_main{
-    width: 200px; 
-height: 100px; 
-max-width: 200px; 
-max-height: 100px; 
+    width: 100%;
+    max-height: 100px;
 }
 
 .member_review_list{
