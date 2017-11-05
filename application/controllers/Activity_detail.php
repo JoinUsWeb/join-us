@@ -39,7 +39,7 @@ class Activity_detail extends CI_Controller
         $data['hot_activity'] = $this->Activity_model->get_activity_order_by_score(3);
         $data['is_creator']=$data['activity']['creator_id'] == $this->user_id;
         $data['is_joined'] = $this->Member_and_activity_model->is_exist($this->session->user_id, $activity_id);
-
+        $data['visitor_avatar'] = $this->User_model->get_user_by_id($this->user_id,'avatar');
         $data['comment'] = $this->Activity_comment_model->get_completed_comment_by_activity_id($activity_id);
         if (isset($_SESSION['user_id'])) {
             $this->load->model('Browser_and_trace_model');

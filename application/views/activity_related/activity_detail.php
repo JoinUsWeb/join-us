@@ -48,6 +48,8 @@
                             echo $activity['name'];
                             ?>
                         </h2>
+                        <button class="quote" title="可以直接引用活动信息哦~"
+                        onclick="window.open('<?php echo site_url("create_activity/quote/" . $activity['id']); ?>')">引用</button>
                     </div>
                     <hr>
 
@@ -227,7 +229,7 @@
                     <div class="context">
                         <div class="pinglun">
                             <div class="comment_left">
-                                <img src="<?php echo base_url('img/IMG_1035.jpg') ?>" alt="" width="70px" height="70px"
+                                <img src="<?php echo base_url($visitor_avatar); ?>" alt="" width="70px" height="70px"
                                      class="member_review_main">
                             </div>
                             <div class="comment_right">
