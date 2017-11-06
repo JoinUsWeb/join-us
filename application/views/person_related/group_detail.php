@@ -54,13 +54,13 @@
                                                         <a href="javascript:;" class="claseDialogBtn" style=" text-decoration: none;color: black;">关闭</a>
                                                     </div>
                                                     <form action="" method="post" id="editForm">
-
-                                                        <ul class="p_friends_list">
+                                                        <div class="over">
+                                                        <ul class="friends_list">
                                                         <?php
                                                             if(!empty($group['invite_users'])):
                                                                 foreach ($group['invite_users'] as $invite_user_item):?>
                                                                     <li><label for="checkbox<?php echo $invite_user_item['id'];?>">
-                                                                            <img src="<?php echo base_url($invite_user_item['avatar']);?>">
+                                                                            <!--<img src="<?php /*echo base_url($invite_user_item['avatar']);*/?>">-->
                                                                             <?php echo $invite_user_item['nick_name'];?></label>
                                                                         <input type="checkbox" name="invited_users" id="checkbox<?php echo $invite_user_item['id'];?>"
                                                                             value="<?php echo $invite_user_item['id']?>"></li>
@@ -70,8 +70,9 @@
                                                             endif;
                                                         ?>
                                                         </ul>
+                                                        </div>
                                                         <p class="p_button_invite">
-                                                            <button onclick="invite()" value="发送邀请" class="submitBtn" >
+                                                            <input type="button" onclick="invite()" value="发送邀请" class="submitBtn" >
                                                         </p>
 
                                                     </form>

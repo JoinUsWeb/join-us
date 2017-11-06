@@ -88,6 +88,7 @@ class Message_model extends CI_Model
         $result=$this->db
         ->select('user.nick_name')
         ->select('activity.name')
+        ->select('activity.id')
         ->join('user','message.sender_id=user.id')
         ->join('activity','activity.id=message.activity_id')
         ->where('recipient_id',$recipient_id)

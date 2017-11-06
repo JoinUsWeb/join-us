@@ -50,7 +50,7 @@
                 <ul>
                     <?php foreach ($invitation as $row):
                         if (!empty($row)):?>
-                        <li>您收到了一条来自 <?php echo $row['nick_name']; ?> 的活动邀请-<?php echo $row['name']; ?></li>
+                        <li>您收到了一条来自 <?php echo $row['nick_name']; ?> 的活动邀请-<a href="<?php echo site_url('activity_detail/index/' . $row['id']); ?>"><?php echo $row['name']; ?></a></li>
                     <?php endif;
                     endforeach; ?>
                 </ul>
