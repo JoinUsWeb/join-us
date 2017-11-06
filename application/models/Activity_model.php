@@ -166,16 +166,22 @@ class Activity_model extends CI_Model
      * 获得用户创建的活动
      *
      * 通过用户ID查找他创建的活动。函数接受一个参数用户ID，如果合法（id>0），返回他创建的活动的一个数组；
-     *
+     *limit有意义时表示返回的是近期的活动
      * @param int $creator_id
+     * @param int $limit
      * @return null OR array $data
      */
-    public function get_activity_by_creator_id($creator_id = -1)
+    public function get_activity_by_creator_id($creator_id = -1, $limit = -1)
     {
         if ($creator_id < 0)
             return null;
         else
-            return $this->db->get_where('activity', array('creator_id' => $creator_id))->result_array();
+            if ($limit < 1)
+                return $this->db->get_where('activity', array('creator_id' => $creator_id))->result_array();
+            else //limit有意义时表示返回的是近期的活动
+                return $this->db->limit($limit)
+                    ->order_by('activity_start')
+                    ->get_where('activity', array('creator_id' => $creator_id, 'isVerified' => 1))->result_array();
     }
 
     /**

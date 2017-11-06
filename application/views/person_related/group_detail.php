@@ -5,7 +5,7 @@
                         <div class="group_posts">       <!--小组公告-->
                             <h3>小组公告</h3>
                             <hr>
-                            <p class="group_posts_details"><?php echo $group['announcement']; ?></p>
+                            <p class="group_posts_details"><?=$group['announcement']?></p>
 
                             <?php if ($_SESSION['user_id']==$group['leader']['id']):?>
                                 <h3>修改公告</h3>
@@ -65,8 +65,7 @@
                                             </li>
                                         <?php endforeach;
                                     else
-                                        echo "<li>还没有任何成员</li>";
-                                    ?>
+                                        echo "<li>还没有任何成员</li>";?>
                                     <li>
                                         <div class="box">
                                             <div class="demo">
@@ -89,68 +88,41 @@
                     </div>
 
                     <div class="g_recent_hd">
-                        <h3>小组近期活动</h3>
+                        <h3>小组相关活动</h3>
                         <hr>
-                        <!--
-                        <div class="hd_null">
-                            <span>最近没有小组活动</span>
-                        </div>
-                      -->
-                        <div class="g_recent_hdshow">
-                            <div class="recenthd_leftbar">
-                                <div class="rhd_creater">
-                                    <img src="../img/01.jpg">
-                                    <div class="rhd_creater_name">JoinUs</div>
-                                </div>
+                        <?php if (!empty($related_activities)):
+                            foreach ($related_activities as $related_activity):?>
+                                <div class="g_recent_hdshow">
+                                    <div class="recenthd_leftbar">
+                                        <div class="rhd_creater">
+                                            <img src="<?php echo base_url($group['leader']['avatar']);?>">
+                                            <div class="rhd_creater_name"><?php echo base_url($group['leader']['nick_name']);?></div>
+                                        </div>
 
-                            </div>
-                            <div class="recenthd_rightbar">
-                                <div class="recent_hd_title">
-                                    <a class="recent_hd" href="../html/details_page.html">华东师范大学第一届ColorRun比赛</a>
-                                </div>
-                                <div class="recent_hd_detials">
-                                    （活动简介大约50字左右）我们在用户注册时提供一级兴趣选择（一级兴趣包括：娱乐、体育、科技、美食、军事、历史、社会、旅游、影视、其他等，一级兴趣下再细化二级兴趣），多级区域选择，及其所处年龄层等信息......
-                                </div>
-                                <div class="img_outter">
-                                    <div class="img_inner">
-                                        <a class="show" href="#">
-                                            <img src="../img/back01.jpg">
-                                        </a>
+                                    </div>
+                                    <div class="recenthd_rightbar">
+                                        <div class="recent_hd_title">
+                                            <a class="recent_hd" href="<?=site_url('activity_detail/index/'.$related_activity['id'])?>"><?=$recent_activity['name']?></a>
+                                        </div>
+                                        <div class="recent_hd_detials"><?=$related_activity['brief']?></div>
+                                        <div class="img_outter">
+                                            <div class="img_inner">
+                                                <a class="show" href="#">
+                                                    <img src="<?=base_url($related_activity['poster']); ?>">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="recent_hd_tags"><?=base_url($related_activity['activity_start']); ?></div>
+                                        <!--<div class="recent_hd_tags tag_right"><i class="icon-bookmark"></i>科技美学</div>-->
                                     </div>
                                 </div>
-                                <div class="recent_hd_tags">2016-11-23</div>
-                                <div class="recent_hd_tags tag_right"><i class="icon-bookmark"></i>科技美学</div>
+                                <hr>
+                            <?php endforeach;
+                        else:?>
+                            <div class="hd_null">
+                                <span>最近没有小组活动</span>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="g_recent_hdshow">
-                            <div class="recenthd_leftbar">
-                                <div class="rhd_creater">
-                                    <img src="../img/01.jpg">
-                                    <div class="rhd_creater_name">JoinUs</div>
-                                </div>
-
-                            </div>
-                            <div class="recenthd_rightbar">
-                                <div class="recent_hd_title">
-                                    <a class="recent_hd" href="../html/details_page.html">华东师范大学第一届ColorRun比赛</a>
-                                </div>
-                                <div class="recent_hd_detials">
-                                    （活动简介大约50字左右）我们在用户注册时提供一级兴趣选择（一级兴趣包括：娱乐、体育、科技、美食、军事、历史、社会、旅游、影视、其他等，一级兴趣下再细化二级兴趣），多级区域选择，及其所处年龄层等信息......
-                                </div>
-                                <div class="img_outter">
-                                    <div class="img_inner">
-                                        <a class="show" href="#">
-                                            <img src="../img/back01.jpg">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="recent_hd_tags">2016-11-23</div>
-                                <div class="recent_hd_tags tag_right"><i class="icon-bookmark"></i>科技美学</div>
-                            </div>
-                        </div>
-
-
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -158,25 +130,24 @@
             </div>
         </div>
         <script type="application/javascript">
-    function invite() {
-        var check_box=document.getElementsByName("invited_users");
-        var chosed_users=new Array();
-        for(var i=0;i<check_box.length;i++){
-            if(check_box[i].checked==true)
-                chosed_users.push(check_box[i].value);
+        function invite() {
+            var check_box=document.getElementsByName("invited_users");
+            var chosed_users=new Array();
+            for(var i=0;i<check_box.length;i++){
+                if(check_box[i].checked==true)
+                    chosed_users.push(check_box[i].value);
+                }
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url('user/invite_users/'); ?>',
+                data: {'invited_users[]': chosed_users, 'group_id': <?php echo $group['id'];?>},
+                success: function () {
+                    location.reload();}
+            });
         }
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo site_url('user/invite_users/'); ?>',
-            data: {'invited_users[]': chosed_users, 'group_id': <?php echo $group['id'];?>},
-            success: function () {
-                location.reload();
-            }
-        });
-    }
 
-    function quit() {
-        location.href="<?php echo site_url('user/quit_group/'.$group['id']);?>";
-    }
-</script>
+        function quit() {
+            location.href="<?php echo site_url('user/quit_group/'.$group['id']);?>";
+        }
+        </script>
     </div>

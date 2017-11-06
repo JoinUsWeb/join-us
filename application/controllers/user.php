@@ -252,6 +252,9 @@ class User extends CI_Controller
                 unset($group['invite_users'][(string)$repeated_user['id']]);
             unset($group['invite_users'][(string)$group['leader']['id']]);
             unset($group['invite_users'][(string)$this->user_id]);
+
+            //获取小组组长创建的活动
+            $group['related_activities'] = $this->Activity_model->get_activity_by_creator_id($group['leader_id'], 3);
         }
         $this->load->view('person_related/group_detail',array('group'=>$group));
         $this->load_footer_view();
