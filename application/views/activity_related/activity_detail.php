@@ -196,6 +196,9 @@
                                             <div class="over">
                                             <ul class="friends_list">
                                                 <?php $count = 0;
+                                                if (empty($canInvite)):?>
+                                                <span>没有可邀请用户！</span>
+                                                <?php else:
                                                 foreach ($canInvite as $person): ?>
                                                 <li><label for="checkbox1"><?php echo $person['nick_name']; ?></label>
                                                     <input class="choose_friend" type="checkbox" name="<?php echo $count?>" id="checkbox1" data-id="<?php echo $person['id']; ?>"></li>
@@ -208,6 +211,7 @@
                                             <p class="button_invite">
                                                 <input id="submit_friends" type="button" value="发送邀请" class="submitBtn">
                                             </p>
+                                            <?php endif;?>
                                     </div>
                                 </div>
                             </li>
