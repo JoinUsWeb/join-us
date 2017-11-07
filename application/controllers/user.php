@@ -230,14 +230,14 @@ class User extends CI_Controller
         $this->load->model('Group_model');
         $this->load->model('Member_and_group_model');
         $this->load->model('Member_and_activity_model');
-        $group=$this->Group_model->get_group_by_id($group_id);
-
+        
         if ($activity_id > 0){
             $group_id  = $this->Group_model->get_group_by_activity_id($activity_id);
             if (!empty($group_id)) {
                 $group_id = $group_id['id'];
             }
         }
+        $group=$this->Group_model->get_group_by_id($group_id);
 
         $group['members'] = [];
         if(!empty($group)){
