@@ -90,19 +90,19 @@
                     <div class="g_recent_hd">
                         <h3>小组相关活动</h3>
                         <hr>
-                        <?php if (!empty($related_activities)):
-                            foreach ($related_activities as $related_activity):?>
+                        <?php if (!empty($group['related_activities'])):
+                            foreach ($group['related_activities'] as $related_activity):?>
                                 <div class="g_recent_hdshow">
                                     <div class="recenthd_leftbar">
                                         <div class="rhd_creater">
                                             <img src="<?php echo base_url($group['leader']['avatar']);?>">
-                                            <div class="rhd_creater_name"><?php echo base_url($group['leader']['nick_name']);?></div>
+                                            <div class="rhd_creater_name"><?=$group['leader']['nick_name']?></div>
                                         </div>
 
                                     </div>
                                     <div class="recenthd_rightbar">
                                         <div class="recent_hd_title">
-                                            <a class="recent_hd" href="<?=site_url('activity_detail/index/'.$related_activity['id'])?>"><?=$recent_activity['name']?></a>
+                                            <a class="recent_hd" href="<?=site_url('activity_detail/index/'.$related_activity['id'])?>"><?=$related_activity['name']?></a>
                                         </div>
                                         <div class="recent_hd_detials"><?=$related_activity['brief']?></div>
                                         <div class="img_outter">
@@ -112,7 +112,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="recent_hd_tags"><?=base_url($related_activity['activity_start']); ?></div>
+                                        <div class="recent_hd_tags"><?=$related_activity['activity_start'] ?></div>
                                         <!--<div class="recent_hd_tags tag_right"><i class="icon-bookmark"></i>科技美学</div>-->
                                     </div>
                                 </div>
