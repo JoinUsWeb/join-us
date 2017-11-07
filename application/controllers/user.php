@@ -95,7 +95,7 @@ class User extends CI_Controller
         $data['activities_info']=array();
         foreach ($row_activities_info as $single_activity_info) {
             if ($single_activity_info == null) continue;
-            //status:活动状态，1为结束，0为未开始,2为已经创建小组了
+            //status:活动状态，1为结束，0为进行中,2为已经创建小组了
             switch ($single_activity_info['isVerified']){
                 case 1:
                     $single_activity_info['status'] = 0;break;
@@ -114,14 +114,18 @@ class User extends CI_Controller
         $data['activities_info']=array();
         $this->load->model("Group_model");
         foreach ($row_activities_info as $single_activity_info) {
-            //status:活动状态，1为结束，0为未开始,2为已经创建小组了
-            if(!empty($this->Group_model->get_group_by_activity_id($single_activity_info['id'])))
-                $single_activity_info['status']=2;
-            else
-                switch ($single_activity_info['isVerified']){
-                    case 1:
-                        $single_activity_info['status'] = 0;break;
-                    default:
+            //status:活动状态，-1为审核中, -2为审核失败, 1为结束, 0为已审核, 2为已经创建小组了
+            switch ($single_activity_info['isVerified']){
+                case 0:
+                    $single_activity_info['status'] = -1;break;
+                case 2:
+                    $single_activity_info['status'] = -2;break;
+                case 1:
+                    $single_activity_info['status'] = 0;break;
+                default:
+                    if(!empty($this->Group_model->get_group_by_activity_id($single_activity_info['id'])))
+                        $single_activity_info['status'] = 2;
+                    else
                         $single_activity_info['status'] = 1;
                 }
             $data['activities_info'][] = $single_activity_info;

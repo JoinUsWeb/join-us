@@ -92,26 +92,22 @@
                                     人报名</span></div>
                         </div>
 
-                        <?php if ($isVerified != 1):?>
-                            <form action="" method="post">
-                                <p class="center">
-                                    <input type="submit" id="apply" value="活动不可用" disabled>
-                                </p>
-                            </form>
+                        <?php if ($isVerified != 1):
+                            $current_date = date("y-m-d h:i:sa");?>
+                                <form action="" method="post">
+                                    <p class="center">
+                                        <input type="submit" id="apply" value="<?=$activity['activity_start']<=$current_date?'活动进行中':'活动已结束'?>" disabled>
+                                    </p>
+                                </form>
                         <?php elseif ($is_creator): ?>
-                            <form action="
-                            <?php
-                            echo site_url('activity_detail/end/' . $activity['id']);
-                            ?>" method="post">
+                            <form action="<?=site_url('activity_detail/end/' . $activity['id']);?>" method="post">
                                 <p class="center">
                                     <input type="submit" id="apply" value="结束活动">
                                 </p>
                             </form>
-                        <?php  elseif ($is_joined): ?>
+                        <?php elseif ($is_joined): ?>
                             <form action="
-                            <?php
-                            echo site_url('activity_detail/quit/' . $activity['id'] . '/' . $isRecommended);
-                            ?>" method="post">
+                            <?=site_url('activity_detail/quit/' . $activity['id'] . '/' . $isRecommended);?>" method="post">
                                 <p class="center">
                                     <input type="submit" id="apply" value="退出活动">
                                 </p>

@@ -31,7 +31,7 @@ class Activity_detail extends CI_Controller
     public function index($activity_id, $isRecommended = 0)
     {
         $data['page_name'] = "detail";
-        $data['activity'] = $this->Activity_model->get_active_activity_by_id($activity_id);
+        $data['activity'] = $this->Activity_model->get_activity_by_id($activity_id);
         $data['title'] = $data['activity']['name'];
         if (empty($data['activity']))
             show_error('活动不存在，可能已经被取消');

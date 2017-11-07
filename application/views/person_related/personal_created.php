@@ -31,14 +31,21 @@
                                                 <input type="button" onclick="create_group(<?php echo $activity_item['id'] ?>)"
                                                        value="已结束 是否创建小组" class="creat_button">
                                             </div>
-                                        <?php elseif($activity_item['status']==0): ?>
-                                            <div class="p_hd_condition">活动还未开始...</div>
-                                        <?php elseif($activity_item['status']==2): ?>
+                                        <?php elseif($activity_item['status']==0):
+                                            $current_date = date("y-m-d h:i:sa");
+                                            if ($activity_item['activity_start']<=$current_date):?>
+                                                <div class="p_hd_condition">活动进行中...</div>
+                                            <?php else:?>
+                                                <div class="p_hd_condition">活动未开始...</div>
+                                            <?php endif;
+                                        elseif($activity_item['status']==2): ?>
                                         <div class="p_hd_condition"><a href="
                                             <?php echo site_url('user/group_detail/-1/'.$activity_item['id']);?>">查看此活动的小组</a></div>
+                                        <?php elseif($activity_item['status']==-2):?>
+                                            <div class="p_hd_condition">活动审核未通过...</div>
+                                        <?php elseif($activity_item['status']==-1):?>
+                                            <div class="p_hd_condition">活动审核中...</div>
                                         <?php endif; ?>
-                                    <?php else: ?>
-                                        <div class="p_hd_condition">活动还在审核中...</div>
                                     <?php endif; ?>
                                 </div>
                             </div>
