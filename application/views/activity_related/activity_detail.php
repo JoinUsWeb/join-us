@@ -92,7 +92,7 @@
                                     人报名</span></div>
                         </div>
 
-                        <?php if ($isVerified != 1):?>
+                        <?php if ($activity['isVerified'] != 1):?>
                             <form action="" method="post">
                                 <p class="center">
                                     <input type="submit" id="apply" value="活动不可用" disabled>
