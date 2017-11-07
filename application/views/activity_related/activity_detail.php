@@ -92,13 +92,14 @@
                                     人报名</span></div>
                         </div>
 
-                        <?php if ($isVerified != 1):
+                        <?php if ($activity['isVerified'] != 1):
                             $current_date = date("y-m-d h:i:sa");?>
-                                <form action="" method="post">
-                                    <p class="center">
-                                        <input type="submit" id="apply" value="<?=$activity['activity_start']<=$current_date?'活动进行中':'活动已结束'?>" disabled>
-                                    </p>
-                                </form>
+                            <form action="" method="post">
+                                <p class="center">
+                                    <input type="submit" id="apply" value="<?=$activity['activity_start']<=$current_date?'活动进行中':'活动已结束'?>" disabled>
+                                </p>
+                            </form>
+
                         <?php elseif ($is_creator): ?>
                             <form action="<?=site_url('activity_detail/end/' . $activity['id']);?>" method="post">
                                 <p class="center">

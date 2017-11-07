@@ -234,6 +234,9 @@ class User extends CI_Controller
 
         if ($activity_id > 0){
             $group_id  = $this->Group_model->get_group_by_activity_id($activity_id);
+            if (!empty($group_id)) {
+                $group_id = $group_id['id'];
+            }
         }
 
         $group['members'] = [];
