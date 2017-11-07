@@ -2,12 +2,12 @@
  * Created by zhang on 2017/2/12.
  */
 
-function getRoot() {
-    var url = window.document.location.href;
-    return url.substr(0, url.indexOf("index.php") + 9);
+var root;
+
+function getRoot(site_url) {
+    root = site_url;
 }
 
-var root = getRoot();
 var email_check = false, nick_name_check = false, password_check = false,
     password_confirm_check = false, phone_check = false;
 

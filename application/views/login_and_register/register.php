@@ -58,4 +58,7 @@
     <script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/core-min.js"></script>
     <script src="https://cdn.bootcss.com/crypto-js/3.1.2/components/md5-min.js"></script>
     <script type="text/javascript" src="<?php echo base_url("js/form_validation/register.js") ?>"></script>
+    <script type="text/javascript">
+        getRoot("<?php echo site_url(); ?>");
+    </script>
 </div>
