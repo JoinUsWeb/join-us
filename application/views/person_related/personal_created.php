@@ -35,7 +35,7 @@
                                             <div class="p_hd_condition">活动还未开始...</div>
                                         <?php elseif($activity_item['status']==2): ?>
                                         <div class="p_hd_condition"><a href="
-                                            <?php echo site_url('user/group_detail/'.$activity_item['id']);?>">查看此活动的小组</a></div>
+                                            <?php echo site_url('user/group_detail/-1/'.$activity_item['id']);?>">查看此活动的小组</a></div>
                                         <?php endif; ?>
                                     <?php else: ?>
                                         <div class="p_hd_condition">活动还在审核中...</div>

@@ -92,8 +92,13 @@
                                     人报名</span></div>
                         </div>
 
-                        <?php
-                        if ($is_creator) { ?>
+                        <?php if ($isVerified != 1):?>
+                            <form action="" method="post">
+                                <p class="center">
+                                    <input type="submit" id="apply" value="活动不可用" disabled>
+                                </p>
+                            </form>
+                        <?php elseif ($is_creator): ?>
                             <form action="
                             <?php
                             echo site_url('activity_detail/end/' . $activity['id']);
@@ -102,7 +107,7 @@
                                     <input type="submit" id="apply" value="结束活动">
                                 </p>
                             </form>
-                        <?php } else if ($is_joined) { ?>
+                        <?php  elseif ($is_joined): ?>
                             <form action="
                             <?php
                             echo site_url('activity_detail/quit/' . $activity['id'] . '/' . $isRecommended);
@@ -111,9 +116,9 @@
                                     <input type="submit" id="apply" value="退出活动">
                                 </p>
                             </form>
-                        <?php } else if ($activity['member_number'] >= $activity['amount_max'])
+                        <?php elseif ($activity['member_number'] >= $activity['amount_max']):
                             echo '<p>报名人数已满</p>';
-                        else { ?>
+                        else: ?>
                             <form action="
                             <?php
                             if (isset($this->session->user_id))
@@ -125,7 +130,7 @@
                                     <input type="submit" id="apply" value="我要报名">
                                 </p>
                             </form>
-                        <?php } ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

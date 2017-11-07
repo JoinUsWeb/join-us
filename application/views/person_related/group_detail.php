@@ -10,7 +10,7 @@
                             <?php if ($_SESSION['user_id']==$group['leader']['id']):?>
                                 <h3>修改公告</h3>
                                 <form action="<?= site_url('user/set_group_announcement/'.$group['id'])?>" method="post" class="gg_review_main">
-                                    <textarea name="announcement" id="g_notice" placeholder="请填写公告" resize: none; required></textarea>
+                                    <textarea name="announcement" id="g_notice" placeholder="请填写公告" style="resize: none; "  rows="3" cols="94" required></textarea>
                                     <div class="submit_comment">
                                         <input type="submit" id="submit_comment" value="张贴公告">
                                     </div>
@@ -26,7 +26,7 @@
                             </div>
                             <form action="" method="post" id="editForm">
                                 <div class="over">
-                                    <ul>
+                                    <ul class="friends_list">
                                     <?php if(!empty($group['invite_users'])):
                                         foreach ($group['invite_users'] as $invite_user_item):?>
                                             <li><label for="checkbox<?php echo $invite_user_item['id'];?>">

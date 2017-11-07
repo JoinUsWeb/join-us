@@ -219,7 +219,7 @@ class User extends CI_Controller
         $this->load_footer_view();
     }
 
-    public function group_detail($group_id)
+    public function group_detail($group_id, $activity_id = -1)
     {
         $this->load_header_view('group_detail');
 
@@ -227,6 +227,11 @@ class User extends CI_Controller
         $this->load->model('Member_and_group_model');
         $this->load->model('Member_and_activity_model');
         $group=$this->Group_model->get_group_by_id($group_id);
+
+        if ($activity_id > 0){
+            $group_id  = $this->Group_model->get_group_by_activity_id($activity_id);
+        }
+
         $group['members'] = [];
         if(!empty($group)){
             $invite_users =$this->Member_and_activity_model->get_member_by_activity_id($group['activity_id']);
@@ -294,7 +299,7 @@ class User extends CI_Controller
         $data['activity_id']=$activity_id;
         $new_id=$this->Group_model->insert_new_group($data);
         if($new_id>0)
-            $this->group_detail($new_id);
+            $this->group_detail(-1, $new_id);
         else
             show_404('创建小组失败');
     }
