@@ -68,7 +68,8 @@ class Message extends CI_Controller
         $data['page_name'] = 'message';
 
         $this->load->view('person_related/personal_mymessages',$data);
-        $this->load->view('template/personal_sidebar');
+        $recent_activities = $this->Member_and_activity_model->get_recent_activity_by_member_id($this->user_id,3);
+        $this->load->view('template/personal_sidebar',['recent_activities'=>$recent_activities]);
         $this->load->view('template/footer');
     }
 
