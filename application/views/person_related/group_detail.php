@@ -41,7 +41,7 @@
                                 </div>
 
                                 <p class="button_invite">
-                                    <input type="submit" value="发送邀请" class="submitBtn" >
+                                    <input type="submit" onclick="invite()" value="发送邀请" class="submitBtn" >
                                 </p>
 
                             </form>
