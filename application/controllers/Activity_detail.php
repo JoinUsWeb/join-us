@@ -21,6 +21,7 @@ class Activity_detail extends CI_Controller
         $this->load->model('Member_and_activity_model');
         $this->load->model('Activity_comment_model');
         $this->load->model('Member_and_group_model');
+        $this->load->model('Browser_and_trace_model');
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
         } else {
