@@ -82,7 +82,10 @@ class Member_and_group_model extends CI_Model
         if($group_id<=0|$member_id<=0)
             return false;
         else{
-            return $this->db->delete('relation_group_members',array('group_id'=>$group_id,'user_id'=>$member_id));
+            $this->db->delete('relation_group_members',array('group_id'=>$group_id,'user_id'=>$member_id));
+            $group=$this->Group_model->get_group_by_id($group_id);
+            $this->db->where('id',$group_id)->set('member_number',$group['member_number']-1)->update('group');
+            return true;
         }
     }
 
@@ -101,8 +104,7 @@ class Member_and_group_model extends CI_Model
         else{
             $this->db->insert('relation_group_members',array('user_id'=>$user_id,'group_id'=>$group_id));
             $group=$this->Group_model->get_group_by_id($group_id);
-            $group['member_number']++;
-            $this->db->set('member_number',$group['member_number']+1)->update('group');
+            $this->db->where('id',$group_id)->set('member_number',$group['member_number']+1)->update('group');
             return true;
         }
     }

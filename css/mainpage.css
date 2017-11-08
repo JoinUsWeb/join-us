@@ -192,7 +192,7 @@ body{
   margin:10px 0;
 }
 .content_li h5,.content_li p{
-  width: 180px;
+  width: 170px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

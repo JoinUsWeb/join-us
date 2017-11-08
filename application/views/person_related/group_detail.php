@@ -41,7 +41,7 @@
                                 </div>
 
                                 <p class="button_invite">
-                                    <input type="submit" value="发送邀请" class="submitBtn" >
+                                    <input type="submit" onclick="invite()" value="发送邀请" class="submitBtn" >
                                 </p>
 
                             </form>
@@ -56,16 +56,19 @@
                             </div>
                             <div class="group_member min-width-lg">      <!--成员-->
                                 <ul>
-                                    <?php if(!empty($group['members']))
-                                        foreach ($group['members'] as $member_item):?>
+                                    <?php if(!empty($group['members'])):
+                                        $member_count = count($group['members']);
+                                        for ($i = 0; $i<3 && $i<$member_count; $i++):
+                                        $member_item = $group['members'][$i];?>
                                             <li>
                                                 <a href="../html/personal_data.html">
-                                                    <img src="<?php echo base_url($member_item['avatar']);?>"></a>
-                                                <p><?php echo $member_item['nick_name'];?></p>
+                                                    <img src="<?=base_url($member_item['avatar'])?>"></a>
+                                                <p><?=$member_item['nick_name']?></p>
                                             </li>
-                                        <?php endforeach;
-                                    else
-                                        echo "<li>还没有任何成员</li>";?>
+                                        <?php endfor;
+                                    else:
+                                        echo "<li>还没有任何成员</li>";
+                                    endif;?>
                                     <li>
                                         <div class="box">
                                             <div class="demo">
