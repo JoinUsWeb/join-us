@@ -57,9 +57,9 @@ class Member_and_group_model extends CI_Model
         }
     }
 
-    public function get_members_of_all_group_joined_by_user_id($user_id = -1)
+    public function get_members_of_all_group_joined_by_user_id($user_id = -1, $group_id_as_leader = -1)
     {
-        $groups = $this->get_groups_by_user_id($user_id);
+        $groups = array_merge($this->get_groups_by_user_id($user_id), $group_id_as_leader);
         if (empty($groups))
             return null;
         $all_member = array();
