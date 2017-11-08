@@ -268,7 +268,8 @@ class User extends CI_Controller
             $group['related_activities'] = $this->Activity_model->get_activity_by_creator_id($group['leader_id'], 3);
             $this->load->view('person_related/group_detail',array('group'=>$group));
             $this->load_footer_view();
-        }
+        }else
+            show_404("小组不存在");
     }
 
     public function set_group_announcement($group_id){
