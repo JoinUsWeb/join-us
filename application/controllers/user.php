@@ -239,7 +239,6 @@ class User extends CI_Controller
         }
         $group=$this->Group_model->get_group_by_id($group_id);
 
-        $group['members'] = [];
         if(!empty($group)){
             $invite_users =$this->Member_and_activity_model->get_member_by_activity_id($group['activity_id']);
             $group['members']=$this->Member_and_group_model->get_members_by_group_id($group_id);
@@ -267,9 +266,9 @@ class User extends CI_Controller
 
             //获取小组组长创建的活动
             $group['related_activities'] = $this->Activity_model->get_activity_by_creator_id($group['leader_id'], 3);
+            $this->load->view('person_related/group_detail',array('group'=>$group));
+            $this->load_footer_view();
         }
-        $this->load->view('person_related/group_detail',array('group'=>$group));
-        $this->load_footer_view();
     }
 
     public function set_group_announcement($group_id){
