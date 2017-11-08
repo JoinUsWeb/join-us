@@ -51,12 +51,14 @@ class Group_model extends CI_Model
             $data['name']=$group_info['name'];
             $data['announcement']='小组公告可以方便的对组员发布通知哦，快来设置吧';
             $data['member_number']=0;
+            $data['poster'] = $group_info['poster'];
             $data['activity_id']=$group_info['activity_id'];
             $data['created_time']=date("Y-m-d h:i:sa");
-            return $this->db->insert('group',$data);
+            if ($this->db->insert('group',$data))
+                return true;
         }
         else
-            return -1;
+            return false;
     }
 
     /**

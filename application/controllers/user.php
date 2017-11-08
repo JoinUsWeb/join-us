@@ -304,6 +304,7 @@ class User extends CI_Controller
         $data['leader_id']=$this->user_id;
         $data['name']=$activity['name'];
         $data['activity_id']=$activity_id;
+        $data['poster'] = $activity['poster'];
         $result=$this->Group_model->insert_new_group($data);
         if($result == true)
             redirect(site_url('user/group_detail/-1/'.$activity_id));
