@@ -39,6 +39,7 @@ class Message extends CI_Controller
         $this->load->model('message_model','message');
         $this->load->model('member_and_activity_model','member_and_activity');
         $this->load->model('Activity_model');
+        $this->load->model('Member_and_activity_model');
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
         } else {
