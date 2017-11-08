@@ -306,7 +306,7 @@ class User extends CI_Controller
         $data['activity_id']=$activity_id;
         $new_id=$this->Group_model->insert_new_group($data);
         if($new_id>0)
-            $this->group_detail(-1, $new_id);
+            $this->group_detail($new_id);
         else
             show_404('创建小组失败');
     }
